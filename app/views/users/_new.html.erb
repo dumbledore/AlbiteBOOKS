@@ -1,0 +1,20 @@
+<% form_for @user do |f| %>
+  <%= f.error_messages :header_message => "Cannot create your account.",
+                       :message => "You'll need to fix the following fields:" %>
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "Account info" %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    <% end %>
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "You are not a bot, huh?" %>
+    <%= recaptcha_tags.html_safe %>
+  <% end %>
+  <%= f.submit "Register!"%>
+<% end %>

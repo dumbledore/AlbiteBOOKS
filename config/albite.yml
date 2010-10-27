@@ -1,0 +1,44 @@
+# AlbiteBOOKS settings
+# ====================
+
+# Site title
+title: AlbiteBOOKS
+
+# Server support for x-sendfile
+# It's important that the server should support this. However, while Webrick supports it,
+# Mongrel doesn't. So, try and see if it works for you. The usual response of a problem is
+# if the server is sending empty files
+x_sendfile: false
+
+
+# App's Secret Token
+# ==================
+#
+# Your secret key for verifying cookie session data integrity.
+# If you change this key, all old sessions will become invalid!
+# Make sure the secret is at least 30 characters and all random,
+# no regular words or you'll be exposed to dictionary attacks.
+secret_token: some_random_number_goes_here
+
+# True, if new users can sign up
+# ==============================
+can_add_users: false
+
+# SMTP mail (gmail settings preset)
+# =================================
+smtp:
+  address: smtp.gmail.com
+  port: 587
+  authentication: plain
+  enable_starttls_auto: true
+  user_name: your_username@gmail.com
+  password: your_password
+
+# Mail from field
+# ===============
+mail_from: your_username@gmail.com
+
+# Recaptcha
+# =========
+recaptcha_public_key: recaptcha_public_key_goes_here
+recaptcha_private_key: recaptcha_private_key_goes_here

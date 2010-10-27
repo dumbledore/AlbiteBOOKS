@@ -1,0 +1,62 @@
+<% title @author.name %>
+
+<% content_for(:head) do %>
+  <% @freebase_item = @author %>
+  <%= render :partial => 'misc/freebase_ajax' unless @mobile %>
+<% end %>
+
+<h1>
+  <%=h @author.name %>
+  <% if user_admin %>
+    <%= link_to image_tag("misc/edit.png"), edit_author_path(@author), :class => 'small' %>
+    <%= link_to image_tag("misc/delete.png"), @author, :confirm => 'Are you sure?', :method => :delete, :class => 'small' %>
+  <% end %>
+</h1>
+<p>
+  <%= image_tag(@author.thumbnail_url, :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
+  <% unless @mobile %>
+    <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
+  <% end %>
+</p>
+<% unless @mobile %>
+  <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<% end %>
+<div></div>
+<% if @author.aliases.size > 1 %>
+  <p>
+  <strong>Also known as: </strong>
+  <% aliases = [] %>
+  <% for aliaz in @author.aliases %>
+    <% aliases << aliaz.name unless @author.alias_name == aliaz %>
+  <% end %>
+  <%= aliases.join(", ") %>
+  </p>
+<% end %>
+
+<h1>Books</h1>
+<% unless @author.books.empty? %>
+  <% for book in @author.books %>
+    <p>
+      <% if book.thumbnail_url.blank? %>
+        <%= link_to book.title, book_url(book), :class => 'thumblist_no_img' %><br>
+    <% else %>
+        <%= image_tag(book.thumbnail_url, :class =>  'thumblist') %>
+        <%= link_to book.title, book_url(book), :class => 'thumblist' %><br>
+    <% end %>
+    </p>
+  <% end %>
+<% else %>
+  <p>
+    <i>No books have been added so far.</i>
+  </p>
+<% end %>
+
+<% unless @mobile %>
+  <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+  <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<% end %>
+
+<p>
+  <br>
+  <b><%= link_to "Back to Authors", authors_url %></b>
+</p>

@@ -1,0 +1,8 @@
+<% for book in @books %>
+  <p<%= ' class="strike"' unless book.ready %>>
+    <%= link_to h(book.title), edit_book_path(book) %>
+    <%= link_to image_tag('misc/edit.png'), edit_book_path(book) %>
+    <%= link_to image_tag('misc/delete.png'), book, :confirm => 'Are you sure?', :method => :delete %>
+  </p>
+<% end %>
+<%= "<p><i>No books have been added so far.</i></p>".html_safe if @books.empty? %>

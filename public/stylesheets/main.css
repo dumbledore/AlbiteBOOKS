@@ -1,0 +1,332 @@
+html, body {
+  height:100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-align: center;
+  color: #444444;
+  background-color: #E9E9E8;
+  font-family: "Times New Roman", Times, serif;
+  /*font-family: Arial, sans-serif;*/
+  font-size: 1em;
+}
+
+div {
+  /* This way one could force carriage return after floating objects just by using divs */
+  clear: both;
+}
+
+span.subtitle {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: "Times New Roman", Times, serif;
+  /*font-family: Arial, sans-serif;*/
+  font-size: 0.6em;
+  font-variant: normal;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+p {
+  padding: 0 15px 0 15px;
+  text-align: left;
+  line-height: 140%;
+}
+
+i {
+  color: #806A5D;
+}
+
+h1 {
+  font-size: 1.5em;
+  border-bottom: 1px solid #aaa;
+  text-align: left;
+  font-variant: small-caps;
+  padding: 0 15px 8px 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"],
+textarea,
+select
+{
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1em;
+  padding: 3px;
+  width: 350px;
+  margin: 10px;
+}
+
+textarea {
+  height: 60px;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  margin: 10px 30px;
+}
+
+input[type="submit"].small {
+  padding: 3px;
+  margin: 5px;
+}
+
+fieldset {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  display: block;
+  vertical-align: text-top;
+}
+
+label {
+  display: block;
+  margin: 0 10px;
+}
+
+p label {
+  display: inline;
+  margin: 0;
+}
+
+form p{
+  margin: 10px;
+  padding: 0;
+}
+
+legend {
+  text-align: left;
+}
+
+div.fieldWithErrors {
+  margin: 0;
+  padding: 0;
+}
+
+div.fieldWithErrors input[type="text"],
+div.fieldWithErrors input[type="password"],
+div.fieldWithErrors textarea {
+  background-color: #fee;
+  border: 1px solid #f66;
+}
+
+div.errorExplanation {
+  background-color: #fee;
+  padding: 8px 15px 2px 15px;
+  margin: 0 15px;
+}
+
+.errorExplanation h2 {
+  font-size: 1.3em;
+  text-align: left;
+  margin: 0;
+  font-weight: normal;
+}
+
+.errorExplanation li {
+  text-align: left;
+}
+
+hr {
+  height: 1px;
+  border-width: 0;
+  color: #AAAAAA;
+  background-color: #AAAAAA;
+}
+
+span.menu {
+  margin: 0 11px 0 11px;
+}
+
+a {
+  color: #06A;
+  text-decoration: underline;
+}
+
+a.menu, a.menu_down {
+  font-size: 0.9em;
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  font-weight: bold;
+  margin: 0 4px 0 4px;
+}
+
+a.menu_down{
+  font-variant: normal;
+  font-weight: normal;
+}
+
+a:hover {
+  color: #8F7668;
+}
+
+a:active {
+  color: #756156;
+}
+
+.booktitle, .author {
+  font-size: 1em;
+  font-style: italic;
+}
+
+img.pre {
+  float: left;
+  margin: 10px 10px 5px 0;
+  border: none;
+}
+
+p.descr {
+  line-height: 130%;
+}
+
+div.flmsg_notice, div.flmsg_notice {
+  font-size: 0.8em;
+  padding: 5px 15px;
+  text-align: center;
+}
+
+div.flmsg_notice {
+  background-color: #DFD;
+}
+
+div.flmsg_error {
+  font-size: 1em;
+  background-color: #FBB;
+  font-width: bold;   
+}
+
+.tpl_wrapper {
+  /*width: 780px;*/
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  background-color: #FFFFFF;
+}
+
+.tpl_row {
+ height: 20px;
+}
+
+.tpl_row_tl {
+  background-image: url(../images/_/tl.gif);
+}
+
+.tpl_row_tr {
+  background-image: url(../images/_/tr.gif);
+}
+
+.tpl_row_t {
+  background-image: url(../images/_/t.gif);
+}
+
+.tpl_row_bl {
+  background-image: url(../images/_/bl.gif);
+}
+
+.tpl_row_br {
+  background-image: url(../images/_/br.gif);
+}
+
+.tpl_row_b {
+  background-image: url(../images/_/b.gif);
+}
+
+.tpl_row_l {
+  background-image: url(../images/_/l.gif);
+}
+
+.tpl_row_r {
+  background-image: url(../images/_/r.gif);
+}
+
+input.search {
+  color: #aaa;
+  font-weight: bold;
+  margin: 0;
+  vertical-align: bottom;
+}
+
+input[type="text"].search {
+  width: 400px;
+}
+
+table.admin { /*}, table.admin td, table.admin th {*/
+  border:1px solid #ccc;
+  margin: auto;
+}
+
+table.admin td {
+  padding: 5px;
+}
+
+table.admin th {
+  padding: 5px;
+  background-color: #FAFAFA;
+}
+
+img.thumbnail {
+  padding: 2px;
+  margin: 5px;
+  border: solid 1px #999;
+  width: 100px;
+  float: right;
+}
+
+img.thumblist {
+  padding: 1px;
+  margin: 3px 10px 0 0;
+  border: solid 1px #999;
+  width: 32px;
+  max-height: 100px;
+  vertical-align: middle;
+}
+
+img.thumblisthome {
+  padding: 1px;
+  margin: 3px 10px 0 0;
+  border: solid 1px #999;
+/* Maximum acceptable width without breaking the layout is 228, so 200 is a good value*/
+  max-width: 200px;
+  height: 150px;
+}
+
+td.home {
+  padding: 15px;
+}
+
+a.thumblist, a.thumblist_no_img {
+  font-size: 1.1em;
+}
+
+a.thumblist_no_img {
+  margin-left: 50px;
+}
+
+p.linklist {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+a.small {
+  margin-left: 5px;
+  font-size: 0.8em;
+  font-variant: small-caps;
+}
+
+div.loading {
+  text-align: center;
+  margin: 10px;
+}
+
+p.quote {
+  font-style: italic;
+  letter-spacing: 0.08em;
+}
+
+p.strike {
+  text-decoration: line-through;
+}

@@ -1,0 +1,4 @@
+<h1>Search results for <%= @query %></h1>
+<% @search.each do |book| %>
+ <p><%= link_to "#{book.title} by <i>#{book.author.name}</i>", book_official_url(book) %></p>
+<% end %>

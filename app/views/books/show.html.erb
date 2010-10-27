@@ -1,0 +1,66 @@
+<% title @book.title %>
+
+<% content_for(:head) do %>
+  <% @freebase_item = @book %>
+  <%= render :partial => 'misc/freebase_ajax' unless @mobile %>
+<% end %>
+
+<h1>
+  <%=h @book.title %>
+  <% if user_admin %>
+    <%= link_to image_tag("misc/edit.png"), edit_book_path(@book) %>
+    <%= link_to image_tag("misc/delete.png"), @book, :confirm => 'Are you sure?', :method => :delete %>
+  <% end %>
+ <span class="subtitle">by <%= link_to @book.author.name, @book.author %></span>
+</h1>
+<p>
+  <%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
+  <% unless @mobile %>
+    <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
+  <% end %>
+</p>
+<% unless @mobile %>
+  <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<% end %>
+<div></div>
+<% unless @book.genre_list.empty? %>
+  <% genres = [] %>
+  <% for genre in @book.genre_list %>
+    <% genre = link_to genre, "#todo" %>
+    <% genres << genre %>
+  <% end %>
+  <p>
+    <strong>Genres: </strong><%= genres.join ", " %>
+  </p>
+<% end %>
+<% unless @book.subject_list.empty? %>
+  <% subjects = [] %>
+  <% for subject in @book.subject_list %>
+    <% subject = link_to subject, "#todo" %>
+    <% subjects << subject %>
+  <% end %>
+  <p>
+    <strong>Subjects: </strong><%= subjects.join ", " %>
+  </p>
+<% end %>
+<h1>Download book &amp; translations</h1>
+
+<% unless @book.translations.empty? %>
+<ul>
+  <% for translation in @book.translations %>
+    <li><%= link_to Languages::LANGUAGES[translation.language][0], download_path(translation)%></li>
+  <% end %>
+</ul>
+<% else %>
+<p>
+  <i>Nothing to download yet.</i>
+</p>
+<% end %>
+<div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<p>
+  <br>
+  <%=
+      link_to "Back to #{@book.author.name}", @book.author
+  %>
+</p>

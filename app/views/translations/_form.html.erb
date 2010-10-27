@@ -1,0 +1,22 @@
+<% focus_on_load('translation_url') %>
+<% form_for @translation, :html => {:multipart => true}, :url => {:controller => :translations, :action => :create, :book => @book.id} do |f| %>
+  <%= f.error_messages %>
+
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "Translation" %>
+    <%= f.label :book %>
+    <%= f.text_field :book, :value => @book.title, :disabled => 1 %>
+    <%= f.hidden_field :book_id %>
+
+    <%= f.label :language %>
+    <%= f.select :language, options_for_select(Languages::LANGUAGES, 41)%>
+
+    <%= f.label :book_file %>
+    <%= f.file_field :book_file %>
+
+    <%= f.label :original %>
+    <%= f.check_box :original %>
+
+  <% end %>
+  <%= f.submit "Submit", :class => 'small', :disable_with => "Please wait..." %>
+<% end %>

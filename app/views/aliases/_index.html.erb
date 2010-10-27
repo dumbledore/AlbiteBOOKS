@@ -1,0 +1,10 @@
+<% for aliaz in @aliases %>
+  <% if aliaz != @author.alias_name %>
+    <p>
+      <%= link_to h(aliaz.name_reversed), edit_alias_path(aliaz) %>
+      <%= link_to image_tag('misc/edit.png'), edit_alias_path(aliaz) %>
+      <%= link_to image_tag('misc/delete.png'), aliaz, :confirm => 'Are you sure?', :method => :delete %>
+    </p>
+  <% end %>
+<% end %>
+<%= "<p><i>No aliases have been added so far.</i></p>".html_safe if @aliases.size < 2 %>

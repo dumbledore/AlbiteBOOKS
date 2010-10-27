@@ -1,0 +1,20 @@
+<% title "Edit Book" %>
+<h1>Edit Book
+  <%= link_to image_tag("misc/show.png"), @book %>
+</h1>
+
+<%= render :partial => 'form' %>
+
+<% content_tag :fieldset do %>
+  <%= content_tag :legend, "Translations" %>
+  <% @translations = @book.translations %>
+  <%= render :partial => 'translations/index' %>
+  <p>
+    <b><%= link_to "New translation", :controller => 'translations', :action => 'new', :book => @book, :original => @book.translations.empty? %></b>
+  </p>
+<% end %>
+
+<p>
+  <%= link_to "Show book", @book %> |
+  <%= link_to "Back to #{@book.author.name}", edit_author_url(@book.author) %>
+</p>

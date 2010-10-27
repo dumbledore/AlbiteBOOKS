@@ -1,0 +1,12 @@
+<% form_for @user_session do |f| %>
+  <%= f.error_messages :header_message => "Cannot log you in.",
+                       :message => "" %>
+  <% content_tag :fieldset do %>
+    <!--<%= content_tag :legend, "Login details" %>-->
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  <% end %>
+  <%= f.submit "Login" %>
+<% end %>

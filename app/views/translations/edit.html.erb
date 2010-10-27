@@ -1,0 +1,8 @@
+<% title "Edit Translation" %>
+<h1>Edit Translation</h1>
+
+<%= render :partial => 'form' %>
+
+<p>
+  <%= link_to "Back to #{@translation.book.title}", edit_book_url(@translation.book) %>
+</p>

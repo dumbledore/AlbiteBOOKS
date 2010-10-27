@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag 'suggest.min' %>
+<%= javascript_include_tag 'jquery.min' %>
+<%= javascript_include_tag 'suggest.min' %>
+<script type="text/javascript">
+  jQuery(function() {
+    jQuery("#<%= @search_field %>")
+      .suggest({
+      "type": "<%= @type_info %>"
+      <%= ", \"mql_filter\": [{#{h(@mql_filter)}}]".html_safe unless @mql_filter.nil? %>
+    })
+    .bind("fb-select", function(e, data) {
+      document.getElementById('<%= @freebase_field %>').value = data.id;
+    });
+  });
+</script>

@@ -1,0 +1,7 @@
+<% for translation in @translations %>
+  <p>
+    <%= link_to Languages::LANGUAGES[translation.language][0], download_url(translation) %>
+    <%= link_to image_tag('misc/delete.png'), translation, :confirm => 'Are you sure?', :method => :delete %>
+  </p>
+<% end %>
+<%= "<p><i>No translations have been added so far.</i></p>".html_safe if @translations.empty? %>

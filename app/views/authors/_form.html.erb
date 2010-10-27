@@ -1,0 +1,19 @@
+<% freebase_suggest 'author_name', 'author_freebase_uid', '/book/author'%>
+<% focus_on_load('author_name') %>
+<% form_for @author do |f| %>
+  <%= f.error_messages %>
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "General info" %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :freebase_uid, 'Freebase ID' %>
+    <%= f.text_field :freebase_uid %>
+    <%= f.label :thumbnail_url %>
+    <%= f.text_field :thumbnail_url %>
+  <% end %>
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "Readiness" %>
+    <%= f.check_box :ready %> Show in website
+  <% end %>
+  <%= f.submit "Submit", :disable_with => "Please wait..." %>
+<% end %>

@@ -1,0 +1,32 @@
+<p>
+    You've come to the right place for obtaining <i>free</i> e-books for your <i>j2me</i>-enabled mobile. <i>Annotate</i> important text or check your <i>bookworm rating</i>.
+</p>
+<p>
+   <%= link_to "Read more", :controller => :about %> about the Albite Project or <a href="#">watch</a> the demo on the right.
+</p>
+<% unless @books.empty? %>
+  <h1>Have you read these?</h1>
+  <table width="100%">
+    <colgroup width="33%" align="center"></colgroup>
+    <colgroup width="34%" align="center"></colgroup>
+    <colgroup width="33%" align="center"></colgroup>
+    <tr valign="bottom">
+      <% i = 0 %>
+      <% for book in @books %>
+        <% image_url = book.thumbnail_url %>
+        <% image_url = 'misc/nobook.gif' if book.thumbnail_url.blank? %>
+        <td class="home">
+          <%= link_to book.title, book, :class => 'thumblist' %><br>
+          by <em><%= link_to book.author.name_cached, book.author %></em><br>
+          <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %>
+        </td>
+        <% i += 1 %>
+        <% if i % 3 == 0 %>
+          </tr>
+          <tr style="height: 10px;"></tr>
+          <tr valign="bottom">
+        <% end %>
+      <% end %>
+    </tr>
+  </table>
+<% end %>

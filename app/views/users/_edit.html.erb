@@ -1,0 +1,32 @@
+<% form_for @user do |f| %>
+  <%= f.error_messages :header_message => "Cannot update profile.",
+                       :message => "You'll need to fix the following fields:" %>
+
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "Account info" %>
+    <%= f.label :username %>
+    <%= f.text_field :username, :disabled => true %>
+    <%= f.label :email %>
+    <%= f.text_field :email, :disabled => true %>
+  <% end %>
+
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "Avatar" %>
+    <p>
+      <%= image_tag @user.gravatar_url(:size => 200), :alt => "Your avatar at gravatar.com", :title => "Your avatar at gravatar.com" %><br>
+      <br>
+      <a href="http://gravatar.com" target = "_blank">Change your avatar at gravatar.com</a>
+    </p>
+  <% end %>
+
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "Change your password" %>
+    <%= f.label :password, "New password" %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.label :current_password, "Type your current password" %>
+    <%= f.password_field :current_password %>
+  <% end %>
+  <%= f.submit "Update Profile"%>
+<% end %>

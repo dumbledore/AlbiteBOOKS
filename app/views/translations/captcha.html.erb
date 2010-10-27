@@ -1,0 +1,12 @@
+<% form_for :translation, @translation, :url => download_url(@translation) do |f| %>
+  <%= f.error_messages :header_message => "Cannot download this book.", :message => "" %>
+  <%= hidden_field_tag 'captcha_is_there' %>
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "You are not a bot, huh?" %>
+    <%= recaptcha_tags.html_safe %>
+  <% end %>
+  <%= f.submit "Download"%>
+<% end %>
+<p>
+  <%= link_to "Back to book", book_url (@translation.book_id) %>
+</p>
