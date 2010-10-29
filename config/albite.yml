@@ -47,3 +47,11 @@ mail_from: your_username@gmail.com
 # =========
 recaptcha_public_key: recaptcha_public_key_goes_here
 recaptcha_private_key: recaptcha_private_key_goes_here
+
+# UserVoice Feedback button/form
+# ===============================
+uservoice:
+  key: your_key
+  host: your_key.uservoice.com
+  forum: your_forum_id_number
+  
