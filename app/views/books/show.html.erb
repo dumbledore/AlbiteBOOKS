@@ -25,7 +25,7 @@
   <p><strong>Date of first publication: </strong><%= @book.date_of_first_publication %></p>
   <p><strong>Original language: </strong><%= @book.original_language %></p>
 <% else %>
-  <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+  <div id="freebase_details"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <% end %>
 
 <% unless @book.genre_list.empty? %>

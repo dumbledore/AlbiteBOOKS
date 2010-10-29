@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager" verified="true">
     <list default="true" readonly="true" id="5eec1b0a-d240-4163-b9e9-21cd29153fb8" name="Default" comment="" />
-    <ignored path=".idea/workspace.xml" />
     <ignored path="albite-r2.iws" />
+    <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,10 +24,37 @@
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="_letter.html.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/misc/_letter.html.erb">
+      <file leaf-file-name="author.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/author.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="2" selection-start="163" selection-end="163" vertical-scroll-proportion="0.10776545">
+            <state line="81" column="16" selection-start="2589" selection-end="2637" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/book.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="61" column="7" selection-start="1916" selection-end="1916" vertical-scroll-proportion="0.6625954">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/books/show.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="27" selection-start="999" selection-end="999" vertical-scroll-proportion="-9.458333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="84" column="3" selection-start="2485" selection-end="2485" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -46,10 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/aliases/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/translations_controller.rb" />
-        <option value="$PROJECT_DIR$/lib/lettercode.rb" />
-        <option value="$PROJECT_DIR$/app/models/alias.rb" />
         <option value="$PROJECT_DIR$/app/views/misc/_letter.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/authors_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/author.rb" />
@@ -58,10 +81,14 @@
         <option value="$PROJECT_DIR$/db/migrate/20100621073436_create_authors.rb" />
         <option value="$PROJECT_DIR$/app/views/authors/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/models/book.rb" />
-        <option value="$PROJECT_DIR$/app/views/books/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/mobile.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/authors/show.html.erb" />
         <option value="$PROJECT_DIR$/public/stylesheets/mobile.css" />
+        <option value="$PROJECT_DIR$/app/views/authors/show.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/misc/_freebase_ajax.html.erb" />
+        <option value="$PROJECT_DIR$/public/javascripts/freebase/common.js" />
+        <option value="$PROJECT_DIR$/public/javascripts/freebase/author.js" />
+        <option value="$PROJECT_DIR$/app/views/books/show.html.erb" />
+        <option value="$PROJECT_DIR$/public/javascripts/freebase/book.js" />
       </list>
     </option>
   </component>
@@ -98,7 +125,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -146,6 +172,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="stylesheets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="freebase" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -368,6 +434,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Favorites" />
       <pane id="RailsProjectView" />
     </panes>
   </component>
@@ -602,26 +669,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/lettercode.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="75" selection-end="75" vertical-scroll-proportion="0.09677419" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/alias.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="44" selection-start="1186" selection-end="1186" vertical-scroll-proportion="0.5009488" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20100515095834_create_books.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="52" selection-start="565" selection-end="565" vertical-scroll-proportion="0.28549618" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/authors_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="0" selection-start="1604" selection-end="1604" vertical-scroll-proportion="0.3739931" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/books_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="22" selection-start="1880" selection-end="1880" vertical-scroll-proportion="0.77862597" />
@@ -654,42 +701,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/mobile.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="8" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="21" column="8" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/author.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="132" selection-start="1570" selection-end="1696" vertical-scroll-proportion="0.57229835">
-          <folding />
-        </state>
+        <state line="64" column="132" selection-start="1570" selection-end="1696" vertical-scroll-proportion="0.57229835" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/stylesheets/mobile.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="99" column="23" selection-start="1630" selection-end="1630" vertical-scroll-proportion="0.6625954" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/authors/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="49" selection-start="1404" selection-end="1404" vertical-scroll-proportion="0.110935025">
+        <state line="17" column="49" selection-start="604" selection-end="604" vertical-scroll-proportion="0.2816568" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/misc/_letter.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="37" selection-start="186" selection-end="186" vertical-scroll-proportion="0.08047337" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/misc/_freebase_ajax.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="23" selection-start="69" selection-end="69" vertical-scroll-proportion="0.026941363">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="3" selection-start="2485" selection-end="2485" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/author.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="16" selection-start="2589" selection-end="2637" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/books/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="34" selection-start="1988" selection-end="1988" vertical-scroll-proportion="0.8652932">
+        <state line="27" column="27" selection-start="999" selection-end="999" vertical-scroll-proportion="-9.458333">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/stylesheets/mobile.css">
+    <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/book.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="23" selection-start="1355" selection-end="1355" vertical-scroll-proportion="0.025954198">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/misc/_letter.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="2" selection-start="163" selection-end="163" vertical-scroll-proportion="0.10776545">
+        <state line="61" column="7" selection-start="1916" selection-end="1916" vertical-scroll-proportion="0.6625954">
           <folding />
         </state>
       </provider>

@@ -75,10 +75,11 @@ span.menu {
 a {
   color: #06A;
   text-decoration: underline;
-  margin: 10px 20px;
+  margin: 5px;
   padding: 10px 20px;
-  /*background-color: #EEE;*/
+  background-color: #FFF;
   border: #BBB solid 1px;
+  display: inline-block;
 }
 
 a.menu, a.menu_down {
@@ -96,10 +97,13 @@ a.menu_down{
 
 a:hover {
   color: #8F7668;
+  background-color: #FFE; 
+  border-color: #8F7668;
 }
 
 a:active {
   color: #756156;
+  border-color: #756156;
 }
 
 .booktitle, .author {

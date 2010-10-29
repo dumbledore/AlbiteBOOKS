@@ -1,3 +1,4 @@
 <%= javascript_include_tag 'jquery.min.js' %>
+<%= javascript_include_tag 'freebase/common.js' %>
 <%= javascript_include_tag "freebase/#{@freebase_item.class.name.downcase}.js" %>
 <% on_load("freebase('#{@freebase_item.freebase_uid}')") %>

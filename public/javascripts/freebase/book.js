@@ -46,109 +46,23 @@ function freebase(freebase_uid) {
       if (res.properties) {
         //property-dependent attributes
 
-        //biography
+        //details section
         output = "";
 
-        //born
-        if (
-            res.properties['/people/person/date_of_birth'] ||
-            res.properties['/people/person/place_of_birth']
-        )
-        {
-          output +="<p><strong>Born:</strong> ";
+        //date of first publication
+        output += make_text(res.properties['/book/written_work/date_of_first_publication'], 'Date of first publication', ', ');
 
-          if (res.properties['/people/person/date_of_birth'])
-            output += res.properties['/people/person/date_of_birth'].values[0].text;
+        //original language
+        output += make_text(res.properties['/book/written_work/original_language'], 'Original language', ', ');
 
-          if (res.properties['/people/person/place_of_birth']) {
-            if (res.properties['/people/person/date_of_birth'])
-              output +=", ";
-            output += res.properties['/people/person/place_of_birth'].values[0].text;
-          }
-          output += "</p>";
-        }
-
-        //died
-        if (
-                res.properties['/people/deceased_person/date_of_death'] ||
-                res.properties['/people/deceased_person/place_of_death']
-        )
-        {
-          output += "<p><strong>Died:</strong> ";
-
-          if (res.properties['/people/deceased_person/date_of_death'])
-            output += res.properties['/people/deceased_person/date_of_death'].values[0].text;
-
-          if (res.properties['/people/deceased_person/place_of_death']) {
-            if (res.properties['/people/deceased_person/date_of_death'].values[0].text)
-              output += ", ";
-            output += res.properties['/people/deceased_person/place_of_death'].values[0].text;
-          }
-          output += "</p>";
-        }
-
-        //nationality
-        if (res.properties['/people/person/nationality'])
-          output += "<p><strong>Country of nationality:</strong> " + res.properties['/people/person/nationality'].values[0].text + "</p>";
-
-        //profession
-        if (res.properties['/people/person/profession']) {
-          var professions = res.properties['/people/person/profession'].values;
-          var professions_ = [];
-          if (professions.length > 0) {
-            for (var j=0; j<professions.length; j++) {
-              if (professions[j].text) {
-                professions_.push(professions[j].text);
-              }
-            }
-          }
-          output += "<p><strong>Worked as:</strong> " + professions_.join(', ');
-        }
-
-        content_for("#freebase_bio", output);
+        content_for("#freebase_details", output);
 
         //quotes
-
-        if (res.properties['/people/person/quotations']) {
-          output = '<h1>Quotes</h1>';
-          var quotes =res.properties['/people/person/quotations'].values;
-
-          for (var i=0; i < quotes.length; i++) {
-            if (quotes[i].text) {
-              output += '<p class="quote">&ldquo;&nbsp;' + quotes[i].text + '&nbsp;&rdquo;</p>';
-            }
-          }
-          content_for("#freebase_quotes", output);
-        }
+        make_quotes(res.properties['/media_common/quotation_source/quotations']);
       }
 
       //links
-
-      output = '<h1>Elsewhere on the web</h1>';
-
-      if (res.url)
-      output += '<p class="linklist"><image src="' + images_url + 'misc/freebase.gif" alt="Freebase"> <a href="' + res.url + '" target="new">Freebase</a></p>';
-
-      if (wikipedia_url)
-      output += '<p class="linklist"><image src="' + images_url + 'misc/wikipedia.gif" alt="Wikipedia"> <a href="' + wikipedia_url + '" target="new">Wikipedia</a></p>';
-
-      if (res.webpage) {
-        for (var i=0; i < res.webpage.length; i++) {
-          if (res.webpage[i].text && res.webpage[i].text.toLocaleLowerCase() != 'wikipedia') {
-            output += '<p class="linklist"><a href="' + res.webpage[i].url + '" target="new">' + res.webpage[i].text + '</a></p>';
-          }
-        }
-      }
-
-      content_for("#freebase_links", output);
+      make_links(res.url, wikipedia_url, res.webpage);
     }
   }
-
-    function content_for(a) {
-      text = '';
-      if (arguments.length > 1) text = arguments[1];
-
-//      $(arguments[0]).html(text);
-      jQuery(arguments[0]).html(text);
-    }
 }
