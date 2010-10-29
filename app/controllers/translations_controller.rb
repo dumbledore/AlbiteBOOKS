@@ -31,7 +31,8 @@ class TranslationsController < ApplicationController
         end
       end
     rescue => msg
-      flash[:error] = msg[0..32]
+      puts "ERROR: " + msg.inspect;
+      flash[:error] = "Something is wrong with the transaction"
       render :action => 'new'
     end
   end

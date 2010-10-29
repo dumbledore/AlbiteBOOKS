@@ -22,8 +22,15 @@
   <% end %>
 </p>
 <% if @mobile %>
-  <p><strong>Date of first publication: </strong><%= @book.date_of_first_publication %></p>
-  <p><strong>Original language: </strong><%= @book.original_language %></p>
+  <% unless @book.date_of_first_publication.blank? %>
+    <p><strong>Date of first publication:</strong> <%= @book.date_of_first_publication %></p>
+  <% end %>
+  <% unless @book.original_language.blank? %>
+    <p><strong>Original language:</strong> <%= @book.original_language %></p>
+  <% end %>
+  <% unless @book.number_of_pages.blank? %>
+    <p><strong>Number of pages:</strong> <%= @book.number_of_pages %></p>
+  <% end %>
 <% else %>
   <div id="freebase_details"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <% end %>
@@ -63,9 +70,12 @@
 </p>
 <% end %>
 <% unless @mobile %>
+  <div id="freebase_universe"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
   <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
   <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <% end %>
+<%= "<p><b>#{h(link_to("New book", :controller => 'books', :action => 'new', :author => @book.author_id))}</b></p>".html_safe if user_admin %>
+<%= "<p><b>#{h(link_to("New translation", :controller => 'translations', :action => 'new', :book => @book, :original => @book.translations.empty?))}</b></p>".html_safe if user_admin %>
 <p>
   <br>
   <%=

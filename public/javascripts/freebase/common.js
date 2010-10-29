@@ -11,7 +11,7 @@ function def(argument, default_value) {
   return (typeof argument == 'undefined') ? default_value : argument;
 }
 
-function make_text(elements, caption, separator, build_links, prefix, suffix) {
+function make_text(elements_in, caption, separator, build_links, prefix, suffix) {
   
   caption = def(caption, '');
   separator = def(separator, '');
@@ -19,20 +19,37 @@ function make_text(elements, caption, separator, build_links, prefix, suffix) {
   prefix = def(prefix, '');
   suffix = def(suffix, '');
 
-  if (elements && elements.values) {
+  var elements = [];
+  
+  if (elements_in) {
+    if (elements_in.length) {
+      for (var i = 0; i < elements_in.length; i++) {
+        if (elements_in[i] && elements_in[i].values) {
+          for (var j = 0; j < elements_in[i].values.length; j++) {
+            elements.push(elements_in[i].values[j]);
+          }
+        }
+      }
+    } else if (elements_in.values) {
+      elements = elements_in.values;
+    }
+  }
+
+  if (elements.length > 0) {
     output = [];
 
-    for (var i = 0; i < elements.values.length; i++) {
-      if (elements.values[i].text) {
-        var text = prefix + elements.values[i].text + suffix;
+    for (var i = 0; i < elements.length; i++) {
+      if (elements[i].text) {
+        var text = prefix + elements[i].text + suffix;
 
-        if (build_links && elements.values[i].url) {
-          output.push('<a href="' + elements.values[i].url + '">' + text + '</a>');
+        if (build_links && elements[i].url) {
+          output.push('<a href="' + elements[i].url + '" target="_blank">' + text + '</a>');
         } else {
           output.push(text);
         }
       }
     }
+    
     if (caption != '') {
       return '<p><strong>' + caption + ':</strong> ' + output.join(separator) + '</p>';
     } else {
@@ -56,7 +73,7 @@ function get_wikipedia_url(webpages) {
 }
 
 function make_links(freebase_url, wikipedia_url, webpages) {
-  if (webpages) {
+  if (freebase_url || wikipedia_url || webpages) {
     output = '<h1>Elsewhere on the web</h1>';
 
     if (freebase_url) {
@@ -70,7 +87,7 @@ function make_links(freebase_url, wikipedia_url, webpages) {
     if (webpages) {
       for (var i = 0; i < webpages.length; i++) {
         if (webpages[i].text && webpages[i].text.toLocaleLowerCase() != 'wikipedia' && webpages[i].url) {
-          output += '<p class="linklist"><a href="' + webpages[i].url + '" target="new">' + webpages[i].text + '</a></p>';
+          output += '<p class="linklist"><a href="' + webpages[i].url + '" target="_blank">' + webpages[i].text + '</a></p>';
         }
       }
     }

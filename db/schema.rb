@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
     t.string   "freebase_uid",            :default => "",   :null => false
     t.string   "thumbnail_url",           :default => "",   :null => false
     t.text     "description",                               :null => false
-    t.string   "date_and_place_of_death", :default => "",   :null => false
     t.string   "date_and_place_of_birth", :default => "",   :null => false
+    t.string   "date_and_place_of_death", :default => "",   :null => false
     t.string   "country_of_nationality",  :default => "",   :null => false
     t.boolean  "ready",                   :default => true, :null => false
     t.datetime "created_at"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
     t.text     "description",                                 :null => false
     t.string   "date_of_first_publication", :default => "",   :null => false
     t.string   "original_language",         :default => "",   :null => false
+    t.integer  "number_of_pages"
     t.integer  "author_id",                                   :null => false
     t.integer  "translation_id"
     t.integer  "downloads",                 :default => 0,    :null => false

@@ -13,7 +13,7 @@ function freebase(freebase_uid) {
     content_for("#freebase_description");
     content_for("#freebase_bio");
     content_for("#freebase_links");
-    content_for("#freebase_quotes")
+    content_for("#freebase_quotes");
   }
 
   function displayResults(response) {

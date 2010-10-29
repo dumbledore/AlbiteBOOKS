@@ -11,9 +11,10 @@ function freebase(freebase_uid) {
 
   function clearAll() {
     content_for("#freebase_description");
-    content_for("#freebase_bio");
+    content_for("#freebase_details");
     content_for("#freebase_links");
-    content_for("#freebase_quotes")
+    content_for("#freebase_quotes");
+    content_for("#freebase_universe");
   }
 
   function displayResults(response) {
@@ -55,10 +56,26 @@ function freebase(freebase_uid) {
         //original language
         output += make_text(res.properties['/book/written_work/original_language'], 'Original language', ', ');
 
+        //number of pages
+        output += make_text(res.properties['/book/book_edition/number_of_pages'], 'Number of pages', ', ');
+
         content_for("#freebase_details", output);
 
         //quotes
         make_quotes(res.properties['/media_common/quotation_source/quotations']);
+
+        //fictional universe
+        output = '';
+        output += make_text(res.properties['/fictional_universe/work_of_fiction/part_of_these_fictional_universes'], 'Part of universe', ', ');
+        output += make_text([res.properties['/fictional_universe/fictional_universe/characters'], res.properties['/book/book/characters']], 'Characters', ', ');
+        output += make_text([res.properties['/fictional_universe/work_of_fiction/setting'], res.properties['/fictional_universe/fictional_universe/locations'] ], 'Settings & locations', ', ');
+        output += make_text(res.properties['/fictional_universe/fictional_universe/species'], 'Species', ', ');
+        output += make_text(res.properties['/fictional_universe/fictional_universe/fictional_objects'], 'Fictional objects', ', ');
+        output += make_text(res.properties['/fictional_universe/fictional_universe/languages'], 'Languages', ', ');
+
+        if (output != '') {
+          content_for("#freebase_universe", '<h1>Book universe</h1>' + output);
+        }
       }
 
       //links

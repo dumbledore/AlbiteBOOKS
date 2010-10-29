@@ -62,6 +62,9 @@
   <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <% end %>
 
+<%= "<p><b>#{h(link_to("New author", :controller => 'authors', :action => 'new'))}</b></p>".html_safe if user_admin %>
+<%= "<p><b>#{h(link_to("New book", :controller => 'books', :action => 'new', :author => @author))}</b></p>".html_safe if user_admin %>
+
 <p>
   <br>
   <%= link_to "Back to Authors", authors_url %>

@@ -17,13 +17,15 @@
     <% end %>
 
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, 'Freebase info' %>
+    <%= content_tag :legend, 'Freebase info (used only in mobile version)' %>
     <%= f.label      :description %>
     <%= f.text_area  :description %>
     <%= f.label      :date_of_first_publication %>
     <%= f.text_field :date_of_first_publication %>
     <%= f.label      :original_language %>
     <%= f.text_field :original_language %>
+    <%= f.label      :number_of_pages %>
+    <%= f.text_field :number_of_pages %>
   <% end %>
 
   <% content_tag :fieldset do %>

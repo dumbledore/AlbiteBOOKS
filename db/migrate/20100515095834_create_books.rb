@@ -7,9 +7,10 @@ class CreateBooks < ActiveRecord::Migration
       t.string  :thumbnail_url, :null => false
                                               t
       # cache these values for the mobile version 
-      t.text   :description, :null => false
-      t.string :date_of_first_publication, :null => false
-      t.string :original_language, :null => false
+      t.text    :description, :null => false
+      t.string  :date_of_first_publication, :null => false
+      t.string  :original_language, :null => false
+      t.integer :number_of_pages
 
       t.references :author, :null => false
 

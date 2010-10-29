@@ -108,6 +108,7 @@ class Author < ActiveRecord::Base
               countries << country['text']
             end
             self.country_of_nationality = countries.join(', ')
+          rescue
           end
         end
       end

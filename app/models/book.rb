@@ -5,7 +5,8 @@ class Book < ActiveRecord::Base
   has_many :translations, :dependent => :destroy
 
   attr_accessible :title, :freebase_uid, :thumbnail_url, :author_id, :tags, :ready,
-                  :description, :date_of_first_publication, :original_language, :genre_list, :subject_list
+                  :description, :date_of_first_publication, :original_language, :number_of_pages,
+                  :genre_list, :subject_list
 
   acts_as_taggable_on :genres, :subjects
   acts_as_indexed :fields => [:title]
@@ -113,6 +114,13 @@ end
         if self.original_language.blank?
           begin
             self.original_language = self.freebase_data['properties']['/book/written_work/original_language']['values'][0]['text']
+          rescue
+          end
+        end
+
+        if self.number_of_pages.blank?
+          begin
+            self.number_of_pages = self.freebase_data['properties']['/book/book_edition/number_of_pages']['values'][0]['text']
           rescue
           end
         end
