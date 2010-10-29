@@ -38,7 +38,7 @@
 <% unless @book.genre_list.empty? %>
   <% genres = [] %>
   <% for genre in @book.genre_list %>
-    <% genre = link_to genre, "#todo" %>
+    <% genre = link_to genre, genre_url(genre) %>
     <% genres << genre %>
   <% end %>
   <p>
@@ -48,7 +48,7 @@
 <% unless @book.subject_list.empty? %>
   <% subjects = [] %>
   <% for subject in @book.subject_list %>
-    <% subject = link_to subject, "#todo" %>
+    <% subject = link_to subject, subject_url(subject) %>
     <% subjects << subject %>
   <% end %>
   <p>

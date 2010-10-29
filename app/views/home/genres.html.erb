@@ -1,0 +1,11 @@
+<% title "The genres" %>
+<h1>Genres</h1>
+<% if @genres.empty? %>
+  <p><i>No genres have been added, so far.</i></p>
+<% else %>
+  <ul>
+    <% for genre in @genres %>
+      <li><%= link_to genre.name, genre_url(genre.name) %></li>  
+    <% end %>
+  </ul>
+<% end %>

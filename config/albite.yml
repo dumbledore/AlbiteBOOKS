@@ -24,6 +24,11 @@ secret_token: some_random_number_goes_here
 # ==============================
 can_add_users: false
 
+# Hide letter-indices, therefore showing all books (useful if there is too little content)
+# ========================================================================================
+hide_author_index: false
+hide_book_index: false
+
 # SMTP mail (gmail settings preset)
 # =================================
 smtp:

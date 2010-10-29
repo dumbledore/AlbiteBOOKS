@@ -1,16 +1,26 @@
-<% title "The Authors" %>
-<h1>The Authors</h1>
-<% for name_alias in @authors_name_aliases %>
-  <% author = name_alias.author %>
-  <% ready = author.ready %>
-  <% if user_admin or ready %>
-    <p<%= ' class="strike"' unless ready %>>
-      <%= link_to h(name_alias.name_abbreviated :name_reversed), author %><%= " (<i>".html_safe + author.name_cached + "</i>)".html_safe unless name_alias.id == author.alias_name_id %>
-      <% if user_admin %>
-        <%= link_to image_tag('misc/edit.png'), edit_author_path(author) %>
-        <%= link_to image_tag('misc/delete.png'), author, :confirm => 'Are you sure?', :method => :delete %>
-      <% end %>
-    </p>
+<% title "The authors" %>
+<% unless APP_CONFIG['hide_author_index'] %>
+  <h1 class='letter'>Authors
+  <span class='letter'><%= @letter_name %></span>
+  <br><%= render :partial => 'misc/letter' %></h1>
+<% else %>
+  <h1>Authors</h1>
+<% end %>
+<% if @authors_name_aliases.empty? %>
+  <p><i>There are no authors, whose family name starts with this letter.</i></p>
+<% else %>
+  <% for name_alias in @authors_name_aliases %>
+    <% author = name_alias.author %>
+    <% ready = author.ready %>
+    <% if user_admin or ready %>
+      <p<%= ' class="strike"' unless ready %>>
+        <%= link_to h(name_alias.name_abbreviated :name_reversed), author %><%= " (<i>".html_safe + author.name_cached + "</i>)".html_safe unless name_alias.id == author.alias_name_id %>
+        <% if user_admin %>
+          <%= link_to image_tag('misc/edit.png'), edit_author_path(author) %>
+          <%= link_to image_tag('misc/delete.png'), author, :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
 <% end %>
 <p><b><%= link_to "New Author", new_author_path if user_admin %></b></p>

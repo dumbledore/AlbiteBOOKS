@@ -1,21 +1,30 @@
-class BooksController < ApplicationController
-  before_filter :require_admin, :only => ['new', 'create', 'edit', 'update', 'destroy']
+class BooksController < MixedController
 
   def index
-# TODO: not done here!   
-    @author = Author.find(params[:author_id])
-    @books = @author.books
+#    page = (params[:page]) ? params[:page] : 0
+    unless APP_CONFIG['hide_book_index']
+      letter = process_letter((params[:id]) ? params[:id] : 'a')
+      @books = Book.find(:all, :conditions => "letter = '#{letter}'", :order => :title)
+      @letter_name = name_for_letter_number(letter)
+      @myurl = books_url
+    else
+      @books = Book.find(:all, :order => :title)
+    end
+    render :action => 'index'
   end
 
   def show
     begin
       @book = Book.find(params[:id], :include => :author)
       @mobile = mobile?
+      render :action => 'show'
     rescue ActiveRecord::RecordNotFound
       redirect_to books_url
+#      index
+#      render :action => 'index'
     end
   end
-  
+
   def new
     begin
       author = Author.find(params[:author], :include => :alias_name)
@@ -44,7 +53,7 @@ class BooksController < ApplicationController
       render :action => 'new'
     end
   end
-  
+
   def edit
     begin
       @book = Book.find(params[:id], :include => [{:author => :alias_name}])

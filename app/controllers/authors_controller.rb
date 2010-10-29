@@ -1,11 +1,17 @@
-class AuthorsController < ApplicationController
-  before_filter :require_admin, :only => ['new', 'create', 'edit', 'update', 'destroy']
+class AuthorsController < MixedController
 
   def index
-    letter = ''
-    # TODO: show only authors of specific letter
-#    @authors_name_aliases = Alias.includes(:author).where(["name_reversed LIKE ?", "#{letter}%"]).order(:name_reversed)
-    @authors_name_aliases = Alias.find(:all, :include => :author, :conditions => "name_reversed LIKE '#{letter}%'", :order => :name_reversed)
+#    page = (params[:page]) ? params[:page] : 0
+    unless APP_CONFIG['hide_author_index']
+      letter = process_letter((params[:id]) ? params[:id] : 'a')
+#      @authors_name_aliases = Alias.includes(:author).where(["name_reversed LIKE ?", "#{letter}%"]).order(:name_reversed)
+      @authors_name_aliases = Alias.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :name_reversed)
+      @letter_name = name_for_letter_number(letter)
+      @myurl = authors_url
+    else
+      @authors_name_aliases = Alias.find(:all, :include => :author, :order => :name_reversed)
+    end
+    render :action => 'index'
   end
 
   def show
@@ -13,6 +19,7 @@ class AuthorsController < ApplicationController
 #      @author = Author.includes([:aliases, :alias_name]).find(params[:id])
       @author = Author.find(params[:id], :include => [:aliases, :alias_name])
       @mobile = mobile?
+      render :action => 'show'
     rescue ActiveRecord::RecordNotFound
       redirect_to authors_url
     end

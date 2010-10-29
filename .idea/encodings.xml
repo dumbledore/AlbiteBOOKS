@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/app/views/authors/index.html.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/books/index.html.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/home/genre.html.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/home/subject.html.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lib/lettercode.rb" charset="UTF-8" />
+  </component>
 </project>
 

@@ -1,0 +1,25 @@
+<% title "The books" %>
+<% unless APP_CONFIG['hide_book_index'] %>
+  <h1 class='letter'>Books
+  <span class='letter'><%= @letter_name %></span>
+  <br><%= render :partial => 'misc/letter' %></h1>
+<% else %>
+  <h1>Books</h1>
+<% end %>
+<% if @books.empty? %>
+  <p><i>There are no books, which title starts with this letter.</i></p>
+<% else %>
+  <% for book in @books %>
+    <% ready = book.ready %>
+    <% if user_admin or ready %>
+      <p<%= ' class="strike"' unless ready %>>
+        <%= link_to h(book.title), book %>
+        <% if user_admin %>
+          <%= link_to image_tag('misc/edit.png'), edit_book_path(book) %>
+          <%= link_to image_tag('misc/delete.png'), book, :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
+<p><b><%= link_to "New Book", new_book_path if user_admin %></b></p>

@@ -61,15 +61,32 @@ ActionController::Routing::Routes.draw do |map|
   map.reader 'reader', :controller => 'home', :action => 'reader'
   map.home 'home', :controller => 'home'
 
-  map.resources :authors
+  map.resources :authors, :except => [:index, :show]
+
+  map.authors 'authors/',          :controller => 'authors', :action => 'index'
+  map.author  'authors/:id',       :controller => 'authors', :action => 'select'
+#  map.connect 'authors/:id/:page', :controller => 'authors', :action => 'select'
+
   map.resources :aliases, :except => [:index, :show]
-  map.resources :books
+
+  map.resources :books, :except => [:index, :show]
+
+  map.books   'books/',    :controller => 'books', :action => 'index'
+  map.book    'books/:id', :controller => 'books', :action => 'select'
+#  map.connect 'books/:id/:page', :controller => 'books', :action => 'select'
+  
   map.resources :translations, :except => [:index, :show]
 
   map.download 'download/:id', :controller => 'translations', :action => 'download'
 
+  map.genres   'genres/',           :controller => 'home', :action => 'genres'
+  map.genre    'genres/:genre',     :controller => 'home', :action => 'genre'
+
+  map.subjects 'subjects/',         :controller => 'home', :action => 'subjects'
+  map.subject  'subjects/:subject', :controller => 'home', :action => 'subject'
+
   map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+#  map.connect ':controller/:action/:id.:format'
   
   map.root :controller => 'home'
 end

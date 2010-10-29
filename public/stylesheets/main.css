@@ -16,6 +16,22 @@ div {
   clear: both;
 }
 
+h1.letter {
+  line-height: 1.5em;
+}
+
+span.letter {
+  /*font-size: 1.2em;*/
+  background-color: #06A;
+  color: #E9E9E8;
+  padding: 0 0.4em;
+  float: right;
+}
+
+a.letter {
+  font-size: 0.5em;
+}
+
 span.subtitle {
   margin: 0;
   padding: 0;
@@ -147,12 +163,16 @@ a {
   text-decoration: underline;
 }
 
-a.menu, a.menu_down {
+a.menu, a.menu_down, a.menu_reader {
   font-size: 0.9em;
   font-variant: small-caps;
   letter-spacing: 1px;
   font-weight: bold;
   margin: 0 4px 0 4px;
+}
+
+a.menu_reader {
+  color: #6e5a4f;
 }
 
 a.menu_down{
