@@ -4,7 +4,8 @@ class Author < ActiveRecord::Base
   has_many :aliases, :order => :name_reversed, :dependent => :destroy
   has_many :books, :order => :title, :dependent => :destroy
   
-  attr_accessible :alias_name_id, :name, :freebase_uid, :thumbnail_url, :ready
+  attr_accessible :alias_name_id, :name, :freebase_uid, :thumbnail_url, :ready,
+                  :description, :date_and_place_of_birth, :date_and_place_of_death, :country_of_nationality
   
   validates_presence_of :name
   validates_uniqueness_of :freebase_uid, :allow_blank => true
@@ -98,6 +99,16 @@ class Author < ActiveRecord::Base
           end
 
           self.date_and_place_of_death = death.join(', ')
+        end
+
+        if self.country_of_nationality.blank?
+          begin
+            countries = []
+            for country in self.freebase_data['properties']['/people/person/nationality']['values']
+              countries << country['text']
+            end
+            self.country_of_nationality = countries.join(', ')
+          end
         end
       end
     end

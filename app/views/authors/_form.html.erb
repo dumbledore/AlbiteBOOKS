@@ -3,17 +3,28 @@
 <% form_for @author do |f| %>
   <%= f.error_messages %>
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "General info" %>
-    <%= f.label :name %>
+    <%= content_tag  :legend, "General info" %>
+    <%= f.label      :name %>
     <%= f.text_field :name %>
-    <%= f.label :freebase_uid, 'Freebase ID' %>
+    <%= f.label      :freebase_uid, 'Freebase ID' %>
     <%= f.text_field :freebase_uid %>
-    <%= f.label :thumbnail_url %>
+    <%= f.label      :thumbnail_url %>
     <%= f.text_field :thumbnail_url %>
   <% end %>
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "Readiness" %>
-    <%= f.check_box :ready %> Show in website
+    <%= content_tag  :legend, "Freebase info" %>
+    <%= f.label      :description %>
+    <%= f.text_area  :description %>
+    <%= f.label      :date_and_place_of_birth %>
+    <%= f.text_field :date_and_place_of_birth %>
+    <%= f.label      :date_and_place_of_death %>
+    <%= f.text_field :date_and_place_of_death %>
+    <%= f.label      :country_of_nationality %>
+    <%= f.text_field :country_of_nationality %>
+  <% end %>
+  <% content_tag :fieldset do %>
+    <%= content_tag  :legend, "Readiness" %>
+    <%= f.check_box  :ready %> Show in website
   <% end %>
   <%= f.submit "Submit", :disable_with => "Please wait..." %>
 <% end %>

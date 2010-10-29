@@ -17,7 +17,17 @@
     <% end %>
 
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "Details" %>
+    <%= content_tag :legend, 'Freebase info' %>
+    <%= f.label      :description %>
+    <%= f.text_area  :description %>
+    <%= f.label      :date_of_first_publication %>
+    <%= f.text_field :date_of_first_publication %>
+    <%= f.label      :original_language %>
+    <%= f.text_field :original_language %>
+  <% end %>
+
+  <% content_tag :fieldset do %>
+    <%= content_tag :legend, "Tags" %>
     <%= f.label :genres %>
     <%= f.text_area :genre_list %>
     <%= f.label :subjects %>

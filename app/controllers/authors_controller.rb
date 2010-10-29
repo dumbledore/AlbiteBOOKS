@@ -52,9 +52,11 @@ class AuthorsController < ApplicationController
   def update
     begin
       @author = Author.find(params[:id])
+      @author.attributes = params[:author]
+
       Author.transaction do
         @author.fill_in_from_freebase unless @author.freebase_uid.empty?
-        if @author.errors.empty? and @author.update_attributes(params[:author])
+        if @author.errors.empty? and @author.save
           flash[:notice] = "Successfully updated author."
           redirect_to @author
         else
@@ -63,7 +65,7 @@ class AuthorsController < ApplicationController
       end
     end
   rescue ActiveRecord::RecordNotFound
-      redirect_to authors_url
+    redirect_to authors_url
   end
   
   def destroy

@@ -14,14 +14,19 @@
 </h1>
 <p>
   <%= image_tag(@author.thumbnail_url, :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
-  <% unless @mobile %>
+  <% if @mobile %>
+    <%= @author.description %>  
+  <% else %>
     <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
   <% end %>
 </p>
-<% unless @mobile %>
+<% if @mobile %>
+  <p><strong>Born: </strong><%= @author.date_and_place_of_birth %></p>
+  <p><strong>Died: </strong><%= @author.date_and_place_of_death %></p>
+  <p><strong>Country of nationality: </strong><%= @author.country_of_nationality %></p>
+<% else %>
   <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <% end %>
-<div></div>
 <% if @author.aliases.size > 1 %>
   <p>
   <strong>Also known as: </strong>
@@ -32,18 +37,19 @@
   <%= aliases.join(", ") %>
   </p>
 <% end %>
-
+<div></div>
 <h1>Books</h1>
 <% unless @author.books.empty? %>
   <% for book in @author.books %>
     <p>
       <% if book.thumbnail_url.blank? %>
-        <%= link_to book.title, book_url(book), :class => 'thumblist_no_img' %><br>
-    <% else %>
+        <%= link_to book.title, book_url(book), :class => 'thumblist_no_img' %>
+      <% else %>
         <%= image_tag(book.thumbnail_url, :class =>  'thumblist') %>
-        <%= link_to book.title, book_url(book), :class => 'thumblist' %><br>
-    <% end %>
-    </p>
+        <%= link_to book.title, book_url(book), :class => 'thumblist' %>
+      <% end %>
+      <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>
+    <br></p>
   <% end %>
 <% else %>
   <p>
@@ -58,5 +64,5 @@
 
 <p>
   <br>
-  <b><%= link_to "Back to Authors", authors_url %></b>
+  <%= link_to "Back to Authors", authors_url %>
 </p>

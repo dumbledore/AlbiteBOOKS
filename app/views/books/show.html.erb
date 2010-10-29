@@ -15,14 +15,19 @@
 </h1>
 <p>
   <%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
-  <% unless @mobile %>
+  <% if @mobile %>
+    <%= @book.description %>
+  <% else %>
     <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
   <% end %>
 </p>
-<% unless @mobile %>
+<% if @mobile %>
+  <p><strong>Date of first publication: </strong><%= @book.date_of_first_publication %></p>
+  <p><strong>Original language: </strong><%= @book.original_language %></p>
+<% else %>
   <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <% end %>
-<div></div>
+
 <% unless @book.genre_list.empty? %>
   <% genres = [] %>
   <% for genre in @book.genre_list %>
@@ -43,6 +48,7 @@
     <strong>Subjects: </strong><%= subjects.join ", " %>
   </p>
 <% end %>
+<div></div>
 <h1>Download book &amp; translations</h1>
 
 <% unless @book.translations.empty? %>
@@ -56,8 +62,10 @@
   <i>Nothing to download yet.</i>
 </p>
 <% end %>
-<div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-<div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<% unless @mobile %>
+  <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+  <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<% end %>
 <p>
   <br>
   <%=

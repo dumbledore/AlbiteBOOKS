@@ -4,7 +4,8 @@ class Book < ActiveRecord::Base
 
   has_many :translations, :dependent => :destroy
 
-  attr_accessible :title, :freebase_uid, :thumbnail_url, :author_id, :tags, :ready
+  attr_accessible :title, :freebase_uid, :thumbnail_url, :author_id, :tags, :ready,
+                  :description, :date_of_first_publication, :original_language, :genre_list, :subject_list
 
   acts_as_taggable_on :genres, :subjects
   acts_as_indexed :fields => [:title]
@@ -71,7 +72,7 @@ end
     unless self.freebase_data.nil?
 
       # thumbnail
-      self.thumbnail_url = self.freebase_data['thumbnail'] if self.freebase_data['thumbnail']
+      self.thumbnail_url = self.freebase_data['thumbnail'] if self.thumbnail_url.blank? and not self.freebase_data['thumbnail'].nil?
 
       # filling genres
       if self.genre_list.blank?

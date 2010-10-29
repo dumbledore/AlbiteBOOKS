@@ -1,0 +1,5 @@
+<% letters = [] %>
+<% for letter in 'a'..'z' %>
+  <% letters << link_to(letter, {:controller => @controller, :action => @action, :letter => letter})%>
+<% end %>
+<%= letters.join(', ') %>

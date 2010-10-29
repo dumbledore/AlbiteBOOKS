@@ -75,6 +75,10 @@ span.menu {
 a {
   color: #06A;
   text-decoration: underline;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  /*background-color: #EEE;*/
+  border: #BBB solid 1px;
 }
 
 a.menu, a.menu_down {

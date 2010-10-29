@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
     t.text     "description",                               :null => false
     t.string   "date_and_place_of_death", :default => "",   :null => false
     t.string   "date_and_place_of_birth", :default => "",   :null => false
+    t.string   "country_of_nationality",  :default => "",   :null => false
     t.boolean  "ready",                   :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

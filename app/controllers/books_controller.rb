@@ -36,10 +36,6 @@ class BooksController < ApplicationController
       redirect_to authors_url
     end
 
-    #Setup the tags
-    @book.genre_list = params[:book][:genre_list]
-    @book.subject_list = params[:book][:subject_list]
-
     @book.fill_in_from_freebase unless @book.freebase_uid.empty?
     if @book.errors.empty? and @book.save
       flash[:notice] = 'Successfully created book.'
@@ -61,17 +57,14 @@ class BooksController < ApplicationController
   def update
     begin
       @book = Book.find(params[:id], :include => [{:author => :alias_name}])
+      @book.attributes = params[:book]
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
     end
 
-    #Setup the tags
-    @book.genre_list = params[:book][:genre_list]
-    @book.subject_list = params[:book][:subject_list]
-
     @book.fill_in_from_freebase unless @book.freebase_uid.empty?
-    if @book.errors.empty? and @book.update_attributes(params[:book])
+    if @book.errors.empty? and @book.save
       flash[:notice] = "Successfully updated book."
       redirect_to @book
     else
