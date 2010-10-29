@@ -1,0 +1,8 @@
+<h1>Search results for ‘<%= @query %>’</h1>
+<% if @results.empty? %>
+  <p><i>No books have been found.</i></p>
+<% else %>
+  <% @results.each do |book| %>
+   <p><%= link_to book.title, book_url(book) %> by <i><%= link_to (book.author.name_cached, author_url(book.author)) %></i></p>
+  <% end %>
+<% end %>

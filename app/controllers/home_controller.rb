@@ -21,4 +21,19 @@ class HomeController < ApplicationController
     @subject = params[:subject]
     @books = Book.tagged_with(@subject)
   end
+
+  def search
+    if (params[:query].nil? or params[:query].empty?)
+      @query = ''
+      @results = []
+    else
+      @query = params[:query]
+      begin
+      search = Book.find_with_index(@query, {:limit => 10}, {:ids_only => true})
+      @results = Book.find(search, :order => :title, :include => :author)
+      rescue
+        @results = []
+      end
+    end
+  end
 end

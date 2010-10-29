@@ -4,8 +4,7 @@
 var searchLabel = "Search for books...";
 
 function doc_load() {
-  document.getElementById('search_text').value = searchLabel;
-//  new Autocomplete('search_text', { serviceUrl:'/autocomplete/' });
+  document.getElementById('query').value = searchLabel;
 }
 
 function focus_on_load(item) {

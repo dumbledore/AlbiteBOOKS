@@ -31,4 +31,8 @@ module ApplicationHelper
   def can_add_users
     APP_CONFIG['can_add_users']
   end
+
+  def production?
+      @is_production ||= (ENV['RAILS_ENV'] == 'production')
+  end
 end

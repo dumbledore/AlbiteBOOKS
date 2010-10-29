@@ -60,6 +60,12 @@
 <% unless @mobile %>
   <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
   <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+  <h1>Comments</h1>
+  <% @disqus = 'author_' + @author.id.to_s %>
+  <%= render :partial => 'misc/disqus_thread' %>
+  <% content_for(:tail) do %>
+    <%= render :partial => 'misc/disqus_tail' %>
+  <% end %>
 <% end %>
 
 <%= "<p><b>#{h(link_to("New author", :controller => 'authors', :action => 'new'))}</b></p>".html_safe if user_admin %>

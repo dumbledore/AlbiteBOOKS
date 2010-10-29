@@ -85,6 +85,11 @@ ActionController::Routing::Routes.draw do |map|
   map.subjects 'subjects/',         :controller => 'home', :action => 'subjects'
   map.subject  'subjects/:subject', :controller => 'home', :action => 'subject'
 
+  map.search         'search/:query',    :controller => 'home', :action => 'search'
+  map.search_form    'search/',          :controller => 'home', :action => 'search'
+#  map.search_mobile  'search/',          :controller => 'home', :action => 'search'
+
+
   map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
   
