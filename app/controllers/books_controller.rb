@@ -20,8 +20,6 @@ class BooksController < MixedController
       render :action => 'show'
     rescue ActiveRecord::RecordNotFound
       redirect_to books_url
-#      index
-#      render :action => 'index'
     end
   end
 
@@ -45,7 +43,7 @@ class BooksController < MixedController
       redirect_to authors_url
     end
 
-    @book.fill_in_from_freebase unless @book.freebase_uid.empty?
+    @book.fill_in_from_freebase if not @book.freebase_uid.empty? and @book.valid?
     if @book.errors.empty? and @book.save
       flash[:notice] = 'Successfully created book.'
       redirect_to @book
@@ -66,15 +64,14 @@ class BooksController < MixedController
   def update
     begin
       @book = Book.find(params[:id], :include => [{:author => :alias_name}])
-      @book.attributes = params[:book]
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
     end
 
-    @book.fill_in_from_freebase unless @book.freebase_uid.empty?
+    @book.fill_in_from_freebase if not @book.freebase_uid.empty? and @book.valid?
     if @book.errors.empty? and @book.save
-      flash[:notice] = "Successfully updated book."
+      flash[:notice] = "Successfully updated the book."
       redirect_to @book
     else
       render :action => 'edit'

@@ -2,41 +2,58 @@ class TranslationsController < ApplicationController
   before_filter :require_admin, :except => [:download]
 
   def new
-    puts ("$$ NEW")
     begin
-      @book = Book.find(params[:book])
+      book = Book.find(params[:book])
     rescue ActiveRecord::RecordNotFound
       redirect_to books_path
       return
     end
-    @translation = @book.translations.build
-    @translation.original = true if params[:original]
+    @translation = book.translations.build
+    @translation.book = book
   end
   
   def create
-    puts ("$$ CREATE")
     begin
-      Translation.transaction do
-        @book = Book.find(params[:book])
-        @translation = Translation.new(params[:translation])
-        @translation.book_file = params[:translation][:book_file]
-        @translation.original = params[:translation][:original]
+      @translation = Translation.new(params[:translation])
+      @translation.book = Book.find(params[:book])
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Book not found'
+      redirect_to books_url
+    end
 
-        if @translation.save
-          flash[:notice] = "Successfully created translation."
-          redirect_to edit_book_path(@translation.book_id)
-        else
-          flash[:error] = "Couldn't create translation."
-          render :action => 'new'
-        end
-      end
-    rescue => msg
-      puts "ERROR: " + msg.inspect;
-      flash[:error] = "Something is wrong with the transaction"
+    if @translation.save
+      flash[:notice] = "Successfully created translation."
+      redirect_to @translation.book
+    else
       render :action => 'new'
     end
   end
 
+  def edit
+    begin
+      @translation = Translation.find(params[:id], :include => :book)
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Translation was not found'
+      redirect_to books_url
+    end
+  end
+
+  def update
+    begin
+      @translation = Translation.find(params[:id], :include => :book)
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Translation was not found'
+      redirect_to books_url
+    end
+
+    if @translation.save
+      flash[:notice] = 'Successfully updated the translation.'
+      redirect_to @translation.book
+    else
+      render :action => :edit
+    end
+  end
+  
   def destroy
     @translation = Translation.find(params[:id])
     @translation.destroy

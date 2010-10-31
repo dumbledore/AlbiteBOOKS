@@ -10,7 +10,7 @@
   <% @translations = @book.translations %>
   <%= render :partial => 'translations/index' %>
   <p>
-    <b><%= link_to "New translation", :controller => 'translations', :action => 'new', :book => @book, :original => @book.translations.empty? %></b>
+    <b><%= link_to "New translation", :controller => 'translations', :action => 'new', :book => @book %></b>
   </p>
 <% end %>
 

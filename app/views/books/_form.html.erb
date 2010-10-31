@@ -1,23 +1,24 @@
 <% freebase_suggest 'book_title', 'book_freebase_uid', '/book/book', "\"/book/written_work/author\": \"#{h(@book.author.name)}\"".html_safe %>
 <% focus_on_load('book_title') %>
 <% form_for @book do |f| %>
+<!--form_for @post, :as => :post, :url => post_path(@post), :html => { :method => :put, :class => "edit_post", :id => "edit_post_45" }-->
   <%= f.error_messages %>
   <% content_tag :fieldset do %>
     <%= content_tag :legend, "General info" %>
     <%= f.label :author %>
-      <%= f.text_field :author, :value => @book.author.name, :disabled => 1 %>
-      <%= f.hidden_field :author_id %>
+    <%= f.text_field :author, :value => @book.author.name, :disabled => 1 %>
+    <%= f.hidden_field :author_id %><!-- this one is important -->
 
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-      <%= f.label :freebase_uid, "Freebase ID" %>
-      <%= f.text_field :freebase_uid %>
-      <%= f.label :thumbnail_url %>
-      <%= f.text_field :thumbnail_url %>
-    <% end %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :freebase_uid, "Freebase ID" %>
+    <%= f.text_field :freebase_uid %>
+    <%= f.label :thumbnail_url %>
+    <%= f.text_field :thumbnail_url %>
+  <% end %>
 
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, 'Freebase info (used only in mobile version)' %>
+    <%= content_tag  :legend, 'Freebase info (used only in mobile version)' %>
     <%= f.label      :description %>
     <%= f.text_area  :description %>
     <%= f.label      :date_of_first_publication %>

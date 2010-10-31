@@ -14,8 +14,6 @@ class CreateBooks < ActiveRecord::Migration
 
       t.references :author, :null => false
 
-      t.references :translation
-
       t.integer :downloads, :default => 0, :null => false
 
       t.boolean :ready, :null => false, :default => true

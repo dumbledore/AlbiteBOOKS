@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
     t.string   "original_language",         :default => "",   :null => false
     t.integer  "number_of_pages"
     t.integer  "author_id",                                   :null => false
-    t.integer  "translation_id"
     t.integer  "downloads",                 :default => 0,    :null => false
     t.boolean  "ready",                     :default => true, :null => false
     t.datetime "created_at"
@@ -66,8 +65,10 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
   end
 
   create_table "translations", :force => true do |t|
-    t.integer  "language",   :null => false
-    t.integer  "book_id",    :null => false
+    t.string   "note",       :default => "",   :null => false
+    t.integer  "language",                     :null => false
+    t.boolean  "original",   :default => true, :null => false
+    t.integer  "book_id",                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

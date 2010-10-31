@@ -1,11 +1,12 @@
 class CreateTranslations < ActiveRecord::Migration
   def self.up
     create_table :translations, :options => 'default charset=utf8', :force => true do |t|
-      t.integer :language, :null => false # number from AlbiteREADER's languages
+      t.string   :note,     :null => false # add note (usually blank, but sometimes useful, e.g. Illustrated by R. Harris
+      t.integer  :language, :null => false # see lib/languages.rb
+      t.boolean  :original, :null => false, :default => true
 
       t.references :book, :null => false
 
-#      t.string :url, :null => false
       t.timestamps
     end
   end
