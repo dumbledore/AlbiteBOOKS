@@ -1,6 +1,6 @@
 module Freebase
   attr_accessor :freebase_data
-  
+
   def freebase_response(freebase_id)
     require 'net/http'
     require 'uri'
@@ -34,7 +34,10 @@ module Freebase
 
   def get_freebase_info
     self.freebase_data = freebase_response(self.freebase_uid)
-#    errors[:base] << "There was a problem fetching the data from Freebase." if self.freebase_data.nil?
-    errors.add_to_base "There was a problem fetching the data from Freebase." if self.freebase_data.nil?
+#    self.freebase_valid = false if self.freebase_data.nil?
+    if self.freebase_data.nil?
+      puts "$$ SOMETHING IS WRONG"
+      errors.add('freebase_uid', ': there was a problem fetching the data from Freebase.')
+    end
   end
 end

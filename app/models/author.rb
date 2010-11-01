@@ -14,6 +14,8 @@ class Author < ActiveRecord::Base
     author.alias_name = Alias.create(:name => author.name, :author_id => 0)
   end
 
+  before_save :fill_in_from_freebase
+
   after_create do |author|
     author.alias_name.author = author
     author.alias_name.save
@@ -57,10 +59,11 @@ class Author < ActiveRecord::Base
   end
 
   def fill_in_from_freebase
-    get_freebase_info if self.freebase_data.nil?
 
-    unless self.freebase_data.nil?
-      
+    if not self.freebase_uid.empty? and self.errors.empty? #calling errors.empty? instead of valid? because it's called AFTER validation
+      get_freebase_info if self.freebase_data.nil?
+      return false if self.freebase_data.nil?
+
       # thumbnail
       self.thumbnail_url = self.freebase_data['thumbnail'] if self.thumbnail_url.blank? and not self.freebase_data['thumbnail'].nil?
 

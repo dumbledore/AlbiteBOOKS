@@ -1,5 +1,5 @@
-<% letters = [link_to('#', @myurl + '/*', :class => 'letter')] %>
+<% letters = [link_to('#', {:letter => '*'}, :class => 'letter')] %>
 <% for letter in 'A'..'Z' %>
-  <% letters << link_to(letter, @myurl + '/' + letter, :class => 'letter') %>
+  <% letters << link_to(letter, {:letter => letter}, :class => 'letter') %>
 <% end %>
 <%= letters.join(' | ') %>

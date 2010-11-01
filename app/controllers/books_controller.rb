@@ -1,12 +1,14 @@
-class BooksController < MixedController
-
+class BooksController < ApplicationController
+  before_filter :require_admin, :except => [:index, :show]
+  
+  require 'lib/lettercode.rb'
+  include Lettercode
+  
   def index
-#    page = (params[:page]) ? params[:page] : 0
     unless APP_CONFIG['hide_book_index']
-      letter = process_letter((params[:id]) ? params[:id] : 'a')
+      letter = process_letter((params[:letter]) ? params[:letter] : 'a')
       @books = Book.find(:all, :conditions => "letter = '#{letter}'", :order => :title)
       @letter_name = name_for_letter_number(letter)
-      @myurl = books_url
     else
       @books = Book.find(:all, :order => :title)
     end
@@ -43,8 +45,7 @@ class BooksController < MixedController
       redirect_to authors_url
     end
 
-    @book.fill_in_from_freebase if not @book.freebase_uid.empty? and @book.valid?
-    if @book.errors.empty? and @book.save
+    if @book.save
       flash[:notice] = 'Successfully created book.'
       redirect_to @book
     else
@@ -69,8 +70,7 @@ class BooksController < MixedController
       redirect_to books_url
     end
 
-    @book.fill_in_from_freebase if not @book.freebase_uid.empty? and @book.valid?
-    if @book.errors.empty? and @book.save
+    if @book.update_attributes(params[:book])
       flash[:notice] = "Successfully updated the book."
       redirect_to @book
     else
@@ -82,12 +82,11 @@ class BooksController < MixedController
     begin
       @book = Book.find(params[:id])
       @book.destroy
+      flash[:notice] = "Successfully destroyed book."
+      redirect_to edit_author_url @book.author_id
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
     end
-
-    flash[:notice] = "Successfully destroyed book."
-    redirect_to edit_author_url @book.author_id
   end
 end

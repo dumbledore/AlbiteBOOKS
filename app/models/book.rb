@@ -21,6 +21,8 @@ class Book < ActiveRecord::Base
   include Lettercode
   include Freebase
 
+  before_save :fill_in_from_freebase
+
   def author_exists
 #    errors[:base] << "Author does not exist." unless Author.exists?(self.author)
     errors.add_to_base "Author does not exist." unless Author.exists?(self.author_id)
@@ -34,43 +36,44 @@ class Book < ActiveRecord::Base
     self[:title] = title
   end
 
-def filename
-  name = self.title.strip
+  def filename
+    name = self.title.strip
 
-  # NOTE: File.basename doesn't work right with Windows paths on Unix
-  # get only the filename, not the whole path
-  #  filename.gsub! /^.*(\\|\/)/, ''
+    # NOTE: File.basename doesn't work right with Windows paths on Unix
+    # get only the filename, not the whole path
+    #  filename.gsub! /^.*(\\|\/)/, ''
 
-  # Finally, replace all non alphanumeric, underscore or periods with underscore
-  name.gsub! /[^\w\.\- ]/, ''
+    # Finally, replace all non alphanumeric, underscore or periods with underscore
+    name.gsub! /[^\w\.\- ]/, ''
 
-  # Basically strip out the non-ascii alphabets too and replace with x. You don't want all _ :)
-  name.gsub!(/[^0-9A-Za-z\- ]/, '')
+    # Basically strip out the non-ascii alphabets too and replace with x. You don't want all _ :)
+    name.gsub!(/[^0-9A-Za-z\- ]/, '')
 
-  name = name.split ' '
+    name = name.split ' '
 
-  filename = []
-  len = 0
+    filename = []
+    len = 0
 
-  for word in name
-    if len + word.length > 32 #[alices, adventures, in, wonderland]
-      break
+    for word in name
+      if len + word.length > 32 #[alices, adventures, in, wonderland]
+        break
+      end
+      filename << word.mb_chars.downcase
+      len += word.length + 1
     end
-    filename << word.mb_chars.downcase
-    len += word.length + 1
+
+    filename = filename.join('_')
+
+    return 'untitled' if filename.empty?
+
+    filename
   end
 
-  filename = filename.join('_')
-
-  return 'untitled' if filename.empty?
-
-  filename
-end
-
   def fill_in_from_freebase
-    get_freebase_info if self.freebase_data.nil?
 
-    unless self.freebase_data.nil?
+    if not self.freebase_uid.empty? and self.errors.empty? #calling errors.empty? instead of valid? because it's called AFTER validation
+      get_freebase_info if self.freebase_data.nil?
+      return false if self.freebase_data.nil?
 
       # thumbnail
       self.thumbnail_url = self.freebase_data['thumbnail'] if self.thumbnail_url.blank? and not self.freebase_data['thumbnail'].nil?

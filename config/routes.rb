@@ -61,20 +61,12 @@ ActionController::Routing::Routes.draw do |map|
   map.reader 'reader', :controller => 'home', :action => 'reader'
   map.home 'home', :controller => 'home'
 
-  map.resources :authors, :except => [:index, :show]
-
-  map.authors 'authors/',          :controller => 'authors', :action => 'index'
-  map.author  'authors/:id',       :controller => 'authors', :action => 'select'
-#  map.connect 'authors/:id/:page', :controller => 'authors', :action => 'select'
+  map.resources :authors
 
   map.resources :aliases, :except => [:index, :show]
 
-  map.resources :books, :except => [:index, :show]
+  map.resources :books
 
-  map.books   'books/',    :controller => 'books', :action => 'index'
-  map.book    'books/:id', :controller => 'books', :action => 'select'
-#  map.connect 'books/:id/:page', :controller => 'books', :action => 'select'
-  
   map.resources :translations, :except => [:index, :show]
 
   map.download 'download/:id', :controller => 'translations', :action => 'download'
