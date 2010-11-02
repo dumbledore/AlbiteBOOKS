@@ -5,6 +5,8 @@ class Alias < ActiveRecord::Base
   attr_accessible :name, :name_reversed, :author_id, :author
   attr_readonly :name_abbreviated
 
+  acts_as_indexed :fields => [:name]
+
   validates_presence_of :name
   validate :author_exists
 

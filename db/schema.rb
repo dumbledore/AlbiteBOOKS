@@ -65,10 +65,12 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
   end
 
   create_table "translations", :force => true do |t|
-    t.string   "note",       :default => "",   :null => false
-    t.integer  "language",                     :null => false
-    t.boolean  "original",   :default => true, :null => false
-    t.integer  "book_id",                      :null => false
+    t.string   "note",                :default => "",                                 :null => false
+    t.string   "date_of_publication", :default => "",                                 :null => false
+    t.string   "source_url",          :default => "http://www.gutenberg.org/ebooks/", :null => false
+    t.integer  "language",                                                            :null => false
+    t.boolean  "original",            :default => true,                               :null => false
+    t.integer  "book_id",                                                             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

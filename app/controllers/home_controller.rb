@@ -25,14 +25,23 @@ class HomeController < ApplicationController
   def search
     if (params[:query].nil? or params[:query].empty?)
       @query = ''
-      @results = []
+      @book_results = []
+      @author_results = []
     else
       @query = params[:query]
+      
       begin
-      search = Book.find_with_index(@query, {:limit => 10}, {:ids_only => true})
-      @results = Book.find(search, :order => :title, :include => :author)
+      search = Book.find_with_index(@query, {:limit => 16}, {:ids_only => true})
+      @book_results = Book.find(search, :order => :title, :include => :author)
       rescue
-        @results = []
+        @book_results = []
+      end
+
+      begin
+      search = Alias.find_with_index(@query, {:limit => 16}, {:ids_only => true})
+      @author_results = Alias.find(search, :include => :author, :order => :name_reversed)
+      rescue
+        @author_results = []
       end
     end
   end

@@ -64,6 +64,7 @@ class AuthorsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url
+      return
     end
 
     begin

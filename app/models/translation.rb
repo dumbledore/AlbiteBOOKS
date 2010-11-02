@@ -3,7 +3,7 @@ class Translation < ActiveRecord::Base
 
   belongs_to :book
 
-  attr_accessible :note, :language, :original, :book_id, :book_file
+  attr_accessible :note, :language, :original, :date_of_publication, :source_url, :book_id, :book_file
   attr_accessor :book_file
 
   validate :book_exists
@@ -22,7 +22,8 @@ class Translation < ActiveRecord::Base
 
   def book_exists
 #    errors[:base] << "Book does not exist." if not self.book.nil? and not Book.exists?(self.book)
-    errors.add_to_base "Book does not exist." if not self.book_id.nil? and not Book.exists?(self.book_id)
+    errors.add_to_base "Book does not exist." unless Book.exists?(self.book_id)
+    false
   end
 
   def path_to_file

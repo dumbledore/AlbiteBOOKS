@@ -6,7 +6,7 @@ class Author < ActiveRecord::Base
   
   attr_accessible :alias_name_id, :name, :freebase_uid, :thumbnail_url, :ready,
                   :description, :date_and_place_of_birth, :date_and_place_of_death, :country_of_nationality
-  
+
   validates_presence_of :name
   validates_uniqueness_of :freebase_uid, :allow_blank => true
 

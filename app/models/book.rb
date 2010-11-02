@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
                   :genre_list, :subject_list
 
   acts_as_taggable_on :genres, :subjects
-  acts_as_indexed :fields => [:title]
+  acts_as_indexed :fields => [:title, :genre_list, :subject_list]
 
   validates_presence_of :title
   validates_uniqueness_of :freebase_uid, :allow_blank => true

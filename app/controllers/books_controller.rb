@@ -7,10 +7,10 @@ class BooksController < ApplicationController
   def index
     unless APP_CONFIG['hide_book_index']
       letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-      @books = Book.find(:all, :conditions => "letter = '#{letter}'", :order => :title)
+      @books = Book.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :title)
       @letter_name = name_for_letter_number(letter)
     else
-      @books = Book.find(:all, :order => :title)
+      @books = Book.find(:all, :include => :author, :order => :title)
     end
     render :action => 'index'
   end
@@ -31,7 +31,9 @@ class BooksController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url
+      return
     end
+
     @book = author.books.build
     @book.author = author
   end
@@ -43,6 +45,7 @@ class BooksController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url
+      return
     end
 
     if @book.save
@@ -59,6 +62,7 @@ class BooksController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
+      return
     end
   end
 
@@ -68,6 +72,7 @@ class BooksController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
+      return
     end
 
     if @book.update_attributes(params[:book])

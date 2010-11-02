@@ -1,4 +1,4 @@
-<% focus_on_load('note') %>
+<% focus_on_load('translation_note') %>
 <% form_for @translation, :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
 
@@ -10,15 +10,23 @@
 
     <%= f.label :note %>
     <%= f.text_field :note %>
+
+    <%= f.label :date_of_publication %>
+    <%= f.text_field :date_of_publication %>
+
+    <%= f.label :source_url %>
+    <%= f.text_field :source_url %>
     
     <%= f.label :language %>
-    <%= f.select :language, options_for_select(Languages::LANGUAGES, 41)%>
-
-    <%= f.label :book_file %>
-    <%= f.file_field :book_file %>
+    <% lang = @translation.language %>
+    <% lang = 41 if lang == 0 %>
+    <%= f.select :language, options_for_select(Languages::LANGUAGES, lang)%>
 
     <%= f.label :original %>
     <%= f.check_box :original %>
+
+    <%= f.label :book_file %>
+    <%= f.file_field :book_file %>
 
   <% end %>
   <%= f.submit "Submit", :class => 'small', :disable_with => "Please wait..." %>

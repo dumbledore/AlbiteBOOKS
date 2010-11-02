@@ -54,4 +54,7 @@ uservoice:
   key: your_key
   host: your_key.uservoice.com
   forum: your_forum_id_number
-  
+
+# DISQUS Options
+# ==============
+disqus_shortname: your_disqus_shortname

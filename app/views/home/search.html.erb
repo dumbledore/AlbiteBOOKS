@@ -1,8 +1,37 @@
-<h1>Search results for ‘<%= @query %>’</h1>
-<% if @results.empty? %>
-  <p><i>No books have been found.</i></p>
+<h1>Books found for ‘<%= @query %>’</h1>
+<% if @book_results.empty? %>
+  <p><i>No books have been found for this query.</i></p>
 <% else %>
-  <% @results.each do |book| %>
-   <p><%= link_to book.title, book_url(book) %> by <i><%= link_to (book.author.name_cached, author_url(book.author)) %></i></p>
+  <% @book_results.each do |book| %>
+   <p>
+      <% if book.thumbnail_url.blank? %>
+        <%= link_to book.title, book_url(book), :class => 'thumblist_no_img' %>
+      <% else %>
+        <%= image_tag(book.thumbnail_url, :class =>  'thumblist') %>
+        <%= link_to book.title, book_url(book), :class => 'thumblist' %>
+      <% end %>
+      <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>
+     by <i><%= link_to (book.author.name_cached, author_url(book.author)) %></i>
+   </p>
+   <div></div>
+  <% end %>
+<% end %>
+
+<h1>Authors found for ‘<%= @query %>’</h1>
+<% if @author_results.empty? %>
+  <p><i>No authors have been found for this query.</i></p>
+<% else %>
+  <% for name_alias in @author_results %>
+    <% author = name_alias.author %>
+    <% ready = author.ready %>
+    <% if user_admin or ready %>
+      <p<%= ' class="strike"' unless ready %>>
+        <%= link_to h(name_alias.name_abbreviated :name_reversed), author %><%= " (<i>".html_safe + author.name_cached + "</i>)".html_safe unless name_alias.id == author.alias_name_id %>
+        <% if user_admin %>
+          <%= link_to image_tag('misc/edit.png'), edit_author_path(author) %>
+          <%= link_to image_tag('misc/delete.png'), author, :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+      </p>
+    <% end %>
   <% end %>
 <% end %>

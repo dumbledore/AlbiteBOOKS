@@ -1,8 +1,20 @@
-<% for translation in @translations %>
-  <p>
-    <%= link_to Languages::LANGUAGES[translation.language][0], download_url(translation) %>
-    <%= link_to image_tag('misc/edit.png'), translation_edit_url(translation) %>
-    <%= link_to image_tag('misc/delete.png'), translation, :confirm => 'Are you sure?', :method => :delete %>
-  </p>
+<% unless @translations.empty? %>
+<ul>
+  <% for translation in @book.translations %>
+    <%
+       text = []
+       text << 'Original text' if translation.original
+       text << Languages::LANGUAGES[translation.language][0]
+       text << translation.date_of_publication unless translation.date_of_publication.empty?
+       text << translation.note unless translation.note.empty?
+    %>
+    <li><%= link_to text.join(', '), download_url(translation) %>
+    <%= link_to image_tag('misc/edit.png'), edit_translation_url(translation) %>
+    <%= link_to image_tag('misc/delete.png'), translation, :confirm => 'Are you sure?', :method => :delete %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>
+  <i>Nothing to download yet.</i>
+</p>
 <% end %>
-<%= "<p><i>No translations have been added so far.</i></p>".html_safe if @translations.empty? %>

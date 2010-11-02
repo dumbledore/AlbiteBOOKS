@@ -59,27 +59,14 @@
 <div></div>
 <h1>Download book &amp; translations</h1>
 
-<% unless @book.translations.empty? %>
-<ul>
-  <% for translation in @book.translations %>
-    <li><%= link_to Languages::LANGUAGES[translation.language][0], download_path(translation)%></li>
-  <% end %>
-</ul>
-<% else %>
-<p>
-  <i>Nothing to download yet.</i>
-</p>
-<% end %>
+<% @translations = @book.translations %>
+<%= render :partial => 'translations/index' %>
+
 <% unless @mobile %>
   <div id="freebase_universe"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
   <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-  <h1>Quick response code</h1>
-  <div id="qrtag"></div>
+  <%= render :partial => 'misc/qr_code' %>
   <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-  <script type="text/javascript" src="http://api.qrtag.net/js"></script>
-  <script type="text/javascript">
-    var qrtag = new QRtag(); qrtag.image('qrtag', 10, 100);
-  </script>
   <h1>Comments</h1>
   <% @disqus = 'book_' + @book.id.to_s %>
   <%= render :partial => 'misc/disqus_thread' %>

@@ -14,6 +14,8 @@
     <% if user_admin or ready %>
       <p<%= ' class="strike"' unless ready %>>
         <%= link_to h(book.title), book %>
+        <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>
+        by <i><%= link_to (book.author.name_cached, author_url(book.author)) %></i>
         <% if user_admin %>
           <%= link_to image_tag('misc/edit.png'), edit_book_path(book) %>
           <%= link_to image_tag('misc/delete.png'), book, :confirm => 'Are you sure?', :method => :delete %>

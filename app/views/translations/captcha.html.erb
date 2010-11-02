@@ -1,5 +1,13 @@
+<h1>Downloading ‘<%= @translation.book.title %>’</h1>
+
+<%= '<p><i>Original text</i></p>' if @translation.original %>
+<%= "<p><strong>Note:</strong> #{@translation.note}</p>" unless @translation.note.empty? %>
+<%= "<p><strong>Date of publication:</strong> #{@translation.date_of_publication}</p>" unless @translation.date_of_publication %>
+<%= "<p><strong>Language:</strong> #{Languages::LANGUAGES[@translation.language][0]}" %>
+<%= "<p><strong>Source:</strong> #{link_to @translation.source_url, @translation.source_url, :target => '_blank'}" %>
+
 <% form_for :translation, @translation, :url => download_url(@translation) do |f| %>
-  <%= f.error_messages :header_message => "Cannot download this book.", :message => "" %>
+  <%= f.error_messages :header_message => "Sorry, you couldn't download this book.", :message => "" %>
   <%= hidden_field_tag 'captcha_is_there' %>
   <% content_tag :fieldset do %>
     <%= content_tag :legend, "You are not a bot, huh?" %>
@@ -8,5 +16,5 @@
   <%= f.submit "Download"%>
 <% end %>
 <p>
-  <%= link_to "Back to book", book_url (@translation.book_id) %>
+  <%= link_to "Back to #{@translation.book.title}", book_url (@translation.book) %>
 </p>

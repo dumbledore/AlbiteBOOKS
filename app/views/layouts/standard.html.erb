@@ -33,7 +33,7 @@
 								  <%= link_to image_tag("_/alb.gif", :style => "border: none; margin-left: 15px;", :alt => "Albite BOOKS Logo"), home_url  %>
 							</td>
 							<td align="right">
-								<% form_tag 'search', :method => 'get' do %>
+								<% form_tag '/search', :method => 'get' do %>
 									<%= text_field_tag :query, nil, :class => 'search', :size => '60', :onblur => 'javascript: search_blur(this);', :onfocus => 'javascript: search_focus(this);' %>
 									<%= image_submit_tag "_/sb.gif", :alt => 'Submit search', :class => 'search' %>
 								<% end %>
