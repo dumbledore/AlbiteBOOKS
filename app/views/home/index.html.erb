@@ -1,9 +1,36 @@
+<h1>Want to read e-books on your mobile?</h1>
+<p>It seems you've come to the right place!</p>
+
 <p>
-    You've come to the right place for obtaining <i>free</i> e-books for your <i>j2me</i>-enabled mobile. <i>Annotate</i> important text or check your <i>bookworm rating</i>.
+  Here you'll find <i>free</i> and <i>high-quality</i> e-books, that have been <i>specially optimized for your
+  phone</i>. All books are <i>neatly split to chapters</i>, and <i>compiled as EPUB files</i>, so that they'll
+  <i>load fast</i> and <i>run smoothly</i> at your device. Many children's books, <i>have images</i>, too, and they
+  have been resized and saved in an optimal format so that your book reader app would be able to show them without an
+  issue. What's more, the site has been made with the idea of being as mobile-friendly as possible. Just put an 'm'
+  as the first subdomain, like so: <a href="http://m.albite.vlexofree.com/">http://m.albite.vlexofree.com/</a>. So,
+  why don't you get on with downloading at once? Just search for a book or an author, using the search field at the top.
 </p>
+
 <p>
-   <%= link_to "Read more", :controller => :about %> about the Albite Project or <a href="#">watch</a> the demo on the right.
+  What if you've got a <i>Java-Mobile</i> phone, but you're out-of-luck with book readers that support <i>EPUB</i>
+  files? Not necessarily! Have a look at ‘<%= link_to 'Albite READER', reader_url %>’ – play the video a few pixels
+  down this text. If you like it, well, go ahead and <%= link_to 'download', reader_url %> it! It's free. Oh, and by
+  the way, it does support dictionary look-up, yes. But, why don't make a dictionary yourself? You see,
+  ‘<%= link_to 'Albite READER', reader_url %>’ is also open-source.
 </p>
+
+<p>
+  Got you interested? Wonder who and why made all this? Or more importantly <i style='letter-spacing: 0.3em;'>how</i>?
+  Visit the <%= link_to 'About', about_url %> section to see for yourself. You'll also find there some general advice
+  that may be of some help.
+</p>
+
+<p>
+  Finally, may be you'd like give a hand? It was a five-month effort to make it work. A
+  <%= link_to 'donation', donate_url %> would be highly appreciated! Remember, any donation, no matter how small, is an
+  unmistakable sign of gratitude!  
+</p>
+
 <% unless @books.empty? %>
   <h1>Have you read these?</h1>
   <table width="100%">

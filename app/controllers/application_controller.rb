@@ -21,10 +21,19 @@ class ApplicationController < ActionController::Base
 
 
   def mobile?
-    @mobile ||= cache_mobile?(request.env)
+    @mobile ||= cache_mobile(request)
   end
 
-  def cache_mobile?(env)
+  def cache_mobile(request)
+    return mobile_by_subdomain(request) if APP_CONFIG['mobile_by_subdomain']
+    mobile_by_user_agent(request.env)
+  end
+
+  def mobile_by_subdomain(request)
+    request.subdomains.first == 'm'
+  end
+
+  def mobile_by_user_agent(env)
     case env['HTTP_USER_AGENT']
       when /(ipod|iphone)/i then return :iphone
       when /android/i then return :android
@@ -43,7 +52,7 @@ class ApplicationController < ActionController::Base
       return :wap_profile
     end
   end
-
+  
   # User handling methods
 
   def current_user_session

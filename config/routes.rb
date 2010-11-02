@@ -53,22 +53,17 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_sessions
   map.resources :users
 
-  # search
-#  map.autocomplete 'autocomplete', :controller => 'search', :action => 'autocomplete'
-#  map.search 'search', :controller => 'search', :action => 'search_results'
+  # statics
+  map.home 'home/', :controller => 'home', :action => 'index'
+  map.reader 'reader/', :controller => 'home', :action => 'reader'
+  map.about 'about/', :controller => 'home', :action => 'about'
+  map.donate 'donate/', :controller => 'home', :action => 'donate'
 
-  #statics
-  map.reader 'reader', :controller => 'home', :action => 'reader'
-  map.home 'home', :controller => 'home'
-
+  # content
   map.resources :authors
-
   map.resources :aliases, :except => [:index, :show]
-
   map.resources :books
-
   map.resources :translations, :except => [:index, :show]
-
   map.download 'download/:id', :controller => 'translations', :action => 'download'
 
   map.genres   'genres/',           :controller => 'home', :action => 'genres'
@@ -79,8 +74,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.search         'search/:query',    :controller => 'home', :action => 'search'
   map.search_form    'search/',          :controller => 'home', :action => 'search'
-#  map.search_mobile  'search/',          :controller => 'home', :action => 'search'
-
 
   map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'

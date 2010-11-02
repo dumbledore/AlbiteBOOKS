@@ -1,10 +1,10 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
-var searchLabel = "Search for books...";
+var searchLabel = "Search for books and authors...";
 
 function doc_load() {
-  document.getElementById('query').value = searchLabel;
+  search_blur(document.getElementById('query'));
 }
 
 function focus_on_load(item) {
@@ -12,14 +12,18 @@ function focus_on_load(item) {
 }
 
 function search_blur(o) {
-  if (o.value == '')
+  if (o.value == '') {
     o.value = searchLabel;
+  }
+
   o.style.color = 'AAAAAA';
 }
 
 function search_focus(o) {
-  if (o.value == searchLabel)
+  if (o.value == searchLabel) {
     o.value = '';
+  }
+  
   o.style.color = '606060';
 }
 

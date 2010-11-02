@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/app/views/authors/index.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/books/index.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/home/genre.html.erb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/home/index.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/home/search.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/home/subject.html.erb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/translations/captcha.html.erb" charset="UTF-8" />
