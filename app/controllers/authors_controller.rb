@@ -7,12 +7,14 @@ class AuthorsController < ApplicationController
   def index
     unless APP_CONFIG['hide_author_index']
       letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-      @authors_name_aliases = Alias.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :name_reversed)
+      @aliases = Alias.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :name_reversed)
       @letter_name = name_for_letter_number(letter)
     else
-      @authors_name_aliases = Alias.find(:all, :include => :author, :order => :name_reversed)
+      @aliases = Alias.find(:all, :include => :author, :order => :name_reversed)
     end
-    render :action => 'index'
+
+    @alias_thumbnails = false
+    @no_aliases_message = 'There are no authors, whose family name starts with this letter.'
   end
 
   def show
@@ -51,7 +53,7 @@ class AuthorsController < ApplicationController
 
   def edit
     begin
-      @author = Author.find(params[:id])
+      @author = Author.find(params[:id], :include => :aliases)
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url
@@ -60,7 +62,7 @@ class AuthorsController < ApplicationController
 
   def update
     begin
-      @author = Author.find(params[:id])
+      @author = Author.find(params[:id], :include => :aliases)
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url

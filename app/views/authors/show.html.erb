@@ -9,7 +9,7 @@
   <%=h @author.name %>
   <% if user_admin %>
     <%= link_to image_tag("misc/edit.png"), edit_author_path(@author), :class => 'small' %>
-    <%= link_to image_tag("misc/delete.png"), @author, :confirm => 'Are you sure?', :method => :delete, :class => 'small' %>
+    <%= link_to image_tag("misc/delete.png"), @author, :confirm => 'Are you sure you want to delete this author and their books and translations?', :method => :delete, :class => 'small' %>
   <% end %>
 </h1>
 <p>
@@ -38,25 +38,12 @@
   </p>
 <% end %>
 <div></div>
+
 <h1>Books</h1>
-<% unless @author.books.empty? %>
-  <% for book in @author.books %>
-    <p>
-      <% if book.thumbnail_url.blank? %>
-        <%= link_to book.title, book_url(book), :class => 'thumblist_no_img' %>
-      <% else %>
-        <%= image_tag(book.thumbnail_url, :class =>  'thumblist') %>
-        <%= link_to book.title, book_url(book), :class => 'thumblist' %>
-      <% end %>
-      <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>
-    </p>
-    <div></div>
-  <% end %>
-<% else %>
-  <p>
-    <i>No books have been added so far.</i>
-  </p>
-<% end %>
+<% @books = @author.books %>
+<% @book_thumbnails = true %>
+<% @no_books_message = 'No books have been added, so far.' %>
+<%= render :partial => 'books/index' %>
 
 <% unless @mobile %>
   <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>

@@ -3,7 +3,7 @@
     <p>
       <%= link_to h(aliaz.name_reversed), edit_alias_path(aliaz) %>
       <%= link_to image_tag('misc/edit.png'), edit_alias_path(aliaz) %>
-      <%= link_to image_tag('misc/delete.png'), aliaz, :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to image_tag('misc/delete.png'), aliaz, :confirm => 'Are you sure you want to delete this alias?', :method => :delete %>
     </p>
   <% end %>
 <% end %>
