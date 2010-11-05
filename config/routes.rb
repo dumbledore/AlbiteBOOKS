@@ -54,10 +54,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   # statics
-  map.home 'home/', :controller => 'home', :action => 'index'
-  map.reader 'reader/', :controller => 'home', :action => 'reader'
-  map.about 'about/', :controller => 'home', :action => 'about'
-  map.donate 'donate/', :controller => 'home', :action => 'donate'
+  map.home    'home/',    :controller => 'home', :action => 'index'
+  map.reader  'reader/',  :controller => 'home', :action => 'reader'
+  map.about   'about/',   :controller => 'home', :action => 'about'
+  map.faq     'faq/',     :controller => 'home', :action => 'faq' 
+  map.thanks  'thanks/',  :controller => 'home', :action => 'thanks'
 
   # content
   map.resources :authors

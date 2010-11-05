@@ -163,7 +163,7 @@ a {
   text-decoration: underline;
 }
 
-a.menu, a.menu_down, a.menu_reader {
+a.menu, a.menu_down, a.menu_reader, a.menu_smaller {
   font-size: 0.9em;
   font-variant: small-caps;
   letter-spacing: 1px;
@@ -173,6 +173,10 @@ a.menu, a.menu_down, a.menu_reader {
 
 a.menu_reader {
   color: #6e5a4f;
+}
+
+a.menu_smaller {
+  font-size: 0.7em;
 }
 
 a.menu_down{
@@ -314,8 +318,8 @@ img.thumblisthome {
   height: 150px;
 }
 
-td.home {
-  padding: 15px;
+div.home {
+  margin-bottom: 35px;
 }
 
 a.thumblist, a.thumblist_no_img {

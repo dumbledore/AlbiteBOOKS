@@ -53,28 +53,32 @@
 						<tr>
 							<td align="left">
 							  <span class="menu"><%=
-							    link_to "Home",home_url, :class => 'menu'
+							    link_to 'Home',home_url, :class => 'menu'
 						    %><%=
-                  link_to "Books", books_url, :class => 'menu'
+                  link_to 'Books', books_url, :class => 'menu'
                 %><%=
-							    link_to "Authors", authors_url, :class => 'menu'
+							    link_to 'Authors', authors_url, :class => 'menu'
 						    %><%=
-							    link_to "Genres", genres_url, :class => 'menu'
+							    link_to 'Genres', genres_url, :class => 'menu'
 						    %><%=
-                    link_to "Subjects", subjects_url, :class => 'menu'
+                    link_to 'Subjects', subjects_url, :class => 'menu'
                   %><%=
-							    link_to "Get the Reader!", reader_url, :class => 'menu_reader'
+							    link_to 'Get the Reader!', reader_url, :class => 'menu_reader'
+						    %><%=
+							    link_to 'About', about_url, :class => 'menu'
+						    %><%=
+							    link_to 'Say thanks', thanks_url, :class => 'menu'
 						    %></span>
 							</td>
 							<td align="right">
 							  <span class="menu"><% if current_user %><%=
-                                  link_to "Profile", profile_path, :class => 'menu'
+                                  link_to "Profile", profile_path, :class => 'menu_smaller'
                               %><%=
-                                  link_to "Logout", logout_path, :class => 'menu'
+                                  link_to "Logout", logout_path, :class => 'menu_smaller'
                               %><% else %><%=
-                                  link_to "Register", register_path, :class => 'menu' if can_add_users
+                                  link_to "Register", register_path, :class => 'menu_smaller' if can_add_users
                               %><%=
-                                  link_to "Login", login_path, :class => 'menu'
+                                  link_to "Login", login_path, :class => 'menu_smaller'
                               %><% end %></span>
 						  </td>
 						</tr>

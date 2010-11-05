@@ -10,8 +10,8 @@ title: Albite BOOKS
 # using the subdomain if true (e.g. http://m.albite.vlexofree.com), or the user-agent header if false
 mobile_by_subdomain: false
 
-# Count of books showed at the homepage (it'd better be divisible by three as books are layouted in three columns)
-homepage_book_count: 9
+# Count of books showed at the homepage
+homepage_book_count: 3
 
 # Server support for x-sendfile
 # It's important that the server should support this. However, while Webrick supports it,
