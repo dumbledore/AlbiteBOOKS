@@ -54,7 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   # statics
-  map.home      'home/',      :controller => 'home', :action => 'index'
+  map.home      'home/',      :controller => 'home', :action => 'home'
   map.reader    'reader/',    :controller => 'home', :action => 'reader'
   map.about     'about/',     :controller => 'home', :action => 'about'
   map.faq       'faq/',       :controller => 'home', :action => 'faq'

@@ -7,24 +7,25 @@
     <%= stylesheet_link_tag 'mobile' %>
   </head>
 	<body>
-    <% form_tag 'search_path', :method => 'get' do %>
-      <%= text_field_tag :search_text %>
-      <%= submit_tag "find", :alt => 'Submit search' %>
-    <% end %>
     <p>
       <span class="menu">
-        <%= link_to "Home",home_url, :class => 'menu' %> |
-        <%= link_to "Books", books_url, :class => 'menu' %> |
-        <%= link_to "Authors", authors_url, :class => 'menu' %> |
+        <%= link_to "Home",home_url, :class => 'menu' %>
+        <%= link_to "Books", books_url, :class => 'menu' %>
+        <%= link_to "Authors", authors_url, :class => 'menu' %>
         <%= link_to "Get the Reader!", reader_url, :class => 'menu' %>
       </span>
     </p>
+    <% form_tag '/search', :method => 'get' do %>
+      <p>
+        <%= text_field_tag :query %>
+        <%= submit_tag 'search for books!', :alt => 'Submit search' %>
+      </p>
+    <% end %>
     <div class="main">
       <%= yield %>
     </div>
-    <hr>
     <p>
-      <span class="menu">
+      <span class="menu_down">
         <%= link_to "about this site", about_url, :class => :menu_down %>
         <%= link_to "report copyright infringement", copyright_url, :class => :menu_down %>
         <%= link_to "contacts", contacts_url, :class => :menu_down %>

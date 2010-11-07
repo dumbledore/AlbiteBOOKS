@@ -1,0 +1,16 @@
+Light-Mode: true
+MIDlet-1: AlbiteMIDlet,/res/icon.png,org.albite.albite.AlbiteMIDlet
+MIDlet-Description: A feature-rich e-book reader for the Java Mobile platform.
+MIDlet-Icon: /res/icon.16.png
+MIDlet-Info-URL: http://albite.vlexofree.com/reader
+MIDlet-Jar-Size: 263535
+MIDlet-Jar-URL: AlbiteReaderLight-2.0.4.jar
+MIDlet-Name: Albite Reader Light
+MIDlet-Permissions: javax.microedition.io.Connector.file.read, javax.microedition.io.Connector.file.write, javax.microedition.io.Connector.sensor
+MIDlet-Touch-Support: true
+MIDlet-Vendor: Svetlin Ankov
+MIDlet-Version: 2.0.4
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
+UseNativeCommands: false
+UseNativeTextButtons: false

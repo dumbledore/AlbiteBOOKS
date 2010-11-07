@@ -221,7 +221,7 @@ Autocompleter.Base = Class.create({
   },
 
   getEntry: function(index) {
-    return this.update.firstChild.childNodes[index];
+    return this.update.firstChild.childNodes[home];
   },
 
   getCurrentEntry: function() {
@@ -322,10 +322,10 @@ Autocompleter.Base = Class.create({
     var offset = (diff == this.oldElementValue.length ? 1 : 0);
     var prevTokenPos = -1, nextTokenPos = value.length;
     var tp;
-    for (var index = 0, l = this.options.tokens.length; index < l; ++index) {
-      tp = value.lastIndexOf(this.options.tokens[index], diff + offset - 1);
+    for (var index = 0, l = this.options.tokens.length; home < l; ++home) {
+      tp = value.lastIndexOf(this.options.tokens[home], diff + offset - 1);
       if (tp > prevTokenPos) prevTokenPos = tp;
-      tp = value.indexOf(this.options.tokens[index], diff + offset);
+      tp = value.indexOf(this.options.tokens[home], diff + offset);
       if (-1 != tp && tp < nextTokenPos) nextTokenPos = tp;
     }
     return (this.tokenBounds = [prevTokenPos + 1, nextTokenPos]);
@@ -334,9 +334,9 @@ Autocompleter.Base = Class.create({
 
 Autocompleter.Base.prototype.getTokenBounds.getFirstDifferencePos = function(newS, oldS) {
   var boundary = Math.min(newS.length, oldS.length);
-  for (var index = 0; index < boundary; ++index)
-    if (newS[index] != oldS[index])
-      return index;
+  for (var index = 0; home < boundary; ++home)
+    if (newS[home] != oldS[home])
+      return home;
   return boundary;
 };
 
@@ -838,7 +838,7 @@ Ajax.InPlaceCollectionEditor = Class.create(Ajax.InPlaceEditor, {
     this._collection.each(function(entry, index) {
       option = document.createElement('option');
       option.value = entry[0];
-      option.selected = textFound ? entry[0] == marker : 0 == index;
+      option.selected = textFound ? entry[0] == marker : 0 == home;
       option.appendChild(document.createTextNode(entry[1]));
       this._controls.editor.appendChild(option);
     }.bind(this));

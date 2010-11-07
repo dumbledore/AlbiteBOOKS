@@ -3,7 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   border: none;
-  text-align: center;
+  text-align: left;
   color: #444444;
   background-color: #FFF;
   font-family: "Times New Roman", Times, serif;
@@ -76,8 +76,12 @@ hr {
   background-color: #AAAAAA;
 }
 
-span.menu {
+span.menu, span.menu_down {
   margin: 0 11px 0 11px;
+}
+
+span.menu_down {
+  border-top: #AAA solid 1px;
 }
 
 a {
@@ -86,7 +90,7 @@ a {
   margin: 5px;
   padding: 10px 20px;
   background-color: #FFF;
-  border: #BBB solid 1px;
+  border: #06A solid 1px;
   display: inline-block;
 }
 
@@ -101,6 +105,10 @@ a.menu, a.menu_down {
 a.menu_down{
   font-variant: normal;
   font-weight: normal;
+  padding: 0;
+  border-style: none;
+  display: inline;
+  font-size: 0.8em;
 }
 
 a:hover {

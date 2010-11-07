@@ -20,6 +20,10 @@ h1.letter {
   line-height: 1.5em;
 }
 
+ul {
+  list-style-type:circle;
+}
+
 span.letter {
   /*font-size: 1.2em;*/
   background-color: #06A;

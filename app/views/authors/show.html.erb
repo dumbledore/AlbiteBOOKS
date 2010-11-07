@@ -21,9 +21,9 @@
   <% end %>
 </p>
 <% if @mobile %>
-  <p><strong>Born: </strong><%= @author.date_and_place_of_birth %></p>
-  <p><strong>Died: </strong><%= @author.date_and_place_of_death %></p>
-  <p><strong>Country of nationality: </strong><%= @author.country_of_nationality %></p>
+  <%= "<p><strong>Born:</strong> #{@author.date_and_place_of_birth}</p>" unless @author.date_and_place_of_birth.empty? %>
+  <%= "<p><strong>Died:</strong> #{@author.date_and_place_of_death} </p>" unless @author.date_and_place_of_death.empty? %>
+  <%= "<p><strong>Country of nationality:</strong> #{@author.country_of_nationality}</p>" unless @author.country_of_nationality.empty? %>
 <% else %>
   <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <% end %>
