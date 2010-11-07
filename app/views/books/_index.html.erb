@@ -9,8 +9,10 @@
         <%= link_to h(book.title), book_url(book) %>
       <% end %>
       <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>
-      <%= link_to image_tag('misc/edit.png'), edit_book_path(book) %>
-      <%= link_to image_tag('misc/delete.png'), book, :confirm => 'Are you sure you want to delete this book and all its translations?', :method => :delete %>
+      <% if user_admin %>
+        <%= link_to image_tag('misc/edit.png'), edit_book_path(book) %>
+        <%= link_to image_tag('misc/delete.png'), book, :confirm => 'Are you sure you want to delete this book and all its translations?', :method => :delete %>
+      <% end %>
     </p>
     <div></div>
   <% end %>

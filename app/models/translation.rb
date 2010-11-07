@@ -1,5 +1,6 @@
 class Translation < ActiveRecord::Base
   require 'lib/languages.rb'
+  require 'digest/md5'
 
   belongs_to :book
 
@@ -12,7 +13,7 @@ class Translation < ActiveRecord::Base
   validates_inclusion_of :language, :in => 0..Languages::LANGUAGES.size-1, :allow_blank => true
   validates_presence_of :book_file, :on => :create
 
-  def after_save        
+  def after_validation      
     upload_file unless book_file.nil?
   end
 
@@ -42,6 +43,8 @@ class Translation < ActiveRecord::Base
     else
       File.open(self.path_to_file, "wb") { |f| f.write(book_file.read) }
     end
+
+    self.md5 = Digest::MD5.hexdigest(File.read(self.path_to_file))
   end
 
   def delete_file

@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
     t.string   "source_url",          :default => "http://www.gutenberg.org/ebooks/", :null => false
     t.integer  "language",                                                            :null => false
     t.boolean  "original",            :default => true,                               :null => false
+    t.string   "md5",                 :default => "",                                 :null => false
     t.integer  "book_id",                                                             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

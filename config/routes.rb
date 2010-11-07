@@ -68,7 +68,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :books
   map.resources :translations, :except => [:index, :show]
 
-  map.download_file 'download/',    :controller => 'translations', :action => 'download_file',
+  map.download_file 'download/:id', :controller => 'translations', :action => 'download_file',
                                                                    :conditions => {:method => :post} 
   map.download      'download/:id', :controller => 'translations', :action => 'download'
   

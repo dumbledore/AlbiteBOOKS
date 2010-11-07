@@ -7,6 +7,7 @@ class CreateTranslations < ActiveRecord::Migration
       t.string   :source_url,           :null => false, :default => 'http://www.gutenberg.org/ebooks/'
       t.integer  :language,             :null => false # see lib/languages.rb
       t.boolean  :original,             :null => false, :default => true
+      t.string   :md5,                  :null => false
 
       t.references :book, :null => false
 

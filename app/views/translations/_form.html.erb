@@ -19,7 +19,7 @@
     
     <%= f.label :language %>
     <% lang = @translation.language %>
-    <% lang = 41 if lang == 0 %>
+    <% lang = 41 if (lang == 0 or lang.nil?) %>
     <%= f.select :language, options_for_select(Languages::LANGUAGES, lang)%>
 
     <%= f.label :original %>
