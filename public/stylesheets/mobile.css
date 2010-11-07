@@ -16,6 +16,10 @@ div {
   clear: both;
 }
 
+div.main {
+  text-align: left;
+}
+
 img {
   border-style: none;
 }
