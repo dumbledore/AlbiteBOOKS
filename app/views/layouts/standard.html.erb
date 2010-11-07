@@ -105,11 +105,11 @@
 				<td align="center">
 					<hr width="100%">
                     <span class="menu"><%= render :partial => 'misc/ad_linkback' %> | <%=
-					  link_to "about this site", {:action => :about}, :class => :menu_down
+					  link_to "about this site", about_url, :class => :menu_down
           %>|<%=
-            link_to "report copyright infringement", {:action => :copyright}, :class => :menu_down
+            link_to "report copyright infringement", copyright_url, :class => :menu_down
           %>|<%=
-            link_to "contacts", {:action => :contact}, :class => :menu_down
+            link_to "contacts", contacts_url, :class => :menu_down
           %>
           </span>
           <hr width="100%">

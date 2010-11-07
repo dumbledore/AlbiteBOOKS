@@ -16,6 +16,10 @@ div {
   clear: both;
 }
 
+img {
+  border-style: none;
+}
+
 span.subtitle {
   margin: 0;
   padding: 0;

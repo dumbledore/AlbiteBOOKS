@@ -21,19 +21,23 @@ class ApplicationController < ActionController::Base
 
 
   def mobile?
-    @mobile ||= cache_mobile(request)
+    @mobile ||= cache_mobile
   end
 
-  def cache_mobile(request)
-    return mobile_by_subdomain(request) if APP_CONFIG['mobile_by_subdomain']
-    mobile_by_user_agent(request.env)
+  def cache_mobile
+    return mobile_subdomain? if APP_CONFIG['mobile_by_subdomain']
+    mobile_user_agent?
   end
 
-  def mobile_by_subdomain(request)
-    request.subdomains.first == 'm'
+  def mobile_subdomain?
+    @mobile_subdomain ||= (request.subdomains.first == 'm')
   end
 
-  def mobile_by_user_agent(env)
+  def mobile_user_agent?
+    @mobile_user_agent ||= cache_mobile_user_agent(request.env)
+  end
+
+  def cache_mobile_user_agent(env)
     case env['HTTP_USER_AGENT']
       when /(ipod|iphone)/i then return :iphone
       when /android/i then return :android

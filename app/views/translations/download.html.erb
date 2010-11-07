@@ -6,12 +6,14 @@
 <%= "<p><strong>Language:</strong> #{Languages::LANGUAGES[@translation.language][0]}" %>
 <%= "<p><strong>Source:</strong> #{link_to @translation.source_url, @translation.source_url, :target => '_blank'}" %>
 
-<% form_for :translation, @translation, :url => download_url(@translation) do |f| %>
+<% form_for :translation, @translation, :url => download_file_url do |f| %>
   <%= f.error_messages :header_message => "Sorry, you couldn't download this book.", :message => "" %>
-  <%= hidden_field_tag 'captcha_is_there' %>
-  <% content_tag :fieldset do %>
-    <%= content_tag :legend, "You are not a bot, huh?" %>
-    <%= recaptcha_tags.html_safe %>
+  <%= f.hidden_field :id %>
+  <% unless @captcha_not_necessary %>
+    <% content_tag :fieldset do %>
+      <%= content_tag :legend, "You are not a bot, huh?" %>
+      <%= recaptcha_tags.html_safe %>
+    <% end %>
   <% end %>
   <%= f.submit "Download"%>
 <% end %>
