@@ -9,16 +9,11 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
 
-  layout :choose_layout
+  layout 'albite'
   
   helper_method :current_user
 
   private
-
-  def choose_layout
-    return 'mobile' if mobile?
-    'standard'
-  end
 
   def home?
     @home = controller_name == 'home' && action_name == 'home'

@@ -36,39 +36,6 @@ class Book < ActiveRecord::Base
     self[:title] = title
   end
 
-  def filename
-    name = self.title.strip
-
-    # NOTE: File.basename doesn't work right with Windows paths on Unix
-    # get only the filename, not the whole path
-    #  filename.gsub! /^.*(\\|\/)/, ''
-
-    # Finally, replace all non alphanumeric, underscore or periods with underscore
-    name.gsub! /[^\w\.\- ]/, ''
-
-    # Basically strip out the non-ascii alphabets too and replace with x. You don't want all _ :)
-    name.gsub!(/[^0-9A-Za-z\- ]/, '')
-
-    name = name.split ' '
-
-    filename = []
-    len = 0
-
-    for word in name
-      if len + word.length > 32 #[alices, adventures, in, wonderland]
-        break
-      end
-      filename << word.mb_chars.downcase
-      len += word.length + 1
-    end
-
-    filename = filename.join('_')
-
-    return 'untitled' if filename.empty?
-
-    filename
-  end
-
   def fill_in_from_freebase
 
     if not self.freebase_uid.empty? and self.errors.empty? #calling errors.empty? instead of valid? because it's called AFTER validation

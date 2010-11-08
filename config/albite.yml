@@ -13,12 +13,6 @@ mobile_by_subdomain: false
 # Count of books showed at the homepage
 homepage_book_count: 3
 
-# Server support for x-sendfile
-# It's important that the server should support this. However, while Webbrick supports it,
-# Mongrel doesn't. So, try and see if it works for you. The usual response of a problem is
-# the server sending empty files
-x_sendfile: false
-
 # App's Secret Token
 # ==================
 #

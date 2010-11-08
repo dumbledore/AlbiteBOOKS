@@ -16,6 +16,11 @@ div {
   clear: both;
 }
 
+div.download {
+  border: #aaa solid 1px;
+  padding: 0px;
+}
+
 h1.letter {
   line-height: 1.5em;
 }

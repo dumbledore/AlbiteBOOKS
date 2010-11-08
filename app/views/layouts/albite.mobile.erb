@@ -1,9 +1,10 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %> mobile</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <%= stylesheet_link_tag 'mobile' %>
   </head>
   <body>
@@ -15,12 +16,8 @@
       <%= link_to "Back Home", home_url, :class => 'menu' %>
     <% end %>
     <% form_tag '/search', :method => 'get' do %>
-      <div class="menu" style="margin: 5px;">
-        <%= text_field_tag :query %>
-      </div>
-      <div class="menu">
-        <%= submit_tag 'find books or authors' %>
-      </div>
+      <%= text_field_tag :query %>
+      <%= submit_tag 'find books or authors' %>
     <% end %>
     <div class="main">
       <%= yield %>

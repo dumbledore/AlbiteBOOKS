@@ -25,7 +25,7 @@
   </p>
 <% end %>
 
-<% unless @book.number_of_pages.empty? %>
+<% unless @book.number_of_pages.nil? %>
   <p>
     <strong>Number of pages:</strong>
     <%= @book.number_of_pages %>

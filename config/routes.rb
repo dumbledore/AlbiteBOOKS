@@ -66,12 +66,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :authors
   map.resources :aliases, :except => [:index, :show]
   map.resources :books
-  map.resources :translations, :except => [:index, :show]
+  map.resources :translations, :except => [:index]
 
-  map.download_file 'download/:id', :controller => 'translations', :action => 'download_file',
-                                                                   :conditions => {:method => :post} 
-  map.download      'download/:id', :controller => 'translations', :action => 'download'
-  
   map.genres   'genres/',           :controller => 'home', :action => 'genres'
   map.genre    'genres/:genre',     :controller => 'home', :action => 'genre'
 

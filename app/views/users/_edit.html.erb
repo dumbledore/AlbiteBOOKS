@@ -13,8 +13,8 @@
   <% content_tag :fieldset do %>
     <%= content_tag :legend, "Avatar" %>
     <p>
-      <%= image_tag @user.gravatar_url(:size => 200), :alt => "Your avatar at gravatar.com", :title => "Your avatar at gravatar.com" %><br>
-      <br>
+      <%= image_tag @user.gravatar_url(:size => 200), :alt => "Your avatar at gravatar.com", :title => "Your avatar at gravatar.com" %><br />
+      <br />
       <a href="http://gravatar.com" target = "_blank">Change your avatar at gravatar.com</a>
     </p>
   <% end %>

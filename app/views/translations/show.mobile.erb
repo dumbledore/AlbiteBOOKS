@@ -1,0 +1,34 @@
+<h1>
+  Downloading ‘<%= @translation.book.title %>’
+</h1>
+
+<% if @translation.original %>
+  <p>
+    <i>Original text</i>
+  </p>
+<% end %>
+
+<% unless @translation.note.empty? %>
+  <p>
+    <strong>Note:</strong>
+    <%= @translation.note %>
+  </p>
+<% end %>
+
+<% unless @translation.date_of_publication %>
+  <p>
+    <strong>Date of publication:</strong>
+    <%= @translation.date_of_publication %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Language:</strong>
+  <%= Languages::LANGUAGES[@translation.language][0] %>
+</p>
+
+<%= link_to 'Download Book', "/books/#{@translation.id}/#{@translation.filename}" %>
+
+<% content_for(:back) do %>
+  <%= link_to "Back to #{@translation.book.title}", book_url (@translation.book) %>
+<% end %>

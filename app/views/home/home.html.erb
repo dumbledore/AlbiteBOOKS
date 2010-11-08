@@ -24,9 +24,10 @@
 
       <div style="text-align: center">
         <object width="200" height="175">
-          <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0"></param>
-          <param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
-          <embed src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="200" height="175"></embed>
+          <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" />
+          <param name="allowFullScreen" value="true" />
+          <param name="allowscriptaccess" value="always" />
+          <embed src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="200" height="175" />
         </object>
       </div>
 
@@ -53,8 +54,10 @@
       <% for book in @books %>
         <div class="home">
           <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : book.thumbnail_url) %>
-          <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br>
-          <%= link_to book.title, book, :class => 'thumblist' %><br>by<br><em><%= link_to book.author.name_cached, book.author %></em><br>
+          <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br />
+          <%= link_to book.title, book, :class => 'thumblist' %>
+          <br />by<br />
+          <i><%= link_to book.author.name_cached, book.author %></i><br />
         </div>
       <% end %>
     </td>

@@ -1,5 +1,5 @@
 class TranslationsController < ApplicationController
-  before_filter :require_admin, :except => [:download, :download_file]
+  before_filter :require_admin, :except => [:show]
 
   def new
     begin
@@ -65,52 +65,12 @@ class TranslationsController < ApplicationController
     redirect_to edit_book_path(@translation.book)
   end
 
-  def download
+  def show
     begin
       @translation = Translation.find(params[:id], :include => :book)
     rescue ActiveRecord::RecordNotFound
-      redirect_to books_url
+      redirect_to home_url
       return
     end
-    puts "User Admin: #{user_admin.inspect}"
-    @captcha_not_necessary = (mobile_user_agent? or user_admin)
   end
-  
-  def download_file
-    begin
-      @translation = Translation.find(params[:id], :include => :book)
-    rescue
-      redirect_to books_url
-      return
-    end
-
-    @captcha_not_necessary = (mobile_user_agent? or user_admin)
-
-    if @captcha_not_necessary
-      send_translation @translation
-    else
-      if verify_recaptcha
-        send_translation @translation
-        return
-      else
-        @translation.errors.add_to_base "You didn't write the captcha correctly."
-        render :action => :download
-      end
-    end
-  end
-
-    private
-
-      def send_translation(translation)
-        filename = translation.book.filename
-
-        begin
-          translation.book.downloads += 1
-          translation.book.save
-        rescue
-          puts "Couldn't increment download count"
-        end
-
-        send_file translation.path_to_file, :filename => filename, :type=>"application/epub+zip", :x_sendfile => APP_CONFIG['x_sendfile']
-      end
 end

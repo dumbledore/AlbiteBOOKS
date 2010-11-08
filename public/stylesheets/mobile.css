@@ -66,22 +66,33 @@ hr {
 
 a {
   display: block;
-
-  width: 70%;
-  margin: 5% 5%;
-  padding: 5% 10%;
+  
+  margin: 5%;
 
   color: #06A;
-  background-color: #FFF;
   border: #06A solid 1px;
-  
+  background-color: #FFF;
+
   text-decoration: underline;
   text-align: center;
   font-size: 1.1em;
 }
 
+a, input {
+  width: 70%;
+  padding: 5% 10%;
+
+  text-align: center;
+}
+
 input {
+  margin: 0 5%;
+}
+
+input[type="submit"] {
   width: 90%;
+  margin: 0 0 5% 0;
+  padding: 5% 0;
 }
 
 a:hover {

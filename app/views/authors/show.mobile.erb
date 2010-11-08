@@ -47,7 +47,3 @@
 <% @book_thumbnails = true %>
 <% @no_books_message = 'No books have been added, so far.' %>
 <%= render :partial => 'books/index' %>
-
-<% content_for(:back) do %>
-  <%= link_to "Back to Authors", authors_url %>
-<% end %>

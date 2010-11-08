@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script type="text/javascript">
+      var images_url = "/images/";
+    </script>
+    <%= stylesheet_link_tag 'main' %>
+    <%= javascript_include_tag 'application.js' %>
+    <%= yield :head %>
+    </head>
+  <body onload="<%= yield :on_load_pre %>doc_load();<%= yield :on_load_post %><%= yield :focus_on_load %>">
+    <table class="tpl_wrapper" cellspacing="0" cellpadding="0">
+      <colgroup width="40"></colgroup>
+      <colgroup width="10"></colgroup>
+      <colgroup width="722"></colgroup>
+      <colgroup width="10"></colgroup>
+      <colgroup width="40"></colgroup>
+      <tr class="tpl_row">
+        <td class="tpl_row_tl"></td>
+        <th class="tpl_row_t" colspan="3"></th>
+        <td class="tpl_row_tr"></td>
+      </tr>
+      <tr style="height: 70px;" valign="bottom">
+        <td class="tpl_row_l"></td>
+        <td></td>
+        <td>
+          <table style="width: 100%;" cellspacing="0" cellpadding="0">
+            <tr valign="bottom">
+              <td align="left">
+                  <%= link_to image_tag("_/alb.gif", :style => "border: none; margin-left: 15px;", :alt => "Albite BOOKS Logo"), home_url  %>
+              </td>
+              <td align="right">
+              <%= render :partial => 'layouts/search' %>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td> </td>
+        <td class="tpl_row_r"></td>
+      </tr>
+      <tr valign="top" style="height: 10px;">
+        <td class="tpl_row_l"></td>
+        <td></td>
+        <td>
+                    <div style="height: 10px;"></div>
+          <table style="width: 100%;" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="left">
+                <span class="menu"><%=
+                  link_to 'Home',home_url, :class => 'menu'
+                %><%=
+                  link_to 'Books', books_url, :class => 'menu'
+                %><%=
+                  link_to 'Authors', authors_url, :class => 'menu'
+                %><%=
+                  link_to 'Genres', genres_url, :class => 'menu'
+                %><%=
+                    link_to 'Subjects', subjects_url, :class => 'menu'
+                  %><%=
+                  link_to 'Get the Reader!', reader_url, :class => 'menu_reader'
+                %><%=
+                  link_to 'About', about_url, :class => 'menu'
+                %><%=
+                  link_to 'Say thanks', thanks_url, :class => 'menu'
+                %></span>
+              </td>
+              <td align="right">
+                <span class="menu"><% if current_user %><%=
+                                  link_to "Profile", profile_path, :class => 'menu_smaller'
+                              %><%=
+                                  link_to "Logout", logout_path, :class => 'menu_smaller'
+                              %><% else %><%=
+                                  link_to "Register", register_path, :class => 'menu_smaller' if can_add_users
+                              %><%=
+                                  link_to "Login", login_path, :class => 'menu_smaller'
+                              %><% end %></span>
+              </td>
+            </tr>
+          </table>
+          <br/>
+        </td>
+        <td></td>
+        <td class="tpl_row_r"></td>
+      </tr>
+      <tr valign="top">
+        <td class="tpl_row_l"></td>
+        <td></td>
+        <td align="left">
+            <%= content_tag :div, flash[:notice], :class => "flmsg_notice" if flash.has_key?(:notice) %>
+            <%= content_tag :div, flash[:error], :class => "flmsg_error" if flash.has_key?(:error) %>
+          <%= yield %>
+        </td>
+        <td></td>
+        <td class="tpl_row_r"></td>
+      </tr>
+      <tr style="height: 10px">
+        <td class="tpl_row_l"></td>
+        <td></td>
+        <td align="center">
+          <hr width="100%" />
+          <span class="menu"><%= render :partial => 'misc/ad_linkback' %><%=
+            link_to "about this site", about_url, :class => :menu_down
+          %>|<%=
+            link_to "report copyright infringement", copyright_url, :class => :menu_down
+          %>|<%=
+            link_to "contacts", contacts_url, :class => :menu_down
+          %>
+          </span>
+          <hr width="100%" />
+        </td>
+        <td></td>
+        <td class="tpl_row_r"></td>
+      </tr>
+      <tr style="height: 120px;" valign="middle">
+        <td class="tpl_row_l"></td>
+        <th colspan="3" align="center">
+                    <%= render :partial => 'misc/ad_banner' %>
+        </th>
+        <td class="tpl_row_r"></td>
+      </tr>
+      <tr class="tpl_row">
+        <td class="tpl_row_bl"></td>
+        <th class="tpl_row_b" colspan="3"></th>
+        <td class="tpl_row_br"></td>
+      </tr>
+    </table>
+  <%= yield :tail %>
+  <%= render :partial => 'layouts/tail' %>
+  </body>
+</html>

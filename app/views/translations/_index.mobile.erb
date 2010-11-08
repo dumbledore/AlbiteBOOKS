@@ -7,7 +7,7 @@
        text << translation.date_of_publication unless translation.date_of_publication.empty?
        text << translation.note unless translation.note.empty?
     %>
-    <%= link_to text.join(', '), download_url(translation) %>
+    <%= link_to text.join(', '), translation_url(translation) %>
   <% end %>
 <% else %>
   <p>
