@@ -60,7 +60,9 @@
 <%= "<p><b>#{h(link_to("New author", :controller => 'authors', :action => 'new'))}</b></p>".html_safe if user_admin %>
 <%= "<p><b>#{h(link_to("New book", :controller => 'books', :action => 'new', :author => @author))}</b></p>".html_safe if user_admin %>
 
-<p>
-  <br>
-  <%= link_to "Back to Authors", authors_url %>
-</p>
+<% unless @mobile %>
+  <p></p>
+  <p>
+    <%= link_to "Back to Authors", authors_url %>
+  </p>
+<% end %>

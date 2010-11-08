@@ -1,7 +1,11 @@
 class HomeController < ApplicationController
   def home
-#    @books = Book.includes(:author).order('created_at DESC').limit(300) #TODO, change the limit to a smaller value
-    @books = Book.find(:all, :limit => APP_CONFIG['homepage_book_count'], :order => 'created_at DESC', :include => :author)
+    unless mobile?
+      @books = Book.find(:all, :limit => APP_CONFIG['homepage_book_count'], :order => 'created_at DESC', :include => :author)
+      render :action => 'home_standard'
+    else
+      render :text => '', :layout => true
+    end
   end
 
   def reader
@@ -23,6 +27,7 @@ class HomeController < ApplicationController
 
   def subject
     @subject = params[:subject]
+    @mobile = mobile?
     @books = Book.tagged_with(@subject)
   end
 

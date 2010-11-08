@@ -2,61 +2,72 @@
 <h1>Albite Reader</h1>
 <p>
   A feature-rich e-book reader for the <i>Java Mobile</i> platform developed by
-  <a href="http://svetlin.posterous.com" targer="_blank">Svetlin Ankov</a>. It's free, and it's released under the
+  <a href="http://svetlin.posterous.com" target="_blank">Svetlin Ankov</a>. It's free, and it's released under the
   <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache 2.0 License</a>. The source code is
   available at <a href="http://github.com/dumbledore/AlbiteREADER" target="_blank">GitHub</a>. 
 </p>
-<div style="border: #aaa solid 1px; padding: 0px;">
-  <p>
-    <% if @mobile %>
-      <% reader_link = 'public/reader/AlbiteReader-2.0.4.jad' %>
-    <% else %>
-      <% reader_link = 'http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-2.0.4.jar' %>
-    <% end %>
-    <%= link_to 'Download the last (2.0.4) version', reader_link, :class => 'menu_reader' %>
-    or <a href="http://github.com/dumbledore/AlbiteREADER/downloads">see all releases</a>.
-  </p>
-</div>
-<p>
-  Can't asdasdas dasd ads ?
-</p>
-<p>
-  Works with <i>EPUB</i>, <i>txt</i> and <i>(x)html</i> files.
-</p>
-<p>
-  Implemented features include:
-</p>
-<ul>
-  <li>anti-aliased bitmap font in four sizes</li>
-  <li>hyphenation for 22 languages</li>
-  <li>27 encodings, including UTF-8 and most of ISO-8859 and Windows-125x</li>
-  <li>animated touch-guided scrolling</li>
-  <li>on-touch dictionary look up and units conversion</li>
-  <li>horizontal and vertical scrolling</li>
-  <li>portrait and landscape view</li>
-  <li>images and basic styling</li>
-  <li>color profiles</li>
-  <li>portable book settings</li>
-  <li>bookmarks</li>
-  <li>table of contents</li>
-</ul>
-<% unless @mobile %>
-  <p>You may seet in action:</p>
-  <div>
-    <object width="200" height="175">
-      <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0"></param>
-      <param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
-      <embed src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="200" height="175"></embed>
-    </object>
+<% if @mobile %>
+  <h1>Get it!</h1>
+  <div class="menu">
+    <div>
+      <%= link_to 'Install Albite READER 2.0.4',
+                  'public/reader/AlbiteReader-2.0.4.jad', :class => 'menu' %>
+    </div>
+    <div>
+      <%= link_to 'Install Albite READER Light 2.0.4',
+                  'public/reader/AlbiteReaderLight-2.0.4.jad', :class => 'menu' %>
+    </div>
   </div>
+<% else %>
+  <div style="border: #aaa solid 1px; padding: 0px;">
+    <p>
+      <%= link_to 'Download Albite READER 2.0.4',
+                  'http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-2.0.4.jar', :class => 'menu_reader' %>
+      or <a href="http://github.com/dumbledore/AlbiteREADER/downloads">see all releases</a>.
+    </p>
+  </div>
+  <p>
+    You phone can install apps only over the internet? Visit the page from your phone and you'll see a link with the jad
+    file.
+  </p>
+  <p>
+    Works with <i>EPUB</i>, <i>txt</i> and <i>(x)html</i> files.
+  </p>
+  <p>
+    Implemented features include:
+  </p>
+  <ul>
+    <li>anti-aliased bitmap font in four sizes</li>
+    <li>hyphenation for 22 languages</li>
+    <li>27 encodings, including UTF-8 and most of ISO-8859 and Windows-125x</li>
+    <li>animated touch-guided scrolling</li>
+    <li>on-touch dictionary look up and units conversion</li>
+    <li>horizontal and vertical scrolling</li>
+    <li>portrait and landscape view</li>
+    <li>images and basic styling</li>
+    <li>color profiles</li>
+    <li>portable book settings</li>
+    <li>bookmarks</li>
+    <li>table of contents</li>
+  </ul>
+  <% unless @mobile %>
+    <p>You may see it in action:</p>
+    <div>
+      <object width="200" height="175">
+        <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0"></param>
+        <param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+        <embed src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="200" height="175"></embed>
+      </object>
+    </div>
+  <% end %>
+  <p>For more detailed information, have a look at the <a href="#tutoarial">tutorial</a>.</p>
+  <!--, and , , , . Uses the Droid Serif font through it's own font implementation scheme.-->
+  <!--Bulgarian, Croatian, Czech, Danish, German, Greek, English, Esperanto, Finnish,-->
+  <!--French, Indonesian, Italian, Polish, Portuguese, Romanian, Russian, Slovene, Spanish, Swedish, Turkish, Ukrainian-->
+  <!--and Welsh-->
+  <h1>Albite Reader Light</h1>
+  <h1>Is my phone supported?</h1>
+  <h1>Installing the reader</h1>
+  <h1 id="tutorial">Tutorial: Using the reader</h1>
+  <h1>Troubleshooting</h1>
 <% end %>
-<p>For more detailed information, have a look at the <a href="#tutoarial">tutorial</a>.</p>
-<!--, and , , , . Uses the Droid Serif font through it's own font implementation scheme.-->
-<!--Bulgarian, Croatian, Czech, Danish, German, Greek, English, Esperanto, Finnish,-->
-<!--French, Indonesian, Italian, Polish, Portuguese, Romanian, Russian, Slovene, Spanish, Swedish, Turkish, Ukrainian-->
-<!--and Welsh-->
-<h1>Albite Reader Light</h1>
-<h1>Is my phone supported?</h1>
-<h1>Installing the reader</h1>
-<h1 id="tutorial">Tutorial: Using the reader</h1>
-<h1>Troubleshooting</h1>

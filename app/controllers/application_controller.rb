@@ -4,6 +4,8 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+#  before_filter :location
+  before_filter :home?
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
@@ -19,6 +21,13 @@ class ApplicationController < ActionController::Base
     'standard'
   end
 
+#  def location
+#    @current_action = action_name
+#    @current_controller = controller_name
+#  end
+  def home?
+    @home = controller_name == 'home' && action_name == 'home'
+  end
 
   def mobile?
     @mobile ||= cache_mobile

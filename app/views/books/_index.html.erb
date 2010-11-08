@@ -1,20 +1,26 @@
 <% unless @books.empty? %>
   <% for book in @books %>
-    <p<%= ' class="strike"' unless book.ready %>>
-      <% if @book_thumbnails %>
-        <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : book.thumbnail_url) %>
-        <%= image_tag(image_url, :class =>  'thumblist') %>
-        <%= link_to h(book.title), book_url(book), :class => 'thumblist' %>
-    <% else %>
-        <%= link_to h(book.title), book_url(book) %>
+    <% if book.ready or user_admin %>
+      <% unless @mobile %>
+        <p<%= ' class="strike"' unless book.ready %>>
+          <% if @book_thumbnails %>
+            <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : book.thumbnail_url) %>
+            <%= image_tag(image_url, :class =>  'thumblist') %>
+            <%= link_to h(book.title), book_url(book), :class => 'thumblist' %>
+        <% else %>
+            <%= link_to h(book.title), book_url(book) %>
+          <% end %>
+          <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>
+          <% if user_admin %>
+            <%= link_to image_tag('misc/edit.png'), edit_book_path(book) %>
+            <%= link_to image_tag('misc/delete.png'), book, :confirm => 'Are you sure you want to delete this book and all its translations?', :method => :delete %>
+          <% end %>
+        </p>
+        <div></div>
+      <% else %>
+        <%= link_to (book.title, book_url(book), :class => 'menu') %>
       <% end %>
-      <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>
-      <% if user_admin %>
-        <%= link_to image_tag('misc/edit.png'), edit_book_path(book) %>
-        <%= link_to image_tag('misc/delete.png'), book, :confirm => 'Are you sure you want to delete this book and all its translations?', :method => :delete %>
-      <% end %>
-    </p>
-    <div></div>
+    <% end %>
   <% end %>
 <% else %>
   <p>

@@ -22,15 +22,13 @@
         <%= link_to 'Albite READER', reader_url %> is also open-source.
       </p>
 
-      <% unless @mobile %>
-        <div style="text-align: center">
-          <object width="200" height="175">
-            <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0"></param>
-            <param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
-            <embed src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="200" height="175"></embed>
-          </object>
-        </div>
-      <% end %>
+      <div style="text-align: center">
+        <object width="200" height="175">
+          <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0"></param>
+          <param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param>
+          <embed src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="200" height="175"></embed>
+        </object>
+      </div>
 
       <p>
         Got you interested? Wonder who and why made all this? Or more importantly:
@@ -52,13 +50,13 @@
     <td width="10%"></td>
     <td width="30%" align="center">
       <h1>Have read these?</h1>
-        <% for book in @books %>
-          <div class="home">
-            <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : book.thumbnail_url) %>
-            <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br>
-            <%= link_to book.title, book, :class => 'thumblist' %><br>by<br><em><%= link_to book.author.name_cached, book.author %></em><br>
-          </div>
-        <% end %>
+      <% for book in @books %>
+        <div class="home">
+          <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : book.thumbnail_url) %>
+          <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br>
+          <%= link_to book.title, book, :class => 'thumblist' %><br>by<br><em><%= link_to book.author.name_cached, book.author %></em><br>
+        </div>
+      <% end %>
     </td>
   </tr>
 </table>

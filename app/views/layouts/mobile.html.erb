@@ -1,35 +1,33 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
-		<title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %> mobile</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <head>
+    <title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %> mobile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag 'mobile' %>
   </head>
-	<body>
-    <p>
-      <span class="menu">
-        <%= link_to "Home",home_url, :class => 'menu' %>
-        <%= link_to "Books", books_url, :class => 'menu' %>
-        <%= link_to "Authors", authors_url, :class => 'menu' %>
-        <%= link_to "Get the Reader!", reader_url, :class => 'menu' %>
-      </span>
-    </p>
+  <body>
+    <%= image_tag '_/alb.png', :class => 'logo' %>
+    <% if @home %>
+    <%= link_to "Get the Reader!", reader_url, :class => 'menu' %>
+    <%= link_to "About", subjects_url, :class => 'menu' %>
+    <% else %>
+      <%= link_to "Back Home", home_url, :class => 'menu' %>
+    <% end %>
     <% form_tag '/search', :method => 'get' do %>
-      <p>
+      <div class="menu" style="margin: 5px;">
         <%= text_field_tag :query %>
-        <%= submit_tag 'search for books!', :alt => 'Submit search' %>
-      </p>
+      </div>
+      <div class="menu">
+        <%= submit_tag 'find books or authors' %>
+      </div>
     <% end %>
     <div class="main">
       <%= yield %>
     </div>
-    <p>
-      <span class="menu_down">
-        <%= link_to "about this site", about_url, :class => :menu_down %>
-        <%= link_to "report copyright infringement", copyright_url, :class => :menu_down %>
-        <%= link_to "contacts", contacts_url, :class => :menu_down %>
-      </span>
-    </p>
+    <% unless @home %>
+      <hr />
+      <%= link_to "Back Home", home_url, :class => 'menu' %>
+    <% end %>
 	</body>
 </html>

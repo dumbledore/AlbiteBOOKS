@@ -1,13 +1,13 @@
 html, body {
-  height:100%;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  border: none;
-  text-align: left;
-  color: #444444;
+  border-style: none;
+  text-align: center;
+  color: #444;
   background-color: #FFF;
   font-family: "Times New Roman", Times, serif;
-  /*font-family: Arial, sans-serif;*/
   font-size: 1em;
 }
 
@@ -34,7 +34,7 @@ span.subtitle {
   font-variant: normal;
   font-style: italic;
   font-weight: normal;
-  letter-spacing: 0.15em;
+  /*letter-spacing: 0.15em;*/
   white-space: nowrap;
 }
 
@@ -48,25 +48,15 @@ i {
   color: #806A5D;
 }
 
+img.logo {
+  margin-top: 10px;
+}
 h1 {
   font-size: 1.5em;
   border-bottom: 1px solid #aaa;
   text-align: left;
   font-variant: small-caps;
   padding: 0 15px 8px 15px;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="file"],
-textarea,
-select
-{
-  font-family: "Times New Roman", Times, serif;
-  font-size: 1em;
-  padding: 3px;
-  width: 350px;
-  margin: 10px;
 }
 
 hr {
@@ -80,35 +70,29 @@ span.menu, span.menu_down {
   margin: 0 11px 0 11px;
 }
 
-span.menu_down {
-  border-top: #AAA solid 1px;
-}
-
 a {
   color: #06A;
   text-decoration: underline;
-  margin: 5px;
-  padding: 10px 20px;
+  margin: 5%;
+  /*padding: 10px 20px;*/
+  padding: 5% 10%;
   background-color: #FFF;
   border: #06A solid 1px;
   display: inline-block;
 }
 
-a.menu, a.menu_down {
-  font-size: 0.9em;
-  font-variant: small-caps;
-  letter-spacing: 1px;
-  font-weight: bold;
-  margin: 0 4px 0 4px;
+a.menu, a.menu_main {
+  /*width: 60%;*/
+  display: block;
+  text-align: center;
+  /*margin-left:auto; margin-right:auto;*/
+  width:60%;
+  margin-left:10%; margin-right:10%;
+  vertical-align: middle;
 }
 
-a.menu_down{
-  font-variant: normal;
-  font-weight: normal;
-  padding: 0;
-  border-style: none;
-  display: inline;
-  font-size: 0.8em;
+input {
+  width: 80%;
 }
 
 a:hover {
@@ -137,22 +121,6 @@ p.descr {
   line-height: 130%;
 }
 
-div.flmsg_notice, div.flmsg_notice {
-  font-size: 0.8em;
-  padding: 5px 15px;
-  text-align: center;
-}
-
-div.flmsg_notice {
-  background-color: #DFD;
-}
-
-div.flmsg_error {
-  font-size: 1em;
-  background-color: #FBB;
-  font-width: bold;   
-}
-
 img.thumbnail {
   padding: 2px;
   margin: 5px;
@@ -161,48 +129,30 @@ img.thumbnail {
   float: right;
 }
 
-img.thumblist {
-  padding: 1px;
-  margin: 3px 10px 0 0;
-  border: solid 1px #999;
-  width: 32px;
-  max-height: 100px;
-  vertical-align: middle;
-}
+/*img.thumblist {*/
+  /*padding: 1px;*/
+  /*margin: 3px;*/
+  /*border: solid 1px #999;*/
+  /*width: 32px;*/
+  /*max-height: 100px;*/
+  /*vertical-align: middle;*/
+  /*float: left;*/
+  /*display: inline-block;*/
+/*}*/
 
-img.thumblisthome {
-  padding: 1px;
-  margin: 3px 10px 0 0;
-  border: solid 1px #999;
+/*img.thumblisthome {*/
+  /*padding: 1px;*/
+  /*margin: 3px 10px 0 0;*/
+  /*border: solid 1px #999;*/
 /* Maximum acceptable width without breaking the layout is 228, so 200 is a good value*/
-  max-width: 200px;
-  height: 150px;
-}
+  /*max-width: 200px;*/
+  /*height: 150px;*/
+/*}*/
 
 td.home {
   padding: 15px;
 }
 
-a.thumblist, a.thumblist_no_img {
+a.thumblist {
   font-size: 1.1em;
-}
-
-a.thumblist_no_img {
-  margin-left: 50px;
-}
-
-p.linklist {
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
-}
-
-a.small {
-  margin-left: 5px;
-  font-size: 0.8em;
-  font-variant: small-caps;
-}
-
-p.quote {
-  font-style: italic;
-  letter-spacing: 0.08em;
 }
