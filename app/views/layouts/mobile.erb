@@ -26,7 +26,8 @@
       <%= yield %>
     </div>
     <% unless @home %>
-      <hr />
+      <h1>Going back</h1>
+      <%= yield(:back) %>
       <%= link_to "Back Home", home_url, :class => 'menu' %>
     <% end %>
 	</body>

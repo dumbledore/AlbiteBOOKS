@@ -1,0 +1,9 @@
+<% unless @aliases.empty? %>
+  <% for aliaz in @aliases %>
+    <% if aliaz.author.ready or user_admin %>
+      <%= link_to (aliaz.name_abbreviated(:name_reversed), author_url(aliaz.author), :class => 'menu') %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p><i><%= @no_aliases_message %></i></p>
+<% end %>

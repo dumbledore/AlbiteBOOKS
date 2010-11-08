@@ -5,4 +5,5 @@ tmp/**/*
 config/albite.custom.yml
 index/*
 data/books/*
-public/reader
+public/books/*
+public/reader/*

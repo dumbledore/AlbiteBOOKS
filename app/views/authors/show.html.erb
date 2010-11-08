@@ -2,7 +2,7 @@
 
 <% content_for(:head) do %>
   <% @freebase_item = @author %>
-  <%= render :partial => 'misc/freebase_ajax' unless @mobile %>
+  <%= render :partial => 'misc/freebase_ajax' %>
 <% end %>
 
 <h1>
@@ -14,19 +14,11 @@
 </h1>
 <p>
   <%= image_tag(@author.thumbnail_url, :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
-  <% if @mobile %>
-    <%= @author.description %>  
-  <% else %>
-    <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
-  <% end %>
+  <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
 </p>
-<% if @mobile %>
-  <%= "<p><strong>Born:</strong> #{@author.date_and_place_of_birth}</p>" unless @author.date_and_place_of_birth.empty? %>
-  <%= "<p><strong>Died:</strong> #{@author.date_and_place_of_death} </p>" unless @author.date_and_place_of_death.empty? %>
-  <%= "<p><strong>Country of nationality:</strong> #{@author.country_of_nationality}</p>" unless @author.country_of_nationality.empty? %>
-<% else %>
-  <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-<% end %>
+
+<div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+
 <% if @author.aliases.size > 1 %>
   <p>
   <strong>Also known as: </strong>
@@ -45,24 +37,19 @@
 <% @no_books_message = 'No books have been added, so far.' %>
 <%= render :partial => 'books/index' %>
 
-<% unless @mobile %>
-  <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-  <%= render :partial => 'misc/qr_code' %>
-  <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-  <h1>Comments</h1>
-  <% @disqus = 'author_' + @author.id.to_s %>
-  <%= render :partial => 'misc/disqus_thread' %>
-  <% content_for(:tail) do %>
-    <%= render :partial => 'misc/disqus_tail' %>
-  <% end %>
+<div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<%= render :partial => 'misc/qr_code' %>
+<div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<h1>Comments</h1>
+<% @disqus = 'author_' + @author.id.to_s %>
+<%= render :partial => 'misc/disqus_thread' %>
+<% content_for(:tail) do %>
+  <%= render :partial => 'misc/disqus_tail' %>
 <% end %>
 
 <%= "<p><b>#{h(link_to("New author", :controller => 'authors', :action => 'new'))}</b></p>".html_safe if user_admin %>
 <%= "<p><b>#{h(link_to("New book", :controller => 'books', :action => 'new', :author => @author))}</b></p>".html_safe if user_admin %>
 
-<% unless @mobile %>
-  <p></p>
-  <p>
-    <%= link_to "Back to Authors", authors_url %>
-  </p>
-<% end %>
+<p>
+  <%= link_to "Back to Authors", authors_url %>
+</p>

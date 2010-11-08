@@ -2,71 +2,55 @@
 
 <h1>
   <%=h @book.title %>
-  <span class="subtitle">by <%= link_to @book.author.name, @book.author %></span>
 </h1>
+
+<%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
+<%= link_to "by #{@book.author.name}", @book.author, :class => 'caption' %>
+
 <p>
-  <%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
-  <% if @mobile %>
-    <%= @book.description %>
-  <% else %>
-    <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
-  <% end %>
+  <%= @book.description %>
 </p>
-<% if @mobile %>
-  <% unless @book.date_of_first_publication.blank? %>
-    <p><strong>Date of first publication:</strong> <%= @book.date_of_first_publication %></p>
-  <% end %>
-  <% unless @book.original_language.blank? %>
-    <p><strong>Original language:</strong> <%= @book.original_language %></p>
-  <% end %>
-  <% unless @book.number_of_pages.blank? %>
-    <p><strong>Number of pages:</strong> <%= @book.number_of_pages %></p>
-  <% end %>
-<% else %>
-  <div id="freebase_details"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+
+<% unless @book.date_of_first_publication.empty? %>
+  <p>
+    <strong>Date of first publication:</strong>
+    <%= @book.date_of_first_publication %>
+  </p>
 <% end %>
 
-<% unless @book.genre_list.empty? %>
-  <% genres = [] %>
-  <% for genre in @book.genre_list %>
-    <% genre = link_to genre, genre_url(genre) %>
-    <% genres << genre %>
-  <% end %>
+<% unless @book.original_language.empty? %>
   <p>
-    <strong>Genres: </strong><%= genres.join ", " %>
+    <strong>Original language:</strong>
+    <%= @book.original_language %>
   </p>
 <% end %>
-<% unless @book.subject_list.empty? %>
-  <% subjects = [] %>
-  <% for subject in @book.subject_list %>
-    <% subject = link_to subject, subject_url(subject) %>
-    <% subjects << subject %>
-  <% end %>
+
+<% unless @book.number_of_pages.empty? %>
   <p>
-    <strong>Subjects: </strong><%= subjects.join ", " %>
+    <strong>Number of pages:</strong>
+    <%= @book.number_of_pages %>
   </p>
 <% end %>
-<div></div>
+
 <h1>Download book &amp; translations</h1>
 
 <% @translations = @book.translations %>
 <%= render :partial => 'translations/index' %>
 
-<% unless @mobile %>
-  <div id="freebase_universe"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-  <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-  <%= render :partial => 'misc/qr_code' %>
-  <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-  <h1>Comments</h1>
-  <% @disqus = 'book_' + @book.id.to_s %>
-  <%= render :partial => 'misc/disqus_thread' %>
-  <% content_for(:tail) do %>
-    <%= render :partial => 'misc/disqus_tail' %>
+<% unless @book.genre_list.empty? %>
+  <h1>Genres:</h1>
+  <% for genre in @book.genre_list %>
+    <%= link_to genre, genre_url(genre) %>
   <% end %>
 <% end %>
-<%= "<p><b>#{h(link_to("New book", :controller => 'books', :action => 'new', :author => @book.author_id))}</b></p>".html_safe if user_admin %>
-<%= "<p><b>#{h(link_to("New translation", :controller => 'translations', :action => 'new', :book => @book))}</b></p>".html_safe if user_admin %>
-<p></p>
-<p>
+
+<% unless @book.subject_list.empty? %>
+  <h1>Subjects:</h1>
+  <% for subject in @book.subject_list %>
+    <%= link_to subject, subject_url(subject) %>
+  <% end %>
+<% end %>
+
+<% content_for(:back) do %>
   <%= link_to "Back to #{@book.author.name}", @book.author %>
-</p>
+<% end %>

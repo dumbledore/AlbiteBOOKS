@@ -1,0 +1,16 @@
+<% unless @translations.empty? %>
+  <% for translation in @book.translations %>
+    <%
+       text = []
+       text << 'Original text' if translation.original
+       text << Languages::LANGUAGES[translation.language][0]
+       text << translation.date_of_publication unless translation.date_of_publication.empty?
+       text << translation.note unless translation.note.empty?
+    %>
+    <%= link_to text.join(', '), download_url(translation) %>
+  <% end %>
+<% else %>
+  <p>
+    <i>Nothing to download yet.</i>
+  </p>
+<% end %>

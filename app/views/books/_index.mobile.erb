@@ -1,0 +1,11 @@
+<% unless @books.empty? %>
+  <% for book in @books %>
+    <% if book.ready or user_admin %>
+      <%= link_to (book.title, book_url(book), :class => 'menu') %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>
+    <i><%= @no_books_message %></i>
+  </p>
+<% end %>

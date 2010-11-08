@@ -11,11 +11,6 @@ html, body {
   font-size: 1em;
 }
 
-div {
-  /* This way one could force carriage return after floating objects just by using divs */
-  clear: both;
-}
-
 div.main {
   text-align: left;
 }
@@ -24,24 +19,24 @@ img {
   border-style: none;
 }
 
-span.subtitle {
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-family: "Times New Roman", Times, serif;
+/*span.subtitle {*/
+  /*margin: 0;*/
+  /*padding: 0;*/
+  /*border: none;*/
+  /*font-family: "Times New Roman", Times, serif;*/
   /*font-family: Arial, sans-serif;*/
-  font-size: 0.6em;
-  font-variant: normal;
-  font-style: italic;
-  font-weight: normal;
+  /*font-size: 0.6em;*/
+  /*font-variant: normal;*/
+  /*font-style: italic;*/
+  /*font-weight: normal;*/
   /*letter-spacing: 0.15em;*/
-  white-space: nowrap;
-}
+  /*white-space: nowrap;*/
+/*}*/
 
 p {
-  padding: 0 15px 0 15px;
+  padding: 0 5%;
   text-align: left;
-  line-height: 140%;
+  line-height: 130%;
 }
 
 i {
@@ -49,14 +44,17 @@ i {
 }
 
 img.logo {
-  margin-top: 10px;
+  margin-top: 5%;
 }
+
 h1 {
+  /*font-weight: bold;*/
   font-size: 1.5em;
-  border-bottom: 1px solid #aaa;
   text-align: left;
   font-variant: small-caps;
   padding: 0 15px 8px 15px;
+  line-height: 100%;
+  border-bottom: 1px solid #aaa;
 }
 
 hr {
@@ -66,15 +64,11 @@ hr {
   background-color: #AAAAAA;
 }
 
-span.menu, span.menu_down {
-  margin: 0 11px 0 11px;
-}
-
 a {
   display: block;
 
-  width:60%;
-  margin: 5% 10%;
+  width: 70%;
+  margin: 5% 5%;
   padding: 5% 10%;
 
   color: #06A;
@@ -83,10 +77,11 @@ a {
   
   text-decoration: underline;
   text-align: center;
+  font-size: 1.1em;
 }
 
 input {
-  width: 80%;
+  width: 90%;
 }
 
 a:hover {
@@ -100,26 +95,25 @@ a:active {
   border-color: #756156;
 }
 
-.booktitle, .author {
-  font-size: 1em;
+.caption {
   font-style: italic;
 }
 
-img.pre {
-  float: left;
-  margin: 10px 10px 5px 0;
-  border: none;
-}
+/*img.pre {*/
+  /*float: left;*/
+  /*margin: 10px 10px 5px 0;*/
+  /*border: none;*/
+/*}*/
 
-p.descr {
-  line-height: 130%;
-}
+/*p.descr {*/
+  /*line-height: 130%;*/
+/*}*/
 
 img.thumbnail {
   display: block;
-  width: 90%;
+  width: 86%;
   padding: 2%;
-  margin: 2% 3%;
+  margin: 2% 5%;
   border: solid 1px #999;
   /*float: right;*/
 }
@@ -144,10 +138,10 @@ img.thumbnail {
   /*height: 150px;*/
 /*}*/
 
-td.home {
-  padding: 15px;
-}
+/*td.home {*/
+  /*padding: 15px;*/
+/*}*/
 
-a.thumblist {
-  font-size: 1.1em;
-}
+/*a.thumblist {*/
+  /*font-size: 1.1em;*/
+/*}*/
