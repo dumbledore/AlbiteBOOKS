@@ -18,10 +18,9 @@ class BooksController < ApplicationController
   def show
     begin
       @book = Book.find(params[:id], :include => :author)
-      @mobile = mobile?
-      render :action => 'show'
     rescue ActiveRecord::RecordNotFound
       redirect_to books_url
+      return
     end
   end
 
