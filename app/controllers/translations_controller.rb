@@ -69,7 +69,7 @@ class TranslationsController < ApplicationController
     begin
       @translation = Translation.find(params[:id], :include => :book)
     rescue ActiveRecord::RecordNotFound
-      redirect_to home_url
+      redirect_to root_url
       return
     end
   end

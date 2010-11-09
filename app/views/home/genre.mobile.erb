@@ -8,11 +8,8 @@
 <% if @books.empty? %>
   <p><i>No books in this genre, so far.</i></p>
 <% else %>
-  <ul>
-    <% for book in @books %>
-      <li><%= link_to book.title, book_url(book) %></li>
-    <% end %>
-  </ul>
+  <% for book in @books %>
+    <%= link_to book.title, book_url(book) %>
+  <% end %>
 <% end %>
-
-<%= link_to 'Back to genres', genres_url %> 
+ 

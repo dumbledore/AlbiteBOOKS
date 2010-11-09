@@ -13,7 +13,7 @@
     <%= link_to "Get the Reader!", reader_url, :class => 'menu' %>
     <%= link_to "About", subjects_url, :class => 'menu' %>
     <% else %>
-      <%= link_to "Back Home", home_url, :class => 'menu' %>
+      <%= link_to "Back Home", root_url, :class => 'menu' %>
     <% end %>
     <% form_tag '/search', :method => 'get' do %>
       <%= text_field_tag :query %>
@@ -25,7 +25,7 @@
     <% unless @home %>
       <h1>Going back</h1>
       <%= yield(:back) %>
-      <%= link_to "Back Home", home_url, :class => 'menu' %>
+      <%= link_to "Back Home", root_url, :class => 'menu' %>
     <% end %>
 	</body>
 </html>

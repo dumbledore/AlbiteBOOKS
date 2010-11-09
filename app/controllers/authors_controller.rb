@@ -5,16 +5,20 @@ class AuthorsController < ApplicationController
   include Lettercode
 
   def index
-    unless APP_CONFIG['hide_author_index']
-      letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-      @aliases = Alias.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :name_reversed)
-      @letter_name = name_for_letter_number(letter)
-    else
-      @aliases = Alias.find(:all, :include => :author, :order => :name_reversed)
-    end
+    unless @mobile
+      unless APP_CONFIG['hide_author_index']
+        letter = process_letter((params[:letter]) ? params[:letter] : 'a')
+        @aliases = Alias.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :name_reversed)
+        @letter_name = name_for_letter_number(letter)
+      else
+        @aliases = Alias.find(:all, :include => :author, :order => :name_reversed)
+      end
 
-    @alias_thumbnails = false
-    @no_aliases_message = 'There are no authors, whose family name starts with this letter.'
+      @alias_thumbnails = false
+      @no_aliases_message = 'There are no authors, whose family name starts with this letter.'
+    else
+      redirect_to root_url
+    end
   end
 
   def show

@@ -31,7 +31,7 @@
           <table style="width: 100%;" cellspacing="0" cellpadding="0">
             <tr valign="bottom">
               <td align="left">
-                  <%= link_to image_tag("_/alb.gif", :style => "border: none; margin-left: 15px;", :alt => "Albite BOOKS Logo"), home_url  %>
+                  <%= link_to image_tag("_/alb.gif", :style => "border: none; margin-left: 15px;", :alt => "Albite BOOKS Logo"), root_url  %>
               </td>
               <td align="right">
               <%= render :partial => 'layouts/search' %>
@@ -51,7 +51,7 @@
             <tr>
               <td align="left">
                 <span class="menu"><%=
-                  link_to 'Home',home_url, :class => 'menu'
+                  link_to 'Home',root_url, :class => 'menu'
                 %><%=
                   link_to 'Books', books_url, :class => 'menu'
                 %><%=

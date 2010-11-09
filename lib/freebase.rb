@@ -36,7 +36,6 @@ module Freebase
     self.freebase_data = freebase_response(self.freebase_uid)
 #    self.freebase_valid = false if self.freebase_data.nil?
     if self.freebase_data.nil?
-      puts "$$ SOMETHING IS WRONG"
       errors.add('freebase_uid', ': there was a problem fetching the data from Freebase.')
     end
   end

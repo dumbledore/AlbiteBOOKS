@@ -5,14 +5,18 @@ class BooksController < ApplicationController
   include Lettercode
   
   def index
-    unless APP_CONFIG['hide_book_index']
-      letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-      @books = Book.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :title)
-      @letter_name = name_for_letter_number(letter)
+    unless @mobile
+      unless APP_CONFIG['hide_book_index']
+        letter = process_letter((params[:letter]) ? params[:letter] : 'a')
+        @books = Book.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :title)
+        @letter_name = name_for_letter_number(letter)
+      else
+        @books = Book.find(:all, :include => :author, :order => :title)
+      end
+      render :action => 'index'
     else
-      @books = Book.find(:all, :include => :author, :order => :title)
+      redirect_to root_url
     end
-    render :action => 'index'
   end
 
   def show

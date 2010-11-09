@@ -1,0 +1,16 @@
+<% subject_title = "Books in ‘#{@subject}’" %>
+<% title(subject_title) %>
+
+<h1>
+  <%= subject_title %>
+</h1>
+
+<% if @books.empty? %>
+  <p>
+    <i>No books in this genre, so far.</i>
+  </p>
+<% else %>
+  <% for book in @books %>
+    <%= link_to book.title, book_url(book) %>
+  <% end %>
+<% end %>

@@ -1,10 +1,16 @@
 <% title "The authors" %>
 <% unless APP_CONFIG['hide_author_index'] %>
   <h1 class='letter'>Authors
-  <span class='letter'><%= @letter_name %></span>
+    <span class='letter'>
+      <%= @letter_name %>
+    </span>
   <br /><%= render :partial => 'misc/letter' %></h1>
 <% else %>
   <h1>Authors</h1>
 <% end %>
+
 <%= render :partial => 'index' %>
-<p><b><%= link_to "New Author", new_author_path if user_admin %></b></p>
+
+<p>
+  <b><%= link_to "New Author", new_author_path if user_admin %></b>
+</p>

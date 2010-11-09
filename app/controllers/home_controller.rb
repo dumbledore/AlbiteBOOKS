@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     unless @mobile
       @genres = Book.tag_counts_on(:genres)
     else
-      redirect_to home_url
+      redirect_to root_url
     end
   end
 
@@ -22,7 +22,7 @@ class HomeController < ApplicationController
     unless @mobile
       @subjects = Book.tag_counts_on(:subjects)
     else
-      redirect_to home_url
+      redirect_to root_url
     end
   end
 
@@ -40,14 +40,14 @@ class HomeController < ApplicationController
       @query = params[:query]
       
       begin
-        search = Book.find_with_index(@query, {:limit => 16}, {:ids_only => true})
+        search = Book.find_with_index(@query, {:limit => 32}, {:ids_only => true})
         @books = Book.find(search, :order => :title, :include => :author)
       rescue
         @books = []
       end
 
       begin
-        search = Alias.find_with_index(@query, {:limit => 16}, {:ids_only => true})
+        search = Alias.find_with_index(@query, {:limit => 32}, {:ids_only => true})
         @aliases = Alias.find(search, :include => :author, :order => :name_reversed)
       rescue
         @aliases = []
