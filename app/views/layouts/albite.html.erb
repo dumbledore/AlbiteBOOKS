@@ -3,7 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
+    <meta name="description" content="The Project Gutenberg Book Catalog for mobile devices."/>
+    <meta name="keywords" content="free ebooks, free books, book reader, albite reader, albite books, java mobile"/>
+    <meta name="language" content="en_GB"/>
+    <meta name="classification" content="public"/>
     <link rel="shortcut icon" href="favicon.ico" />
     <script type="text/javascript">
       var images_url = "/images/";
@@ -102,7 +106,7 @@
         <td></td>
         <td align="center">
           <hr width="100%" />
-          <span class="menu"><%= render :partial => 'misc/ad_linkback' %><%=
+          <span class="menu"><%= render :partial => 'misc/ad_linkback' %> | <%=
             link_to "about this site", about_url, :class => :menu_down
           %>|<%=
             link_to "report copyright infringement", copyright_url, :class => :menu_down

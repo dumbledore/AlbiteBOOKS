@@ -79,6 +79,8 @@ ActionController::Routing::Routes.draw do |map|
 
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
-  
+
+#  map.connect '*', :controller => 'home', :action => 'home'
   map.root :controller => 'home', :action => 'home'
+  map.connect '*', :controller => 'redirects', :action => 'index'
 end
