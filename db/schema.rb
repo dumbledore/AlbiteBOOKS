@@ -9,11 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100720143903) do
+ActiveRecord::Schema.define(:version => 20101110204616) do
 
-  create_table "aliases", :force => true do |t|
+  create_table "author_aliases", :force => true do |t|
     t.string  "name_reversed", :default => "", :null => false
-    t.integer "letter",                        :null => false
+    t.integer "letter",        :default => 0,  :null => false
     t.integer "author_id",                     :null => false
   end
 
@@ -31,9 +31,15 @@ ActiveRecord::Schema.define(:version => 20100720143903) do
     t.datetime "updated_at"
   end
 
+  create_table "book_aliases", :force => true do |t|
+    t.string  "title",   :default => "", :null => false
+    t.integer "letter",  :default => 0,  :null => false
+    t.integer "book_id",                 :null => false
+  end
+
   create_table "books", :force => true do |t|
+    t.integer  "alias_title_id",                              :null => false
     t.string   "title",                     :default => "",   :null => false
-    t.integer  "letter",                                      :null => false
     t.string   "freebase_uid",              :default => "",   :null => false
     t.string   "thumbnail_url",             :default => "",   :null => false
     t.text     "description",                                 :null => false

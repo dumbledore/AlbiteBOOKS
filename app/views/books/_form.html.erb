@@ -1,7 +1,7 @@
 <% freebase_suggest 'book_title', 'book_freebase_uid', '/book/book', "\"/book/written_work/author\": \"#{h(@book.author.name)}\"".html_safe %>
 <% focus_on_load('book_title') %>
+
 <% form_for @book do |f| %>
-<!--form_for @post, :as => :post, :url => post_path(@post), :html => { :method => :put, :class => "edit_post", :id => "edit_post_45" }-->
   <%= f.error_messages %>
   <% content_tag :fieldset do %>
     <%= content_tag :legend, "General info" %>

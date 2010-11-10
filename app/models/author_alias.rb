@@ -1,4 +1,4 @@
-class Alias < ActiveRecord::Base
+class AuthorAlias < ActiveRecord::Base
 
   belongs_to :author
 
@@ -21,12 +21,13 @@ class Alias < ActiveRecord::Base
 
   def name
     #moving name to the left
-    normal_name = self.name_reversed.mb_chars.split(' ')
+    normal_name = self[:name_reversed].mb_chars.split(' ')
     normal_name.push(normal_name.shift)
     normal_name.join(' ')
   end
 
   def name=(name)
+
     unless name.blank?
 
       # moving name to the right
@@ -44,6 +45,13 @@ class Alias < ActiveRecord::Base
     end
   end
 
+  def name_reversed
+    name = self[:name_reversed].mb_chars.split(' ')
+    return self[:name_reversed] if name.size < 2
+    name[0] += ','
+    name.join(' ')
+  end
+
   def name_abbreviated(type)
     name_abb = []
 
@@ -57,8 +65,8 @@ class Alias < ActiveRecord::Base
         end
 
       when :name_reversed
-        name_abb = self.name_reversed.mb_chars.split(' ')
-        return self.name if name_abb.size < 2
+        name_abb = self[:name_reversed].mb_chars.split(' ')
+        return self[:name_reversed] if name_abb.size < 2
         name_abb[0] += ','
         for i in 2..name_abb.size-1
           t = name_abb[i].mb_chars[0..0]

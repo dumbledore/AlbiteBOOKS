@@ -1,39 +1,49 @@
 class Book < ActiveRecord::Base
-  require File.expand_path('app/models/translation.rb')
   belongs_to :author
+  belongs_to :alias_title, :class_name => 'BookAlias'
 
-  has_many :translations, :dependent => :destroy
+  has_many :book_aliases, :order => :title,     :dependent => :destroy
+  has_many :translations, :order => :original,  :dependent => :destroy
 
-  attr_accessible :title, :freebase_uid, :thumbnail_url, :author_id, :tags, :ready,
+  attr_accessible :alias_title_id, :title, :freebase_uid, :thumbnail_url, :author_id, :tags, :ready,
                   :description, :date_of_first_publication, :original_language, :number_of_pages,
                   :genre_list, :subject_list
 
   acts_as_taggable_on :genres, :subjects
-  acts_as_indexed :fields => [:title, :genre_list, :subject_list]
+  acts_as_indexed :fields => [:genre_list, :subject_list]
 
   validates_presence_of :title
   validates_uniqueness_of :freebase_uid, :allow_blank => true
 
   validate :author_exists
 
-  require File.expand_path('lib/lettercode.rb')
-  require File.expand_path('lib/freebase.rb')
-  include Lettercode
-  include Freebase
+  before_create do |book|
+    book.alias_title = BookAlias.create(:title => book.title, :book_id => 0)
+  end
 
   before_save :fill_in_from_freebase
+
+  after_create do |book|
+    book.alias_title.book = book
+    book.alias_title.save
+    book.save
+  end
+
+  after_update do |book|
+    book.alias_title.save
+  end
+
+  require File.expand_path('lib/freebase.rb')
+  include Freebase
+
+  def title=(title)
+    self[:title] = title
+    self.alias_title.title = title unless self.alias_title.nil?
+  end
 
   def author_exists
 #    errors[:base] << "Author does not exist." unless Author.exists?(self.author)
     errors.add_to_base "Author does not exist." unless Author.exists?(self.author_id)
-  end
-
-  def title=(title)
-
-    # copy the first letter to the letter attribute
-    self.letter = process_letter(title.mb_chars)
-
-    self[:title] = title
   end
 
   def fill_in_from_freebase
@@ -93,6 +103,17 @@ class Book < ActiveRecord::Base
             self.number_of_pages = self.freebase_data['properties']['/book/book_edition/number_of_pages']['values'][0]['text']
           rescue
           end
+        end
+      end
+    end
+  end
+
+  def create_aliases
+    get_freebase_info if self.freebase_data.nil?
+    unless self.freebase_data.nil?
+      if not self.freebase_data['alias'].nil? and self.freebase_data['alias'].class == Array
+        self.freebase_data['alias'].each do |aliaz|
+          BookAlias.create(:title => aliaz, :book => self, :book_id => self.id)
         end
       end
     end

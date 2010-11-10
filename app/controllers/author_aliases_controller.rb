@@ -1,4 +1,4 @@
-class AliasesController < ApplicationController
+class AuthorAliasesController < ApplicationController
   before_filter :require_admin
   
   def new
@@ -6,12 +6,13 @@ class AliasesController < ApplicationController
       @author = Author.find(params[:author])
     rescue ActiveRecord::RecordNotFound
       redirect_to authors_path# if not params[:author] or author.nil?
+      return
     end
-    @alias = @author.aliases.build
+    @alias = @author.author_aliases.build
   end
   
   def create
-    @alias = Alias.new(params[:alias])
+    @alias = AuthorAlias.new(params[:author_alias])
     if @alias.save
       flash[:notice] = "Successfully created alias."
       redirect_to edit_author_path(@alias.author_id)
@@ -22,25 +23,25 @@ class AliasesController < ApplicationController
   end
 
   def edit
-    @alias = Alias.find(params[:id], :include => :author)
+    @alias = AuthorAlias.find(params[:id], :include => :author)
     @author = @alias.author
   end
 
   def update
-    @alias = Alias.find(params[:id], :include => :author)
+    @alias = AuthorAlias.find(params[:id], :include => :author)
     @author = @alias.author
 
-    if @alias.update_attributes(params[:alias])
-      flash[:notice] = "Successfully created alias."
+    if @alias.update_attributes(params[:author_alias])
+      flash[:notice] = "Successfully updated alias."
       redirect_to edit_author_path(@alias.author_id)
     else
-      flash[:error] = "Couldn't create alias."
-      render :action => 'new'
+      flash[:error] = "Couldn't update alias."
+      render :action => 'edit'
     end
   end
 
   def destroy
-    @alias = Alias.find(params[:id])
+    @alias = AuthorAlias.find(params[:id])
 
     if @alias == @alias.author.alias_name
       flash[:error] = "Names are not allowed to be destroyed."

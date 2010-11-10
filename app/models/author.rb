@@ -1,8 +1,8 @@
 class Author < ActiveRecord::Base
-  belongs_to :alias_name, :class_name => 'Alias'
+  belongs_to :alias_name, :class_name => 'AuthorAlias'
 
-  has_many :aliases, :order => :name_reversed, :dependent => :destroy
-  has_many :books, :order => :title, :dependent => :destroy
+  has_many :author_aliases, :order => :name_reversed, :dependent => :destroy
+  has_many :books,          :order => :title,         :dependent => :destroy
   
   attr_accessible :alias_name_id, :name, :freebase_uid, :thumbnail_url, :ready,
                   :description, :date_and_place_of_birth, :date_and_place_of_death, :country_of_nationality
@@ -11,7 +11,7 @@ class Author < ActiveRecord::Base
   validates_uniqueness_of :freebase_uid, :allow_blank => true
 
   before_create do |author|
-    author.alias_name = Alias.create(:name => author.name, :author_id => 0)
+    author.alias_name = AuthorAlias.create(:name => author.name, :author_id => 0)
   end
 
   before_save :fill_in_from_freebase
@@ -27,8 +27,6 @@ class Author < ActiveRecord::Base
     author.alias_name.save
   end
 
-  require File.expand_path('app/models/alias.rb')
-  require File.expand_path('app/models/book.rb')
   require File.expand_path('lib/freebase.rb')
   include Freebase
 
@@ -123,7 +121,7 @@ class Author < ActiveRecord::Base
     unless self.freebase_data.nil?
       if not self.freebase_data['alias'].nil? and self.freebase_data['alias'].class == Array
         self.freebase_data['alias'].each do |aliaz|
-          Alias.create(:name => aliaz, :author => self)
+          AuthorAlias.create(:name => aliaz, :author => self)
         end
       end
     end

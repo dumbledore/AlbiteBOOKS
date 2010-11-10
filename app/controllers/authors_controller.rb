@@ -8,14 +8,14 @@ class AuthorsController < ApplicationController
     unless @mobile
       unless APP_CONFIG['hide_author_index']
         letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-        @aliases = Alias.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :name_reversed)
+        @aliases = AuthorAlias.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :name_reversed)
         @letter_name = name_for_letter_number(letter)
       else
-        @aliases = Alias.find(:all, :include => :author, :order => :name_reversed)
+        @author_aliases = AuthorAlias.find(:all, :include => :author, :order => :name_reversed)
       end
 
-      @alias_thumbnails = false
-      @no_aliases_message = 'There are no authors, whose family name starts with this letter.'
+      @author_alias_thumbnails = false
+      @no_author_aliases_message = 'There are no authors, whose family name starts with this letter.'
     else
       redirect_to root_url
     end
@@ -23,8 +23,7 @@ class AuthorsController < ApplicationController
 
   def show
     begin
-      @author = Author.find(params[:id], :include => [:aliases, :alias_name])
-      @mobile = mobile?
+      @author = Author.find(params[:id], :include => [:author_aliases, :alias_name])
       render :action => 'show'
     rescue ActiveRecord::RecordNotFound
       redirect_to authors_url
@@ -57,7 +56,7 @@ class AuthorsController < ApplicationController
 
   def edit
     begin
-      @author = Author.find(params[:id], :include => :aliases)
+      @author = Author.find(params[:id], :include => :author_aliases)
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url
@@ -66,7 +65,7 @@ class AuthorsController < ApplicationController
 
   def update
     begin
-      @author = Author.find(params[:id], :include => :aliases)
+      @author = Author.find(params[:id], :include => :author_aliases)
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url

@@ -64,9 +64,10 @@ ActionController::Routing::Routes.draw do |map|
 
   # content
   map.resources :authors
-  map.resources :aliases, :except => [:index, :show]
+  map.resources :author_aliases,  :except => [:index, :show]
   map.resources :books
-  map.resources :translations, :except => [:index]
+  map.resources :book_aliases,    :except => [:index, :show]
+  map.resources :translations,    :except => [:index]
 
   map.genres   'genres/',           :controller => 'home', :action => 'genres'
   map.genre    'genres/:genre',     :controller => 'home', :action => 'genre'
@@ -80,7 +81,6 @@ ActionController::Routing::Routes.draw do |map|
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
 
-#  map.connect '*', :controller => 'home', :action => 'home'
   map.root :controller => 'home', :action => 'home'
-  map.connect '*', :controller => 'redirects', :action => 'index'
+  map.connect '*path', :controller => 'home', :action => 'home'
 end

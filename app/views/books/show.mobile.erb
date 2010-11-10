@@ -32,6 +32,17 @@
   </p>
 <% end %>
 
+<% if @book.book_aliases.size > 1 %>
+  <p>
+  <strong>Also known as: </strong>
+  <% aliases = [] %>
+  <% for aliaz in @book.book_aliases %>
+    <% aliases << aliaz.title unless @book.alias_title == aliaz %>
+  <% end %>
+  <%= aliases.join(", ") %>
+  </p>
+<% end %>
+
 <h1>Download book &amp; translations</h1>
 
 <% @translations = @book.translations %>

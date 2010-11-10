@@ -7,6 +7,7 @@ class TranslationsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
+      return
     end
     
     @translation = book.translations.build
@@ -37,7 +38,6 @@ class TranslationsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Translation was not found'
       redirect_to books_url
-      return
     end
   end
 
@@ -70,7 +70,6 @@ class TranslationsController < ApplicationController
       @translation = Translation.find(params[:id], :include => :book)
     rescue ActiveRecord::RecordNotFound
       redirect_to root_url
-      return
     end
   end
 end

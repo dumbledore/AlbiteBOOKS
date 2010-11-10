@@ -19,11 +19,11 @@
 
 <div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 
-<% if @author.aliases.size > 1 %>
+<% if @author.author_aliases.size > 1 %>
   <p>
   <strong>Also known as: </strong>
   <% aliases = [] %>
-  <% for aliaz in @author.aliases %>
+  <% for aliaz in @author.author_aliases %>
     <% aliases << aliaz.name unless @author.alias_name == aliaz %>
   <% end %>
   <%= aliases.join(", ") %>

@@ -1,9 +1,5 @@
 <h1>Books found for ‘<%= @query %>’</h1>
-<% @book_thumbnails = true %>
-<% @no_books_message = 'No books have been found for this query.' %>
-<%= render :partial => 'books/index' %>
+<%= render :partial => 'books/aliases_index' %>
 
 <h1>Authors found for ‘<%= @query %>’</h1>
-<% @alias_thumbnails = true %>
-<% @no_aliases_message = 'No authors have been found for this query.' %>
-<%= render :partial => 'authors/index' %>
+<%= render :partial => 'authors/aliases_index' %>

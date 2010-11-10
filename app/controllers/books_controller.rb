@@ -8,12 +8,14 @@ class BooksController < ApplicationController
     unless @mobile
       unless APP_CONFIG['hide_book_index']
         letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-        @books = Book.find(:all, :include => :author, :conditions => "letter = '#{letter}'", :order => :title)
+        @book_aliases = BookAlias.find(:all, :include => [{:book => :author}], :conditions => "letter = '#{letter}'", :order => :title)
         @letter_name = name_for_letter_number(letter)
       else
-        @books = Book.find(:all, :include => :author, :order => :title)
+        @book_aliases = BookAlias.find(:all, :include => [{:book => :author}], :order => :title)
       end
-      render :action => 'index'
+
+      @book_alias_thumbnails = false
+      @no_book_aliases_message = 'There are no books, whose family name starts with this letter.'
     else
       redirect_to root_url
     end
@@ -24,7 +26,6 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id], :include => :author)
     rescue ActiveRecord::RecordNotFound
       redirect_to books_url
-      return
     end
   end
 
@@ -51,10 +52,19 @@ class BooksController < ApplicationController
       return
     end
 
-    if @book.save
-      flash[:notice] = 'Successfully created book.'
-      redirect_to @book
-    else
+    begin
+      Book.transaction do
+        if @book.save
+          @book.create_aliases # create additional resources
+          flash[:notice] = 'Successfully created book.'
+          redirect_to @book
+        else
+          render :action => 'new'
+        end
+      end
+    rescue => msg
+      puts "ERROR: " + msg.inspect;
+      flash[:error] = "Something is wrong with the transaction"
       render :action => 'new'
     end
   end
@@ -65,7 +75,6 @@ class BooksController < ApplicationController
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
-      return
     end
   end
 
@@ -78,11 +87,19 @@ class BooksController < ApplicationController
       return
     end
 
-    if @book.update_attributes(params[:book])
-      flash[:notice] = "Successfully updated the book."
-      redirect_to @book
-    else
-      render :action => 'edit'
+    begin
+      Book.transaction do
+        if @book.update_attributes(params[:book])
+          flash[:notice] = "Successfully updated the book."
+          redirect_to @book
+        else
+          render :action => 'edit'
+        end
+      end
+    rescue => msg
+      puts "ERROR: " + msg.inspect;
+      flash[:error] = "Something is wrong with the transaction"
+      render :action => 'new'
     end
   end
 

@@ -6,7 +6,7 @@
           <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : book.thumbnail_url) %>
           <%= image_tag(image_url, :class =>  'thumblist') %>
           <%= link_to h(book.title), book_url(book), :class => 'thumblist' %>
-      <% else %>
+        <% else %>
           <%= link_to h(book.title), book_url(book) %>
         <% end %>
         <%= "(" + book.date_of_first_publication + ")" unless book.date_of_first_publication.blank? %>

@@ -1,0 +1,13 @@
+<% title @alias.name %>
+
+<h1><%= @alias.name %></h1>
+<p>
+  <strong>Alias:</strong> <%= @alias.title %>
+</p>
+<p>
+  <strong>Book:</strong> <%= link_to @alias.book.title, @alias.book %>
+</p>
+
+<p>
+  <%= link_to "Back to aliases for #{@alias.book.title}", aliases_url("?book=#{@alias.book.id}") %>
+</p>

@@ -1,8 +1,8 @@
-<% unless @aliases.empty? %>
-  <% for aliaz in @aliases %>
+<% unless @author_aliases.empty? %>
+  <% for aliaz in @author_aliases %>
     <% if aliaz.author.ready or user_admin %>
       <p<%= ' class="strike"' unless aliaz.author.ready %>>
-      <% if @alias_thumbnails %>
+      <% if @author_alias_thumbnails %>
         <% image_url = (aliaz.author.thumbnail_url.blank? ? 'misc/no-image.gif' : aliaz.author.thumbnail_url) %>
         <%= image_tag(image_url, :class =>  'thumblist') %>
         <%= link_to aliaz.name_abbreviated(:name_reversed), author_url(aliaz.author), :class => 'thumblist' %>
@@ -19,5 +19,7 @@
     <% end %>
   <% end %>
 <% else %>
-  <p><i><%= @no_aliases_message %></i></p>
+  <p>
+    <i><%= @no_author_aliases_message %></i>
+  </p>
 <% end %>

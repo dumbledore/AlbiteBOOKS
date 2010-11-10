@@ -1,5 +1,6 @@
 <% freebase_suggest 'author_name', 'author_freebase_uid', '/book/author'%>
 <% focus_on_load('author_name') %>
+
 <% form_for @author do |f| %>
   <%= f.error_messages %>
   <% content_tag :fieldset do %>

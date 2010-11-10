@@ -3,6 +3,7 @@ class CreateAuthors < ActiveRecord::Migration
     create_table :authors, :options => 'default charset=utf8', :force => true do |t|
       t.references :alias_name, :null => false
       t.string :name_cached,    :null => false
+      
       t.string :freebase_uid,   :null => false
       t.string :thumbnail_url,  :null => false
 

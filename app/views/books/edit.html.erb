@@ -6,6 +6,17 @@
 <%= render :partial => 'form' %>
 
 <% content_tag :fieldset do %>
+  <%= content_tag :legend, "Alases" %>
+
+  <% @aliases = @book.book_aliases %>
+  <%= render :partial => 'book_aliases/index' %>
+
+  <p>
+    <b><%= link_to "New alias", :controller => 'book_aliases', :action => 'new', :book => @book %></b>
+  </p>
+<% end %>
+
+<% content_tag :fieldset do %>
   <%= content_tag :legend, "Translations" %>
   <% @translations = @book.translations %>
   <%= render :partial => 'translations/index' %>

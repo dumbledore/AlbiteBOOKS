@@ -8,11 +8,11 @@
 <% content_tag :fieldset do %>
   <%= content_tag :legend, "Alases" %>
 
-  <% @aliases = @author.aliases %>
-  <%= render :partial => 'aliases/index' %>
+  <% @aliases = @author.author_aliases %>
+  <%= render :partial => 'author_aliases/index' %>
 
   <p>
-    <b><%= link_to "New alias", :controller => 'aliases', :action => 'new', :author => @author %></b>
+    <b><%= link_to "New alias", :controller => 'author_aliases', :action => 'new', :author => @author %></b>
   </p>
 <% end %>
 

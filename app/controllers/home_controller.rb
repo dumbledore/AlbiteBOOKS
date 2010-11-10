@@ -34,26 +34,30 @@ class HomeController < ApplicationController
   def search
     if (params[:query].nil? or params[:query].empty?)
       @query = ''
-      @books = []
-      @aliases = []
+      @book_aliases   = []
+      @author_aliases = []
     else
       @query = params[:query]
       
       begin
-        search = Book.find_with_index(@query, {:limit => 32}, {:ids_only => true})
-        @books = Book.find(search, :order => :title, :include => :author)
+        @book_aliases = BookAlias.with_query(@query).find(:all, :limit => 32, :order => :title, :include => [{:book => :author}])
       rescue
-        @books = []
+        @book_aliases = []
       end
 
       begin
-        search = Alias.find_with_index(@query, {:limit => 32}, {:ids_only => true})
-        @aliases = Alias.find(search, :include => :author, :order => :name_reversed)
+        @author_aliases = AuthorAlias.with_query(@query).find(:all, :limit => 32, :include => :author, :order => :name_reversed)
       rescue
-        @aliases = []
+        @author_aliases = []
       end
-
-      render 'search.html.erb'
     end
+
+    @book_alias_thumbnails = true
+    @no_book_aliases_message = 'No books have been found for this query.'
+
+    @author_alias_thumbnails = true
+    @no_author_aliases_message = 'No authors have been found for this query.'
+    
+    render 'search.html.erb'
   end
 end

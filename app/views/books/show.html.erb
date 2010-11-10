@@ -20,6 +20,17 @@
 </p>
 <div id="freebase_details"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 
+<% if @book.book_aliases.size > 1 %>
+  <p>
+  <strong>Also known as: </strong>
+  <% aliases = [] %>
+  <% for aliaz in @book.book_aliases %>
+    <% aliases << aliaz.title unless @book.alias_title == aliaz %>
+  <% end %>
+  <%= aliases.join(", ") %>
+  </p>
+<% end %>
+
 <% unless @book.genre_list.empty? %>
   <% genres = [] %>
   <% for genre in @book.genre_list %>

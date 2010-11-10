@@ -1,0 +1,11 @@
+<% unless @book_aliases.empty? %>
+  <% for aliaz in @book_aliases %>
+    <% if aliaz.book.ready or user_admin %>
+      <%= link_to (aliaz.title, aliaz.book, :class => 'menu') %>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>
+    <i><%= @no_book_aliases_message %></i>
+  </p>
+<% end %>
