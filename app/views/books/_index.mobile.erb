@@ -1,7 +1,7 @@
 <% unless @books.empty? %>
   <% for book in @books %>
     <% if book.ready %>
-      <%= link_to (book.title, book_url(book), :class => 'menu') %>
+      <%= mobile_link_to(book_url(book), book.title, nil, true, 'book') %>
     <% end %>
   <% end %>
 <% else %>

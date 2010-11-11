@@ -35,4 +35,25 @@ module ApplicationHelper
   def production?
       @is_production ||= (ENV['RAILS_ENV'] == 'production')
   end
+
+  def mobile_link_to(url, title, subtitle = nil, arrow = true, icon = nil)
+    link = '<div class="text"><div class="hover">'
+    link << "<div class='icon_#{icon}'>" if icon
+
+    classes = ''
+    if icon or arrow
+      classes = []
+      classes << 'icon' if icon
+      classes << 'arrow' if arrow
+      classes = ' class="' + classes.join(' ') + '"'
+    end
+    
+    link << "<a href='#{url}'#{classes}><strong>#{title}</strong>"
+    link << "<br /><span class='subtitle'>#{subtitle}</span>" if subtitle
+    link << '</a>'
+    link << '</div>' if icon
+    link << '</div></div>'
+
+    link
+  end
 end

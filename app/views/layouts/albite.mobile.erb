@@ -13,24 +13,14 @@
     <%= stylesheet_link_tag 'mobile' %>
   </head>
   <body>
-    <%= image_tag '_/alb.png', :class => 'logo' %>
-    <% if @home %>
-    <%= link_to "Get the Reader!", reader_url, :class => 'menu' %>
-    <%= link_to "About", subjects_url, :class => 'menu' %>
-    <% else %>
-      <%= link_to "Back Home", root_url, :class => 'menu' %>
-    <% end %>
-    <% form_tag '/search', :method => 'get' do %>
-      <%= text_field_tag :query %>
-      <%= submit_tag 'find books or authors' %>
-    <% end %>
     <div class="main">
       <%= yield %>
     </div>
+    
     <% unless @home %>
-      <h1>Going back</h1>
+      <h2>Going back</h2>
       <%= yield(:back) %>
-      <%= link_to "Back Home", root_url, :class => 'menu' %>
+      <%= mobile_link_to(root_url, 'Home', 'Go to the home page', true, 'home') %>
     <% end %>
 	</body>
 </html>

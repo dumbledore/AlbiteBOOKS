@@ -1,0 +1,335 @@
+body{
+  font-family: sans-serif;
+}
+
+body, div, ol, ul, li{
+  margin:0;
+  border:0;
+  padding:0;
+  -webkit-padding-start:0;
+}
+
+* {
+  -webkit-text-size-adjust:none;
+}
+
+div.separator{
+  border-top:1px solid #eee;
+}
+
+div.contents h1{
+  font-size:100%;
+  font-weight:bold;
+  color:blue;
+}
+
+div.footer{
+  padding:.1em .5em;
+  background-color:yellow;
+}
+
+div.menu{
+  padding:.5em .5em;
+  background-color:#ffc;
+}
+
+div.copyright{
+  font-size:x-small;
+}
+
+img {
+  border:0;
+}
+
+img.coverpage{
+  float:right;
+  width:50%;
+  max-width:200px;
+  margin:0 10px 1em 1em;
+  border:1px solid gray;
+  -webkit-box-shadow:5px 5px 5px rgba(0,0,0,0.7);
+  -moz-box-shadow:5px 5px 5px rgba(0,0,0,0.7);
+}
+
+.links{
+  display:block;
+  margin:0;
+  text-align:center;
+}
+
+.links img{
+  padding-right:1em;
+  vertical-align:top;
+}
+
+h1{
+  display:none;
+}
+
+.results{
+  display:block;
+  list-style-type:none;
+}
+
+.entry{
+  display:block;
+  border-bottom:1px solid #d9d9d9;
+}
+
+.link{
+  display:block;
+  background-repeat:no-repeat;
+  background-position:left center;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+  padding:4pt 0 4pt 32px;
+  text-decoration:none;
+}
+
+.toplink{
+  background-color:#eee;
+}
+
+.table{
+  display:table;
+  width:100%;
+}
+
+.cell{
+  display:table-cell;
+  vertical-align:middle;
+  height:32pt;
+  background-repeat:no-repeat;
+  background-position:right center;
+}
+
+.data .cell{
+  padding-right:26px;
+  background-image:url(/pics/16/next);
+}
+
+.icon_suggestion{
+  display:none;
+}
+
+.icon_alias a{
+  background-image:url(/pics/24/messagebox_info);
+}
+
+.icon_alpha a{
+  background-image:url(/pics/24/applixware);
+}
+
+.icon_audiobook a{
+  background-image:url(/pics/24/amarok);
+}
+
+.icon_author a{
+  background-image:url(/pics/24/kuser);
+}
+
+.icon_back a{
+  background-image:url(/pics/24/previous);
+}
+
+.icon_bibrec .link{
+  background-image:url(/pics/24/messagebox_info);
+}
+
+.icon_bookshelf a{
+  background-image:url(/pics/24/bookcase);
+}
+
+.icon_date a{
+  background-image:url(/pics/24/date);
+}
+
+.icon_external a{
+  background-image:url(/pics/24/browser);
+}
+
+.icon_file a{
+  background-image:url(/pics/24/folder_yellow_open);
+}
+
+.icon_home a{
+  background-image:url(/pics/24/gohome);
+}
+
+.icon_internal a{
+  background-image:url(/pics/24/pg-logo);
+}
+
+.icon_language a{
+  background-image:url(/pics/24/locale);
+}
+
+.icon_more a{
+  background-image:url(/pics/24/edit_add);
+}
+
+.icon_popular a{
+  background-image:url(/pics/24/bookmark);
+}
+
+.icon_quantity a{
+  background-image:url(/pics/24/licq);
+}
+
+.icon_save a{
+  background-image:url(/pics/24/dock);
+}
+
+.icon_search .link{
+  background-image:url(/pics/24/viewmag);
+}
+
+.icon_subject a{
+  background-image:url(/pics/24/edu_science);
+}
+
+.icon_suggestion a{
+  background-image:url(/pics/24/ktip);
+}
+
+.icon_title a{
+  background-image:url(/pics/24/kdict);
+}
+
+.icon_title_no_images a{
+  background-image:url(/pics/24/book-cut);
+}
+
+a{
+  color:black;
+}
+
+a:active{
+  background-color:rgba(0,0,255,0.4);
+  color:white;
+}
+
+span.title{
+  display:block;
+  font-weight:bold;
+}
+
+span.subtitle{
+  display:block;
+}
+
+span.extra{
+  display:block;
+  color:red;
+}
+
+span.nextpage{
+  display:block;
+  font-weight:bold;
+}
+
+span.spinner{
+  display:block;
+  float:right;
+  background-position:0 0;
+  background-repeat:no-repeat;
+}
+
+.header{
+  clear:both;
+  min-height:12pt;
+  padding:.2em .5em;
+  font-size:120%;
+  font-weight:bold;
+  background-color:gray;
+  color:white;
+}
+
+h1.caption{
+  min-height:20pt;
+  border-top:1px solid gray;
+  border-bottom:1px solid gray;
+  background-color:gray;
+  color:white;
+}
+
+.link{
+  position:relative;
+  -webkit-touch-callout:none;
+}
+
+#query-wrapper{
+  padding-right:36px;
+}
+
+#query{
+  width:100%;
+  border:1px solid gray;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  -webkit-border-radius:10px;
+  -moz-border-radius:1000px;
+  border-radius:1000px;
+  -webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,0.7);
+  -moz-box-shadow:inset 0 1px 2px rgba(0,0,0,0.7);
+  box-shadow:inset 0 1px 2px rgba(0,0,0,0.7);
+  padding:2pt 24px 2pt 8px;
+}
+
+#go{
+  background-color:transparent;
+  background-image:url(/pics/32/run);
+  background-position:right center;
+  background-repeat:no-repeat;
+  width:34px;
+  height:100%;
+  border:none;
+  padding:0;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+#clear{
+  background-color:transparent;
+  background-image:url(/pics/16/no);
+  background-position:10px center;
+  background-repeat:no-repeat;
+  border:none;
+  padding:0;
+  width:32px;
+  height:100%;
+  position:absolute;
+  right:34px;
+  top:0;
+}
+
+h1.caption{
+  border-top:1px solid #94aec9;
+  border-bottom:1px solid #001329;
+  background:-webkit-gradient(linear,left top,left bottom,from(#638ab1),color-stop(0.5,#134e89),color-stop(0.5,#004080),to(#00346d));
+  background:-moz-linear-gradient(#638ab1,#134e89 50%,#004080 50%,#00346d);
+}
+
+.header{
+  text-shadow:gray 0 1px 1px;
+  border-top:1px solid #a5b1ba;
+  border-bottom:1px solid #989ea4;
+  background:-webkit-gradient(linear,left top,left bottom,from(#909faa),to(#b8c1c8));
+  background:-moz-linear-gradient(#909faa,#b8c1c8);
+}
+
+a{
+  -webkit-tap-highlight-color:rgba(0,0,255,0.4);
+}
+
+@media screen and(max-device-width:480px){
+  body{
+    font-family:helvetica,sans-serif;
+  }
+
+  #query{
+    font-size:120%;
+  }
+}

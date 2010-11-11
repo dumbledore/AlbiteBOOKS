@@ -42,8 +42,12 @@
   </p>
 <% end %>
 
-<h1>Books</h1>
+<h2>Books</h2>
 <% @books = @author.books %>
 <% @book_thumbnails = true %>
 <% @no_books_message = 'No books have been added, so far.' %>
 <%= render :partial => 'books/index' %>
+
+<% content_for(:back) do %>
+  <%= mobile_link_to(authors_url, 'Authors', 'Search for another author', true, 'user') %>
+<% end %>
