@@ -7,7 +7,7 @@ html, body {
   padding: 0;
 
 /*background-color: #f8f8f8;*/
-  background: url('/images/mobile/bg.png') fixed;
+  background: url('/images/mobile/bg.png') repeat fixed;
   border-style: none;
 
   color: #000;
@@ -65,13 +65,14 @@ a {
   color: #000;
   padding: 10px;
   text-decoration: none;
+  line-height: 100%;
 }
 
 a, p, h1, div.thumbnail {
   border-bottom: #adaaad solid 1px;
 }
 
-p, .text, div.thumbnail {
+p, .text, div.thumbnail, td.no_page {
   background: #f5f3f3 url("/images/mobile/text.png") repeat-x top
 }
 
@@ -88,7 +89,7 @@ a, p, div.main, h1, h2, .left {
   text-align: left;
 }
 
-.hover:hover {
+.hover:hover, .hover:active, .hover:focus {
   background: #ff9200 url("/images/mobile/pressed.png") repeat-x top;
 }
 
@@ -113,13 +114,36 @@ tr {
   vertical-align: top;
 }
 
-/*div.box {*/
-  /*width: 158px;*/
-/*}*/
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table.pages {
+  width: 100%;
+}
+
+td.page, td.no_page {
+  width: 20%;
+}
+
+td.no_page {
+  border-bottom:  #adaaad solid 1px;
+}
+
+td {
+  padding: 0;
+}
+
+p.curr_page {
+  padding: 10px;
+  line-height: 100%;
+  text-align: center;
+}
+
 table.search {
   width: 100%;
   padding: 5%;
-  /*height: 60px;*/
   background-color: #434343;
 }
 
@@ -155,7 +179,7 @@ button.go {
   background: url('/images/mobile/search-button.png') no-repeat;
 }
 
-button.go:hover, button.go:active {
+button.go:hover, button.go:active, button.go:focus {
   background: url('/images/mobile/search-button-pressed.png') no-repeat;
   cursor: pointer;
 }
@@ -199,6 +223,7 @@ a.icon {
   padding-left: 44px;
 }
 
+div.icon_back,
 div.icon_book,
 div.icon_clock,
 div.icon_download,
@@ -208,6 +233,10 @@ div.icon_user
 
 {
   background: none no-repeat 10px center;
+}
+
+div.icon_back {
+  background-image: url('/images/mobile/back.png');
 }
 
 div.icon_book {

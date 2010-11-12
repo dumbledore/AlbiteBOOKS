@@ -287,6 +287,18 @@ input[type="text"].search {
   width: 400px;
 }
 
+button.search {
+  width: 26px;
+  height: 34px;
+  background: url('/images/_/sb.gif') no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+button.search:hover, button.search:active, button.search:focus {
+    background: url('/images/_/sb2.gif') no-repeat;
+}
+
 table.admin { /*}, table.admin td, table.admin th {*/
   border:1px solid #ccc;
   margin: auto;
@@ -362,4 +374,12 @@ p.quote {
 
 p.strike {
   text-decoration: line-through;
+}
+
+div.paginate {
+  text-align: right;
+}
+
+span.paginate {
+  padding-left: 10px;
 }

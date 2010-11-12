@@ -6,12 +6,8 @@ class HomeController < ApplicationController
   end
 
   def latest
-    unless mobile?
-      redirect_to root_url
-      return
-    end
-
-    @books = Book.find(:all, :limit => 16, :order => 'created_at DESC', :include => :author)
+#    @books = Book.find(:all, :limit => '', :order => 'created_at DESC', :include => :author)
+    @books = Book.paginate(:page => params[:page], :size => APP_CONFIG['paginate'][(mobile? ? 'mobile' : 'html')]).find(:all, :order => :title, :include => [{:book => :author}])
   end
 
   def genres
@@ -37,21 +33,23 @@ class HomeController < ApplicationController
   end
 
   def search
+    @book_aliases   = []
+    @author_aliases = []
+
     if (params[:query].nil? or params[:query].empty?)
       @query = ''
-      @book_aliases   = []
-      @author_aliases = []
     else
       @query = params[:query]
       
       begin
-        @book_aliases = BookAlias.with_query(@query).find(:all, :limit => 32, :order => :title, :include => [{:book => :author}])
+        @book_aliases = BookAlias.with_query(@query).paginate(:page => params[:page], :per_page => 2, :include => [:book, {:book => :author}])
       rescue
         @book_aliases = []
       end
 
       begin
-        @author_aliases = AuthorAlias.with_query(@query).find(:all, :limit => 32, :include => :author, :order => :name_reversed)
+#        @author_aliases = AuthorAlias.with_query(@query).find(:all, :limit => 32, :include => :author, :order => :name_reversed)
+#        @author_aliases = AuthorAlias.with_query(@query).paginate(:page => params[:page], :size => APP_CONFIG['paginate']['html']).find(:all, :order => :name_reversed, :include => :author)
       rescue
         @author_aliases = []
       end

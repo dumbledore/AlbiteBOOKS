@@ -1,5 +1,7 @@
 <h1>Books found for ‘<%= @query %>’</h1>
 <%= render :partial => 'books/aliases_index' %>
+<%= will_paginate @book_aliases unless @book_aliases.empty? %>
 
 <h1>Authors found for ‘<%= @query %>’</h1>
 <%= render :partial => 'authors/aliases_index' %>
+<%= will_paginate @author_aliases unless @author_aliases.empty? %>

@@ -13,6 +13,11 @@ mobile_by_subdomain: false
 # Count of books showed at the homepage
 homepage_book_count: 3
 
+# Pagination
+paginate:
+  html: 32   # number of items per page in the standard version
+  mobile: 16 # number of items per page in the mobile version
+
 # App's Secret Token
 # ==================
 #
