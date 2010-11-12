@@ -17,7 +17,7 @@ class AuthorsController < ApplicationController
       @author_alias_thumbnails = false
       @no_author_aliases_message = 'There are no authors, whose family name starts with this letter.'
     else
-      redirect_to root_url
+      
     end
   end
 

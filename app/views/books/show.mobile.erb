@@ -1,11 +1,16 @@
 <% title @book.title %>
 
 <h1>
-  <%=h @book.title %>
+  <%=h @book.title %><br />
+  <span class="subtitle">by <%= h @book.author.name %></span>
 </h1>
+<div class="shadow_container"><div class="shadow"></div></div>
 
-<%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
-<%= link_to "by #{@book.author.name}", @book.author, :class => 'caption' %>
+<% unless @book.thumbnail_url.blank? %>
+  <div class="thumbnail">
+    <%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') %>
+  </div>
+<% end %>
 
 <p>
   <%= @book.description %>
@@ -43,25 +48,32 @@
   </p>
 <% end %>
 
-<h1>Download book &amp; translations</h1>
+<h2>Download book &amp; translations</h2>
+<div class="shadow_container"><div class="shadow"></div></div>
 
 <% @translations = @book.translations %>
 <%= render :partial => 'translations/index' %>
 
 <% unless @book.genre_list.empty? %>
-  <h1>Genres:</h1>
+  <h2>Genres</h2>
+  <div class="shadow_container"><div class="shadow"></div></div>
   <% for genre in @book.genre_list %>
-    <%= link_to genre, genre_url(genre) %>
+    <%= mobile_link_to(genre_url(h(genre)), h(genre), nil, true, 'tag') %>
   <% end %>
 <% end %>
 
 <% unless @book.subject_list.empty? %>
-  <h1>Subjects:</h1>
+  <h2>Subjects</h2>
+  <div class="shadow_container"><div class="shadow"></div></div>
   <% for subject in @book.subject_list %>
-    <%= link_to subject, subject_url(subject) %>
+    <%= mobile_link_to(subject_url(h(subject)), h(subject), nil, true, 'tag') %>
   <% end %>
 <% end %>
 
 <% content_for(:back) do %>
-  <%= link_to "Back to #{@book.author.name}", @book.author %>
+  <% if @book.author.thumbnail_url.blank? %>
+    <%= mobile_link_to(author_url(@book.author), @book.author.name, 'Back to author', true, 'user') %>
+  <% else %>
+    <%= mobile_link_to(author_url(@book.author), @book.author.name, 'Back to author', true, @book.author.thumbnail_url, false) %>
+  <% end %>
 <% end %>

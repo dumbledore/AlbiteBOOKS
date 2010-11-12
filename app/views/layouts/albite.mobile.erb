@@ -18,9 +18,10 @@
     </div>
     
     <% unless @home %>
-      <h2>Going back</h2>
+      <h2>Go back</h2>
+      <div class="shadow_container"><div class="shadow"></div></div>
       <%= yield(:back) %>
-      <%= mobile_link_to(root_url, 'Home', 'Go to the home page', true, 'home') %>
+      <%= mobile_link_to(root_url, 'Home', 'Back home', true, 'home') %>
     <% end %>
 	</body>
 </html>

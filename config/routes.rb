@@ -55,6 +55,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # statics
   map.home      'home/',      :controller => 'home', :action => 'home'
+  map.latest    'latest/',    :controller => 'home', :action => 'latest'
   map.reader    'reader/',    :controller => 'home', :action => 'reader'
   map.about     'about/',     :controller => 'home', :action => 'about'
   map.faq       'faq/',       :controller => 'home', :action => 'faq'

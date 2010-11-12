@@ -5,30 +5,35 @@ class HomeController < ApplicationController
     end
   end
 
-  def genres
-    unless @mobile
-      @genres = Book.tag_counts_on(:genres)
-    else
+  def latest
+    unless mobile?
       redirect_to root_url
+      return
     end
+
+    @books = Book.find(:all, :limit => 16, :order => 'created_at DESC', :include => :author)
+  end
+
+  def genres
+    @genres = Book.tag_counts_on(:genres)
   end
 
   def genre
     @genre = params[:genre]
-    @books = Book.tagged_with(@genre)
+    @books = Book.tagged_with(@genre).find(:all, :include => :author, :limit => 32)
+    @no_books_message = 'No books in this genre, so far.'
+    @show_author_name = true
   end
 
   def subjects
-    unless @mobile
-      @subjects = Book.tag_counts_on(:subjects)
-    else
-      redirect_to root_url
-    end
+    @subjects = Book.tag_counts_on(:subjects)
   end
 
   def subject
     @subject = params[:subject]
-    @books = Book.tagged_with(@subject)
+    @books = Book.tagged_with(@subject).find(:all, :include => :author, :limit => 32)
+    @no_books_message = 'No books in this subject, so far.'
+    @show_author_name = true
   end
 
   def search

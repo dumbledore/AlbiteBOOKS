@@ -67,11 +67,11 @@ a {
   text-decoration: none;
 }
 
-a, p, h1, img {
+a, p, h1, div.thumbnail {
   border-bottom: #adaaad solid 1px;
 }
 
-p, .text, img {
+p, .text, div.thumbnail {
   background: #f5f3f3 url("/images/mobile/text.png") repeat-x top
 }
 
@@ -92,10 +92,104 @@ a, p, div.main, h1, h2, .left {
   background: #ff9200 url("/images/mobile/pressed.png") repeat-x top;
 }
 
+div.thumbnail {
+  width: 100%;
+  padding: 15% 0;
+  text-align: center;
+}
+
 img.thumbnail {
-  display: block;
-  width: 50%;
-  padding: 10% 25%;
+  border: 1px #adaaad solid;
+  width: 70%;
+}
+
+img.small {
+  width: 24px;
+  max-height: 50px;
+  padding: 5px 5px 0 0;
+}
+
+tr {
+  vertical-align: top;
+}
+
+/*div.box {*/
+  /*width: 158px;*/
+/*}*/
+table.search {
+  width: 100%;
+  padding: 5%;
+  /*height: 60px;*/
+  background-color: #434343;
+}
+
+td.search {
+  width: 43px;
+}
+
+td.separator {
+  width: 10px;
+}
+
+tr.search {
+  vertical-align: middle;
+}
+
+input.box {
+  width: 100%;
+  border: none;
+  background: url('/images/mobile/search.png') repeat-x;
+  height: 43px;
+  padding: 0 4px;
+}
+
+button.go {
+  width: 43px;
+  height: 43px;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  
+  background: url('/images/mobile/search-button.png') no-repeat;
+}
+
+button.go:hover, button.go:active {
+  background: url('/images/mobile/search-button-pressed.png') no-repeat;
+  cursor: pointer;
+}
+
+div.box_left, div.box_right {
+  width: 6px;
+  height: 43px;
+
+  position: absolute;
+  z-index: 3;
+}
+
+div.box_left{
+  top: 0px;
+  left: 0px;
+  background: url('/images/mobile/search-left.png') no-repeat;
+}
+
+div.box_right {
+  top: 0px;
+  right: -8px;
+  background: url('/images/mobile/search-right.png') no-repeat;
+}
+
+div.shadow_container, div.box, .relative {
+  position: relative;
+}
+
+div.shadow {
+  width: 100%;
+  height: 3px;
+  background: url('/images/mobile/shadow.png') repeat-x;
+  position: absolute;
+  z-index: 4;
 }
 
 /*
@@ -106,6 +200,7 @@ a.icon {
 }
 
 div.icon_book,
+div.icon_clock,
 div.icon_download,
 div.icon_home,
 div.icon_tag,
@@ -117,6 +212,10 @@ div.icon_user
 
 div.icon_book {
   background-image: url('/images/mobile/book.png');
+}
+
+div.icon_clock {
+  background-image: url('/images/mobile/clock.png');
 }
 
 div.icon_download {

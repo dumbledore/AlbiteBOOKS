@@ -1,10 +1,12 @@
-<% title "The subjects" %>
+<% title 'The subjects' %>
 <h1>
   Subjects
 </h1>
 
 <% if @subjects.empty? %>
-  <p><i>No subjects have been added, so far.</i></p>
+  <p>
+    <i>No subjects have been added, so far.</i>
+  </p>
 <% else %>
   <ul>
     <% for subject in @subjects %>

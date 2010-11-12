@@ -3,8 +3,13 @@
 <h1>
   <%=h @author.name %>
 </h1>
+<div class="shadow_container"><div class="shadow"></div></div>
 
-<%= image_tag(@author.thumbnail_url, :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
+<% unless @author.thumbnail_url.blank? %>
+  <div class="thumbnail">
+    <%= image_tag(@author.thumbnail_url, :class =>  'thumbnail') %>
+  </div>
+<% end %>
 
 <p>
   <%= @author.description %>
@@ -43,9 +48,13 @@
 <% end %>
 
 <h2>Books</h2>
+<div class="shadow_container"><div class="shadow"></div></div>
+
 <% @books = @author.books %>
 <% @book_thumbnails = true %>
 <% @no_books_message = 'No books have been added, so far.' %>
+<% @show_publication_date = true %>
+
 <%= render :partial => 'books/index' %>
 
 <% content_for(:back) do %>

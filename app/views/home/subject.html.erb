@@ -5,14 +5,6 @@
   <%= subject_title %>
 </h1>
 
-<% if @books.empty? %>
-  <p><i>No books in this genre, so far.</i></p>
-<% else %>
-  <ul>
-    <% for book in @books %>
-      <li><%= link_to book.title, book_url(book) %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render :partial => 'books/index' %>
 
 <%= link_to 'Back to subjects', subjects_url %>

@@ -41,6 +41,10 @@ class Translation < ActiveRecord::Base
     @path_to_dir ||= File.dirname(path_to_file)
   end
 
+  def filesize
+    @filesize ||= (File.size(path_to_file) / 1024).round.to_s + " KB"
+  end
+
   private
 
   def update_filename

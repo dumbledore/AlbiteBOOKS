@@ -4,12 +4,10 @@
 <h1>
   <%= genre_title %>
 </h1>
+<div class="shadow_container"><div class="shadow"></div></div>
 
-<% if @books.empty? %>
-  <p><i>No books in this genre, so far.</i></p>
-<% else %>
-  <% for book in @books %>
-    <%= link_to book.title, book_url(book) %>
-  <% end %>
+<%= render :partial => 'books/index' %>
+
+<% content_for(:back) do %>
+  <%= mobile_link_to(genres_url, 'Genres', 'Back to genres', true, 'tag') %>
 <% end %>
- 

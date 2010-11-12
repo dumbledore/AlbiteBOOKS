@@ -1,0 +1,16 @@
+<% title 'The genres' %>
+
+<h1>
+  Genres
+</h1>
+<div class="shadow_container"><div class="shadow"></div></div>
+
+<% if @genres.empty? %>
+  <p>
+    <i>No genres have been added, so far.</i>
+  </p>
+<% else %>
+  <% for genre in @genres %>
+    <%= mobile_link_to(genre_url(h(genre.name)), h(genre.name), nil, true, 'tag') %>
+  <% end %>
+<% end %>

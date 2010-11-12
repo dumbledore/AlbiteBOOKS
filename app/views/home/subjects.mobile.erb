@@ -1,0 +1,16 @@
+<% title 'The subjects' %>
+
+<h1>
+  Subjects
+</h1>
+<div class="shadow_container"><div class="shadow"></div></div>
+
+<% if @subjects.empty? %>
+  <p>
+    <i>No subjects have been added, so far.</i>
+  </p>
+<% else %>
+  <% for subject in @subjects %>
+    <%= mobile_link_to(subject_url(h(subject.name)), h(subject.name), nil, true, 'tag') %>
+  <% end %>
+<% end %>
