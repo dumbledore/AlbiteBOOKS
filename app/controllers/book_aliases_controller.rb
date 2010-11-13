@@ -4,11 +4,10 @@ class BookAliasesController < ApplicationController
   def new
     begin
       @book = Book.find(params[:book])
+      @alias = @book.book_aliases.build
     rescue ActiveRecord::RecordNotFound
       redirect_to books_path
-      return
     end
-    @alias = @book.book_aliases.build
   end
 
   def create
@@ -23,33 +22,44 @@ class BookAliasesController < ApplicationController
   end
 
   def edit
-    @alias = BookAlias.find(params[:id], :include => :book)
-    @book = @alias.book
+    begin
+      @alias = BookAlias.find(params[:id], :include => :book)
+      @book = @alias.book
+    rescue ActiveRecord::RecordNotFound
+      redirect_to books_url
+    end
   end
 
   def update
-    @alias = BookAlias.find(params[:id], :include => :book)
-    @book = @alias.book
+    begin
+      @alias = BookAlias.find(params[:id], :include => :book)
+      @book = @alias.book
 
-    if @alias.update_attributes(params[:book_alias])
-      flash[:notice] = "Successfully updated alias."
-      redirect_to edit_book_url(@alias.book_id)
-    else
-      flash[:error] = "Couldn't update alias."
-      render :action => 'edit'
+      if @alias.update_attributes(params[:book_alias])
+        flash[:notice] = "Successfully updated alias."
+        redirect_to edit_book_url(@alias.book_id)
+      else
+        flash[:error] = "Couldn't update alias."
+        render :action => 'edit'
+      end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to books_url
     end
   end
 
   def destroy
-    @alias = BookAlias.find(params[:id])
+    begin
+      @alias = BookAlias.find(params[:id])
 
-    if @alias == @alias.book.alias_title
-      flash[:error] = "Titles are not allowed to be destroyed."
-    else
-      @alias.destroy
+      if @alias == @alias.book.alias_title
+        flash[:error] = "Titles are not allowed to be destroyed."
+      else
+        @alias.destroy
+      end
+
+      redirect_to edit_book_url(@alias.book_id)
+    rescue ActiveRecord::RecordNotFound
+      redirct_to books_url
     end
-
-    redirect_to edit_book_url(@alias.book_id)
   end
-
 end

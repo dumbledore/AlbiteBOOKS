@@ -1,4 +1,4 @@
-<% title @book.title %>
+<% title h(@book.title) %>
 
 <% content_for(:head) do %>
   <% @freebase_item = @book %>
@@ -7,12 +7,13 @@
 <% end %>
 
 <h1>
-  <%=h @book.title %>
+  <%= h @book.title %>
   <% if user_admin %>
-    <%= link_to image_tag("misc/edit.png"), edit_book_path(@book) %>
-    <%= link_to image_tag("misc/delete.png"), @book, :confirm => 'Are you sure you want to delete this book and all its translations?', :method => :delete %>
+    <%= link_to image_tag('misc/edit.png'), edit_book_path(@book) %>
+    <%= link_to image_tag('misc/delete.png'), @book,
+                :confirm => 'Are you sure you want to delete this book and all its translations?', :method => :delete %>
   <% end %>
- <span class="subtitle">by <%= link_to @book.author.name, @book.author %></span>
+ <span class="subtitle">by <%= link_to h(@book.author.name), @book.author %></span>
 </h1>
 <p>
   <%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
@@ -22,12 +23,8 @@
 
 <% if @book.book_aliases.size > 1 %>
   <p>
-  <strong>Also known as: </strong>
-  <% aliases = [] %>
-  <% for aliaz in @book.book_aliases %>
-    <% aliases << aliaz.title unless @book.alias_title == aliaz %>
-  <% end %>
-  <%= aliases.join(", ") %>
+    <strong>Also known as: </strong>
+    <%= book_aka(@book) %>
   </p>
 <% end %>
 
@@ -68,9 +65,7 @@
   <%= render :partial => 'misc/disqus_tail' %>
 <% end %>
 
-<%= "<p><b>#{h(link_to("New book", :controller => 'books', :action => 'new', :author => @book.author_id))}</b></p>".html_safe if user_admin %>
-<%= "<p><b>#{h(link_to("New translation", :controller => 'translations', :action => 'new', :book => @book))}</b></p>".html_safe if user_admin %>
+<%= new_book_link(@book.author_id) %>
+<%= new_translation_link(@book) %>
 
-<p>
-  <%= link_to "Back to #{@book.author.name}", @book.author %>
-</p>
+<p><%= link_to "Back to #{h(@book.author.name)}", @book.author %></p>

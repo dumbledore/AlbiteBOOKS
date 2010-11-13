@@ -1,28 +1,24 @@
-<% title "Edit Book" %>
+<% title 'Edit Book' %>
 <h1>Edit Book
-  <%= link_to image_tag("misc/show.png"), @book %>
+  <%= link_to image_tag('misc/show.png'), @book %>
 </h1>
 
 <%= render :partial => 'form' %>
 
 <% content_tag :fieldset do %>
-  <%= content_tag :legend, "Alases" %>
+  <%= content_tag :legend, 'Alases' %>
 
   <% @aliases = @book.book_aliases %>
   <%= render :partial => 'book_aliases/index' %>
 
-  <p>
-    <b><%= link_to "New alias", :controller => 'book_aliases', :action => 'new', :book => @book %></b>
-  </p>
+  <%= new_book_alias_link(@book) %>
 <% end %>
 
 <% content_tag :fieldset do %>
-  <%= content_tag :legend, "Translations" %>
+  <%= content_tag :legend, 'Translations' %>
   <% @translations = @book.translations %>
   <%= render :partial => 'translations/index' %>
-  <p>
-    <b><%= link_to "New translation", :controller => 'translations', :action => 'new', :book => @book %></b>
-  </p>
+  <%= new_translation_link(@book) %>
 <% end %>
 
 <p>

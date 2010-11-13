@@ -1,58 +1,23 @@
 class BooksController < ApplicationController
-  before_filter :require_admin, :except => [:index, :show, :search, :latest]
-  
   include Lettercode
-
-  def index
-    unless mobile?
-      conditions = nil
-
-      unless APP_CONFIG['hide_book_index']
-        letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-        conditions = "letter = '#{letter}'"
-        @letter_name = name_for_letter_number(letter)
-      end
-
-      @book_aliases = BookAlias.paginate(
-              :page => params[:page], :per_page => APP_CONFIG['paginate']['general']['html'],
-              :conditions => conditions, :order => :title, :include => [{:book => :author}])
-      @no_book_aliases_message = 'There are no books with a name that starts with this letter.'
-    end
-  end
-
-
-  def show
-    begin
-      @book = Book.find(params[:id], :include => :author)
-    rescue ActiveRecord::RecordNotFound
-      redirect_to books_url
-    end
-  end
+  before_filter :require_admin, :except => [:index, :show, :search, :latest]
 
   def new
     begin
       author = Author.find(params[:author], :include => :alias_name)
+      @book = author.books.build
+      @book.author = author
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url
-      return
     end
-
-    @book = author.books.build
-    @book.author = author
   end
 
   def create
     begin
       @book = Book.new(params[:book])
       @book.author = Author.find(@book.author_id, :include => :alias_name)
-    rescue ActiveRecord::RecordNotFound
-      flash[:error] = 'Author was not found'
-      redirect_to authors_url
-      return
-    end
 
-    begin
       Book.transaction do
         if @book.save
           @book.create_aliases # create additional resources
@@ -62,9 +27,12 @@ class BooksController < ApplicationController
           render :action => 'new'
         end
       end
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Author was not found'
+      redirect_to authors_url
     rescue => msg
-      puts "ERROR: " + msg.inspect;
-      flash[:error] = "Something is wrong with the transaction"
+      puts 'ERROR: ' + msg.inspect;
+      flash[:error] = 'Something is wrong with the transaction'
       render :action => 'new'
     end
   end
@@ -81,24 +49,21 @@ class BooksController < ApplicationController
   def update
     begin
       @book = Book.find(params[:id], :include => [{:author => :alias_name}])
-    rescue ActiveRecord::RecordNotFound
-      flash[:error] = 'Book was not found'
-      redirect_to books_url
-      return
-    end
 
-    begin
       Book.transaction do
         if @book.update_attributes(params[:book])
-          flash[:notice] = "Successfully updated the book."
+          flash[:notice] = 'Successfully updated the book.'
           redirect_to @book
         else
           render :action => 'edit'
         end
       end
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Book was not found'
+      redirect_to books_url
     rescue => msg
-      puts "ERROR: " + msg.inspect;
-      flash[:error] = "Something is wrong with the transaction"
+      puts 'ERROR: ' + msg.inspect;
+      flash[:error] = 'Something is wrong with the transaction'
       render :action => 'new'
     end
   end
@@ -107,8 +72,36 @@ class BooksController < ApplicationController
     begin
       @book = Book.find(params[:id])
       @book.destroy
-      flash[:notice] = "Successfully destroyed book."
-      redirect_to edit_author_url @book.author_id
+      flash[:notice] = 'Successfully destroyed book.'
+      redirect_to author_url @book.author_id
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Book was not found'
+      redirect_to books_url
+    end
+  end
+
+
+  def index
+    unless mobile?
+      conditions = nil
+
+      unless APP_CONFIG['hide_book_index']
+        letter = process_letter((params[:letter]) ? params[:letter] : 'a')
+        conditions = "letter = '#{letter}'"
+        @letter_name = name_for_letter_number(letter)
+      end
+
+      @book_aliases = BookAlias.paginate(
+              :page => params[:page], :per_page => APP_CONFIG['paginate']['index']['html'],
+              :conditions => conditions, :order => :title, :include => [{:book => :author}])
+      @no_book_aliases_message = 'There are no books with a name that starts with this letter.'
+    end
+  end
+
+
+  def show
+    begin
+      @book = Book.find(params[:id], :include => :author)
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
@@ -128,5 +121,6 @@ class BooksController < ApplicationController
 
   def latest
     @books = Book.paginate(:page => params[:page], :per_page => APP_CONFIG['paginate']['latest'][(mobile? ? 'mobile' : 'html')], :order => 'id DESC', :include => :author)
+    @book_thumbnails = true
   end
 end

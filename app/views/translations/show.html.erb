@@ -15,14 +15,14 @@
 <% unless @translation.note.empty? %>
   <p>
     <strong>Note:</strong>
-    <%= @translation.note %>
+    <%= h(@translation.note) %>
   </p>
 <% end %>
 
 <% unless @translation.date_of_publication %>
   <p>
     <strong>Date of publication:</strong>
-    <%= @translation.date_of_publication %>
+    <%= h(@translation.date_of_publication) %>
   </p>
 <% end %>
 
@@ -33,26 +33,26 @@
 
 <p>
   <strong>Source:</strong>
-  <%= link_to @translation.source_url, @translation.source_url, :target => '_blank' %>
+  <%= link_to h(@translation.source_url), @translation.source_url, :target => '_blank' %>
 </p>
 
 <p>
   <strong>Size:</strong>
-  <%= @translation.filesize %>
+  <%= h(@translation.filesize) %>
 </p>
 
 <p>
   <strong>MD5 hash:</strong>
-  <%= @translation.md5 %>
+  <%= h(@translation.md5) %>
 </p>
 
 <div class="download">
   <p>
-    <%= link_to "Download ‘#{@translation.filename}’", "/books/#{@translation.id}/#{@translation.filename}",
+    <%= link_to "Download ‘#{h(@translation.filename)}’", "/books/#{@translation.id}/#{@translation.filename}",
                 :class => 'menu_reader' %>
   </p>
 </div>
 
 <p>
-  <%= link_to "Back to #{@translation.book.title}", book_url (@translation.book) %>
+  <%= link_to "Back to #{h(@translation.book.title)}", book_url(@translation.book) %>
 </p>

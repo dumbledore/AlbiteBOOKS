@@ -10,7 +10,9 @@
 <% else %>
   <ul>
     <% for subject in @subjects %>
-      <li><%= link_to subject.name, subject_url(subject.name) %></li>
+      <li><%= link_to h(subject.name), subject_url(h(subject.name)) %></li>
     <% end %>
   </ul>
 <% end %>
+
+<%= will_paginate @subjects %>

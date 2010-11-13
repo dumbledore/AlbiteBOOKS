@@ -33,7 +33,6 @@ class Book < ActiveRecord::Base
     book.alias_title.save
   end
 
-  require File.expand_path('lib/freebase.rb')
   include Freebase
 
   def title=(title)

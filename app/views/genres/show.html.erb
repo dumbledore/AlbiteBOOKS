@@ -2,9 +2,10 @@
 <% title(genre_title) %>
 
 <h1>
-  <%= genre_title %>
+  <%= h(genre_title) %>
 </h1>
 
 <%= render :partial => 'books/index' %>
+<%= will_paginate @books %>
 
 <%= link_to 'Back to genres', genres_url %> 

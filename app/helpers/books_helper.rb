@@ -9,8 +9,8 @@ module BooksHelper
       end
 
       html << %[<td><p#{' class="strike"' unless aliaz.book.ready} >]
-      html << link_to(aliaz.title, book_url(aliaz.book))
-      html << " (<i>#{h(aliaz.book.title)}</i>)".html_safe unless aliaz.id == aliaz.book.alias_title_id
+      html << link_to(h(aliaz.title), book_url(aliaz.book))
+      html << " (<i>#{h(aliaz.book.title)}</i>)" unless aliaz.id == aliaz.book.alias_title_id
       html << %[<br/><span class="by">by #{link_to(h(aliaz.book.author.name), aliaz.book.author)}</i>]
 
       if user_admin
@@ -35,8 +35,8 @@ module BooksHelper
       end
 
       html << %[<td><p#{' class="strike"' unless book.ready} >]
-      html << link_to(book.title, book_url(book))
-      html << " (<i>#{h(book.date_of_first_publication)}</i>)".html_safe if book.date_of_first_publication
+      html << link_to(h(book.title), book_url(book))
+      html << " (<i>#{h(book.date_of_first_publication)}</i>)" unless book.date_of_first_publication.empty?
 
       if user_admin
         html << link_to(image_tag('misc/edit.png'), edit_book_path(book))
@@ -48,5 +48,22 @@ module BooksHelper
       html << '</p></td>'
       html << '</tr></table>'
     end
+  end
+
+  def book_aka(book)
+    aliases = []
+    for aliaz in book.book_aliases
+      aliases << h(aliaz.title) unless book.alias_title == aliaz
+    end
+  aliases.join(", ")
+  end
+
+  def book_aka_mobile(book)
+    aliases = ''
+    for aliaz in book.book_aliases
+      aliases << %[<p>#{h(aliaz.title)}</p>] unless book.alias_title == aliaz
+    end
+
+    aliases
   end
 end

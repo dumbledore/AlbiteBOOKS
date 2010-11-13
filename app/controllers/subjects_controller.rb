@@ -1,11 +1,14 @@
 class SubjectsController < ApplicationController
   def index
-    @subjects = Book.tag_counts_on(:subjects)
+    @subjects = Book.tag_counts_on(:subjects).paginate(
+            :page => params[:page], :per_page => APP_CONFIG['paginate']['tags'][(mobile? ? 'html' : 'mobile')])
   end
 
   def show
     @subject = params[:subject]
-    @books = Book.tagged_with(@subject).find(:all, :include => :author, :limit => 32)
+    @books = Book.tagged_with(@subject).paginate(
+            :page => params[:page], :per_page => APP_CONFIG['paginate']['tags'][(mobile? ? 'html' : 'mobile')],
+            :include => :author)
     @no_books_message = 'No books in this subject, so far.'
     @show_author_name = true
   end

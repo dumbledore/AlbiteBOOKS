@@ -1,33 +1,6 @@
 class AuthorsController < ApplicationController
   before_filter :require_admin, :except => [:index, :show, :search]
 
-  def index
-    unless mobile?
-      conditions = nil
-
-      unless APP_CONFIG['hide_author_index']
-        letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-        conditions = "letter = '#{letter}'"
-        @letter_name = name_for_letter_number(letter)
-      end
-
-      @author_aliases = AuthorAlias.paginate(
-              :page => params[:page], :per_page => APP_CONFIG['paginate']['general']['html'],
-              :conditions => conditions, :order => :name_reversed, :include => :author)
-      @no_author_aliases_message = 'There are no authors, whose family name starts with this letter.'
-    end
-  end
-
-  def show
-    begin
-      @author = Author.find(params[:id], :include => [:author_aliases, :alias_name])
-      render :action => 'show'
-    rescue ActiveRecord::RecordNotFound
-      flash[:error] = 'Author not found.'
-      redirect_to authors_url
-    end
-  end
-  
   def new
     @author = Author.new
   end
@@ -46,7 +19,7 @@ class AuthorsController < ApplicationController
         end
       end
     rescue => msg
-      puts "ERROR: " + msg.inspect;
+      puts 'ERROR: ' + msg.inspect;
       flash[:error] = 'Something is wrong with the transaction'
       render :action => 'new'
     end
@@ -77,7 +50,7 @@ class AuthorsController < ApplicationController
       flash[:error] = 'Author was not found'
       redirect_to authors_url
     rescue => msg
-      puts "ERROR: " + msg.inspect;
+      puts 'ERROR: ' + msg.inspect;
       flash[:error] = 'Something is wrong with the transaction'
       render :action => 'edit'
     end
@@ -95,6 +68,37 @@ class AuthorsController < ApplicationController
     end
   end
 
+  def index
+    unless mobile?
+      conditions = nil
+
+      unless APP_CONFIG['hide_author_index']
+        letter = process_letter((params[:letter]) ? params[:letter] : 'a')
+        conditions = "letter = '#{letter}'"
+        @letter_name = name_for_letter_number(letter)
+      end
+
+      @author_aliases = AuthorAlias.paginate(
+              :page => params[:page], :per_page => APP_CONFIG['paginate']['index']['html'],
+              :conditions => conditions, :order => :name_reversed, :include => :author)
+      @no_author_aliases_message = 'There are no authors, whose family name starts with this letter.'
+    end
+  end
+
+  def show
+    begin
+      @author = Author.find(params[:id], :include => [:author_aliases, :alias_name])
+
+      @books = @author.books
+      @book_thumbnails = true
+      @no_books_message = 'No books have been added, so far.'
+      @show_publication_date = true
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = 'Author not found.'
+      redirect_to authors_url
+    end
+  end
+  
   def search
     @query = params[:query]
 

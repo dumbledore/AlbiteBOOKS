@@ -20,7 +20,5 @@ def search
 
     @author_alias_thumbnails = true
     @no_author_aliases_message = 'No authors have been found for this query.'
-    
-    render 'search.html.erb'
   end
 end

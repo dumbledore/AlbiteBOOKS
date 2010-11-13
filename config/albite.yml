@@ -15,14 +15,17 @@ homepage_book_count: 3
 
 # Pagination
 paginate:
-
-  general:         # general options, i.e. for most pages, the values are larger for they usually don't feature images
+  index:           # general options, i.e. for most pages, the values are larger for they usually don't feature images
     html:       48 # number of items per page in the standard version
-    mobile:     16 # number of items per page in the mobile version
+    mobile:     10 # not used in the mobile version
 
   search:          # options only for the search pages; with images
     html:       10 # search_url
     mobile:     10 # search_authors_url, search_books_url, mobile format
+
+  tags:            # genres and subjects
+    html:       24
+    mobile:     10
 
   latest:          # latest books; with images
     html:       16

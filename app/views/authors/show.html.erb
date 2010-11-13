@@ -1,4 +1,4 @@
-<% title @author.name %>
+<% title h(@author.name) %>
 
 <% content_for(:head) do %>
   <% @freebase_item = @author %>
@@ -22,24 +22,18 @@
 <% if @author.author_aliases.size > 1 %>
   <p>
   <strong>Also known as: </strong>
-  <% aliases = [] %>
-  <% for aliaz in @author.author_aliases %>
-    <% aliases << aliaz.name unless @author.alias_name == aliaz %>
-  <% end %>
-  <%= aliases.join(", ") %>
+  <%= author_aka(@author) %>
   </p>
 <% end %>
 <div></div>
 
 <h1>Books</h1>
-<% @books = @author.books %>
-<% @book_thumbnails = true %>
-<% @no_books_message = 'No books have been added, so far.' %>
 <%= render :partial => 'books/index' %>
 
 <div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
 <%= render :partial => 'misc/qr_code' %>
 <div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+
 <h1>Comments</h1>
 <% @disqus = 'author_' + @author.id.to_s %>
 <%= render :partial => 'misc/disqus_thread' %>
@@ -47,8 +41,8 @@
   <%= render :partial => 'misc/disqus_tail' %>
 <% end %>
 
-<%= "<p><b>#{h(link_to("New author", :controller => 'authors', :action => 'new'))}</b></p>".html_safe if user_admin %>
-<%= "<p><b>#{h(link_to("New book", :controller => 'books', :action => 'new', :author => @author))}</b></p>".html_safe if user_admin %>
+<%= new_author_link %>
+<%= new_book_link(@author) %>
 
 <p>
   <%= link_to "Back to Authors", authors_url %>

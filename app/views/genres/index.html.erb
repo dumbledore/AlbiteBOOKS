@@ -9,7 +9,9 @@
 <% else %>
   <ul>
     <% for genre in @genres %>
-      <li><%= link_to genre.name, genre_url(genre.name) %></li>
+      <li><%= link_to h(genre.name), genre_url(h(genre.name)) %></li>
     <% end %>
   </ul>
 <% end %>
+
+<%= will_paginate @genres %>

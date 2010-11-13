@@ -1,4 +1,4 @@
-<h1>Authors for ‘<%= h(@query) %>’</h1>
+<%= h1 "Authors for ‘#{h(@query)}’" %>
 <%= render :partial => 'aliases_index' %>
 <%= will_paginate(@author_aliases, :renderer => 'WillPaginate::MobileRenderer') if @author_aliases %>
 

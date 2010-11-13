@@ -4,6 +4,7 @@
 <%= h1 h genre_title %>
 
 <%= render :partial => 'books/index' %>
+<%= will_paginate @books, :renderer => 'WillPaginate::MobileRenderer' %>
 
 <% content_for(:back) do %>
   <%= mobile_link_to(genres_url, 'Genres', 'Back to genres', true, 'tag') %>

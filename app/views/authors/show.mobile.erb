@@ -1,6 +1,6 @@
 <% title @author.name %>
 
-<%= h1 @author.name %>
+<%= h1 h(@author.name) %>
 
 <% unless @author.thumbnail_url.blank? %>
   <div class="thumbnail">
@@ -9,47 +9,36 @@
 <% end %>
 
 <p>
-  <%= @author.description %>
+  <%= h(@author.description) %>
 </p>
 
 <% unless @author.date_and_place_of_birth.empty? %>
   <%= h2 'Born' %>
   <p>
-    <%= @author.date_and_place_of_birth %>
+    <%= h(@author.date_and_place_of_birth) %>
   </p>
 <% end %>
 
 <% unless @author.date_and_place_of_death.empty? %>
   <%= h2 'Died' %>
   <p>
-    <%= @author.date_and_place_of_death %>
+    <%= h(@author.date_and_place_of_death) %>
   </p>
 <% end %>
 
 <% unless @author.country_of_nationality.empty? %>
   <%= h2 'Country of nationality' %>
   <p>
-    <%= @author.country_of_nationality %>
+    <%= h(@author.country_of_nationality) %>
   </p>
 <% end %>
 
 <% if @author.author_aliases.size > 1 %>
   <%= h2 'Also known as' %>
-  <% for aliaz in @author.author_aliases %>
-    <% unless @author.alias_name == aliaz %>
-      <p>
-        <%= aliaz.name %>
-      </p>
-    <% end %>
-  <% end %>
+  <%= author_aka_mobile(@author) %>
 <% end %>
 
 <%= h1 'Books' %>
-
-<% @books = @author.books %>
-<% @book_thumbnails = true %>
-<% @no_books_message = 'No books have been added, so far.' %>
-<% @show_publication_date = true %>
 
 <%= render :partial => 'books/index' %>
 

@@ -12,6 +12,14 @@ html, body {
   font-size: 12pt;
 }
 
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0;
+}
+
 div {
   /* This way one could force carriage return after floating objects just by using divs */
   clear: both;
@@ -283,11 +291,32 @@ input.search {
   margin: 0;
   vertical-align: bottom;
   width: 400px;
-  border: #aaa solid 1px;
+  font-size: 14px;
+  /*border: #aaa solid 1px;*/
+  border: none;
+  height: 34px;
+  padding: 0;
+  background-color: transparent;
+}
+
+td.s_box {
+  background: url('../images/_/s-box.gif') repeat-x;
+}
+
+td.s_box_l {
+  background: url('../images/_/s-box-left.gif') no-repeat;
+  width: 26px;
+  height: 34px;
+}
+
+td.s_box_r {
+  background: url('../images/_/s-box-right.gif') no-repeat;
+  width: 17px;
+  height: 34px;
 }
 
 input.search:focus {
-  border: #606060 solid 1px;
+  border: none;
   color: #606060;
 }
 

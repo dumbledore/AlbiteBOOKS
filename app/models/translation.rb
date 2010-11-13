@@ -1,5 +1,4 @@
 class Translation < ActiveRecord::Base
-  require 'lib/languages.rb'
   require 'digest/md5'
 
   belongs_to :book

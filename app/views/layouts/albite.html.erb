@@ -2,32 +2,41 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %></title>
+    <title>
+      <%= h(yield(:title)) %>
+      <%= APP_CONFIG['title'] %>
+    </title>
+
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-    <meta name="description" content="Free e-books for Java Mobile phones."/>
+    <meta name="description" content="Read free e-books on Java Mobile phones."/>
     <meta name="keywords" content="free ebooks, free books, book reader, albite reader, albite books, java mobile"/>
     <meta name="language" content="en_GB"/>
     <meta name="classification" content="public"/>
+
     <link rel="shortcut icon" href="favicon.ico" />
+    <%= stylesheet_link_tag 'main' %>
+
     <script type="text/javascript">
       var images_url = "/images/";
     </script>
-    <%= stylesheet_link_tag 'main' %>
     <%= javascript_include_tag 'application.js' %>
-    <%= yield :head %>
-    </head>
-  <body onload="<%= yield :on_load_pre %>doc_load();<%= yield :on_load_post %><%= yield :focus_on_load %>">
-    <table class="tpl_wrapper" cellspacing="0" cellpadding="0">
+
+    <%= yield h(:head) %>
+  </head>
+  <body onload="<%= yield h(:on_load_pre) %>doc_load();<%= yield h(:on_load_post) %><%= yield h(:focus_on_load) %>">
+    <table class="tpl_wrapper">
       <colgroup width="40"></colgroup>
       <colgroup width="10"></colgroup>
       <colgroup width="722"></colgroup>
       <colgroup width="10"></colgroup>
       <colgroup width="40"></colgroup>
+      
       <tr class="tpl_row">
         <td class="tpl_row_tl"></td>
         <th class="tpl_row_t" colspan="3"></th>
         <td class="tpl_row_tr"></td>
       </tr>
+
       <tr style="height: 70px;" valign="bottom">
         <td class="tpl_row_l"></td>
         <td></td>
@@ -43,15 +52,16 @@
             </tr>
           </table>
         </td>
-        <td> </td>
+        <td></td>
         <td class="tpl_row_r"></td>
       </tr>
+      
       <tr valign="top" style="height: 10px;">
         <td class="tpl_row_l"></td>
         <td></td>
         <td>
-                    <div style="height: 10px;"></div>
-          <table style="width: 100%;" cellspacing="0" cellpadding="0">
+          <div style="height: 10px;"></div>
+          <table style="width: 100%;">
             <tr>
               <td align="left">
                 <span class="menu"><%=
@@ -90,6 +100,7 @@
         <td></td>
         <td class="tpl_row_r"></td>
       </tr>
+      
       <tr valign="top">
         <td class="tpl_row_l"></td>
         <td></td>
@@ -101,6 +112,7 @@
         <td></td>
         <td class="tpl_row_r"></td>
       </tr>
+
       <tr style="height: 10px">
         <td class="tpl_row_l"></td>
         <td></td>
@@ -119,13 +131,15 @@
         <td></td>
         <td class="tpl_row_r"></td>
       </tr>
+
       <tr style="height: 120px;" valign="middle">
         <td class="tpl_row_l"></td>
         <th colspan="3" align="center">
-                    <%= render :partial => 'misc/ad_banner' %>
+          <%= render :partial => 'misc/ad_banner' %>
         </th>
         <td class="tpl_row_r"></td>
       </tr>
+
       <tr class="tpl_row">
         <td class="tpl_row_bl"></td>
         <th class="tpl_row_b" colspan="3"></th>

@@ -1,4 +1,4 @@
-<h1>Latest books</h1>
+<%= h1 'Latest books' %>
 <%= render :partial => 'index' %>
 <%= will_paginate(@books, :renderer => 'WillPaginate::MobileRenderer') if @books %>
 

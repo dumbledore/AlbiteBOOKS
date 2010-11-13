@@ -1,6 +1,4 @@
-<h1>
-  Downloading ‘<%= @translation.book.title %>’
-</h1>
+<%= h1 "Downloading ‘#{@translation.book.title}’" %>
 
 <% if @translation.original %>
   <p>
@@ -11,14 +9,14 @@
 <% unless @translation.note.empty? %>
   <p>
     <strong>Note:</strong>
-    <%= @translation.note %>
+    <%= h(@translation.note) %>
   </p>
 <% end %>
 
 <% unless @translation.date_of_publication %>
   <p>
     <strong>Date of publication:</strong>
-    <%= @translation.date_of_publication %>
+    <%= h(@translation.date_of_publication) %>
   </p>
 <% end %>
 
@@ -31,8 +29,8 @@
 
 <% content_for(:back) do %>
   <% if @translation.book.thumbnail_url.blank? %>
-    <%= mobile_link_to(book_url(@translation.book), @translation.book.title, 'Back to book', true, 'user') %>
+    <%= mobile_link_to(book_url(@translation.book), h(@translation.book.title), 'Back to book', true, 'user') %>
   <% else %>
-    <%= mobile_link_to(book_url(@translation.book), @translation.book.title, 'Back to book', true, @translation.book.thumbnail_url, false) %>
+    <%= mobile_link_to(book_url(@translation.book), h(@translation.book.title), 'Back to book', true, @translation.book.thumbnail_url, false) %>
   <% end %>
 <% end %>

@@ -1,7 +1,7 @@
-<% title h @book.title %>
+<% title @book.title %>
 
 <h1>
-  <%=h @book.title %><br />
+  <%= h @book.title %><br />
   <span class="subtitle">by <%= h @book.author.name %></span>
 </h1>
 <%= shadow %>
@@ -13,39 +13,33 @@
 <% end %>
 
 <p>
-  <%= @book.description %>
+  <%= h @book.description %>
 </p>
 
 <% unless @book.date_of_first_publication.empty? %>
   <%= h2 'Date of first publication' %>
   <p>
-    <%= @book.date_of_first_publication %>
+    <%= h @book.date_of_first_publication %>
   </p>
 <% end %>
 
 <% unless @book.original_language.empty? %>
   <%= h2 'Original language' %>
   <p>
-    <%= @book.original_language %>
+    <%= h @book.original_language %>
   </p>
 <% end %>
 
 <% unless @book.number_of_pages.nil? %>
   <%= h2 'Number of pages' %>
   <p>
-    <%= @book.number_of_pages %>
+    <%= h @book.number_of_pages %>
   </p>
 <% end %>
 
 <% if @book.book_aliases.size > 1 %>
   <%= h2 'Also known as' %>
-  <% for aliaz in @book.book_aliases %>
-    <% unless @book.alias_title == aliaz %>
-      <p>
-        <%= aliaz.title %>
-      </p>
-    <% end %>
-  <% end %>
+  <%= book_aka_mobile(@book) %>
 <% end %>
 
 <%= h2 'Downloads' %>
@@ -68,6 +62,6 @@
 <% end %>
 
 <% content_for(:back) do %>
-  <%= mobile_link_to_thumbnail_or_icon(author_url(@book.author), @book.author.name_cached, 'Back to author', @book.author.thumbnail_url, 'user') %>
+  <%= mobile_link_to_thumbnail_or_icon(author_url(@book.author), h(@book.author.name_cached), 'Back to author', @book.author.thumbnail_url, 'user') %>
   <%= mobile_link_to(books_url, 'Search', 'Search for another book', nil, 'zoom') %>
 <% end %>

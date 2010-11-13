@@ -11,3 +11,5 @@
     <%= mobile_link_to(genre_url(h(genre.name)), h(genre.name), nil, true, 'tag') %>
   <% end %>
 <% end %>
+
+<%= will_paginate @genres, :renderer => 'WillPaginate::MobileRenderer' %>

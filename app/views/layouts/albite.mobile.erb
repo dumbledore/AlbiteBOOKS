@@ -2,16 +2,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %> mobile</title>
+    <title>
+      <%= h(yield(:title)) %>
+      <%= APP_CONFIG['title'] %> mobile
+    </title>
+
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-    <meta name="description" content="Free e-books for Java Mobile phones."/>
+    <meta name="description" content="Read free e-books on Java Mobile phones."/>
     <meta name="keywords" content="free ebooks, free books, book reader, albite reader, albite books, java mobile"/>
     <meta name="language" content="en_GB"/>
     <meta name="classification" content="public"/>
-    <link rel="shortcut icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <link rel="shortcut icon" href="favicon.ico" />
     <%= stylesheet_link_tag 'mobile' %>
   </head>
+
   <body>
     <div class="main">
       <%= yield %>
@@ -22,5 +28,5 @@
       <%= yield(:back) %>
       <%= mobile_link_to(root_url, 'Home', 'Back home', true, 'home') %>
     <% end %>
-	</body>
+  </body>
 </html>

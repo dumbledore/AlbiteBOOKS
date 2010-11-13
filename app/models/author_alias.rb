@@ -1,5 +1,7 @@
 class AuthorAlias < ActiveRecord::Base
 
+  include Lettercode
+
   belongs_to :author
 
   attr_accessible :name, :name_reversed, :author_id, :author

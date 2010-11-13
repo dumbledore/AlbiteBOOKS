@@ -27,7 +27,6 @@ class Author < ActiveRecord::Base
     author.alias_name.save
   end
 
-  require File.expand_path('lib/freebase.rb')
   include Freebase
 
   def name

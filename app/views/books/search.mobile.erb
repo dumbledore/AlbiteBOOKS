@@ -1,4 +1,4 @@
-<h1>Books for ‘<%= h(@query) %>’</h1>
+<%= h1 "Books for ‘#{h(@query)}’" %>
 <%= render :partial => 'aliases_index' %>
 <%= will_paginate(@book_aliases, :renderer => 'WillPaginate::MobileRenderer') if @book_aliases %>
 

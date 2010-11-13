@@ -1,13 +1,9 @@
 <% if @author_aliases and not @author_aliases.empty? %>
   <% for aliaz in @author_aliases %>
     <% author = aliaz.author %>
-    <% if aliaz.author.ready %>
+    <% if author.ready %>
       <% subtitle = subtitle(author, author.date_and_place_of_birth) %>
-      <% if author.thumbnail_url.empty? %>
-        <%= mobile_link_to(author_url(author), aliaz.name_abbreviated(:name_reversed), subtitle, true, 'author') %>
-      <% else %>
-        <%= mobile_link_to(author_url(author), aliaz.name_abbreviated(:name_reversed), subtitle, true, author.thumbnail_url, false) %>
-      <% end %>
+      <%= mobile_link_to_thumbnail_or_icon(author_url(author), h(aliaz.name_abbreviated(:name_reversed)), subtitle, author.thumbnail_url, 'author')%>
     <% end %>
   <% end %>
 <% else %>

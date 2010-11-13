@@ -2,9 +2,10 @@
 <% title(subject_title) %>
 
 <h1>
-  <%= subject_title %>
+  <%= h(subject_title) %>
 </h1>
 
 <%= render :partial => 'books/index' %>
+<%= will_paginate @books %>
 
 <%= link_to 'Back to subjects', subjects_url %>

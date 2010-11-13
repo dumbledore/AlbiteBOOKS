@@ -11,3 +11,5 @@
     <%= mobile_link_to(subject_url(h(subject.name)), h(subject.name), nil, true, 'tag') %>
   <% end %>
 <% end %>
+
+<%= will_paginate @subjects, :renderer => 'WillPaginate::MobileRenderer' %>
