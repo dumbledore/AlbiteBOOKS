@@ -2,16 +2,18 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
+  helper :all
+
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :home?, :mobile?
+  before_filter :home?, :mobile_format
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
 
   layout 'albite'
-  
-  helper_method :current_user
+
+  # make this methods available in the view
+  helper_method :current_user, :user_admin
 
   private
 
@@ -21,8 +23,6 @@ class ApplicationController < ActionController::Base
 
   def mobile?
     @mobile ||= cache_mobile
-    request.format = :mobile if @mobile
-    @mobile
   end
 
   def cache_mobile
@@ -99,5 +99,9 @@ class ApplicationController < ActionController::Base
     else
       url
     end
+  end
+
+  def mobile_format
+    request.format = :mobile if mobile?
   end
 end

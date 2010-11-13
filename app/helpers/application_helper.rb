@@ -24,10 +24,6 @@ module ApplicationHelper
     content_for(:focus_on_load) {"focus_on_load('#{form_item}');"}
   end
 
-  def user_admin
-    current_user and current_user.admin
-  end
-
   def can_add_users
     APP_CONFIG['can_add_users']
   end
@@ -35,6 +31,4 @@ module ApplicationHelper
   def production?
       @is_production ||= (ENV['RAILS_ENV'] == 'production')
   end
-
-  require File.expand_path('lib/mobile_link_to.rb')
 end

@@ -15,8 +15,18 @@ homepage_book_count: 3
 
 # Pagination
 paginate:
-  html: 32   # number of items per page in the standard version
-  mobile: 16 # number of items per page in the mobile version
+
+  general:         # general options, i.e. for most pages, the values are larger for they usually don't feature images
+    html:       48 # number of items per page in the standard version
+    mobile:     16 # number of items per page in the mobile version
+
+  search:          # options only for the search pages; with images
+    html:       10 # search_url
+    mobile:     10 # search_authors_url, search_books_url, mobile format
+
+  latest:          # latest books; with images
+    html:       16
+    mobile:      8
 
 # App's Secret Token
 # ==================

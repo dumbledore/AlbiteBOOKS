@@ -4,7 +4,7 @@
   <head>
     <title><%= h(yield(:title)) %><%= APP_CONFIG['title'] %> mobile</title>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
-    <meta name="description" content="The Project Gutenberg Book Catalog for mobile devices."/>
+    <meta name="description" content="Free e-books for Java Mobile phones."/>
     <meta name="keywords" content="free ebooks, free books, book reader, albite reader, albite books, java mobile"/>
     <meta name="language" content="en_GB"/>
     <meta name="classification" content="public"/>
@@ -18,8 +18,7 @@
     </div>
     
     <% unless @home %>
-      <h2>Go back</h2>
-      <div class="shadow_container"><div class="shadow"></div></div>
+      <%= h2 'Quick links' %>
       <%= yield(:back) %>
       <%= mobile_link_to(root_url, 'Home', 'Back home', true, 'home') %>
     <% end %>

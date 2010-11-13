@@ -1,25 +1,5 @@
-    <% form_tag '/search', :method => 'get' do %>
-      <div class="search_bg">
-        <!--<div class="box">-->
-          <!--<div class="box_left"></div>-->
-          <!--<div class="box_right"></div>-->
-          <!--<%= text_field_tag :query, nil, :class => 'box' %>-->
-          <!--<button type="submit" class="go"></button>-->
-        <!--</div>-->
-        <table class="search">
-          <tr class="search">
-            <td>
-              <div class="box">
-                <div class="box_left"></div>
-                <div class="box_right"></div>
-              </div>
-              <%= text_field_tag :query, nil, :class => 'box' %>
-            </td>
-            <td class="separator"></td>
-            <td class="search">
-              <button type="submit" class="go"></button>
-            </td>
-          </tr>
-        </table>
-      </div>
-    <% end %>
+<%= h1 'Search for authors' %>
+<%= mobile_search_form(search_authors_form_url) %>
+<p>
+  Type in the name of the author you're searching for.
+</p>

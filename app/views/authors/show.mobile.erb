@@ -1,9 +1,6 @@
 <% title @author.name %>
 
-<h1>
-  <%=h @author.name %>
-</h1>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h1 @author.name %>
 
 <% unless @author.thumbnail_url.blank? %>
   <div class="thumbnail">
@@ -16,39 +13,38 @@
 </p>
 
 <% unless @author.date_and_place_of_birth.empty? %>
+  <%= h2 'Born' %>
   <p>
-    <strong>Born:</strong>
     <%= @author.date_and_place_of_birth %>
   </p>
 <% end %>
 
 <% unless @author.date_and_place_of_death.empty? %>
+  <%= h2 'Died' %>
   <p>
-    <strong>Died:</strong>
     <%= @author.date_and_place_of_death %>
   </p>
 <% end %>
 
 <% unless @author.country_of_nationality.empty? %>
+  <%= h2 'Country of nationality' %>
   <p>
-    <strong>Country of nationality:</strong>
     <%= @author.country_of_nationality %>
   </p>
 <% end %>
 
 <% if @author.author_aliases.size > 1 %>
-  <p>
-  <strong>Also known as: </strong>
-  <% aliases = [] %>
+  <%= h2 'Also known as' %>
   <% for aliaz in @author.author_aliases %>
-    <% aliases << aliaz.name unless @author.alias_name == aliaz %>
+    <% unless @author.alias_name == aliaz %>
+      <p>
+        <%= aliaz.name %>
+      </p>
+    <% end %>
   <% end %>
-  <%= aliases.join(", ") %>
-  </p>
 <% end %>
 
-<h2>Books</h2>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h1 'Books' %>
 
 <% @books = @author.books %>
 <% @book_thumbnails = true %>
@@ -58,5 +54,5 @@
 <%= render :partial => 'books/index' %>
 
 <% content_for(:back) do %>
-  <%= mobile_link_to(authors_url, 'Authors', 'Search for another author', true, 'user') %>
+  <%= mobile_link_to(authors_url, 'Search', 'Search for another author', true, 'zoom') %>
 <% end %>

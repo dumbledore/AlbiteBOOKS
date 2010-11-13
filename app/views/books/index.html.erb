@@ -1,4 +1,4 @@
-<% title "The books" %>
+<% title 'The books' %>
 <% unless APP_CONFIG['hide_book_index'] %>
   <h1 class='letter'>Books
     <span class='letter'>
@@ -10,7 +10,7 @@
 <% end %>
 
 <%= render :partial => 'aliases_index' %>
-
+<%= will_paginate @book_aliases %>
 <p>
   <b><%= link_to "New Book", new_book_path if user_admin %></b>
 </p>

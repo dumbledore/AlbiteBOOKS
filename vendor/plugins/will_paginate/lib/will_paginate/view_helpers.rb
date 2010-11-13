@@ -334,6 +334,9 @@ module WillPaginate
           @url_params[param_name] = page_one ? 1 : 2
         end
 
+        # FIX @Albus: Delete the format param, as it is NOT necessary.
+        @url_params.delete 'format'
+
         url = @template.url_for(@url_params)
         return url if page_one
         

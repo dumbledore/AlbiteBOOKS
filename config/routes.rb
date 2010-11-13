@@ -55,7 +55,6 @@ ActionController::Routing::Routes.draw do |map|
 
   # statics
   map.home      'home/',      :controller => 'home', :action => 'home'
-  map.latest    'latest/',    :controller => 'home', :action => 'latest'
   map.reader    'reader/',    :controller => 'home', :action => 'reader'
   map.about     'about/',     :controller => 'home', :action => 'about'
   map.faq       'faq/',       :controller => 'home', :action => 'faq'
@@ -70,14 +69,22 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :book_aliases,    :except => [:index, :show]
   map.resources :translations,    :except => [:index]
 
-  map.genres   'genres/',           :controller => 'home', :action => 'genres'
-  map.genre    'genres/:genre',     :controller => 'home', :action => 'genre'
+  map.latest    'latest/',    :controller => 'books', :action => 'latest'
 
-  map.subjects 'subjects/',         :controller => 'home', :action => 'subjects'
-  map.subject  'subjects/:subject', :controller => 'home', :action => 'subject'
+  map.genres   'genres/',           :controller => 'genres', :action => 'index'
+  map.genre    'genres/:genre',     :controller => 'genres', :action => 'show'
 
-  map.search         'search/:query',    :controller => 'home', :action => 'search'
-  map.search_form    'search/',          :controller => 'home', :action => 'search'
+  map.subjects 'subjects/',         :controller => 'subjects', :action => 'index'
+  map.subject  'subjects/:subject', :controller => 'subjects', :action => 'show'
+
+  map.search_authors      'search/authors/:query',  :controller => 'authors', :action => 'search'
+  map.search_authors_form 'search/authors/',        :controller => 'authors', :action => 'search'
+
+  map.search_books        'search/books/:query',    :controller => 'books',   :action => 'search'
+  map.search_books_form   'search/books/',          :controller => 'books',   :action => 'search'
+  
+  map.search              'search/:query',          :controller => 'home',    :action => 'search'
+  map.search_form         'search/',                :controller => 'home',    :action => 'search'
 
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'

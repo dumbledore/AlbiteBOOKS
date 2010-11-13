@@ -1,4 +1,4 @@
-<% form_tag '/search', :method => 'get' do %>
+<% form_tag search_form_url, :method => 'get' do %>
   <%= text_field_tag :query, nil, :class => 'search', :size => '60', :onblur => 'javascript: search_blur(this);', :onfocus => 'javascript: search_focus(this);' %>
   <button type="submit" class="search"></button>
 <% end %>

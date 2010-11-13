@@ -10,9 +10,6 @@ class AuthorAlias < ActiveRecord::Base
   validates_presence_of :name
   validate :author_exists
 
-  require File.expand_path('lib/lettercode.rb')
-  include Lettercode
-
   def author_exists
 #    errors[:base] << "Author does not exist." if not self.author.nil? and not Author.exists?(self.author)
     errors.add_to_base("Author does not exist.") if self.author_id > 0 and not Author.exists?(self.author_id)

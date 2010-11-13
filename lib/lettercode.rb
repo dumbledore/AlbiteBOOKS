@@ -1,6 +1,6 @@
 module Lettercode
-  IS_ID_REGEXP = Regexp.new /\d+/
-  LETTERS = ('A'..'Z').to_a
+  IS_ID_REGEXP = Regexp.new(/\d+/).freeze
+  LETTERS = ('A'..'Z').to_a.freeze
 
   def is_id(str)
     not (str.match(IS_ID_REGEXP).nil?)
@@ -8,7 +8,7 @@ module Lettercode
 
   def process_letter(letter)
     letter = letter.ord
-    
+
     case letter
       when 65..90 then return letter + 32
       when 97..122 then return letter

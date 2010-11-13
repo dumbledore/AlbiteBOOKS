@@ -1,15 +1,8 @@
-<% unless @books.empty? %>
+<% if @books and not @books.empty? %>
   <% for book in @books %>
-    <% if book.ready %>
-      <% subtitle = nil %>
-      <% subtitle = 'by ' + book.author.name_cached  if @show_author_name %>
-      <% subtitle = book.date_of_first_publication if @show_publication_date and not book.date_of_first_publication.empty? %>
-      <% if book.thumbnail_url.empty? %>
-        <%= mobile_link_to(book_url(book), book.title, subtitle, true, 'book') %>
-      <% else %>
-        <%= mobile_link_to(book_url(book), book.title, subtitle, true, book.thumbnail_url, false) %>
-      <% end %>
-    <% end %>
+    <% @book = book %>
+    <% @title = book.title %>
+    <%= render :partial => 'books/item' %>
   <% end %>
 <% else %>
   <p>

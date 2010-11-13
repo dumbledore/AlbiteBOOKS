@@ -141,6 +141,10 @@ p.curr_page {
   text-align: center;
 }
 
+tr.link {
+  vertical-align: middle;
+}
+
 table.search {
   width: 100%;
   padding: 5%;
@@ -229,7 +233,8 @@ div.icon_clock,
 div.icon_download,
 div.icon_home,
 div.icon_tag,
-div.icon_user
+div.icon_user,
+div.icon_zoom
 
 {
   background: none no-repeat 10px center;
@@ -263,3 +268,6 @@ div.icon_user {
   background-image: url('/images/mobile/user.png');
 }
 
+div.icon_zoom {
+  background-image: url('/images/mobile/zoom.png');
+}

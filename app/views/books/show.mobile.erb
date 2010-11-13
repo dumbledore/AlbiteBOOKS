@@ -1,10 +1,10 @@
-<% title @book.title %>
+<% title h @book.title %>
 
 <h1>
   <%=h @book.title %><br />
   <span class="subtitle">by <%= h @book.author.name %></span>
 </h1>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= shadow %>
 
 <% unless @book.thumbnail_url.blank? %>
   <div class="thumbnail">
@@ -17,63 +17,57 @@
 </p>
 
 <% unless @book.date_of_first_publication.empty? %>
+  <%= h2 'Date of first publication' %>
   <p>
-    <strong>Date of first publication:</strong>
     <%= @book.date_of_first_publication %>
   </p>
 <% end %>
 
 <% unless @book.original_language.empty? %>
+  <%= h2 'Original language' %>
   <p>
-    <strong>Original language:</strong>
     <%= @book.original_language %>
   </p>
 <% end %>
 
 <% unless @book.number_of_pages.nil? %>
+  <%= h2 'Number of pages' %>
   <p>
-    <strong>Number of pages:</strong>
     <%= @book.number_of_pages %>
   </p>
 <% end %>
 
 <% if @book.book_aliases.size > 1 %>
-  <p>
-  <strong>Also known as: </strong>
-  <% aliases = [] %>
+  <%= h2 'Also known as' %>
   <% for aliaz in @book.book_aliases %>
-    <% aliases << aliaz.title unless @book.alias_title == aliaz %>
+    <% unless @book.alias_title == aliaz %>
+      <p>
+        <%= aliaz.title %>
+      </p>
+    <% end %>
   <% end %>
-  <%= aliases.join(", ") %>
-  </p>
 <% end %>
 
-<h2>Download book &amp; translations</h2>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h2 'Downloads' %>
 
 <% @translations = @book.translations %>
 <%= render :partial => 'translations/index' %>
 
 <% unless @book.genre_list.empty? %>
-  <h2>Genres</h2>
-  <div class="shadow_container"><div class="shadow"></div></div>
+  <%= h2 'Genres' %>
   <% for genre in @book.genre_list %>
     <%= mobile_link_to(genre_url(h(genre)), h(genre), nil, true, 'tag') %>
   <% end %>
 <% end %>
 
 <% unless @book.subject_list.empty? %>
-  <h2>Subjects</h2>
-  <div class="shadow_container"><div class="shadow"></div></div>
+  <%= h2 'Subjects' %>
   <% for subject in @book.subject_list %>
     <%= mobile_link_to(subject_url(h(subject)), h(subject), nil, true, 'tag') %>
   <% end %>
 <% end %>
 
 <% content_for(:back) do %>
-  <% if @book.author.thumbnail_url.blank? %>
-    <%= mobile_link_to(author_url(@book.author), @book.author.name, 'Back to author', true, 'user') %>
-  <% else %>
-    <%= mobile_link_to(author_url(@book.author), @book.author.name, 'Back to author', true, @book.author.thumbnail_url, false) %>
-  <% end %>
+  <%= mobile_link_to_thumbnail_or_icon(author_url(@book.author), @book.author.name_cached, 'Back to author', @book.author.thumbnail_url, 'user') %>
+  <%= mobile_link_to(books_url, 'Search', 'Search for another book', nil, 'zoom') %>
 <% end %>

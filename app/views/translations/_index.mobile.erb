@@ -1,4 +1,4 @@
-<% unless @translations.empty? %>
+<% if @translations and not @translations.empty? %>
   <% for translation in @book.translations %>
     <%
        text = []

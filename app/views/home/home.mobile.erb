@@ -1,29 +1,23 @@
-<h1>Albite BOOKS</h1>
+<%= h1 'Albite BOOKS' %>
 
-<h2>Search</h2>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h2 'Search' %>
 <%= mobile_link_to(books_url, 'Books', 'Search for books', true, 'book') %>
 <%= mobile_link_to(authors_url, 'Authors', 'Search for authors', true, 'user') %>
 
-<h2>Browse</h2>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h2 'Browse' %>
+<%= mobile_link_to(latest_url,    'Latest',   'Browse latest books', true, 'clock') %>
 <%= mobile_link_to(genres_url,    'Genres',   'Browse genres', true, 'tag') %>
 <%= mobile_link_to(subjects_url,  'Subjects', 'Browse subjects', true, 'tag') %>
-<%= mobile_link_to(latest_url,    'Latest',   'Browse latest books', true, 'clock') %>
 
-<h2>Download</h2>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h2 'Download' %>
 <%= mobile_link_to(reader_url, 'Albite READER', 'Download the reader', true, 'download') %>
 
-<h2>Free e-books?</h2>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h2 'Free e-books?' %>
 <p>
   Yup. Go into the books section, type the name of the book you're looking for and you're ready to go!
 </p>
 
-<h2>E-book Reader for Java Mobile?</h2>
-<div class="shadow_container"><div class="shadow"></div></div>
+<%= h2 'E-book Reader for Java Mobile?' %>
 <p>
-  If you don't have an e-book reader on your <i>Java Mobile</i> phone, why don't you get one? Click on the button
-  on top to see the download page.
+  If you don't have an e-book reader on your <i>Java Mobile</i> phone, click on the download button and get one!
 </p>

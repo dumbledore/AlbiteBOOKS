@@ -1,0 +1,4 @@
+<% if @book.ready %>
+  <% subtitle = book_subtitle(@book, @show_author_name, @show_publication_date) %>
+  <%= mobile_link_to_thumbnail_or_icon(book_url(@book), @title, subtitle, @book.thumbnail_url, 'book')%>
+<% end %>

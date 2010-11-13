@@ -1,8 +1,8 @@
-<% unless @book_aliases.empty? %>
+<% if @book_aliases and not @book_aliases.empty? %>
   <% for aliaz in @book_aliases %>
-    <% if aliaz.book.ready or user_admin %>
-      <%= link_to (aliaz.title, aliaz.book, :class => 'menu') %>
-    <% end %>
+    <% @book = aliaz.book %>
+    <% @title = aliaz.title %>
+    <%= render :partial => 'books/item' %>
   <% end %>
 <% else %>
   <p>

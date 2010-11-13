@@ -8,7 +8,8 @@ html, body {
   background-color: #E9E9E8;
   font-family: "Times New Roman", Times, serif;
   /*font-family: Arial, sans-serif;*/
-  font-size: 1em;
+  /*font-size: 1em;*/
+  font-size: 12pt;
 }
 
 div {
@@ -61,9 +62,9 @@ p {
   line-height: 140%;
 }
 
-i, em {
-  color: #806A5D;
-}
+/*i, em {*/
+  /*color: #806A5D;*/
+/*}*/
 
 h1 {
   font-size: 1.5em;
@@ -281,10 +282,13 @@ input.search {
   font-weight: bold;
   margin: 0;
   vertical-align: bottom;
+  width: 400px;
+  border: #aaa solid 1px;
 }
 
-input[type="text"].search {
-  width: 400px;
+input.search:focus {
+  border: #606060 solid 1px;
+  color: #606060;
 }
 
 button.search {
@@ -321,9 +325,23 @@ img.thumbnail {
   float: right;
 }
 
+table.list {
+  margin: 5px 15px 10px 15px;
+}
+
+table.list p {
+  margin: 0;
+  padding: 0;
+}
+
+.by {
+  font-style: italic;
+  font-size: 0.85em;
+}
+
 img.thumblist {
   padding: 1px;
-  margin: 3px 10px 0 0;
+  margin-right: 15px;
   border: solid 1px #999;
   width: 32px;
   max-height: 100px;

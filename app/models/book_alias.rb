@@ -7,7 +7,6 @@ class BookAlias < ActiveRecord::Base
 
   acts_as_indexed :fields => [:title]
 
-  require File.expand_path('lib/lettercode.rb')
   include Lettercode
 
   def book_exists

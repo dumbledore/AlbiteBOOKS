@@ -15,16 +15,12 @@ function search_blur(o) {
   if (o.value == '') {
     o.value = searchLabel;
   }
-
-  o.style.color = 'AAAAAA';
 }
 
 function search_focus(o) {
   if (o.value == searchLabel) {
     o.value = '';
   }
-  
-  o.style.color = '606060';
 }
 
 function imposeMaxLength(Object, MaxLen)

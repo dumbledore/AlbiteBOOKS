@@ -1,25 +1,25 @@
 class BooksController < ApplicationController
-  before_filter :require_admin, :except => [:index, :show]
+  before_filter :require_admin, :except => [:index, :show, :search, :latest]
   
-  require 'lib/lettercode.rb'
   include Lettercode
-  
+
   def index
-    unless @mobile
+    unless mobile?
+      conditions = nil
+
       unless APP_CONFIG['hide_book_index']
         letter = process_letter((params[:letter]) ? params[:letter] : 'a')
-        @book_aliases = BookAlias.find(:all, :include => [{:book => :author}], :conditions => "letter = '#{letter}'", :order => :title)
+        conditions = "letter = '#{letter}'"
         @letter_name = name_for_letter_number(letter)
-      else
-        @book_aliases = BookAlias.find(:all, :include => [{:book => :author}], :order => :title)
       end
 
-      @book_alias_thumbnails = false
-      @no_book_aliases_message = 'There are no books, whose family name starts with this letter.'
-    else
-      redirect_to root_url
+      @book_aliases = BookAlias.paginate(
+              :page => params[:page], :per_page => APP_CONFIG['paginate']['general']['html'],
+              :conditions => conditions, :order => :title, :include => [{:book => :author}])
+      @no_book_aliases_message = 'There are no books with a name that starts with this letter.'
     end
   end
+
 
   def show
     begin
@@ -113,5 +113,20 @@ class BooksController < ApplicationController
       flash[:error] = 'Book was not found'
       redirect_to books_url
     end
+  end
+
+  def search
+    @query = params[:query]
+
+    if @query and not @query.empty?
+      @book_aliases   = BookAlias.with_query(@query).paginate   :page => params[:page], :per_page => APP_CONFIG['paginate']['search']['html'], :include => [:book, {:book => :author}]
+    end
+
+    @book_alias_thumbnails = true
+    @no_book_aliases_message = 'No books have been found for this query.'
+  end
+
+  def latest
+    @books = Book.paginate(:page => params[:page], :per_page => APP_CONFIG['paginate']['latest'][(mobile? ? 'mobile' : 'html')], :order => 'id DESC', :include => :author)
   end
 end

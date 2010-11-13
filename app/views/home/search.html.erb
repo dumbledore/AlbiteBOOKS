@@ -1,7 +1,15 @@
 <h1>Books found for ‘<%= @query %>’</h1>
 <%= render :partial => 'books/aliases_index' %>
-<%= will_paginate @book_aliases unless @book_aliases.empty? %>
+<% if @book_aliases and @book_aliases.total_pages > 1 %>
+  <p>
+    <i><%= link_to("See #{@book_aliases.total_entries - @book_aliases.per_page} more book(s)", search_books_url(h(@query), :page => 2)) %></i>
+  </p>
+<% end %>
 
 <h1>Authors found for ‘<%= @query %>’</h1>
 <%= render :partial => 'authors/aliases_index' %>
-<%= will_paginate @author_aliases unless @author_aliases.empty? %>
+<% if @author_aliases and @author_aliases.total_pages > 1 %>
+  <p>
+    <i><%= link_to("See #{@author_aliases.total_entries - @author_aliases.per_page} more author(s)", search_authors_url(h(@query), :page => 2)) %></i>
+  </p>
+<% end %>

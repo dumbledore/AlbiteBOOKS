@@ -36,7 +36,13 @@ class Author < ActiveRecord::Base
       @name
     else
       # Showing author's name
-      self.alias_name.name
+      if self.alias_name
+        # Alias has been eager-loaded
+        self.alias_name.name
+      else
+        # Alias has not been eager-loaded, so use the cache value
+        self.name_cached
+      end
     end
   end
 

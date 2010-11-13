@@ -1,24 +1,6 @@
-<% unless @book_aliases.empty? %>
+<% if @book_aliases and not @book_aliases.empty? %>
   <% for aliaz in @book_aliases %>
-    <% if aliaz.book.ready or user_admin %>
-      <p<%= ' class="strike"' unless aliaz.book.ready %>>
-        <% if @book_alias_thumbnails %>
-          <% image_url = (aliaz.book.thumbnail_url.blank? ? 'misc/no-image.gif' : aliaz.book.thumbnail_url) %>
-          <%= image_tag(image_url, :class =>  'thumblist') %>
-          <%= link_to h(aliaz.title), book_url(aliaz), :class => 'thumblist' %>
-        <% else %>
-          <%= link_to h(aliaz.title), book_url(aliaz) %>
-        <% end %>
-        <% unless aliaz.id == aliaz.book.alias_title_id %>
-          (<i><%= aliaz.book.title %></i>)
-        <% end %>
-        <% if user_admin %>
-          <%= link_to image_tag('misc/edit.png'), edit_book_path(aliaz.book) %>
-          <%= link_to image_tag('misc/delete.png'), aliaz.book, :confirm => 'Are you sure you want to delete this book and all its translations?', :method => :delete %>
-        <% end %>
-      </p>
-      <div></div>
-    <% end %>
+    <%= book_alias_in_list(aliaz, @book_alias_thumbnails) %>
   <% end %>
 <% else %>
   <p>
