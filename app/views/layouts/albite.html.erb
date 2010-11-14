@@ -44,8 +44,8 @@
           <table style="width: 100%;" cellspacing="0" cellpadding="0">
             <tr valign="bottom">
               <td align="left">
-                  <%= link_to image_tag("_/alb.gif", :style => "border: none; margin-left: 15px;",
-                                                     :alt => "Albite BOOKS Logo"), root_url  %>
+                  <%= link_to image_tag('_/alb.gif', :class => 'logo',
+                                                     :alt => 'Albite BOOKS Logo'), root_url  %>
               </td>
               <td align="right">
               <%= render :partial => 'layouts/search' %>
@@ -82,8 +82,8 @@
         <td class="tpl_row_l"></td>
         <td></td>
         <td align="left">
-            <%= content_tag :div, flash[:notice], :class => "flmsg_notice" if flash[:notice] %>
-            <%= content_tag :div, flash[:error], :class => "flmsg_error" if flash[:error] %>
+            <%= content_tag :div, flash[:notice], :class => 'flmsg_notice' if flash[:notice] %>
+            <%= content_tag :div, flash[:error], :class => 'flmsg_error' if flash[:error] %>
           <%= yield %>
         </td>
         <td></td>

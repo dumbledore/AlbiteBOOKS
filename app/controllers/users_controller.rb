@@ -12,7 +12,7 @@ before_filter :require_logged_in, :only => :edit
 
       if @user.sign_up!(params[:user], verify_recaptcha)
         @user.deliver_activation_instructions!
-        flash[:notice] = "Check your e-mail for your account activation instructions."
+        flash[:notice] = 'Check your e-mail for your account activation instructions.'
         redirect_to root_url
       else
         render :new
@@ -30,7 +30,7 @@ before_filter :require_logged_in, :only => :edit
     @user = current_user
 
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Successfully updated profile."
+      flash[:notice] = 'Successfully updated profile.'
       redirect_to root_url
     else
       render :edit
@@ -39,13 +39,14 @@ before_filter :require_logged_in, :only => :edit
 
   def forgot_password
     user_found = false
+
     unless defined?(params[:user][:email]).nil?
       user_found = true
       @user = User.where({:email => params[:user][:email]})
 
       if @user.nil? || !@user.active?
         @user = User.new
-        @user.errors.add :email, " not valid or account not yet activated"
+        @user.errors.add :email, ' not valid or account not yet activated'
         user_found = false
       end
 
@@ -57,9 +58,12 @@ before_filter :require_logged_in, :only => :edit
 
     if user_found
       @user.deliver_password_reset_confirmation!
-      flash[:notice] = "Check your mail to reset your password."
+      flash[:notice] = 'Check your mail to reset your password.'
       redirect_to root_url
     end
+
+    @xurl = 'forgot_password'
+    @xmessage = 'Cannot reset your password.'
   end
 
   def activate
@@ -70,7 +74,7 @@ before_filter :require_logged_in, :only => :edit
 
       if @user.nil?
         @user = User.new
-        @user.errors.add :email, " not valid"
+        @user.errors.add :email, ' not valid'
         user_found = false
       end
 
@@ -82,8 +86,11 @@ before_filter :require_logged_in, :only => :edit
 
     if user_found
       @user.deliver_activation_instructions!
-      flash[:notice] = "Check your e-mail for your account activation instructions."
+      flash[:notice] = 'Check your e-mail for your account activation instructions.'
       redirect_to root_url
     end
+
+    @xurl = 'activate'
+    @xmessage = 'Cannot send activation instructions.'
   end
 end

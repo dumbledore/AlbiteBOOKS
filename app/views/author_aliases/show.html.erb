@@ -1,9 +1,10 @@
 <% title @alias.name %>
 
-<h1><%= h @alias.name %></h1>
+<h1><%= h(@alias.name) %></h1>
 <p>
   <strong>Alias:</strong> <%= h @alias.name %>
 </p>
+
 <p>
   <strong>Author:</strong> <%= link_to h(@alias.author.name), @alias.author %>
 </p>

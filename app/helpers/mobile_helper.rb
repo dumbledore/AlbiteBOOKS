@@ -80,7 +80,7 @@ module MobileHelper
   def book_subtitle(book, show_author_name = false, show_publication_date = false)
     author_name = (show_author_name ? 'by ' + book.author.name : '')
     publication_date = (show_publication_date ? book.date_of_first_publication : '')
-    subtitle(book, author_name, publication_date)
+    subtitle(author_name, publication_date)
   end
 
   def mobile_link_to_thumbnail_or_icon(url, title, subtitle, thumbnail_url, icon)

@@ -28,6 +28,10 @@ class AuthorsController < ApplicationController
   def edit
     begin
       @author = Author.find(params[:id], :include => :author_aliases)
+      @aliases = @author.author_aliases
+      @books = @author.books
+      @book_thumbnails = false
+      @no_books_message = 'No books have been added, so far.'
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author was not found'
       redirect_to authors_url
@@ -93,6 +97,7 @@ class AuthorsController < ApplicationController
       @no_books_message = 'No books have been added, so far.'
       @show_publication_date = true
       @freebase_item = @author
+      @disqus = 'author_' + @author.id.to_s
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author not found.'
       redirect_to authors_url

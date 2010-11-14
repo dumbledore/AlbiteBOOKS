@@ -1,4 +1,4 @@
-<h1>Books found for ‘<%= @query %>’</h1>
+<h1>Books found for ‘<%= h(@query) %>’</h1>
 <%= render :partial => 'books/aliases_index' %>
 <% if @book_aliases and @book_aliases.total_pages > 1 %>
   <p>
@@ -6,7 +6,7 @@
   </p>
 <% end %>
 
-<h1>Authors found for ‘<%= @query %>’</h1>
+<h1>Authors found for ‘<%= h(@query) %>’</h1>
 <%= render :partial => 'authors/aliases_index' %>
 <% if @author_aliases and @author_aliases.total_pages > 1 %>
   <p>

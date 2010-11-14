@@ -53,11 +53,11 @@
       <h1>Have read these?</h1>
       <% for book in @books %>
         <div class="home">
-          <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : book.thumbnail_url) %>
+          <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : h(book.thumbnail_url)) %>
           <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br />
-          <%= link_to book.title, book, :class => 'thumblist' %>
+          <%= link_to h(book.title), book, :class => 'thumblist' %>
           <span class="list">
-            <br />by <i><%= link_to book.author.name_cached, book.author %></i><br />
+            <br />by <i><%= link_to h(book.author.name_cached), book.author %></i><br />
           </span>
         </div>
       <% end %>

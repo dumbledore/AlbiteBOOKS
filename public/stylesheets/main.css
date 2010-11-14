@@ -12,6 +12,11 @@ html, body {
   font-size: 12pt;
 }
 
+img.logo {
+  border: none;
+  margin-left: 15px;
+}
+
 table {
   border-collapse: collapse;
 }

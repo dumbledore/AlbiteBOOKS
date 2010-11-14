@@ -1,7 +1,9 @@
-<% title "Edit Alias" %>
-<h1>Editing alias <%= @alias.title %></h1>
+<% title 'Edit Alias' %>
+<h1>Editing alias
+  <%= @alias.title %>
+</h1>
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Back to book", edit_book_path(@alias.book) %>
+  <%= link_to 'Back to book', edit_book_path(@alias.book) %>
 </p>

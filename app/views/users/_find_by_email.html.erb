@@ -2,13 +2,13 @@
   <%= f.error_messages :header_message => @xmessage,
                        :message => "You'll need to fix these:" %>
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "Email" %>
+    <%= content_tag :legend, 'Email' %>
       <%= f.label :email %>
       <%= f.text_field :email %>
     <% end %>
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "You are not a bot, huh?" %>
+    <%= content_tag :legend, 'You are not a bot, huh?' %>
     <%= recaptcha_tags %>
   <% end %>
-  <%= f.submit "Submit"%>
+  <%= f.submit 'Submit' %>
 <% end %>

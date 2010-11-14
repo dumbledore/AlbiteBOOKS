@@ -1,8 +1,7 @@
-<% genre_title = "Books in ‘#{@genre}’" %>
+<% genre_title = "Books in ‘#{h(@genre)}’" %>
 <% title(genre_title) %>
 
-<%= h1 h genre_title %>
-
+<%= h1(h(genre_title)) %>
 <%= render :partial => 'books/index' %>
 <%= will_paginate @books, :renderer => 'WillPaginate::MobileRenderer' %>
 

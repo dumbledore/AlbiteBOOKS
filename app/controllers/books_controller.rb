@@ -40,6 +40,8 @@ class BooksController < ApplicationController
   def edit
     begin
       @book = Book.find(params[:id], :include => [{:author => :alias_name}])
+      @aliases = @book.book_aliases
+      @translations = @book.translations
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url
@@ -102,6 +104,9 @@ class BooksController < ApplicationController
   def show
     begin
       @book = Book.find(params[:id], :include => :author)
+      @freebase_item = @book
+      @translations = @book.translations
+      @disqus = 'book_' + @book.id.to_s
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Book was not found'
       redirect_to books_url

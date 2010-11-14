@@ -18,4 +18,12 @@ module MiscHelper
       %[<h1>#{title}</h1>]
     end
   end
+
+  def ajax_div(id)
+    %[<div id="#{id}"><div class="loading">Loading... #{image_tag '_/loading.gif'}</div></div>]
+  end
+
+  def ajax_span(id)
+    %[<span id="#{id}"><span class="loading">Loading... #{image_tag '_/loading.gif'}</span></span>]
+  end
 end

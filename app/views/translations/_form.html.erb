@@ -5,8 +5,8 @@
   <% content_tag :fieldset do %>
     <%= content_tag :legend, "Translation" %>
     <%= f.label :book %>
-    <%= f.text_field :book, :value => @translation.book.title, :disabled => 1 %>
-    <%= f.hidden_field :book_id %><!-- this one is important -->
+    <%= f.text_field :book, :value => h(@translation.book.title), :disabled => 1 %>
+    <%= f.hidden_field :book_id %>
 
     <%= f.label :note %>
     <%= f.text_field :note %>
@@ -29,5 +29,5 @@
     <%= f.file_field :book_file %>
 
   <% end %>
-  <%= f.submit "Submit", :class => 'small', :disable_with => "Please wait..." %>
+  <%= f.submit 'Submit', :class => 'small', :disable_with => 'Please wait...' %>
 <% end %>

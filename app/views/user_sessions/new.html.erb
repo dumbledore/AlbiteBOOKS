@@ -1,7 +1,19 @@
-<% title "Login" %>
+<% title 'Login' %>
 <h1>Login</h1>
-<p>Enter your username and password to login to your Reading Place.</p>
-<p>If you don't have an account yet, you'd have to <%= link_to 'register', register_url %>.</p>
+<p>
+  Enter your username and password to login to your Reading Place.
+</p>
+
+<p>
+  If you don't have an account yet, you'd have to <%= link_to 'register', register_url %>.
+</p>
+
 <%= render :partial => 'form' %>
-<p><%= link_to "Forgot your password or account name?", forgot_password_url%></p>
-<p><%= link_to "Haven't activated your account?", activate_user_url%></p>
+
+<p>
+  <%= link_to 'Forgot your password or account name?', forgot_password_url%>
+</p>
+
+<p>
+  <%= link_to "Haven't activated your account?", activate_user_url %>
+</p>

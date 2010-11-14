@@ -1,5 +1,5 @@
 <h1>
-  Downloading ‘<%= @translation.book.title %>’
+  Downloading ‘<%= h(@translation.book.title) %>’
   <%= edit_translation_links(@translation) %>
 </h1>
 
@@ -9,39 +9,12 @@
   </p>
 <% end %>
 
-<% unless @translation.note.empty? %>
-  <p>
-    <strong>Note:</strong>
-    <%= h(@translation.note) %>
-  </p>
-<% end %>
-
-<% unless @translation.date_of_publication %>
-  <p>
-    <strong>Date of publication:</strong>
-    <%= h(@translation.date_of_publication) %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Language:</strong>
-  <%= Languages::LANGUAGES[@translation.language][0] %>
-</p>
-
-<p>
-  <strong>Source:</strong>
-  <%= link_to h(@translation.source_url), @translation.source_url, :target => '_blank' %>
-</p>
-
-<p>
-  <strong>Size:</strong>
-  <%= h(@translation.filesize) %>
-</p>
-
-<p>
-  <strong>MD5 hash:</strong>
-  <%= h(@translation.md5) %>
-</p>
+<%= simple_section(@translation.note, 'Note') %>
+<%= simple_section(@translation.date_of_publication, 'Date of publication') %>
+<%= simple_section(Languages::LANGUAGES[@translation.language][0], 'Language') %>
+<%= simple_section(link_to(h(@translation.source_url), @translation.source_url, :target => '_blank'), 'Source') %>
+<%= simple_section(@translation.filesize, 'Size') %>
+<%= simple_section(@translation.md5, 'MD5 has') %>
 
 <div class="download">
   <p>

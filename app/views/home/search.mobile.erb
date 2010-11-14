@@ -1,4 +1,4 @@
-<%= h1 "Search results for ‘#{@query}’" %>
+<%= h1 "Search results for ‘#{h(@query)}’" %>
 <%= h2 'Books found' %>
 <%= render :partial => 'books/aliases_index' %>
 <%= will_paginate(@book_aliases, :renderer => 'WillPaginate::MobileRenderer') if @book_aliases %>

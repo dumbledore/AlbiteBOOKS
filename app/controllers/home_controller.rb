@@ -5,20 +5,24 @@ class HomeController < ApplicationController
     end
   end
 
-def search
-    @query = params[:query]
-    
-    if @query and not @query.empty?
+  def search
       @query = params[:query]
-      
-      @book_aliases   = BookAlias.with_query(@query).paginate   :page => 1, :per_page => APP_CONFIG['paginate']['search']['html'], :include => [:book, {:book => :author}]
-      @author_aliases = AuthorAlias.with_query(@query).paginate :page => 1, :per_page => APP_CONFIG['paginate']['search']['html'], :order => :name_reversed, :include => :author
-    end
 
-    @book_alias_thumbnails = true
-    @no_book_aliases_message = 'No books have been found for this query.'
+      if @query and not @query.empty?
+        @query = params[:query]
 
-    @author_alias_thumbnails = true
-    @no_author_aliases_message = 'No authors have been found for this query.'
+        @book_aliases   = BookAlias.with_query(@query).paginate   :page => 1, :per_page => APP_CONFIG['paginate']['search']['html'], :include => [:book, {:book => :author}]
+        @author_aliases = AuthorAlias.with_query(@query).paginate :page => 1, :per_page => APP_CONFIG['paginate']['search']['html'], :order => :name_reversed, :include => :author
+      end
+
+      @book_alias_thumbnails = true
+      @no_book_aliases_message = 'No books have been found for this query.'
+
+      @author_alias_thumbnails = true
+      @no_author_aliases_message = 'No authors have been found for this query.'
+  end
+
+  def thanks
+    @disqus = 'thanks'
   end
 end

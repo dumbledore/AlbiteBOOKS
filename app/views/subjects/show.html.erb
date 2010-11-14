@@ -1,10 +1,9 @@
-<% subject_title = "Books in ‘#{@subject}’" %>
+<% subject_title = "Books in ‘#{h(@subject)}’" %>
 <% title(subject_title) %>
 
 <h1>
   <%= h(subject_title) %>
 </h1>
-
 <%= render :partial => 'books/index' %>
 <%= will_paginate @books %>
 

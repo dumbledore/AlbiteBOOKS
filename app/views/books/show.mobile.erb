@@ -1,67 +1,30 @@
 <% title @book.title %>
 
 <h1>
-  <%= h @book.title %><br />
-  <span class="subtitle">by <%= h @book.author.name %></span>
+  <%= h(@book.title) %><br />
+  <span class="subtitle">by <%= h(@book.author.name) %></span>
 </h1>
 <%= shadow %>
 
 <% unless @book.thumbnail_url.blank? %>
   <div class="thumbnail">
-    <%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') %>
+    <%= image_tag(h(@book.thumbnail_url), :class =>  'thumbnail') %>
   </div>
 <% end %>
 
-<p>
-  <%= h @book.description %>
-</p>
-
-<% unless @book.date_of_first_publication.empty? %>
-  <%= h2 'Date of first publication' %>
-  <p>
-    <%= h @book.date_of_first_publication %>
-  </p>
-<% end %>
-
-<% unless @book.original_language.empty? %>
-  <%= h2 'Original language' %>
-  <p>
-    <%= h @book.original_language %>
-  </p>
-<% end %>
-
-<% unless @book.number_of_pages.nil? %>
-  <%= h2 'Number of pages' %>
-  <p>
-    <%= h @book.number_of_pages %>
-  </p>
-<% end %>
-
-<% if @book.book_aliases.size > 1 %>
-  <%= h2 'Also known as' %>
-  <%= book_aka_mobile(@book) %>
-<% end %>
+<%= simple_section_mobile(@book.description) %>
+<%= simple_section_mobile(@book.date_of_first_publication, 'Date of first publication') %>
+<%= simple_section_mobile(@book.original_language, 'Original language') %>
+<%= simple_section_mobile(@book.number_of_pages, 'Number of pages') %>
+<%= book_aka_mobile(@book) %>
 
 <%= h2 'Downloads' %>
+<%= translations_list_mobile(@book.translations) %>
 
-<% @translations = @book.translations %>
-<%= render :partial => 'translations/index' %>
-
-<% unless @book.genre_list.empty? %>
-  <%= h2 'Genres' %>
-  <% for genre in @book.genre_list %>
-    <%= mobile_link_to(genre_url(h(genre)), h(genre), nil, true, 'tag') %>
-  <% end %>
-<% end %>
-
-<% unless @book.subject_list.empty? %>
-  <%= h2 'Subjects' %>
-  <% for subject in @book.subject_list %>
-    <%= mobile_link_to(subject_url(h(subject)), h(subject), nil, true, 'tag') %>
-  <% end %>
-<% end %>
+<%= book_tag_list_mobile('Genres', @book.genre_list) {|tag| genre_url(tag)} %>
+<%= book_tag_list_mobile('Subjects', @book.subject_list) {|tag| subject_url(tag)} %>
 
 <% content_for(:back) do %>
-  <%= mobile_link_to_thumbnail_or_icon(author_url(@book.author), h(@book.author.name_cached), 'Back to author', @book.author.thumbnail_url, 'user') %>
+  <%= mobile_link_to_thumbnail_or_icon(author_url(@book.author), h(@book.author.name_cached), 'Back to author', h(@book.author.thumbnail_url), 'user') %>
   <%= mobile_link_to(books_url, 'Search', 'Search for another book', nil, 'zoom') %>
 <% end %>

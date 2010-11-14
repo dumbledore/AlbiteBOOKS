@@ -1,7 +1,5 @@
 <% title 'The subjects' %>
-<h1>
-  Subjects
-</h1>
+<h1>Subjects</h1>
 
 <% if @subjects.empty? %>
   <p>
@@ -10,7 +8,9 @@
 <% else %>
   <ul>
     <% for subject in @subjects %>
-      <li><%= link_to h(subject.name), subject_url(h(subject.name)) %></li>
+      <li>
+        <%= link_to h(subject.name), subject_url(h(subject.name)) %>
+      </li>
     <% end %>
   </ul>
 <% end %>

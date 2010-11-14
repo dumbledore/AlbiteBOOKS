@@ -1,8 +1,6 @@
-<% title "New Book" %>
+<% title 'New Book' %>
 <h1>New Book</h1>
-
 <%= render :partial => 'form' %>
-
 <p>
-  <%= link_to "Back to #{@book.author.name}", edit_author_url(@book.author) %>
+  <%= link_to "Back to #{h(@book.author.name)}", edit_author_url(@book.author) %>
 </p>

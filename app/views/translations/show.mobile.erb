@@ -1,4 +1,4 @@
-<%= h1 "Downloading ‘#{@translation.book.title}’" %>
+<%= h1 "Downloading ‘#{h(@translation.book.title)}’" %>
 
 <% if @translation.original %>
   <p>
@@ -6,31 +6,12 @@
   </p>
 <% end %>
 
-<% unless @translation.note.empty? %>
-  <p>
-    <strong>Note:</strong>
-    <%= h(@translation.note) %>
-  </p>
-<% end %>
-
-<% unless @translation.date_of_publication %>
-  <p>
-    <strong>Date of publication:</strong>
-    <%= h(@translation.date_of_publication) %>
-  </p>
-<% end %>
-
-<p>
-  <strong>Language:</strong>
-  <%= Languages::LANGUAGES[@translation.language][0] %>
-</p>
-
+<%= simple_section(@translation.note, 'Note') %>
+<%= simple_section(@translation.date_of_publication, 'Date of publication') %>
+<%= simple_section(Languages::LANGUAGES[@translation.language][0], 'Language') %>
+<%= h2 'Download' %>
 <%= mobile_link_to("/books/#{@translation.id}/#{@translation.filename}", 'Download file', @translation.filesize, true, 'download') %>
 
 <% content_for(:back) do %>
-  <% if @translation.book.thumbnail_url.blank? %>
-    <%= mobile_link_to(book_url(@translation.book), h(@translation.book.title), 'Back to book', true, 'user') %>
-  <% else %>
-    <%= mobile_link_to(book_url(@translation.book), h(@translation.book.title), 'Back to book', true, @translation.book.thumbnail_url, false) %>
-  <% end %>
+  <%= mobile_link_to_thumbnail_or_icon(book_url(@translation.book), h(@translation.book.title), 'Back to book', h(@translation.book.thumbnail_url), 'book') %>
 <% end %>

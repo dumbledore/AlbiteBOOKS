@@ -18,18 +18,49 @@ module AuthorsHelper
   end
 
   def author_aka(author)
-    aliases = []
-    for aliaz in author.author_aliases
-      aliases << h(aliaz.name) unless author.alias_name == aliaz
+    if @author.author_aliases.size > 1
+      aliases = []
+      for aliaz in author.author_aliases
+        aliases << h(aliaz.name) unless author.alias_name == aliaz
+      end
+      %[
+        <p>
+          <strong>Also known as: </strong>
+          #{aliases.join(", ")}
+        </p>
+       ]
     end
-    aliases.join(", ")
   end
 
   def author_aka_mobile(author)
-    aliases = ''
-    for aliaz in author.author_aliases
-      aliases << %[<p>#{h(aliaz.name)}</p>] unless author.alias_name == aliaz
+    if @author.author_aliases.size > 1
+      aliases = ''
+      for aliaz in author.author_aliases
+        aliases << %[<p>#{h(aliaz.name)}</p>] unless author.alias_name == aliaz
+      end
+      h2('Also known as') + aliases
     end
-    aliases
+  end
+
+  def simple_section(section_text, section_name = nil)
+    if section_text and not section_text.empty?
+      %[
+        <p>
+          <strong>#{section_name}:</strong>
+          #{h(section_text)}
+        </p>
+       ]
+    end
+  end
+
+  def simple_section_mobile(section_text, section_name = nil)
+    if section_text and not section_text.empty?
+      %[
+        #{h2(h(section_name)) if section_name}
+        <p>
+          #{h(section_text)}
+        </p>
+       ]
+    end
   end
 end

@@ -1,7 +1,6 @@
-<% title h(@book.title) %>
+<% title @book.title %>
 
 <% content_for(:head) do %>
-  <% @freebase_item = @book %>
   <%= render :partial => 'misc/freebase_ajax' %>
   <%= javascript_include_tag 'http://api.qrtag.net/js' %>
 <% end %>
@@ -9,53 +8,26 @@
 <h1>
   <%= h(@book.title) %>
   <%= edit_book_links(@book) %>
- <span class="subtitle">by <%= link_to h(@book.author.name), @book.author %></span>
+  <span class="subtitle">by <%= link_to h(@book.author.name), @book.author %></span>
 </h1>
 <p>
-  <%= image_tag(@book.thumbnail_url, :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
-  <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
+  <%= image_tag(h(@book.thumbnail_url), :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
+  <%= ajax_span 'freebase_description' %>
 </p>
-<div id="freebase_details"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-
-<% if @book.book_aliases.size > 1 %>
-  <p>
-    <strong>Also known as: </strong>
-    <%= book_aka(@book) %>
-  </p>
-<% end %>
-
-<% unless @book.genre_list.empty? %>
-  <% genres = [] %>
-  <% for genre in @book.genre_list %>
-    <% genre = link_to genre, genre_url(genre) %>
-    <% genres << genre %>
-  <% end %>
-  <p>
-    <strong>Genres: </strong><%= genres.join ", " %>
-  </p>
-<% end %>
-<% unless @book.subject_list.empty? %>
-  <% subjects = [] %>
-  <% for subject in @book.subject_list %>
-    <% subject = link_to subject, subject_url(subject) %>
-    <% subjects << subject %>
-  <% end %>
-  <p>
-    <strong>Subjects: </strong><%= subjects.join ", " %>
-  </p>
-<% end %>
+<%= ajax_div 'freebase_details' %>
+<%= book_aka(@book) %>
+<%= book_tag_list('Genres', @book.genre_list) {|tag| genre_url(tag)} %>
+<%= book_tag_list('Subjects', @book.subject_list) {|tag| subject_url(tag)} %>
 <div></div>
+
 <h1>Download book &amp; translations</h1>
-
-<% @translations = @book.translations %>
-<%= render :partial => 'translations/index' %>
-
-<div id="freebase_universe"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-<div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<%= translations_list(@book.translations) %>
+<%= ajax_div 'freebase_universe' %>
+<%= ajax_div 'freebase_quotes' %>
 <%= render :partial => 'misc/qr_code' %>
-<div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<%= ajax_div 'freebase_links' %>
+
 <h1>Comments</h1>
-<% @disqus = 'book_' + @book.id.to_s %>
 <%= render :partial => 'misc/disqus_thread' %>
 <% content_for(:tail) do %>
   <%= render :partial => 'misc/disqus_tail' %>
@@ -64,4 +36,6 @@
 <%= new_book_link(@book.author_id) %>
 <%= new_translation_link(@book) %>
 
-<p><%= link_to "Back to #{h(@book.author.name)}", @book.author %></p>
+<p>
+  <%= link_to "Back to #{h(@book.author.name)}", @book.author %>
+</p>

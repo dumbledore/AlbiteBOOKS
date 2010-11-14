@@ -1,45 +1,20 @@
 <% title @author.name %>
 
-<%= h1 h(@author.name) %>
+<%= h1(h(@author.name)) %>
 
 <% unless @author.thumbnail_url.blank? %>
   <div class="thumbnail">
-    <%= image_tag(@author.thumbnail_url, :class =>  'thumbnail') %>
+    <%= image_tag(h(@author.thumbnail_url), :class =>  'thumbnail') %>
   </div>
 <% end %>
 
-<p>
-  <%= h(@author.description) %>
-</p>
+<%= simple_section_mobile(@author.description) %>
+<%= simple_section_mobile(@author.date_and_place_of_birth, 'Born') %>
+<%= simple_section_mobile(@author.date_and_place_of_death, 'Died') %>
+<%= simple_section_mobile(@author.country_of_nationality, 'Country of nationality') %>
+<%= author_aka_mobile(@author) %>
 
-<% unless @author.date_and_place_of_birth.empty? %>
-  <%= h2 'Born' %>
-  <p>
-    <%= h(@author.date_and_place_of_birth) %>
-  </p>
-<% end %>
-
-<% unless @author.date_and_place_of_death.empty? %>
-  <%= h2 'Died' %>
-  <p>
-    <%= h(@author.date_and_place_of_death) %>
-  </p>
-<% end %>
-
-<% unless @author.country_of_nationality.empty? %>
-  <%= h2 'Country of nationality' %>
-  <p>
-    <%= h(@author.country_of_nationality) %>
-  </p>
-<% end %>
-
-<% if @author.author_aliases.size > 1 %>
-  <%= h2 'Also known as' %>
-  <%= author_aka_mobile(@author) %>
-<% end %>
-
-<%= h1 'Books' %>
-
+<%= h2 'Books' %>
 <%= render :partial => 'books/index' %>
 
 <% content_for(:back) do %>

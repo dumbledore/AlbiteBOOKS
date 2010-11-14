@@ -4,14 +4,14 @@
 <% form_for @book do |f| %>
   <%= f.error_messages %>
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "General info" %>
+    <%= content_tag :legend, 'General info' %>
     <%= f.label :author %>
-    <%= f.text_field :author, :value => @book.author.name, :disabled => 1 %>
-    <%= f.hidden_field :author_id %><!-- this one is important -->
+    <%= f.text_field :author, :value => h(@book.author.name), :disabled => 1 %>
+    <%= f.hidden_field :author_id %>
 
     <%= f.label :title %>
     <%= f.text_field :title %>
-    <%= f.label :freebase_uid, "Freebase ID" %>
+    <%= f.label :freebase_uid, 'Freebase ID' %>
     <%= f.text_field :freebase_uid %>
     <%= f.label :thumbnail_url %>
     <%= f.text_field :thumbnail_url %>
@@ -30,7 +30,7 @@
   <% end %>
 
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "Tags" %>
+    <%= content_tag :legend, 'Tags' %>
     <%= f.label :genres %>
     <%= f.text_area :genre_list %>
     <%= f.label :subjects %>
@@ -38,8 +38,8 @@
   <% end %>
 
   <% content_tag :fieldset do %>
-      <%= content_tag :legend, "Readiness" %>
-    <%= f.check_box :ready %> Show in website
+    <%= content_tag :legend, 'Readiness' %>
+      <%= f.check_box :ready %> Show in website
   <% end %>
-  <%= f.submit "Submit", :disable_with => "Please wait..." %>
+  <%= f.submit 'Submit', :disable_with => 'Please wait...' %>
 <% end %>

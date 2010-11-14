@@ -37,19 +37,52 @@ module BooksHelper
   end
 
   def book_aka(book)
-    aliases = []
-    for aliaz in book.book_aliases
-      aliases << h(aliaz.title) unless book.alias_title == aliaz
+    if @book.book_aliases.size > 1
+      aliases = []
+      for aliaz in book.book_aliases
+        aliases << h(aliaz.title) unless book.alias_title == aliaz
+      end
+      %[
+        <p>
+          <strong>Also known as: </strong>
+          #{aliases.join(", ")}
+        </p>
+       ]
     end
-  aliases.join(", ")
   end
 
   def book_aka_mobile(book)
-    aliases = ''
-    for aliaz in book.book_aliases
-      aliases << %[<p>#{h(aliaz.title)}</p>] unless book.alias_title == aliaz
-    end
+    if @book.book_aliases.size > 1
+      aliases = ''
+      for aliaz in book.book_aliases
+        aliases << %[<p>#{h(aliaz.title)}</p>] unless book.alias_title == aliaz
+      end
 
-    aliases
+      h2('Also known as') + aliases
+    end
+  end
+
+  def book_tag_list(tag_title, tag_list)
+    unless tag_list.empty?
+      tags = []
+      for tag in tag_list
+        tags << link_to(tag, h(yield(tag)))
+      end
+      %[
+        <p>
+          <strong>#{tag_title}:</strong> #{tags.join ", "}
+        </p>
+       ]
+    end
+  end
+
+  def book_tag_list_mobile(tag_title, tag_list)
+    unless tag_list.empty?
+      tags = h2(tag_title)
+      for tag in tag_list
+        tags << mobile_link_to(h(yield(tag)), h(tag), nil, true, 'tag')
+      end
+      tags
+    end
   end
 end

@@ -7,21 +7,17 @@
 
 <% content_tag :fieldset do %>
   <%= content_tag :legend, 'Alases' %>
-
-  <% @aliases = @book.book_aliases %>
   <%= render :partial => 'book_aliases/index' %>
-
   <%= new_book_alias_link(@book) %>
 <% end %>
 
 <% content_tag :fieldset do %>
   <%= content_tag :legend, 'Translations' %>
-  <% @translations = @book.translations %>
   <%= render :partial => 'translations/index' %>
   <%= new_translation_link(@book) %>
 <% end %>
 
 <p>
-  <%= link_to "Show book", @book %> |
-  <%= link_to "Back to #{@book.author.name}", edit_author_url(@book.author) %>
+  <%= link_to 'Show book', @book %> |
+  <%= link_to "Back to #{h(@book.author.name)}", edit_author_url(@book.author) %>
 </p>

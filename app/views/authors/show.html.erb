@@ -6,32 +6,23 @@
 
 <h1>
   <%= h(@author.name) %>
-  <%= edit_author_links(@author) if user_admin? %>
+  <%= edit_author_links(@author) %>
 </h1>
 <p>
   <%= image_tag(h(@author.thumbnail_url), :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
-  <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
+  <%= ajax_span('freebase_description') %>
 </p>
-
-<div id="freebase_bio"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
-
-<% if @author.author_aliases.size > 1 %>
-  <p>
-  <strong>Also known as: </strong>
-  <%= author_aka(@author) %>
-  </p>
-<% end %>
+<%= ajax_div('freebase_bio') %>
+<%= author_aka(@author) %>
 <div></div>
 
 <h1>Books</h1>
 <%= render :partial => 'books/index' %>
-
-<div id="freebase_quotes"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<%= ajax_div 'freebase_quotes' %>
 <%= render :partial => 'misc/qr_code' %>
-<div id="freebase_links"><div class="loading">Loading... <%= image_tag '_/loading.gif' %></div></div>
+<%= ajax_div 'freebase_links' %>
 
 <h1>Comments</h1>
-<% @disqus = 'author_' + @author.id.to_s %>
 <%= render :partial => 'misc/disqus_thread' %>
 <% content_for(:tail) do %>
   <%= render :partial => 'misc/disqus_tail' %>
@@ -41,5 +32,5 @@
 <%= new_book_link(@author) %>
 
 <p>
-  <%= link_to "Back to Authors", authors_url %>
+  <%= link_to 'Back to Authors', authors_url %>
 </p>

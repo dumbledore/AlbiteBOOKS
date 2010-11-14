@@ -1,8 +1,8 @@
-Albite BOOKS: Read for pleasure!
+<%= APP_CONFIG['title'] %>
 ------------------------------------------------------
 
   Hello <%= @account_info[:name] %>,
-  You have just created an account at www.albite.org! Click the url below to activate it.
+  You have just created an account at <%= APP_CONFIG['title'] %>! Click the url below to activate it.
   
     <%= @account_info[:url] %>
   

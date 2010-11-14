@@ -7,17 +7,12 @@
 
 <% content_tag :fieldset do %>
   <%= content_tag :legend, 'Alases' %>
-
-  <% @aliases = @author.author_aliases %>
   <%= render :partial => 'author_aliases/index' %>
   <%= new_author_alias_link(@author) %>
 <% end %>
 
 <% content_tag :fieldset do %>
   <%= content_tag :legend, 'Books' %>
-  <% @books = @author.books %>
-  <% @book_thumbnails = false %>
-  <% @no_books_message = 'No books have been added, so far.' %>
   <%= render :partial => 'books/index' %>
   <%= new_book_link(@author) %>
 <% end %>

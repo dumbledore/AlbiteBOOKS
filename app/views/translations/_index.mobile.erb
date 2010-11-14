@@ -1,9 +1,0 @@
-<% if @translations and not @translations.empty? %>
-  <% for translation in @book.translations %>
-    <%= translation_in_list_mobile(translation) %>
-  <% end %>
-<% else %>
-  <p>
-    <i>Nothing to download yet.</i>
-  </p>
-<% end %>
