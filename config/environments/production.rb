@@ -29,3 +29,6 @@ config.action_view.cache_template_loading            = true
 
 # Mailer
 config.action_mailer.default_url_options = { :host => "albite.vlexofree.com" }
+
+# Logger
+config.log_level = :warn

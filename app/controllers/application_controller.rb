@@ -102,4 +102,13 @@ class ApplicationController < ActionController::Base
   def query
     params[:query]
   end
+
+  # Logging stuff
+
+  EXCEPTIONS_NOT_LOGGED = ['ActionController::UnknownAction', 'ActionController::RoutingError']
+
+  protected
+    def log_error(exc)
+      super unless EXCEPTIONS_NOT_LOGGED.include?(exc.class.name)
+    end
 end
