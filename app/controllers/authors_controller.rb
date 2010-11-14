@@ -88,11 +88,11 @@ class AuthorsController < ApplicationController
   def show
     begin
       @author = Author.find(params[:id], :include => [:author_aliases, :alias_name])
-
       @books = @author.books
       @book_thumbnails = true
       @no_books_message = 'No books have been added, so far.'
       @show_publication_date = true
+      @freebase_item = @author
     rescue ActiveRecord::RecordNotFound
       flash[:error] = 'Author not found.'
       redirect_to authors_url

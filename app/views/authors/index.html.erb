@@ -1,16 +1,5 @@
 <% title 'The authors' %>
-<% unless APP_CONFIG['hide_author_index'] %>
-  <h1 class='letter'>Authors
-    <span class='letter'>
-      <%= @letter_name %>
-    </span>
-  <br /><%= letters_index %></h1>
-<% else %>
-  <h1>Authors</h1>
-<% end %>
-
+<%= letters_index(APP_CONFIG['hide_author_index'], 'Authors', @letter_name) %>
 <%= render :partial => 'aliases_index' %>
 <%= will_paginate @author_aliases %>
-<p>
-  <b><%= link_to "New Author", new_author_path if user_admin %></b>
-</p>
+<%= new_author_link %>

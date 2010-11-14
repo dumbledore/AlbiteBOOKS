@@ -225,7 +225,7 @@ p.descr {
   line-height: 130%;
 }
 
-div.flmsg_notice, div.flmsg_notice {
+div.flmsg_notice, div.flmsg_error {
   font-size: 0.8em;
   padding: 5px 15px;
   text-align: center;
@@ -236,9 +236,8 @@ div.flmsg_notice {
 }
 
 div.flmsg_error {
-  font-size: 1em;
   background-color: #FBB;
-  font-width: bold;   
+  font-weight: bold;
 }
 
 .tpl_wrapper {

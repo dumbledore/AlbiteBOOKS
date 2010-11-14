@@ -64,11 +64,11 @@ module MobileHelper
     ]
   end
 
-  def subtitle(item, *opts)
+  def subtitle(*opts)
     subtitle = []
 
     opts.each do |o|
-      subtitle << h(o) if o and not o.empty?
+      subtitle << o if o and not o.empty?
     end
 
     subtitle = subtitle.join('<br />')

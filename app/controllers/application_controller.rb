@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   layout 'albite'
 
   # make this methods available in the view
-  helper_method :current_user, :user_admin
+  helper_method :current_user, :user_admin?, :query
 
   private
 
@@ -61,13 +61,11 @@ class ApplicationController < ActionController::Base
   # User handling methods
 
   def current_user_session
-    return @current_user_session if defined?(@current_user_session)
-    @current_user_session = UserSession.find
+    @current_user_session ||= UserSession.find
   end
 
   def current_user
-    return @current_user if defined?(@current_user)
-    @current_user = current_user_session && current_user_session.record
+    @current_user ||= current_user_session && current_user_session.record
   end
 
   def require_no_user
@@ -78,19 +76,15 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logged_in
-    if not current_user
-      redirect_to root_url
-    end
+    redirect_to root_url if not current_user
   end
   
   def require_admin
-    if not current_user or not current_user.admin
-      redirect_to root_url
-    end
+    redirect_to root_url if not user_admin?
   end
 
-  def user_admin
-    current_user and current_user.admin
+  def user_admin?
+    @user_admin ||= current_user and current_user.admin
   end
 
   def back(url)
@@ -103,5 +97,9 @@ class ApplicationController < ActionController::Base
 
   def mobile_format
     request.format = :mobile if mobile?
+  end
+
+  def query
+    params[:query]
   end
 end

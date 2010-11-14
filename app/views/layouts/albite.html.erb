@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title>
-      <%= h(yield(:title)) %>
+      <%= yield(:title) %>
       <%= APP_CONFIG['title'] %>
     </title>
 
@@ -21,9 +21,9 @@
     </script>
     <%= javascript_include_tag 'application.js' %>
 
-    <%= yield h(:head) %>
+    <%= yield :head %>
   </head>
-  <body onload="<%= yield h(:on_load_pre) %>doc_load();<%= yield h(:on_load_post) %><%= yield h(:focus_on_load) %>">
+  <body onload="<%= yield :on_load_pre %>doc_load();<%= yield :on_load_post %><%= yield :focus_on_load %>">
     <table class="tpl_wrapper">
       <colgroup width="40"></colgroup>
       <colgroup width="10"></colgroup>
@@ -44,7 +44,8 @@
           <table style="width: 100%;" cellspacing="0" cellpadding="0">
             <tr valign="bottom">
               <td align="left">
-                  <%= link_to image_tag("_/alb.gif", :style => "border: none; margin-left: 15px;", :alt => "Albite BOOKS Logo"), root_url  %>
+                  <%= link_to image_tag("_/alb.gif", :style => "border: none; margin-left: 15px;",
+                                                     :alt => "Albite BOOKS Logo"), root_url  %>
               </td>
               <td align="right">
               <%= render :partial => 'layouts/search' %>
@@ -64,34 +65,10 @@
           <table style="width: 100%;">
             <tr>
               <td align="left">
-                <span class="menu"><%=
-                  link_to 'Home',root_url, :class => 'menu'
-                %><%=
-                  link_to 'Books', books_url, :class => 'menu'
-                %><%=
-                  link_to 'Authors', authors_url, :class => 'menu'
-                %><%=
-                  link_to 'Genres', genres_url, :class => 'menu'
-                %><%=
-                    link_to 'Subjects', subjects_url, :class => 'menu'
-                  %><%=
-                  link_to 'Get the Reader!', reader_url, :class => 'menu_reader'
-                %><%=
-                  link_to 'About', about_url, :class => 'menu'
-                %><%=
-                  link_to 'Say thanks', thanks_url, :class => 'menu'
-                %></span>
+                <span class="menu"><%= render :partial => 'layouts/menu_top' %></span>
               </td>
               <td align="right">
-                <span class="menu"><% if current_user %><%=
-                                  link_to "Profile", profile_path, :class => 'menu_smaller'
-                              %><%=
-                                  link_to "Logout", logout_path, :class => 'menu_smaller'
-                              %><% else %><%=
-                                  link_to "Register", register_path, :class => 'menu_smaller' if can_add_users
-                              %><%=
-                                  link_to "Login", login_path, :class => 'menu_smaller'
-                              %><% end %></span>
+                <span class="menu"><%= render :partial => 'layouts/menu_login' %></span>
               </td>
             </tr>
           </table>
@@ -105,8 +82,8 @@
         <td class="tpl_row_l"></td>
         <td></td>
         <td align="left">
-            <%= content_tag :div, flash[:notice], :class => "flmsg_notice" if flash.has_key?(:notice) %>
-            <%= content_tag :div, flash[:error], :class => "flmsg_error" if flash.has_key?(:error) %>
+            <%= content_tag :div, flash[:notice], :class => "flmsg_notice" if flash[:notice] %>
+            <%= content_tag :div, flash[:error], :class => "flmsg_error" if flash[:error] %>
           <%= yield %>
         </td>
         <td></td>
@@ -118,14 +95,7 @@
         <td></td>
         <td align="center">
           <hr width="100%" />
-          <span class="menu"><%= render :partial => 'misc/ad_linkback' %> | <%=
-            link_to "about this site", about_url, :class => :menu_down
-          %>|<%=
-            link_to "report copyright infringement", copyright_url, :class => :menu_down
-          %>|<%=
-            link_to "contacts", contacts_url, :class => :menu_down
-          %>
-          </span>
+          <span class="menu"><%= render :partial => 'layouts/menu_bottom' %></span>
           <hr width="100%" />
         </td>
         <td></td>

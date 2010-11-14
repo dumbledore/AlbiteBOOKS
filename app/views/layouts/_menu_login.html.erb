@@ -1,0 +1,9 @@
+<%=
+  if current_user
+    link_to('Profile', profile_path, :class => 'menu_smaller') +
+    link_to('Logout', logout_path, :class => 'menu_smaller')
+  else
+    (can_add_users? ? link_to('Register', register_path, :class => 'menu_smaller') : '') +
+    link_to('Login', login_path, :class => 'menu_smaller')
+  end
+%>

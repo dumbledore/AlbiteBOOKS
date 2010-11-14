@@ -4,7 +4,7 @@
 <% form_for @author do |f| %>
   <%= f.error_messages %>
   <% content_tag :fieldset do %>
-    <%= content_tag  :legend, "General info" %>
+    <%= content_tag  :legend, 'General info' %>
     <%= f.label      :name %>
     <%= f.text_field :name %>
     <%= f.label      :freebase_uid, 'Freebase ID' %>
@@ -13,7 +13,7 @@
     <%= f.text_field :thumbnail_url %>
   <% end %>
   <% content_tag :fieldset do %>
-    <%= content_tag  :legend, "Freebase info (used only in mobile version)" %>
+    <%= content_tag  :legend, 'Freebase info (used only in mobile version)' %>
     <%= f.label      :description %>
     <%= f.text_area  :description %>
     <%= f.label      :date_and_place_of_birth %>
@@ -24,8 +24,8 @@
     <%= f.text_field :country_of_nationality %>
   <% end %>
   <% content_tag :fieldset do %>
-    <%= content_tag  :legend, "Readiness" %>
+    <%= content_tag  :legend, 'Readiness' %>
     <%= f.check_box  :ready %> Show in website
   <% end %>
-  <%= f.submit "Submit", :disable_with => "Please wait..." %>
+  <%= f.submit 'Submit', :disable_with => 'Please wait...' %>
 <% end %>

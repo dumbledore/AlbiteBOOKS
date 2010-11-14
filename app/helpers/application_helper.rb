@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper   
   def title(page_title)
-    content_for(:title) {"#{page_title} at "}
+    content_for(:title) {"#{h(page_title)} at "}
   end
 
   def on_load(pre_func, post_func = nil)
@@ -24,7 +24,7 @@ module ApplicationHelper
     content_for(:focus_on_load) {"focus_on_load('#{form_item}');"}
   end
 
-  def can_add_users
+  def can_add_users?
     APP_CONFIG['can_add_users']
   end
 

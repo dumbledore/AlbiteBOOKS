@@ -1,19 +1,15 @@
-<% title h(@author.name) %>
+<% title @author.name %>
 
 <% content_for(:head) do %>
-  <% @freebase_item = @author %>
   <%= render :partial => 'misc/freebase_ajax' %>
 <% end %>
 
 <h1>
-  <%=h @author.name %>
-  <% if user_admin %>
-    <%= link_to image_tag("misc/edit.png"), edit_author_path(@author), :class => 'small' %>
-    <%= link_to image_tag("misc/delete.png"), @author, :confirm => 'Are you sure you want to delete this author and their books and translations?', :method => :delete, :class => 'small' %>
-  <% end %>
+  <%= h(@author.name) %>
+  <%= edit_author_links(@author) if user_admin? %>
 </h1>
 <p>
-  <%= image_tag(@author.thumbnail_url, :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
+  <%= image_tag(h(@author.thumbnail_url), :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
   <span id="freebase_description"><span class="loading">Loading... <%= image_tag '_/loading.gif' %></span></span>
 </p>
 

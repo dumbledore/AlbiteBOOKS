@@ -4,14 +4,14 @@
   <%= f.error_messages %>
 
   <% content_tag :fieldset do %>
-    <%= content_tag :legend, "Alias" %>
+    <%= content_tag :legend, 'Alias' %>
     <%= f.label :author %>
-    <%= f.text_field :author, :value => @author.name, :disabled => 1 %>
+    <%= f.text_field :author, :value => h(@author.name), :disabled => 1 %>
     <%= f.hidden_field :author_id %>
 
     <%= f.label :name %>
     <%= f.text_field :name %>
   <% end %>
   
-  <%= f.submit "Submit", :class => 'small', :disable_with => "Please wait..." %>
+  <%= f.submit 'Submit', :class => 'small', :disable_with => 'Please wait...' %>
 <% end %>

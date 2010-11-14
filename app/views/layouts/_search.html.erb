@@ -3,7 +3,9 @@
       <tr>
         <td class="s_box_l"></td>
         <td class="s_box">
-          <%= text_field_tag :query, nil, :class => 'search', :size => '60', :onblur => 'javascript: search_blur(this);', :onfocus => 'javascript: search_focus(this);' %>
+          <%= text_field_tag :query, nil, :class => 'search', :size => '60', :value => h(query),
+                             :onblur => 'javascript: search_blur(this);', :onfocus => 'javascript: search_focus(this);'
+          %>
         </td>
         <td class="s_box_r"></td>
         <td>
