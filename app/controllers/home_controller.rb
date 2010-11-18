@@ -5,6 +5,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def reader
+    @version = '2.0.7'
+  end
+
   def search
       @query = params[:query]
 

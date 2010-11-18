@@ -1,3 +1,8 @@
+/*
+ * content_for(element_id, [content])
+ * Sets the html content of the element with the specified id.
+ * If the second argument is missing it just deletes elements content. 
+ */
 function content_for(a) {
   text = '';
   if (arguments.length > 1) {

@@ -33,6 +33,7 @@ div {
 div.download {
   border: #aaa solid 1px;
   padding: 0px;
+  background-color: #f0f0eb;
 }
 
 h1.letter {
@@ -75,16 +76,36 @@ p {
   line-height: 140%;
 }
 
-/*i, em {*/
-  /*color: #806A5D;*/
-/*}*/
+i, em {
+  color: #806A5D;
+  /*color: #000;*/
+}
 
-h1 {
+h1, h2, h3 {
   font-size: 1.5em;
   border-bottom: 1px solid #aaa;
   text-align: left;
+  font-weight: bold;
   font-variant: small-caps;
   padding: 0 15px 8px 15px;
+}
+
+h2, h3 {
+  font-size: 1.0em;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  color: #555;
+}
+
+h3 {
+  font-variant: normal;
+  border: none;
+  padding-bottom: 0px;
+}
+
+table.inline td {
+  padding: 4px 15px;
+  border-bottom: 1px solid #ccc;
 }
 
 input[type="text"],
@@ -418,6 +439,10 @@ div.loading {
   margin: 10px;
 }
 
+ div.youtube {
+   text-align: center;
+ }
+
 p.quote {
   font-style: italic;
   letter-spacing: 0.08em;
@@ -433,4 +458,31 @@ div.paginate {
 
 span.paginate {
   padding-left: 10px;
+}
+
+code {
+  background: #eee;
+  padding: 2px 6px;
+  font-family: "Times New Roman", Times, serif;
+  letter-spacing: 0.08em;
+}
+
+li {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+img.diagram, table.diagram img {
+  padding: 0px;
+  margin: 20px;
+  border: #222 1px solid;
+}
+
+table.diagram td {
+  width: 50%;
+  text-align: center;
+}
+
+table.diagram {
+  width: 100%;
 }
