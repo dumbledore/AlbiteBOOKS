@@ -117,6 +117,7 @@
       </tr>
     </table>
   <%= yield :tail %>
-  <%= render :partial => 'layouts/tail' %>
+  <%= render :partial => 'layouts/uservoice' if not overlay? %>
+  <%= render :partial => 'layouts/overlay' if overlay? %>
   </body>
 </html>

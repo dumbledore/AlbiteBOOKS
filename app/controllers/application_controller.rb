@@ -13,12 +13,16 @@ class ApplicationController < ActionController::Base
   layout 'albite'
 
   # make this methods available in the view
-  helper_method :current_user, :user_admin?, :query
+  helper_method :current_user, :user_admin?, :query, :overlay?
 
   private
 
   def home?
     @home = controller_name == 'home' && action_name == 'home'
+  end
+
+  def overlay?
+    @overlay ||= !(!APP_CONFIG['overlay'][true] || APP_CONFIG['overlay']['except'].include?(request.env['REMOTE_ADDR']))
   end
 
   def mobile?

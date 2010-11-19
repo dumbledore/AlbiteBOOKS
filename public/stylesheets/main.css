@@ -486,3 +486,24 @@ table.diagram td {
 table.diagram {
   width: 100%;
 }
+
+.italic {
+  font-style: italic;
+}
+
+div.overlay {
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  
+  /*background-color: #F60;*/
+  background-color: #806A5D;
+  opacity: 0.95;
+  filter: alpha(opacity = 95);
+  z-index: 10;
+  font-size: 2em;
+  color: #FFF;
+}

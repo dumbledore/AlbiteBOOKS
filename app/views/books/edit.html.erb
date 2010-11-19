@@ -13,7 +13,7 @@
 
 <% content_tag :fieldset do %>
   <%= content_tag :legend, 'Translations' %>
-  <%= render :partial => 'translations/index' %>
+  <%= translations_list(@book.translations) %>
   <%= new_translation_link(@book) %>
 <% end %>
 

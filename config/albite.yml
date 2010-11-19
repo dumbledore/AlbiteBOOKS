@@ -10,6 +10,14 @@ title: Albite BOOKS
 # using the subdomain if true (e.g. http://m.albite.vlexofree.com), or the user-agent header if false
 mobile_by_subdomain: false
 
+# Screen overlay, used mainly to indicate that the site is under construction or under update or such stuff
+# and on the same time disable site functionality (i.e. only viewing would be possible without any
+# interactivity.
+overlay:
+  on: false                   # whether to use overlay mode
+  except: [127.0.0.1]         # a list of ip addresses that don't see the overlay message
+  partial: under_construction # the name of the partial in the overlay folder that would be rendered into the overlay
+
 # Count of books showed at the homepage
 homepage_book_count: 3
 

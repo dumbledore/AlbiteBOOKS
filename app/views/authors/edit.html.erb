@@ -6,7 +6,7 @@
 <%= render :partial => 'form' %>
 
 <% content_tag :fieldset do %>
-  <%= content_tag :legend, 'Alases' %>
+  <%= content_tag :legend, 'Aliases' %>
   <%= render :partial => 'author_aliases/index' %>
   <%= new_author_alias_link(@author) %>
 <% end %>

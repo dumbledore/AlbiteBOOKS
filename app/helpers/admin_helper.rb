@@ -49,17 +49,17 @@ module AdminHelper
 
   def edit_author_alias_links(aliaz)
     if user_admin?
-      link_to image_tag('misc/edit.png'), edit_author_alias_path(aliaz)
-      link_to image_tag('misc/delete.png'), aliaz, :confirm => 'Are you sure you want to delete this alias?',
-                                                   :method => :delete
+      link_to(image_tag('misc/edit.png'), edit_author_alias_path(aliaz)) +
+      link_to(image_tag('misc/delete.png'), aliaz, :confirm => 'Are you sure you want to delete this alias?',
+                                                   :method => :delete)
     end
   end
 
   def edit_book_alias_links(aliaz)
     if user_admin?
-      link_to image_tag('misc/edit.png'), edit_book_alias_url(aliaz)
-      link_to image_tag('misc/delete.png'), aliaz, :confirm => 'Are you sure you want to delete this alias?',
-                                                   :method => :delete
+      link_to(image_tag('misc/edit.png'), edit_book_alias_url(aliaz)) +
+      link_to(image_tag('misc/delete.png'), aliaz, :confirm => 'Are you sure you want to delete this alias?',
+                                                    :method => :delete)
     end
   end
 end
