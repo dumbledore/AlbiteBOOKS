@@ -1,4 +1,18 @@
 <%= title 'Get the Reader' %>
+<h1>Contents</h1>
+<ul>
+  <li><a href="#full_version">Albite READER</a></li>
+  <li><a href="#light_version">Albite READER Light</a></li>
+  <li><a href="#supported_devices">Is my phone supported?</a></li>
+  <li><a href="#installation">Installing the reader</a></li>
+  <li><a href="#permissions">Setting up security permissions</a></li>
+  <li><a href="#tutorial" class="italic">Tutorial: Using the reader</a></li>
+  <li><a href="#faq">Troubleshooting</a></li>
+  <li><a href="#features">Features in detail</a></li>
+  <li><a href="#resources">User resources</a></li>
+  <li><a href="#limitations">Current limitations</a></li>
+</ul>
+
 <h1 id="full_version">Albite Reader</h1>
 <p>
   A feature-rich e-book reader for the <i>Java Mobile</i> platform developed by
@@ -101,7 +115,7 @@
            />
   </object>
 </div>
-<h1>Is my phone supported?</h1>
+<h1 id="supported_devices">Is my phone supported?</h1>
 <p>
   As the this app is developed by a single person, it has been tested on some very limited amount of devices. If you
   feel at home with your device specs, you may have a look at the <a href="#system_requirements">system requirements</a>.
@@ -114,7 +128,7 @@
 </p>
 <h2>Supported Devices</h2>
 <ul>
-  <li>Samsung GT-S5230 (Star)</li>
+  <li>Samsung GT-S5230 (Star): Runs both the full and light versions.</li>
 </ul>
 <h2 id="system_requirements">System reqirements</h2>
 <table class="inline">
@@ -138,7 +152,7 @@
     </td>
   </tr>
 </table>
-<h1>Installing the reader</h1>
+<h1 id="installation">Installing the reader</h1>
 <p>
   It's installed like any other Java Mobile game. Transfer the jar file to your device, and then open it up from
   your phone's file manager. If that's not possible, you may need to download the app straight from you phone's
@@ -309,11 +323,78 @@
   </tr>
 </table>
 <p>
-  Areas according to color .....
+  There are four touch interactions that the main screen responds to: <i>press and release</i>,
+  <i>press, hold and release</i>, <i>drag</i>, <i>hold and drag</i>.
 </p>
 <p>
-  Selecting text
+  <span style="background-color: #c6acd9;">The area in violet</span> is the <i>toolbar</i>. It responds to <i>press</i>
+  and <i>press and hold</i>.
 </p>
+<table class="inline">
+  <tr>
+    <td><img src="/images/content/reader_gui/t-menu.png" /></td>
+    <td>
+      <i>Press and release</i> brings up the main menu.<br />
+      <i>Press, hold and release</i> is a shortcut for quitting the app. Before quitting however, it will ask you to
+      confirm your intention so that you wouldn't quit the app incidentally.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-book.png" /></td>
+    <td>
+      <i>Press and release</i> brings the open book screen.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-glass.png" /></td>
+    <td>
+      <i>Press and release</i> brings the word look up screen.<br />
+      <i>Press, hold and release</i> brings the number conversion screen.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-size.png" /></td>
+    <td>
+      <i>Press and release</i> switches the font size<br />
+      <i>Press, hold and release</i> brings up the font size selection screen.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-profile.png" /></td>
+    <td>
+      <i>Press and release</i> switches the day and night profiles.<br/>
+      <i>Press, hold and release</i> brings up the color profile configuration screen.
+    </td>
+  </tr>
+</table>
+
+<p>
+  <span style="background-color: #d3ecb9;">The area in green</span> is the way to switch pages.<br/>
+  <i>Press and release</i> on the left side scrolls to the previous page and respectively <i>press and release</i>
+  on the right side scrolls to the next page. 
+</p>
+
+<p>
+  <i>Press and release</i> on <span style="background-color: #99dff9;">the area in blue</span> switches between
+  normal and full-screen mode.
+</p>
+
+<p>
+  <span style="background-color: #ff9;">The area in yellow</span> shows the progress in the current chapter.<br/>
+  <i>Press and release</i> brings up the table of contents.<br/>
+  <i>Press, hold and release</i> moves to the place in current chapter that corresponds to the point you pressed
+  the progress bar.
+</p>
+
+<p>
+  The <i>book content</i> also reacts to touch.<br/>
+  <i>Press, hold and release</i> on a word (<span style="background-color: #f99;">e.g. the area in red</span>) brings
+  up the word look-up screen.<br/>
+  <i>Press, hold and release</i> on a number brings up the number conversion screen.<br/>
+  <i>Press and drag</i> on the book content moves the pages according to your finger guiding.
+  <i>Press, hold and drag</i> enters into <i>text selection mode</i>. After <i>release</i> the add-bookmark screen.
+</p>
+
 <table class="diagram">
   <tr>
     <td>
@@ -326,25 +407,143 @@
     </td>
   </tr>
 </table>
+
 <h2 id="dictionary_installation">Downloading &amp; installing dictionaries</h2>
+<p>
+  Firstly, you need to copy the dictionaries to their own folder on your mobile. Then select
+  <i>Set dictionary folder</i> from the main menu and browse to the folder where you put your dictionaries.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/menu-dictionary.png" />
+    </td>
+    <td>
+      <img src="/images/content/reader_gui/dict-browser.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The main menu with <i>Set dictionary folder</i> selected.
+    </td>
+    <td>
+      The dictionary browser showing the user is about to select the <i>dicts</i> folder.
+    </td>
+  </tr>
+</table>
+
+<h2 id="interaction">Configuring your interaction with the reader</h2>
+<p>
+  There a few options that setup the way you interact with the reader:
+</p>
+<ul>
+  <li>
+    <i>Scrolling speed</i> is the speed with which pages are being scrolled.
+  </li>
+  <li>
+    <i>Smooth scrolling</i> makes scrolling looks more natural. It adjusts the speed so that it's not entirely constant.
+  </li>
+  <li>
+    By default pages are scrolled horizontally. You can also scroll them vertically, if you'd like so.
+  </li>
+  <li>
+    The time needed to hold over an area to activate <i>hold mode</i> may be decreased/increased through the
+    <i>Long press after</i> slider.
+  </li>
+</ul>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/interaction.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The <i>page interaction</i> screen.
+    </td>
+  </tr>
+</table>
 
 <h1 id="faq">Troubleshooting</h1>
-<li><a href="#">I am seeing placeholders instead of images.</a></li>
-<li><a href="#">How do I install the app on my phone?</a></li>
-<li><a href="#">How do I upgrade the app?</a></li>
-<li><a href="#">What are these .alx files along with my books?</a></li>
-<li><a href="#">How do I report a bug?</a></li>
-<li><a href="#">Is my phone supported?</a></li>
+<h3>I can't install the app on my phone</h3>
+<p>
+  If you can't copy the .jar file to your phone. You'll need to download the app directly from you phone's browser.
+  Visit <a href="http://m.albite.vlexofree.com/reader">the mobile site</a> from your phone and download the app. 
+</p>
+<p>
+  After that you need to open the phone's browser, navigate to the folder where you put the .jar file and open it.
+  If the phone throws an error message, then you might not be able to install the full version, try with
+  <a href="#light_version">Albite READER Light</a> instead.
+</p>
+<h3>I can't start the app</h3>
+<p>
+  Well, it's the hardest question to answer as there may be many reasons for that. Firstly, you need to accept the
+  license that will show up the first time you run the app. After that you need to navigate to your books folder
+  and select a book to open. Meanwhile you may be asked various questions regarding app permissions which you
+  <b><i>must</i></b> accept or the app wouldn't work at all. What questions? Well, your phone asks you
+  whether you'd allow <i>Albite READER</i> to read and write user data. And your books <i>are</i> user data. Please,
+  see the section about <a href="#permissions">security permissions</a>. Finally, if the app closes unexpectedly or
+  behaves in a funny way, may be you haven't got enough resources to run the full version. You should try
+  <a href="#light_version">Albite READER Light</a> instead. You may also check if your phone is in
+  <a href="#supported_devices">the compatibility list</a> and have a look at
+  <a href="#system_requirements">the system requirements</a>.
+</p>
 
-<li><a href="#">How do I use dictionaries?</a></li>
-<li><a href="#">How do I look up a word?</a></li>
-<li><a href="#">How do I convert physical quantities?</a></li>
-<li><a href="#">I can't see the book from within the app.</a></li>
-<li><a href="#">How do I change the text size?</a></li>
-<li><a href="#">How do I change the color profile?</a></li>
-<li><a href="#">How do I change the colors of the profile?</a></li>
-<li><a href="#">How do I open a book?</a></li>
-<li><a href="#">How do I </a></li>
+<h3>Do I need to upgrade the app and how do I do that?</h3>
+<p>
+  From time to time there may be new versions of <i>Albite READER</i> that fix some existing issues or add new
+  functionality. Upgrading the app is easy. Simply uninstall it from your phone and install the new version exactly
+  the way you did before. However, you'll loose you app settings, i.e. you'll need to set the dictionary folder again,
+  may be set up the page interaction and color profiles. The good news is that your book settings will be preserved
+  as they are saved on the filesystem along with your books.
+</p>
+
+<h3>What are these .alx files along with my books?</h3>
+<p>
+  See the section about <a href="#alx">portable book settings</a>.
+</p>
+
+<h3>How do I report a bug?</h3>
+<p>
+  Two ways:
+</p>
+<ul>
+  <li><a href="https://github.com/dumbledore/AlbiteREADER/issues">Create an issue at GitHub</a></li>
+  <li>Contact me through the feedback button on the left.</li>
+</ul>
+
+<h3>Is my phone supported?</h3>
+<p>
+  See <a href="#supported_devices">the list of supported devices</a>.
+</p>
+
+<h3>I can't see the book folder or the book file or I can't open the book</h3>
+<p>
+  Most probably you're having trouble with <a href="#permissions">security permissions</a>. 
+</p>
+
+<h3>I am seeing placeholders instead of images.</h3>
+<p>
+  That may mean several things:
+</p>
+<ul>
+  <li>the image wasn't found</li>
+  <li>the image is in a format your phone can't read</li>
+  <li>there hasn't been enough memory to load it or resize it</li>
+</ul>
+
+<h3>The app doesn't show the menu but instead asks me if I want quit.</h3>
+<p>
+  You must have set the <i>holding time</i> too low. See the section about <a href="#interaction">interaction</a>.
+</p>
+
+<h3>How do I use dictionaries?</h3>
+<p>
+  First you need to <a href="#dictionaries">download some</a>, then you have to
+  <a href="#dictionary_installation">install them</a> and finally you need to know look up the word. You may do that by
+  <i>press, hold and release</i> on a word, by <i>press and release</i> on the magnifying glass button or by
+  selecting <i>look up word</i> from the main menu.
+</p>
 
 <h1 id="features">Features in detail</h1>
 <p>
@@ -692,7 +891,7 @@
   images into the binary format.
 </p>
 
-<h1>Current limitations</h1>
+<h1 id="limitations">Current limitations</h1>
 <p>
   There are too many limited factors: your phone is limited, Java Mobile is limited and my personal time is limited. So,
   it points to the conclusion that <i>Albite READER</i> is limited, too. I'd like you to know of the current
