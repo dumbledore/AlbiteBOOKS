@@ -1,5 +1,6 @@
 class Translation < ActiveRecord::Base
   require 'digest/md5'
+  include ExtractSubjects
 
   belongs_to :book
 
@@ -15,6 +16,7 @@ class Translation < ActiveRecord::Base
   def before_validation
     update_filename unless book_file.nil?
     update_md5 unless book_file.nil?
+    update_subjects_from_epub unless book_file.nil?
   end
 
   def after_save
@@ -93,6 +95,15 @@ class Translation < ActiveRecord::Base
       FileUtils.copy(book_file.local_path, path_to_file)
     else
       File.open(self.path_to_file, "wb") { |f| f.write(book_file.read) }
+    end
+  end
+
+  def update_subjects_from_epub
+    puts 'Updating subjects'
+    if book_file.instance_of?(Tempfile)
+      extract_subjects(book_file.local_path)
+    else
+      extract_subjects(book_file)
     end
   end
 
