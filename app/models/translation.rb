@@ -99,11 +99,19 @@ class Translation < ActiveRecord::Base
   end
 
   def update_subjects_from_epub
-    puts 'Updating subjects'
-    if book_file.instance_of?(Tempfile)
-      extract_subjects(book_file.local_path)
-    else
-      extract_subjects(book_file)
+    begin
+      subjects, genres = extract_subjects(book_file.instance_of?(Tempfile) ? book_file.local_path : book_file)
+      unless subjects.empty?
+        book.subject_list += subjects
+      end
+
+      unless genres.empty?
+        book.genre_list += genres
+      end
+
+      book.save
+    rescue => msg
+      puts 'ERROR: ' + msg
     end
   end
 
