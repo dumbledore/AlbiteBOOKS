@@ -57,7 +57,6 @@ ActionController::Routing::Routes.draw do |map|
   map.home      'home/',      :controller => 'home', :action => 'home'
   map.reader    'reader/',    :controller => 'home', :action => 'reader'
   map.about     'about/',     :controller => 'home', :action => 'about'
-  map.faq       'faq/',       :controller => 'home', :action => 'faq'
   map.thanks    'thanks/',    :controller => 'home', :action => 'thanks'
   map.copyright 'copyright/', :controller => 'home', :action => 'copyright'
   map.contacts  'contacts/',  :controller => 'home', :action => 'contacts'

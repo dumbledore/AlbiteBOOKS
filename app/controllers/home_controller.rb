@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def reader
-    @version = '2.0.7'
+    @version = '2.0.8'
   end
 
   def search

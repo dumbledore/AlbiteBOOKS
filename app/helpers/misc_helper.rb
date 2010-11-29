@@ -26,4 +26,24 @@ module MiscHelper
   def ajax_span(id)
     %[<span id="#{id}"><span class="loading">Loading... #{image_tag '_/loading.gif'}</span></span>]
   end
+
+  def youtube(url, width, height)
+    %[
+      <div class="youtube">
+        <object width="#{width}" height="#{height}">
+          <param name="movie" value="#{url}" />
+          <param name="allowFullScreen" value="true" />
+          <param name="allowscriptaccess" value="always" />
+          <param name="wmode" value="transparent" />
+          <embed width="#{width}" height="#{height}"
+                 src="#{url}"
+                 type="application/x-shockwave-flash"
+                 allowscriptaccess="always"
+                 allowfullscreen="true"
+                 wmode="transparent"
+                 />
+        </object>
+      </div>
+    ]
+  end
 end

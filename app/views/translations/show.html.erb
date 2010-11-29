@@ -14,7 +14,7 @@
 <%= simple_section(Languages::LANGUAGES[@translation.language][0], 'Language') %>
 <%= simple_section(link_to(h(@translation.source_url), @translation.source_url, :target => '_blank'), 'Source') %>
 <%= simple_section(@translation.filesize, 'Size') %>
-<%= simple_section(@translation.md5, 'MD5 has') %>
+<%= simple_section(@translation.md5, 'MD5 hash') %>
 
 <div class="download">
   <p>

@@ -85,16 +85,16 @@ h1, h2, h3 {
   font-size: 1.5em;
   border-bottom: 1px solid #aaa;
   text-align: left;
-  font-weight: bold;
+  font-weight: normal;
   font-variant: small-caps;
   padding: 0 15px 8px 15px;
+  color: #000;
 }
 
 h2, h3 {
   font-size: 1.0em;
-  border-bottom: 1px solid #ccc;
+  /*border-bottom: 1px solid #ccc;*/
   text-align: left;
-  color: #555;
 }
 
 h3 {
@@ -103,9 +103,45 @@ h3 {
   padding-bottom: 0px;
 }
 
+h1 i, h1 em {
+  font-size: 0.85em;
+  font-variant: normal;
+  font-weight: normal;
+  color: #444;
+}
+
 table.inline td {
   padding: 4px 15px;
   border-bottom: 1px solid #ccc;
+}
+
+table#versions {
+  width: 100%;
+}
+
+table#versions td {
+  padding: 8px 8px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  width: 20%;
+}
+
+table#versions td.n {
+  border-right: none;
+}
+
+table#versions tr {
+  vertical-align: top;
+}
+
+table#versions tr.last td {
+  border-bottom: none;
+  text-align: center;
+}
+
+table#versions td p {
+  margin: 0 0 0.5em;
+  padding: 0;
 }
 
 input[type="text"],
@@ -207,6 +243,20 @@ a {
   text-decoration: underline;
 }
 
+a.item:visited {
+  /*color: #2f4e63;*/
+  color: #00869c;
+  /*color: #0045aa;*/
+}
+
+a:hover {
+  color: #8F7668;
+}
+
+a:active {
+  color: #756156;
+}
+
 a.menu, a.menu_down, a.menu_reader, a.menu_smaller {
   font-size: 0.9em;
   font-variant: small-caps;
@@ -226,14 +276,6 @@ a.menu_smaller {
 a.menu_down{
   font-variant: normal;
   font-weight: normal;
-}
-
-a:hover {
-  color: #8F7668;
-}
-
-a:active {
-  color: #756156;
 }
 
 .booktitle, .author {

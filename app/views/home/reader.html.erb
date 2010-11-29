@@ -1,40 +1,27 @@
 <%= title 'Get the Reader' %>
-<h1>Contents</h1>
-<ul>
-  <li><a href="#full_version">Albite READER</a></li>
-  <li><a href="#light_version">Albite READER Light</a></li>
-  <li><a href="#supported_devices">Is my phone supported?</a></li>
-  <li><a href="#installation">Installing the reader</a></li>
-  <li><a href="#permissions">Setting up security permissions</a></li>
-  <li><a href="#tutorial" class="italic">Tutorial: Using the reader</a></li>
-  <li><a href="#faq">Troubleshooting</a></li>
-  <li><a href="#features">Features in detail</a></li>
-  <li><a href="#resources">User resources</a></li>
-  <li><a href="#limitations">Current limitations</a></li>
-</ul>
 
-<h1 id="full_version">Albite Reader</h1>
-<p>
-  A feature-rich e-book reader for the <i>Java Mobile</i> platform developed by
-  <a href="http://svetlin.posterous.com" target="_blank">Svetlin Ankov</a>. It's free, and it's released under the
-  <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache 2.0 License</a>. The source code is
-  available at <a href="http://github.com/dumbledore/AlbiteREADER" target="_blank">GitHub</a>. If you are interested
-  in the licensing info of the used resources or would like to download their sources or build your own resources, see
-  <a href="#resources">the paragraph about resources</a> down the text.
-</p>
+<h1 id="reader">Albite Reader</h1>
+<table>
+  <tr valign="top">
+    <td>
+      <p>
+        A feature-rich e-book reader for <i>Java Mobile</i> developed by
+        <a href="http://svetlin.posterous.com" target="_blank">Svetlin Ankov</a>. It's free, and it's released under the
+        <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache 2.0 License</a>. The source
+        code is available at <a href="http://github.com/dumbledore/AlbiteREADER" target="_blank">GitHub</a>. If you are
+        interested in the licensing info of the used resources or would like to download their sources or build your own
+        resources, see <a href="#resources">the paragraph about resources</a> down the text.
+      </p>
+      <p>
+        Works with <i>EPUB</i>, <i>txt</i> and <i>(x)html</i> files.
+      </p>
+    </td>
+    <td>
+      <%= youtube 'http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0', 400, 350 %>
+    </td>
+  </tr>
+</table>
 
-<div class="download">
-  <p>
-    <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu_reader">
-      Download Albite READER <%= @version %></a> or
-    <a href="http://github.com/dumbledore/AlbiteREADER/downloads">see all releases</a>.<br/>
-    Your phone can install apps only over the internet? No worries, just visit
-    <a href="http://m.albite.vlexofree.com/reader">the mobile site</a>.
-  </p>
-</div>
-<p>
-  Works with <i>EPUB</i>, <i>txt</i> and <i>(x)html</i> files.
-</p>
 <h2>Implemented features</h2>
 <ul>
   <li>anti-aliased <a href="#font">bitmap font</a> in four sizes with over 500 glyphs, including latin, cyrillic and greek</li>
@@ -46,92 +33,19 @@
   <li><a href="#units">units conversion</a>: temperature, length, area, ...</li>
   <li>portrait and landscape view</li>
   <li><a href="#images_and_styling">images and basic styling</a></li>
-  <li><a href="#color_profiles">color profiles</a></li>
+  <li>color profiles</li>
   <li><a href="#alx">portable book settings</a></li>
   <li>bookmarks</li>
   <li>table of contents</li>
 </ul>
-
-<h2>See it in action</h2>
-<div class="youtube">
-  <object width="200" height="175">
-    <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" />
-    <param name="allowFullScreen" value="true" />
-    <param name="allowscriptaccess" value="always" />
-    <param name="wmode" value="transparent" />
-    <embed width="200" height="175"
-           src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0"
-           type="application/x-shockwave-flash"
-           allowscriptaccess="always"
-           allowfullscreen="true"
-           wmode="transparent"
-           />
-  </object>
-</div>
 
 <p>
   For more detailed information, have a look at <a href="#features">the more comprehensive feature list</a>
   or <a href="#tutorial">the tutorial</a>.
 </p>
 
-<h1 id="light_version">Albite Reader Light</h1>
-<p>
-  Perhaps your phone is not so fancy, but you still are a keen book reader? Then Albite READER Light is the choice for
-  you! It's a more memory friendly version of the original reader, that still preserves the main features and
-  delivers similar experience.
-</p>
-<div class="download">
-  <p>
-    <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderLight-<%= @version %>.jar" class="menu_reader">
-      Download Albite READER Light <%= @version %></a> or
-    <a href="http://github.com/dumbledore/AlbiteREADER/downloads">see all releases</a>.<br/>
-    Your phone can install apps only over the internet? No worries, just visit
-    <a href="http://m.albite.vlexofree.com/reader">the mobile site</a>.
-  </p>
-</div>
-<h2>Limitations of the mobile version</h2>
-<ul>
-  <li>The font is available only in its smallest size</li>
-  <li>No hyphenation</li>
-  <li>Only <i>UTF-8</i>, <i>ISO-8859-1</i> and <i>Windows-1250</i></li>
-  <li>No support for dictionaries</li>
-  <li>Only portrait screen orientation</li>
-  <li>The limit for breaking big files is lowered</li>
-</ul>
-
-<h2>See it in action</h2>
-<div class="youtube">
-  <object width="200" height="175">
-    <param name="movie" value="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0" />
-    <param name="allowFullScreen" value="true" />
-    <param name="allowscriptaccess" value="always" />
-    <param name="wmode" value="transparent" />
-    <embed width="200" height="175"
-           src="http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0"
-           type="application/x-shockwave-flash"
-           allowscriptaccess="always"
-           allowfullscreen="true"
-           wmode="transparent"
-           />
-  </object>
-</div>
-<h1 id="supported_devices">Is my phone supported?</h1>
-<p>
-  As the this app is developed by a single person, it has been tested on some very limited amount of devices. If you
-  feel at home with your device specs, you may have a look at the <a href="#system_requirements">system requirements</a>.
-  If it's not listed in the following list, you can still test it yourself and see if it works.  I'd be very
-  grateful, if you share your knowledge, so that I could fill in the list with more supported phones.
-</p>
-<p>
-  Don't forget, that even if the <a href="#full_version">full version</a> doesn't work on your device, you can also try
-  the <a href="#light_version">light version</a>. 
-</p>
-<h2>Supported Devices</h2>
-<ul>
-  <li>Samsung GT-S5230 (Star): Runs both the full and light versions.</li>
-</ul>
-<h2 id="system_requirements">System reqirements</h2>
-<table class="inline">
+<h2 id="system_requirements">System requirements</h2>
+<table class="inline" width="100%">
   <tr>
     <td>Profile</td>
     <td>MIDP 2.0</td>
@@ -145,13 +59,104 @@
     <td>File API (JSR-75)</td>
   </tr>
   <tr>
-    <td>Memory heap size</td>
+    <td>Used heap memory</td>
+    <td>depends on the version</td>
+  </tr>
+</table>
+
+<h2>Download</h2>
+<p>
+  As devices abilities can differ so much in the mobile world, it's necessary to make <i>several versions</i>
+  of the same app, each one being targeted at a different device group. You should try to choose the group that
+  matches your device capabilities best.
+</p>
+
+<table id="versions">
+  <tr>
+    <td></td>
+    <td>Albite READER Tiny <%= @version %></td>
+    <td>Albite READER Light <%= @version %></td>
+    <td><i>Albite READER <%= @version %></i></td>
+    <td class="n">Albite READER HD <%= @version %></td>
+  </tr>
+  <tr id="supported_devices">
+    <td>Known supported devices</td>
+    <td></td>
     <td>
-      Full version: 1500 – 6000 KB (depending on used functionality)<br/>
-      Light version: 500 KB
+      <p>Nokia 3720 Classic</p>
+      <p>Nokia 5130 XpressMusic</p>
+    </td>
+    <td>
+      <p>Samsung GT-S5230 (Star)</p>
+    </td>
+    <td class="n">
+      <p>Nokia 5530 XpressMusic</p>
+    </td>
+  </tr>
+  <tr>
+    <td>Used heap memory</td>
+    <td>500 KB</td>
+    <td>500 – 1500 KB</td>
+    <td>1500 – 6000 KB</td>
+    <td class="n">3000 – 10 000 KB</td>
+  </tr>
+  <tr>
+    <td>Limitations and enhancements</td>
+    <td>
+      font is available only in its smallest size;<br/>
+      no hyphenation;<br/>
+      only 3 encodings;<br/>
+      no dictionaries;<br/>
+      only portrait mode;<br/>
+      chapters are split in 16KB chunks
+    </td>
+    <td>
+      no hyphenation;<br/>
+      no dictionaries;<br/>
+      portrait mode;<br/>
+      chapters are split in 100KB chunks
+    </td>
+    <td>
+      chapters are split in 192KB chunks
+    </td>
+    <td class="n">
+      bigger icons;<br/>
+      bigger fonts;<br/>
+      chapters are split in 512KB chunks
+    </td>
+  </tr>
+  <tr class="last">
+    <td></td>
+    <td>
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu">download</a>
+    </td>
+    <td>
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu">download</a>
+    </td>
+    <td>
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu_reader">download</a>
+    </td>
+    <td class="n">
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu">download</a>
     </td>
   </tr>
 </table>
+
+<p>
+  Your phone can install apps only over the internet? No worries, just visit
+  <a href="http://m.albite.vlexofree.com/reader">the mobile site</a>.
+</p>
+
+<p>
+  Want to download some older release? Then
+  <a href="http://github.com/dumbledore/AlbiteREADER/downloads">see all releases</a>.<br/>
+</p>
+
+<p>
+  As the this app is developed by a single person, it has been tested on some very limited amount of devices. I'd be
+  very grateful, if you share your experience with the app, so that I could fill in the list with more supported phones.
+</p>
+
 <h1 id="installation">Installing the reader</h1>
 <p>
   It's installed like any other Java Mobile game. Transfer the jar file to your device, and then open it up from
@@ -200,8 +205,7 @@
   On Nokia and Sony Ericsson phones, you might be able to set permissions once and for all. Go to <i>Tools</i>, then
   <i>App. manager</i>, find <i>Albite READER</i> and set <i>Read user data</i> and <i>Edit user data</i> to
   <i>Always allowed</i>. The following screens are for another app,
-  <a href="http://apps.facebook.com/smister/">Smister</a>, but I don't own a S60 device and I there hasn't been enough
-  time to try the Nokia emulator.
+  <a href="http://apps.facebook.com/smister/">Smister</a>, but the steps are the same.
 </p>
 <table class="diagram">
   <tr>
@@ -376,7 +380,8 @@
 
 <p>
   <i>Press and release</i> on <span style="background-color: #99dff9;">the area in blue</span> switches between
-  normal and full-screen mode.
+  normal and full-screen mode (in the <i>normal</i> and <i>HD</i> versions) or opens the menu (in the <i>Tiny</i> and
+  <i>Light</i> versions).
 </p>
 
 <p>
@@ -392,7 +397,8 @@
   up the word look-up screen.<br/>
   <i>Press, hold and release</i> on a number brings up the number conversion screen.<br/>
   <i>Press and drag</i> on the book content moves the pages according to your finger guiding.
-  <i>Press, hold and drag</i> enters into <i>text selection mode</i>. After <i>release</i> the add-bookmark screen.
+  <i>Press, hold and drag</i> enters into <i>text selection mode</i>. After <i>release</i> the add-bookmark screen
+  would be shown.
 </p>
 
 <table class="diagram">
@@ -408,9 +414,41 @@
   </tr>
 </table>
 
+<h2>Key functions in the main screen</h2>
+<table class="inline">
+  <tr>
+    <td>Arrows</td>
+    <td>
+      Scroll to the previous / next page. Keys change function depending on the current screen mode, e.g. normal,
+      clockwise, etc.
+    </td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Open another book</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>
+      Look up a word in the dictionary (normal and HD version)<br/>
+      Convert a number (tiny and light version)
+    </td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Cycle font size</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Switch day / night profile</td>
+  </tr>
+</table>
+<br/>
+
 <h2 id="dictionary_installation">Downloading &amp; installing dictionaries</h2>
 <p>
-  Firstly, you need to copy the dictionaries to their own folder on your mobile. Then select
+  Firstly <a href="#dictionaries">download a few dictionaries</a>.
+  Then, you need to copy the dictionaries to their own folder on your mobile. Then select
   <i>Set dictionary folder</i> from the main menu and browse to the folder where you put your dictionaries.
 </p>
 <table class="diagram">
@@ -467,14 +505,15 @@
 <h1 id="faq">Troubleshooting</h1>
 <h3>I can't install the app on my phone</h3>
 <p>
-  If you can't copy the .jar file to your phone. You'll need to download the app directly from you phone's browser.
+  If you can't copy the .jar file to your phone, you'll need to download the app directly from you phone's web browser.
   Visit <a href="http://m.albite.vlexofree.com/reader">the mobile site</a> from your phone and download the app. 
 </p>
 <p>
-  After that you need to open the phone's browser, navigate to the folder where you put the .jar file and open it.
+  After that you need to open the phone's file browser, navigate to the folder where you put the .jar file and open it.
   If the phone throws an error message, then you might not be able to install the full version, try with
-  <a href="#light_version">Albite READER Light</a> instead.
+  <a href="#versions">Albite READER Light</a> or <a href="#versions">Albite READER Tiny</a> instead.
 </p>
+
 <h3>I can't start the app</h3>
 <p>
   Well, it's the hardest question to answer as there may be many reasons for that. Firstly, you need to accept the
@@ -484,21 +523,20 @@
   whether you'd allow <i>Albite READER</i> to read and write user data. And your books <i>are</i> user data. Please,
   see the section about <a href="#permissions">security permissions</a>. Finally, if the app closes unexpectedly or
   behaves in a funny way, may be you haven't got enough resources to run the full version. You should try
-  <a href="#light_version">Albite READER Light</a> instead. You may also check if your phone is in
-  <a href="#supported_devices">the compatibility list</a> and have a look at
-  <a href="#system_requirements">the system requirements</a>.
+  <a href="#versions">Albite READER Light</a> or <a href="#versions">Albite READER Tiny </a> instead. You may also have
+  a look at <a href="#system_requirements">the system requirements</a>.
 </p>
 
 <h3>Do I need to upgrade the app and how do I do that?</h3>
 <p>
   From time to time there may be new versions of <i>Albite READER</i> that fix some existing issues or add new
   functionality. Upgrading the app is easy. Simply uninstall it from your phone and install the new version exactly
-  the way you did before. However, you'll loose you app settings, i.e. you'll need to set the dictionary folder again,
+  the way you did before. However, you'll may you app settings, i.e. you may need to set the dictionary folder again,
   may be set up the page interaction and color profiles. The good news is that your book settings will be preserved
-  as they are saved on the filesystem along with your books.
+  as they are saved on the file system along with your books.
 </p>
 
-<h3>What are these .alx files along with my books?</h3>
+<h3>What are these .alx and .alb files along with my books?</h3>
 <p>
   See the section about <a href="#alx">portable book settings</a>.
 </p>
@@ -732,19 +770,21 @@
   <li>Doesn't support links and anchors</li>
 </ul>
 
-<h2 id="color_profiles">Color profiles</h2>
-
-<h2 id="alx">Portable book settings: the <i>.alx</i> files</h2>
+<h2 id="alx">Portable book settings: the <i>.alx</i> and <i>.alb</i> files</h2>
 <p>
   After opening a book for the first time, <i>Albite READER</i> will create a file with the same name, but
-  with an <i>.alx</i> extension. This is a <i>XML</i> file containing your book reading progress. This includes:
+  with an <i>.alx</i> extension. This is a binary file containing your book reading progress. This includes:
 </p>
 <ul>
   <li>Current chapter and position</li>
-  <li>Last position in every chapter</li>
+  <li>Current hyphenation language</li>
+  <li>Last visited position in every chapter</li>
   <li>Current encoding of every chapter</li>
-  <li>You bookmarks' text and position</li>
 </ul>
+<p>
+  If you make any bookmarks in a book, <i>Albite READER</i> will also create a <i>.alb</i> file.  This is a <i>XML</i>
+  file which contains your bookmarked text and positions.
+</p>
 <p>
   There are several advantages of this technique compared to the usual approach of using the RMS:
 </p>
@@ -753,8 +793,7 @@
   <li>All your book settings are preserved upon application update</li>
   <li>You can continue reading on another phone</li>
   <li>
-    Your book settings are completely accessible so you can open them in a text processor and access the text
-    from your bookmarks.
+    Your bookmarks are completely accessible so you can open them in a text processor.
   </li>
 </ul>
 
@@ -939,7 +978,7 @@
   <li>
     There is a theoretical possibility of corruption of the <i>.alx</i> files. More precisely, it can happen if the
     battery dies exactly when saving the data to the phone or if the app is closed using the red key and it is
-    unable to close fast enough (~5 sec). Thankfully enough, this possibility must be <i>very</i> slight in most
-    situations, and after all one can always backup the alx files if they are afraid of loosing their bookmarks.
+    unable to close fast enough. Thankfully enough, this possibility must be <i>very</i> slight in most
+    situations.
   </li>
 </ul>

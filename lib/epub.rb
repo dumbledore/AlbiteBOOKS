@@ -1,4 +1,4 @@
-module ExtractSubjects
+module EPUB
   require 'rexml/document'
   include REXML
 
@@ -6,6 +6,13 @@ module ExtractSubjects
     Zip::ZipFile.open(file) do |zip_file|
       opf_file = get_opf_file(zip_file.file.read('META-INF/container.xml'))
       get_subjects(zip_file.file.read(opf_file))
+    end
+  end
+
+  def extract_url(file)
+    Zip::ZipFile.open(file) do |zip_file|
+      opf_file = get_opf_file(zip_file.file.read('META-INF/container.xml'))
+      get_url(zip_file.file.read(opf_file))
     end
   end
 
@@ -41,5 +48,10 @@ module ExtractSubjects
     end
     
     [subjects, genres]
+  end
+
+  def get_url(xml_file)
+    xml_doc = Document.new(xml_file)
+    XPath.first(xml_doc, '//dc:identifier').text
   end
 end

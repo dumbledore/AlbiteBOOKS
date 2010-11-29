@@ -1,6 +1,6 @@
 class Translation < ActiveRecord::Base
   require 'digest/md5'
-  include ExtractSubjects
+  include EPUB
 
   belongs_to :book
 
@@ -14,9 +14,12 @@ class Translation < ActiveRecord::Base
   validates_presence_of :book_file, :on => :create
 
   def before_validation
-    update_filename unless book_file.nil?
-    update_md5 unless book_file.nil?
-    update_subjects_from_epub unless book_file.nil?
+    unless book_file.nil?
+      update_filename
+      update_md5
+      update_subjects_from_epub
+      update_source_url if source_url.empty? or source_url == 'http://www.gutenberg.org/ebooks/'
+    end
   end
 
   def after_save
@@ -110,6 +113,14 @@ class Translation < ActiveRecord::Base
       end
 
       book.save
+    rescue => msg
+      puts 'ERROR: ' + msg
+    end
+  end
+
+  def update_source_url
+    begin
+      self.source_url = extract_url(book_file.instance_of?(Tempfile) ? book_file.local_path : book_file)
     rescue => msg
       puts 'ERROR: ' + msg
     end
