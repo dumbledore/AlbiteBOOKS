@@ -1,7 +1,0 @@
-<%= h1 'Latest books' %>
-<%= render :partial => 'index' %>
-<%= will_paginate(@books, :renderer => 'WillPaginate::MobileRenderer') if @books %>
-
-<% content_for(:back) do %>
-  <%= mobile_link_to(books_url, 'Search', 'Search for a book', true, 'zoom') %>
-<% end %>

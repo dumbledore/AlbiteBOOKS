@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   include Lettercode
-  before_filter :require_admin, :except => [:index, :show, :search, :latest]
+  before_filter :require_admin, :except => [:index, :show, :search, :search_form, :latest]
 
   def new
     begin
@@ -122,6 +122,10 @@ class BooksController < ApplicationController
 
     @book_alias_thumbnails = true
     @no_book_aliases_message = 'No books have been found for this query.'
+  end
+
+  def search_form
+    redirect_to search_books_url params[:query]
   end
 
   def latest

@@ -10,7 +10,7 @@
 <%= simple_section(@translation.date_of_publication, 'Date of publication') %>
 <%= simple_section(Languages::LANGUAGES[@translation.language][0], 'Language') %>
 <%= h2 'Download' %>
-<%= mobile_link_to("/books/#{@translation.id}/#{@translation.filename}", 'Download file', @translation.filesize, true, 'download') %>
+<%= mobile_link_to(translation_file_url(@translation), 'Download file', @translation.filesize, true, 'download', true) %>
 
 <% content_for(:back) do %>
   <%= mobile_link_to_thumbnail_or_icon(book_url(@translation.book), h(@translation.book.title), 'Back to book', h(@translation.book.thumbnail_url), 'book') %>

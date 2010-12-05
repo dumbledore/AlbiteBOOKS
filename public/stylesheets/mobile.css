@@ -22,14 +22,16 @@ img {
 }
 
 p {
-  padding: 5%;
+  /*padding: 5%;*/
+  padding: 10px;
   margin: 0;
   line-height: 130%;
 }
 
 h1 {
   background: #d8d8d8 url("/images/mobile/header.png") repeat-x top;
-  padding: 6%;
+  /*padding: 6%;*/
+  padding: 10px;
   margin: 0;
   color: #303030;
   font-weight: normal;
@@ -37,7 +39,8 @@ h1 {
 
 h2 {
   background: #7c7e7c url("/images/mobile/label.png") repeat-x top;
-  padding: 3%;
+  /*padding: 3%;*/
+  padding: 10px;
   margin: 0;
   color: #f5f5f5;
 }
@@ -66,6 +69,10 @@ a {
   padding: 10px;
   text-decoration: none;
   line-height: 100%;
+}
+
+a.item:visited {
+  color: #777;
 }
 
 a, p, h1, div.thumbnail {

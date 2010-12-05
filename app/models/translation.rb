@@ -1,5 +1,6 @@
 class Translation < ActiveRecord::Base
   require 'digest/md5'
+  require 'lib/epub'
   include EPUB
 
   belongs_to :book
@@ -17,8 +18,7 @@ class Translation < ActiveRecord::Base
     unless book_file.nil?
       update_filename
       update_md5
-      update_subjects_from_epub
-      update_source_url if source_url.empty? or source_url == 'http://www.gutenberg.org/ebooks/'
+      update_metadata
     end
   end
 
@@ -37,8 +37,12 @@ class Translation < ActiveRecord::Base
     false
   end
 
+  def filename
+    @filename ||= "#{self.id.to_s}-#{self[:filename]}#{lang_trailer}.epub"
+  end
+
   def path_to_file
-    @path_to_file ||= File.join(RAILS_ROOT, 'public', 'books', self.id.to_s, self.filename)
+    @path_to_file ||= File.join(RAILS_ROOT, 'public', 'books', self.id.to_s, filename)
   end
 
   def path_to_dir
@@ -51,6 +55,38 @@ class Translation < ActiveRecord::Base
 
   private
 
+  def update_metadata
+    begin
+      # get metadata
+      subjects, genres, url, lang = get_metadata(book_file.instance_of?(Tempfile) ? book_file.local_path : book_file)
+      puts "got lang = #{lang}"
+
+      # subjects & genres
+      begin
+        book.subject_list += subjects if not subjects.nil? and not subjects.empty?
+        book.genre_list += genres if not genres.nil? and not genres.empty?
+        book.save
+      rescue
+      end
+
+      # source url
+      self.source_url = 'http://www.gutenberg.org/ebooks/' + url if not url.nil? and (source_url.empty? or source_url == 'http://www.gutenberg.org/ebooks/')
+
+      # language
+      self.language = Languages::get_number(lang) if lang
+    rescue => msg
+      puts msg
+    end
+  end
+
+  def lang_trailer
+    if self.language == Languages::UNSPECIFIED or self.language == Languages::DEFAULT
+      ''
+    else
+      '-' + Languages::LANGUAGE_CODES[self.language]
+    end
+  end
+  
   def update_filename
 
     name = self.book.title
@@ -78,7 +114,7 @@ class Translation < ActiveRecord::Base
 
     filename = filename.join('_')
 
-    self.filename = (filename.empty? ? 'untitled.epub' : filename + '.epub')
+    self.filename = (filename.empty? ? 'untitled' : filename)
   end
 
   def update_md5
@@ -98,31 +134,6 @@ class Translation < ActiveRecord::Base
       FileUtils.copy(book_file.local_path, path_to_file)
     else
       File.open(self.path_to_file, "wb") { |f| f.write(book_file.read) }
-    end
-  end
-
-  def update_subjects_from_epub
-    begin
-      subjects, genres = extract_subjects(book_file.instance_of?(Tempfile) ? book_file.local_path : book_file)
-      unless subjects.empty?
-        book.subject_list += subjects
-      end
-
-      unless genres.empty?
-        book.genre_list += genres
-      end
-
-      book.save
-    rescue => msg
-      puts 'ERROR: ' + msg
-    end
-  end
-
-  def update_source_url
-    begin
-      self.source_url = extract_url(book_file.instance_of?(Tempfile) ? book_file.local_path : book_file)
-    rescue => msg
-      puts 'ERROR: ' + msg
     end
   end
 

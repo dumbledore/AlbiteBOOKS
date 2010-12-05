@@ -1,4 +1,6 @@
 module Languages
+  # I know this looks ugly, but I can use straight away in a combo box
+  
   LANGUAGES = [
     ['-- Unspecified --', 0],
     ['Abkhaz', 1],
@@ -26,7 +28,7 @@ module Languages
     ['Breton', 23],
     ['Bulgarian', 24],
     ['Burmese', 25],
-    ['Catalan; Valencian', 26],
+    ['Catalan; Valencian', 26],
     ['Chamorro', 27],
     ['Chechen', 28],
     ['Chichewa; Chewa; Nyanja', 29],
@@ -58,7 +60,7 @@ module Languages
     ['Gujarati', 55],
     ['Haitian; Haitian Creole', 56],
     ['Hausa', 57],
-    ['Hebrew (modern)', 58],
+    ['Hebrew (modern)', 58],
     ['Herero', 59],
     ['Hindi', 60],
     ['Hiri Motu', 61],
@@ -105,7 +107,7 @@ module Languages
     ['Malayalam', 102],
     ['Maltese', 103],
     ['Maori', 104],
-    ['Marathi', 105],
+    ['Marathi (Mara?hi)', 105],
     ['Marshallese', 106],
     ['Mongolian', 107],
     ['Nauru', 108],
@@ -118,8 +120,8 @@ module Languages
     ['Norwegian', 115],
     ['Nuosu', 116],
     ['South Ndebele', 117],
-    ['Occitan (after 1500)', 118],
-    ['Ojibwa', 119],
+    ['Occitan', 118],
+    ['Ojibwe, Ojibwa', 119],
     ['Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic', 120],
     ['Oromo', 121],
     ['Oriya', 122],
@@ -133,9 +135,9 @@ module Languages
     ['Quechua', 130],
     ['Romansh', 131],
     ['Kirundi', 132],
-    ['Romanian, Moldavian, Moldovan', 133],
+    ['Romanian, Moldavian, Moldovan', 133],
     ['Russian', 134],
-    ['Sanskrit', 135],
+    ['Sanskrit (Sa?sk?ta)', 135],
     ['Sardinian', 136],
     ['Sindhi', 137],
     ['Northern Sami', 138],
@@ -163,7 +165,7 @@ module Languages
     ['Turkmen', 160],
     ['Tagalog', 161],
     ['Tswana', 162],
-    ['Tonga (Tonga Islands)', 163],
+    ['Tonga (Tonga Islands)', 163],
     ['Turkish', 164],
     ['Tsonga', 165],
     ['Tatar', 166],
@@ -186,4 +188,26 @@ module Languages
     ['Zhuang, Chuang', 183],
     ['Zulu', 184]
   ].freeze
+
+  LANGUAGE_CODES = [
+    '--', 'ab', 'aa', 'af', 'ak', 'sq', 'am', 'ar', 'an', 'hy', 'as', 'av', 'ae', 'ay', 'az', 'bm', 'ba', 'eu',
+    'be', 'bn', 'bh', 'bi', 'bs', 'br', 'bg', 'my', 'ca', 'ch', 'ce', 'ny', 'zh', 'cv', 'kw', 'co', 'cr', 'hr',
+    'cs', 'da', 'dv', 'nl', 'dz', 'en', 'eo', 'et', 'ee', 'fo', 'fj', 'fi', 'fr', 'ff', 'gl', 'ka', 'de', 'el',
+    'gn', 'gu', 'ht', 'ha', 'he', 'hz', 'hi', 'ho', 'hu', 'ia', 'id', 'ie', 'ga', 'ig', 'ik', 'io', 'is', 'it',
+    'iu', 'ja', 'jv', 'kl', 'kn', 'kr', 'ks', 'kk', 'km', 'ki', 'rw', 'ky', 'kv', 'kg', 'ko', 'ku', 'kj', 'la',
+    'lb', 'lg', 'li', 'ln', 'lo', 'lt', 'lu', 'lv', 'gv', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mh', 'mn',
+    'na', 'nv', 'nb', 'nd', 'ne', 'ng', 'nn', 'no', 'ii', 'nr', 'oc', 'oj', 'cu', 'om', 'or', 'os', 'pa', 'pi',
+    'fa', 'pl', 'ps', 'pt', 'qu', 'rm', 'rn', 'ro', 'ru', 'sa', 'sc', 'sd', 'se', 'sm', 'sg', 'sr', 'gd', 'sn',
+    'si', 'sk', 'sl', 'so', 'st', 'es', 'su', 'sw', 'ss', 'sv', 'ta', 'te', 'tg', 'th', 'ti', 'bo', 'tk', 'tl',
+    'tn', 'to', 'tr', 'ts', 'tt', 'tw', 'ty', 'ug', 'uk', 'ur', 'uz', 've', 'vi', 'vo', 'wa', 'cy', 'wo', 'fy',
+    'xh', 'yi', 'yo', 'za', 'zu'
+  ].freeze
+
+  DEFAULT = LANGUAGE_CODES.index('en')
+  UNSPECIFIED = 0
+
+  def self.get_number(letter_code)
+    n = LANGUAGE_CODES.index(letter_code)
+    (n ? n : UNSPECIFIED)
+  end
 end

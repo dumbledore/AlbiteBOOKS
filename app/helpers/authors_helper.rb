@@ -9,7 +9,7 @@ module AuthorsHelper
       end
       
       html << %[<td><p#{' class="strike"' unless aliaz.author.ready} >]
-      html << link_to(h(aliaz.name_abbreviated(:name_reversed)), author_url(aliaz.author))
+      html << link_to(h(aliaz.name_abbreviated(:name_reversed)), author_url(aliaz.author), :class => 'item')
       html << " (<i>#{h(aliaz.author.name_cached)}</i>)" unless aliaz.id == aliaz.author.alias_name_id
       html << edit_author_links(aliaz.author) if user_admin?
       html << '</p></td>'

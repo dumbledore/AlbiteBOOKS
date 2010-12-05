@@ -8,7 +8,7 @@
   </p>
 <% else %>
   <% for genre in @genres %>
-    <%= mobile_link_to(genre_url(h(genre.name)), h(genre.name), nil, true, 'tag') %>
+    <%= mobile_link_to(genre_url(h(genre.name)), h(genre.name), nil, true, 'tag', true, true) %>
   <% end %>
 <% end %>
 

@@ -3,5 +3,6 @@
 <%= will_paginate(@book_aliases, :renderer => 'WillPaginate::MobileRenderer') if @book_aliases %>
 
 <% content_for(:back) do %>
-  <%= mobile_link_to(books_url, 'Search', 'Search for another book', true, 'zoom') %>
+  <%= mobile_link_to(books_url, 'Search', 'Search for another book', true, 'book') %>
+  <%= mobile_link_to(authors_url, 'Search', 'Search for another author', true, 'user') %>
 <% end %>

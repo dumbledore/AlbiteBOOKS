@@ -101,6 +101,8 @@ h3 {
   font-variant: normal;
   border: none;
   padding-bottom: 0px;
+  font-weight: bold;
+  color: #444;
 }
 
 h1 i, h1 em {
@@ -128,6 +130,7 @@ table#versions td {
 
 table#versions td.n {
   border-right: none;
+  text-align: center;
 }
 
 table#versions tr {
@@ -136,7 +139,6 @@ table#versions tr {
 
 table#versions tr.last td {
   border-bottom: none;
-  text-align: center;
 }
 
 table#versions td p {
@@ -249,11 +251,11 @@ a.item:visited {
   /*color: #0045aa;*/
 }
 
-a:hover {
+a:hover, a.item:hover {
   color: #8F7668;
 }
 
-a:active {
+a:active, a.item:active {
   color: #756156;
 }
 

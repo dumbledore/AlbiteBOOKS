@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_filter :require_admin, :except => [:index, :show, :search]
+  before_filter :require_admin, :except => [:index, :show, :search, :search_form]
 
   def new
     @author = Author.new
@@ -115,5 +115,9 @@ class AuthorsController < ApplicationController
 
     @author_alias_thumbnails = true
     @no_author_aliases_message = 'No authors have been found for this query.'
+  end
+
+  def search_form
+    redirect_to search_authors_url params[:query]
   end
 end

@@ -1,12 +1,13 @@
 <%= title 'Get the Reader' %>
 <%= h1 'Albite READER' %>
 <p>
-  A feature-rich e-book reader for the <i>Java Mobile</i> platform developed by <i>Svetlin Ankov</i>. It's free, and
+  An e-book reader for the <i>Java Mobile</i> platform developed by <i>Svetlin Ankov</i>. It's free for
   it's released under the <i>Apache 2.0 License</i>.
 </p>
 
 <%= h2 'Get it!' %>
-<%= mobile_link_to('public/reader/AlbiteReaderLight-2.0.4.jad', 'Tiny version', '270 KB', true, 'download') %>
-<%= mobile_link_to('public/reader/AlbiteReaderLight-2.0.4.jad', 'Light version', '270 KB', true, 'download') %>
-<%= mobile_link_to('public/reader/AlbiteReader-2.0.4.jad', 'Full version', '668 KB', true, 'download') %>
-<%= mobile_link_to('public/reader/AlbiteReaderLight-2.0.4.jad', 'HD version', '270 KB', true, 'download') %>
+<%= mobile_link_to("public/reader/AlbiteReaderHD-#{@version}.jad", 'HD version', '908 KB', true, 'download', true) %>
+<%= mobile_link_to("public/reader/AlbiteReader-#{@version}.jad", '<i>Normal version</i>', '717 KB', true, 'download', true) %>
+<%= mobile_link_to("public/reader/AlbiteReaderNoTouch-#{@version}.jad", 'Normal, no touch', '717 KB', true, 'download', true) %>
+<%= mobile_link_to("public/reader/AlbiteReaderLight-#{@version}.jad", 'Light version', '325 KB', true, 'download', true) %>
+<%= mobile_link_to("public/reader/AlbiteReaderTiny-#{@version}.jad", 'Tiny version', '186 KB', true, 'download', true) %>

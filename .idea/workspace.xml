@@ -23,17 +23,7 @@
   </component>
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="main.css" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="90" column="13" selection-start="1396" selection-end="1399" vertical-scroll-proportion="0.60945946">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -46,22 +36,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/helpers/application_helper.rb" />
-        <option value="$PROJECT_DIR$/app/helpers/reader_helper.rb" />
-        <option value="$PROJECT_DIR$/app/helpers/misc_helper.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/home.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/home/reader.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
-        <option value="$PROJECT_DIR$/lib/extract_subjects.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/contacts.erb" />
+        <option value="$PROJECT_DIR$/app/views/home/_free_books.erb" />
+        <option value="$PROJECT_DIR$/app/views/home/about.erb" />
+        <option value="$PROJECT_DIR$/app/views/home/copyright.erb" />
+        <option value="$PROJECT_DIR$/lib/languages.rb" />
         <option value="$PROJECT_DIR$/lib/epub.rb" />
         <option value="$PROJECT_DIR$/app/models/translation.rb" />
-        <option value="$PROJECT_DIR$/app/views/translations/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/home/reader.mobile.erb" />
-        <option value="$PROJECT_DIR$/app/views/overlay/_under_construction.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/home/thanks.html.erb" />
-        <option value="$PROJECT_DIR$/public/stylesheets/main.css" />
+        <option value="$PROJECT_DIR$/app/views/home/home.mobile.erb" />
+        <option value="$PROJECT_DIR$/config/albite.custom.yml" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/app/views/home/about.html.erb" />
+        <option value="$PROJECT_DIR$/config/initializers/random_records.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/home.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/home/reader.html.erb" />
+        <option value="$PROJECT_DIR$/public/stylesheets/main.css" />
+        <option value="$PROJECT_DIR$/app/views/home/reader.mobile.erb" />
       </list>
     </option>
   </component>
@@ -98,8 +88,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -160,47 +148,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="albite-r2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="albite-r2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="javascripts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="freebase" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="albite-r2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="albite-r2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -228,11 +190,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="initializers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -251,10 +213,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="overlay" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -294,9 +252,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="albite-r2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Favorites" />
+      <pane id="RailsProjectView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -387,7 +365,9 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="CHOOSE_MANUALLY" VALUE="true" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="production" />
+      <RunnerSettings RunnerId="RubyDebugRunner" />
       <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyDebugRunner" />
       <ConfigurationWrapper RunnerId="RubyRunner" />
       <method />
     </configuration>
@@ -510,14 +490,14 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23281062" sideWeight="0.13631284" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25814235" sideWeight="0.8558659" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25814235" sideWeight="0.6905028" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13631284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30167598" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25027934" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4547486" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960895" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24954128" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -553,96 +533,110 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/home/home.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/home/copyright.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+        <state line="1" column="38" selection-start="81" selection-end="81" vertical-scroll-proportion="0.025993884" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/home/about.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="22" selection-start="251" selection-end="251" vertical-scroll-proportion="0.22006473" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/reader.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/rubystubs18/object.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="545" column="6" selection-start="16390" selection-end="16390" vertical-scroll-proportion="0.3325" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/epub.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="48" selection-start="1335" selection-end="1335" vertical-scroll-proportion="0.66" />
+        <state line="40" column="32" selection-start="1908" selection-end="1908" vertical-scroll-proportion="0.19418961" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/translation.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="17" selection-start="2977" selection-end="2977" vertical-scroll-proportion="0.5825" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/translations/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="46" selection-start="612" selection-end="612" vertical-scroll-proportion="0.7234042" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/reader.mobile.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="67" selection-start="652" selection-end="652" vertical-scroll-proportion="0.4973404" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/overlay/_under_construction.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="50" selection-start="317" selection-end="317" vertical-scroll-proportion="0.1356383" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/thanks.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="70" selection-start="215" selection-end="215" vertical-scroll-proportion="0.06035503">
+        <state line="40" column="18" selection-start="999" selection-end="999" vertical-scroll-proportion="0.5641026">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/authors/show.html.erb">
+    <entry file="file://$PROJECT_DIR$/lib/languages.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="51" selection-start="544" selection-end="544" vertical-scroll-proportion="0.5166426">
+        <state line="210" column="25" selection-start="5887" selection-end="5887" vertical-scroll-proportion="0.7675214">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/author.js">
+    <entry file="file://$PROJECT_DIR$/lib/epub.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="14" selection-start="2508" selection-end="2509" vertical-scroll-proportion="0.66713285">
+        <state line="19" column="35" selection-start="451" selection-end="451" vertical-scroll-proportion="-0.8214286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/albite.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.34871796">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/albite.custom.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="18" selection-start="1442" selection-end="1442" vertical-scroll-proportion="0.7846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/home.mobile.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="12" selection-start="566" selection-end="566" vertical-scroll-proportion="0.45454547">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="59" column="16" selection-start="2784" selection-end="2784" vertical-scroll-proportion="0.5972973">
+        <state line="70" column="28" selection-start="3258" selection-end="3258" vertical-scroll-proportion="0.46495727">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/javascripts/freebase/common.js">
+    <entry file="file://$PROJECT_DIR$/app/controllers/book_aliases_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="141" selection-start="3041" selection-end="3092" vertical-scroll-proportion="0.8124138">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/about.html.erb">
+    <entry file="file://$PROJECT_DIR$/config/initializers/random_records.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="4" selection-start="3811" selection-end="3811" vertical-scroll-proportion="0.8575419">
+        <state line="5" column="55" selection-start="219" selection-end="219" vertical-scroll-proportion="0.14529915">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="22" selection-start="323" selection-end="323" vertical-scroll-proportion="0.19615385">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/stylesheets/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="13" selection-start="1396" selection-end="1399" vertical-scroll-proportion="0.60945946">
+        <state line="132" column="21" selection-start="1997" selection-end="1997" vertical-scroll-proportion="0.66883117">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/reader.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="17" selection-start="5467" selection-end="5467" vertical-scroll-proportion="0.36193028">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/home.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="30" selection-start="1410" selection-end="1501" vertical-scroll-proportion="0.28664073">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/home/reader.mobile.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="80" selection-start="568" selection-end="568" vertical-scroll-proportion="0.22049287">
           <folding />
         </state>
       </provider>

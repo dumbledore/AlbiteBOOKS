@@ -68,8 +68,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :book_aliases,    :except => [:index, :show]
   map.resources :translations,    :except => [:index]
 
-  map.latest    'latest/',    :controller => 'books', :action => 'latest'
-
   map.genres   'genres/',           :controller => 'genres', :action => 'index'
   map.genre    'genres/:genre',     :controller => 'genres', :action => 'show'
 
@@ -77,17 +75,17 @@ ActionController::Routing::Routes.draw do |map|
   map.subject  'subjects/:subject', :controller => 'subjects', :action => 'show'
 
   map.search_authors      'search/authors/:query',  :controller => 'authors', :action => 'search'
-  map.search_authors_form 'search/authors/',        :controller => 'authors', :action => 'search'
+  map.search_authors_form 'search/authors/',        :controller => 'authors', :action => 'search_form'
 
   map.search_books        'search/books/:query',    :controller => 'books',   :action => 'search'
-  map.search_books_form   'search/books/',          :controller => 'books',   :action => 'search'
+  map.search_books_form   'search/books/',          :controller => 'books',   :action => 'search_form'
   
   map.search              'search/:query',          :controller => 'home',    :action => 'search'
-  map.search_form         'search/',                :controller => 'home',    :action => 'search'
+  map.search_form         'search/',                :controller => 'home',    :action => 'search_form'
 
 #  map.connect ':controller/:action/:id'
 #  map.connect ':controller/:action/:id.:format'
 
   map.root :controller => 'home', :action => 'home'
-  map.connect '*path', :controller => 'home', :action => 'home'
+  map.connect '*path', :controller => 'home', :action => 'redirect'
 end

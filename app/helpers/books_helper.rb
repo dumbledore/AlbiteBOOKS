@@ -9,9 +9,9 @@ module BooksHelper
       end
 
       html << %[<td><p#{' class="strike"' unless aliaz.book.ready} >]
-      html << link_to(h(aliaz.title), book_url(aliaz.book))
+      html << link_to(h(aliaz.title), book_url(aliaz.book), :class => 'item')
       html << " (<i>#{h(aliaz.book.title)}</i>)" unless aliaz.id == aliaz.book.alias_title_id
-      html << %[<br/><span class="by">by #{link_to(h(aliaz.book.author.name), aliaz.book.author)}</i>]
+      html << %[<br/><span class="by">by #{link_to(h(aliaz.book.author.name), aliaz.book.author, :class => 'item')}</i>]
       html << edit_book_links(aliaz.book) if user_admin?
       html << '</p></td>'
       html << '</tr></table>'
@@ -28,7 +28,7 @@ module BooksHelper
       end
 
       html << %[<td><p#{' class="strike"' unless book.ready} >]
-      html << link_to(h(book.title), book_url(book))
+      html << link_to(h(book.title), book_url(book), :class => 'item')
       html << " (<i>#{h(book.date_of_first_publication)}</i>)" unless book.date_of_first_publication.empty?
       html << edit_book_links(book) if user_admin?
       html << '</p></td>'
@@ -66,7 +66,7 @@ module BooksHelper
     unless tag_list.empty?
       tags = []
       for tag in tag_list
-        tags << link_to(tag, h(yield(tag)))
+        tags << link_to(tag, h(yield(tag)), :class => 'item')
       end
       %[
         <p>
@@ -80,7 +80,7 @@ module BooksHelper
     unless tag_list.empty?
       tags = h2(tag_title)
       for tag in tag_list
-        tags << mobile_link_to(h(yield(tag)), h(tag), nil, true, 'tag')
+        tags << mobile_link_to(h(yield(tag)), h(tag), nil, true, 'tag', true, true)
       end
       tags
     end

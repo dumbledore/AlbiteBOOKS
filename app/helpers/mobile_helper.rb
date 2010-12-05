@@ -1,12 +1,13 @@
 module MobileHelper
 
-  def mobile_link_to(url, title, subtitle = nil, arrow = true, image = nil, icon = true)
+  def mobile_link_to(url, title, subtitle = nil, arrow = true, image = nil, icon = true, item = false)
 
     classes = ''
-    if icon or arrow
+    if icon or arrow or item
       classes = []
       classes << 'icon' if image and icon
       classes << 'arrow' if arrow
+      classes << 'item' if item
       classes = ' class="' + classes.join(' ') + '"'
     end
 
@@ -83,11 +84,11 @@ module MobileHelper
     subtitle(author_name, publication_date)
   end
 
-  def mobile_link_to_thumbnail_or_icon(url, title, subtitle, thumbnail_url, icon)
+  def mobile_link_to_thumbnail_or_icon(url, title, subtitle, thumbnail_url, icon, item = false)
     if thumbnail_url.blank?
-      mobile_link_to(url, title, subtitle, true, icon)
+      mobile_link_to(url, title, subtitle, true, icon, true, item)
     else
-      mobile_link_to(url, title, subtitle, true, thumbnail_url, false)
+      mobile_link_to(url, title, subtitle, true, thumbnail_url, false, item)
     end
   end
 

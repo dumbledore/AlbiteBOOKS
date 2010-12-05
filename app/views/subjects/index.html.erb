@@ -9,7 +9,7 @@
   <ul>
     <% for subject in @subjects %>
       <li>
-        <%= link_to h(subject.name), subject_url(h(subject.name)) %>
+        <%= link_to h(subject.name), subject_url(h(subject.name), :class => 'item') %>
       </li>
     <% end %>
   </ul>

@@ -5,7 +5,7 @@
   <tr valign="top">
     <td>
       <p>
-        A feature-rich e-book reader for <i>Java Mobile</i> developed by
+        An e-book reader for <i>Java Mobile</i> developed by
         <a href="http://svetlin.posterous.com" target="_blank">Svetlin Ankov</a>. It's free, and it's released under the
         <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache 2.0 License</a>. The source
         code is available at <a href="http://github.com/dumbledore/AlbiteREADER" target="_blank">GitHub</a>. If you are
@@ -17,7 +17,7 @@
       </p>
     </td>
     <td>
-      <%= youtube 'http://www.youtube.com/v/3X9Tv4GhZpM?fs=1&amp;hl=en_GB&amp;rel=0', 400, 350 %>
+      <%= youtube 'http://www.youtube.com/v/yk0naflL6l4?fs=1&amp;hl=en_GB&amp;rel=0', 380, 310 %>
     </td>
   </tr>
 </table>
@@ -25,7 +25,7 @@
 <h2>Implemented features</h2>
 <ul>
   <li>anti-aliased <a href="#font">bitmap font</a> in four sizes with over 500 glyphs, including latin, cyrillic and greek</li>
-  <li><a href="#hyphenation">hyphenation</a> for 22 languages</li>
+  <li><a href="#hyphenation">hyphenation</a> for 29 languages</li>
   <li>23 <a href="#encodings">encodings</a>, including UTF-8 and most of ISO-8859 and Windows-125x</li>
   <li>animated touch-guided scrolling</li>
   <li>horizontal and vertical scrolling</li>
@@ -74,70 +74,116 @@
 <table id="versions">
   <tr>
     <td></td>
-    <td>Albite READER Tiny <%= @version %></td>
-    <td>Albite READER Light <%= @version %></td>
-    <td><i>Albite READER <%= @version %></i></td>
-    <td class="n">Albite READER HD <%= @version %></td>
+    <td id="supported_devices">Known supported devices</td>
+    <td>Used heap memory</td>
+    <td>Limitations or enhancements</td>
+    <td class="n"></td>
   </tr>
-  <tr id="supported_devices">
-    <td>Known supported devices</td>
-    <td></td>
+  <tr>
+    <td>Albite READER HD <%= @version %></td>
+    <td>
+      <p>Nokia N97</p>
+      <p>Nokia 5250</p>
+      <p>Nokia 5230 XpressMusic</p>
+      <p>Nokia 5530 XpressMusic</p>
+      <p>Nokia 5800 XpressMusic</p>
+      <p>Nokia N8-00</p>
+      <p>Nokia E7-00</p>
+      <p>Nokia C7-00</p>
+      <p>Nokia C6-00</p>
+      <p>Nokia C5-03</p>
+      <p>Nokia X6-00</p>
+    </td>
+    <td>3000 – 10 000 KB</td>
+    <td>
+      bigger icons;<br/>
+      bigger fonts;<br/>
+      chapters are split in 512KB chunks
+    </td>
+    <td class="n">
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderHD-<%= @version %>.jar" class="menu">download</a>
+    </td>
+  </tr>
+  <tr>
+    <td><i>Albite READER <%= @version %></i></td>
+    <td>
+      <p>Samsung GT-S5230 (Star)</p>
+    </td>
+    <td>1500 – 6000 KB</td>
+    <td>chapters are split in 192KB chunks</td>
+    <td class="n">
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu_reader">download</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Albite READER<br/>No Touch <%= @version %></td>
+    <td>
+      <p>Nokia X5-01</p>
+      <p>Nokia E5-00</p>
+      <p>Nokia C5-00</p>
+      <p>Nokia N96</p>
+      <p>Nokia N95</p>
+      <p>Nokia N91</p>
+      <p>Nokia N85</p>
+      <p>Nokia N80</p>
+      <p>Nokia E72</p>
+      <p>Nokia E61</p>
+      <p>Nokia E50</p>
+      <p>Nokia 6760 Slide</p>
+      <p>Nokia 6720 Classic</p>
+      <p>Nokia 6710 Navigator</p>
+      <p>Nokia 6220 Classic</p>
+      <p>Nokia 6124 Classic</p>
+      <p>Nokia 6120</p>
+      <p>Nokia 5730 XpressMusic</p>
+      <p>Nokia 5700 XpressMusic</p>
+      <p>Nokia 5630</p>
+      <p>Nokia 5500 Sport</p>
+      <p>Nokia 5320</p>
+      <p>Nokia 3250</p>
+    </td>
+    <td>1500 – 6000 KB</td>
+    <td>chapters are split in 192KB chunks</td>
+    <td class="n">
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderNoTouch-<%= @version %>.jar" class="menu">download</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Albite READER Light <%= @version %></td>
     <td>
       <p>Nokia 3720 Classic</p>
       <p>Nokia 5130 XpressMusic</p>
     </td>
+    <td>500 – 1500 KB</td>
     <td>
-      <p>Samsung GT-S5230 (Star)</p>
+      font is available in 3 instead of 4 sizes;<br/>
+      no hyphenation;<br/>
+      no dictionaries;<br/>
+      only portrait mode;<br/>
+      no on-touch look u;p<br/>
+      no touch on-touch text selection;<br/>
+      chapters are split in 100KB chunks
     </td>
     <td class="n">
-      <p>Nokia 5530 XpressMusic</p>
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderLight-<%= @version %>.jar" class="menu">download</a>
     </td>
   </tr>
-  <tr>
-    <td>Used heap memory</td>
+  <tr class="last">
+    <td>Albite READER Tiny <%= @version %></td>
+    <td></td>
     <td>500 KB</td>
-    <td>500 – 1500 KB</td>
-    <td>1500 – 6000 KB</td>
-    <td class="n">3000 – 10 000 KB</td>
-  </tr>
-  <tr>
-    <td>Limitations and enhancements</td>
     <td>
       font is available only in its smallest size;<br/>
       no hyphenation;<br/>
       only 3 encodings;<br/>
       no dictionaries;<br/>
       only portrait mode;<br/>
+      no on-touch look up;<br/>
+      no touch on-touch text selection;<br/>
       chapters are split in 16KB chunks
     </td>
-    <td>
-      no hyphenation;<br/>
-      no dictionaries;<br/>
-      portrait mode;<br/>
-      chapters are split in 100KB chunks
-    </td>
-    <td>
-      chapters are split in 192KB chunks
-    </td>
     <td class="n">
-      bigger icons;<br/>
-      bigger fonts;<br/>
-      chapters are split in 512KB chunks
-    </td>
-  </tr>
-  <tr class="last">
-    <td></td>
-    <td>
-      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu">download</a>
-    </td>
-    <td>
-      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu">download</a>
-    </td>
-    <td>
-      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu_reader">download</a>
-    </td>
-    <td class="n">
-      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu">download</a>
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderTiny-<%= @version %>.jar" class="menu">download</a>
     </td>
   </tr>
 </table>
@@ -202,7 +248,7 @@
   </tr>
 </table>
 <p>
-  On Nokia and Sony Ericsson phones, you might be able to set permissions once and for all. Go to <i>Tools</i>, then
+  On Nokia and Sony-Ericsson phones, you might be able to set permissions once and for all. Go to <i>Tools</i>, then
   <i>App. manager</i>, find <i>Albite READER</i> and set <i>Read user data</i> and <i>Edit user data</i> to
   <i>Always allowed</i>. The following screens are for another app,
   <a href="http://apps.facebook.com/smister/">Smister</a>, but the steps are the same.
@@ -232,7 +278,7 @@
 
 <h1 id="tutorial">Tutorial: Using the reader</h1>
 <h2>First run</h2>
-<p>
+<p id="accept_license">
   The first time you run the app you'll be presented with the license screen which you are obliged to accept if you are
   willing to use the app.
 </p>
@@ -249,7 +295,7 @@
   </tr>
 </table>
 
-<p>
+<p id="file_browser">
   After that, the file browser pops up and you need to browse to the folder where you put the books. Bear in mind
   that depending on your phone you <i>might not be able to see some folders</i> or even if you see them, you might
   still <i>not be able to open your books</i> because of security restrictions. So, you might need to <i>experiment</i>
@@ -392,11 +438,18 @@
 </p>
 
 <p>
+  <span style="background-color: #D5C190;">The area in beige</span> shows the number of the current chapter and the
+  time.<br/>
+  <i>Press and release</i> brings up the book details screen, which shows book's title, its author
+  and the language it's in.<br/>
+</p>
+
+<p>
   The <i>book content</i> also reacts to touch.<br/>
   <i>Press, hold and release</i> on a word (<span style="background-color: #f99;">e.g. the area in red</span>) brings
   up the word look-up screen.<br/>
   <i>Press, hold and release</i> on a number brings up the number conversion screen.<br/>
-  <i>Press and drag</i> on the book content moves the pages according to your finger guiding.
+  <i>Press and drag</i> on the book content moves the pages according to your finger guidance.<br/>
   <i>Press, hold and drag</i> enters into <i>text selection mode</i>. After <i>release</i> the add-bookmark screen
   would be shown.
 </p>
@@ -419,7 +472,7 @@
   <tr>
     <td>Arrows</td>
     <td>
-      Scroll to the previous / next page. Keys change function depending on the current screen mode, e.g. normal,
+      Scroll to the previous / next page. These keys change function depending on the current screen mode, e.g. normal,
       clockwise, etc.
     </td>
   </tr>
@@ -436,7 +489,7 @@
   </tr>
   <tr>
     <td>7</td>
-    <td>Cycle font size</td>
+    <td>Cycle font size (doesn't work in the Tiny version as there is only one available font size.</td>
   </tr>
   <tr>
     <td>9</td>
@@ -482,7 +535,7 @@
     <i>Smooth scrolling</i> makes scrolling looks more natural. It adjusts the speed so that it's not entirely constant.
   </li>
   <li>
-    By default pages are scrolled horizontally. You can also scroll them vertically, if you'd like so.
+    By default pages are scrolled horizontally. You can also scroll them vertically.
   </li>
   <li>
     The time needed to hold over an area to activate <i>hold mode</i> may be decreased/increased through the
@@ -503,7 +556,7 @@
 </table>
 
 <h1 id="faq">Troubleshooting</h1>
-<h3>I can't install the app on my phone</h3>
+<h2>I can't install the app on my phone</h2>
 <p>
   If you can't copy the .jar file to your phone, you'll need to download the app directly from you phone's web browser.
   Visit <a href="http://m.albite.vlexofree.com/reader">the mobile site</a> from your phone and download the app. 
@@ -514,53 +567,54 @@
   <a href="#versions">Albite READER Light</a> or <a href="#versions">Albite READER Tiny</a> instead.
 </p>
 
-<h3>I can't start the app</h3>
+<h2>I can't start the app</h2>
 <p>
-  Well, it's the hardest question to answer as there may be many reasons for that. Firstly, you need to accept the
-  license that will show up the first time you run the app. After that you need to navigate to your books folder
-  and select a book to open. Meanwhile you may be asked various questions regarding app permissions which you
-  <b><i>must</i></b> accept or the app wouldn't work at all. What questions? Well, your phone asks you
-  whether you'd allow <i>Albite READER</i> to read and write user data. And your books <i>are</i> user data. Please,
-  see the section about <a href="#permissions">security permissions</a>. Finally, if the app closes unexpectedly or
-  behaves in a funny way, may be you haven't got enough resources to run the full version. You should try
+  Well, there may be many reasons for that. Firstly, you need to <a href="#accept_license">accept the license</a>
+  that will show up the first time you run the app. After that you need to
+  <a href="#file_browser">navigate to your books folder</a> and select a book to open. Meanwhile you may be asked
+  various questions regarding <a href="#permissions">app permissions</a> which you <b><i>must</i></b> accept or the app
+  wouldn't work at all. What questions? Well, your phone may ask whether you'd allow <i>Albite READER</i> to read and
+  write user data. And your books <i>are</i> user data. Finally, if the app closes unexpectedly or
+  behaves in a funny way, you probably haven't got enough resources to run the full version. You should try
   <a href="#versions">Albite READER Light</a> or <a href="#versions">Albite READER Tiny </a> instead. You may also have
   a look at <a href="#system_requirements">the system requirements</a>.
 </p>
 
-<h3>Do I need to upgrade the app and how do I do that?</h3>
+<h2>Do I need to upgrade the app and how do I do that?</h2>
 <p>
   From time to time there may be new versions of <i>Albite READER</i> that fix some existing issues or add new
   functionality. Upgrading the app is easy. Simply uninstall it from your phone and install the new version exactly
   the way you did before. However, you'll may you app settings, i.e. you may need to set the dictionary folder again,
-  may be set up the page interaction and color profiles. The good news is that your book settings will be preserved
-  as they are saved on the file system along with your books.
+  setup page interaction and color profiles. The good news is that your book settings will be preserved as they are
+  saved on the file system along with your books.
 </p>
 
-<h3>What are these .alx and .alb files along with my books?</h3>
+<h2>What are these .alx and .alb files along with my books?</h2>
 <p>
   See the section about <a href="#alx">portable book settings</a>.
 </p>
 
-<h3>How do I report a bug?</h3>
+<h2>How do I report a bug?</h2>
 <p>
   Two ways:
 </p>
 <ul>
   <li><a href="https://github.com/dumbledore/AlbiteREADER/issues">Create an issue at GitHub</a></li>
-  <li>Contact me through the feedback button on the left.</li>
+  <li><%= link_to 'Contact me', contacts_url %> through the feedback button on the left.</li>
 </ul>
 
-<h3>Is my phone supported?</h3>
+<h2>Is my phone supported?</h2>
 <p>
-  See <a href="#supported_devices">the list of supported devices</a>.
+  See <a href="#supported_devices">the list of supported devices</a>. Of course, it's quite likely the app would work
+  on devices that are not included in this list as I am very short of testing equipment. 
 </p>
 
-<h3>I can't see the book folder or the book file or I can't open the book</h3>
+<h2>I can't see the book folder or the book file or I can't open the book</h2>
 <p>
   Most probably you're having trouble with <a href="#permissions">security permissions</a>. 
 </p>
 
-<h3>I am seeing placeholders instead of images.</h3>
+<h2>I am seeing placeholders instead of images.</h2>
 <p>
   That may mean several things:
 </p>
@@ -570,12 +624,12 @@
   <li>there hasn't been enough memory to load it or resize it</li>
 </ul>
 
-<h3>The app doesn't show the menu but instead asks me if I want quit.</h3>
+<h2>The app doesn't show the menu but instead asks me if I want quit.</h2>
 <p>
   You must have set the <i>holding time</i> too low. See the section about <a href="#interaction">interaction</a>.
 </p>
 
-<h3>How do I use dictionaries?</h3>
+<h2>How do I use dictionaries?</h2>
 <p>
   First you need to <a href="#dictionaries">download some</a>, then you have to
   <a href="#dictionary_installation">install them</a> and finally you need to know look up the word. You may do that by
@@ -591,8 +645,8 @@
 <h2 id="font">Bitmap Font</h2>
 <p>
   Bitmap font rendering is achieved through my own implementation. The font used, <i>Droid Serif</i>, has been
-  pre-rendered in four different sizes: 12px, 14px, 16px, 18px. All have been anti-aliased except for the 12px version,
-  which looks much better without it. Supported (or sometimes partially) character ranges are:
+  pre-rendered in several different sizes: 12px, 14px, 16px, 18px, 24px and 28px. All have been anti-aliased except for
+  the 12px version, which looks much better without it. Supported (or sometimes partially) character ranges are:
 </p>
 <ol>
   <li><a href="/images/content/char_ranges/r01.png">Latin + Latin Supplement</a> (191 chars)</li>
@@ -614,21 +668,28 @@
 
 <h2 id="hyphenation">Hyphenation</h2>
 <p>
-  Hyphenation for 22 languages:
+  Hyphenation for 29 languages:
 </p>
 <ol>
+  <li>Basque</li>
   <li>Bulgarian</li>
+  <li>Catalan</li>
   <li>Croatian</li>
   <li>Czech</li>
   <li>Danish</li>
+  <li>Dutch</li>
   <li>German</li>
   <li>Greek</li>
   <li>English</li>
   <li>Esperanto</li>
+  <li>Estonian</li>
   <li>Finnish</li>
   <li>French</li>
+  <li>Icelandic</li>
   <li>Indonesian</li>
   <li>Italian</li>
+  <li>Latin</li>
+  <li>Latvian</li>
   <li>Polish</li>
   <li>Portuguese</li>
   <li>Romanian</li>
@@ -804,7 +865,7 @@
 <h2>APIs</h2>
 <h3>kXML2</h3>
 <p>
-  It's a <i>BSD</i>-licensed <i>XML</i> pull parser, especially adequate (or so they say) for <i>Java Mobile</i>.
+  It's a <i>BSD</i>-licensed <i>XML</i> pull parser, especially adequate for <i>Java Mobile</i>.
   It's small and unobtrusive. You can read more at <a href="http://kxml.sourceforge.net/kxml2/">their homepage</a>.
 </p>
 <h3>AlbiteZIP</h3>
@@ -829,14 +890,13 @@
 </p>
 <h3>ZLTextTeXHyphenator</h3>
 <p>
-  I've made a port of <i>zlibrary</i>'s hyphenator used in <a href="http://www.fbreader.org/FBReaderJ/">FBReaderJ</a>.
-  Licensed under GPL 2. 
+  <i>Zlibrary</i>'s hyphenator used in <a href="http://www.fbreader.org/FBReaderJ/">FBReaderJ</a>. Licensed under GPL 2. 
 </p>
 
 <h2>Fonts</h2>
 <h3>Droid Serif</h3>
 <p>
-  That's the font used on <i>Android</i> devices. It's really nice and it's built with the idea to render well on small
+  That's the font used on <i>Android</i> devices. It's quite nice and is built with the idea of rendering well on small
   screens and at small sizes. It supports some good amount of glyphs (around 500) and character ranges. It's
   licensed under the Apache 2.0 license. You can download the Droid fonts in TTF from
   <a href="http://github.com/downloads/dumbledore/AlbiteResources/Droid-TTF.zip">here</a>.
@@ -863,7 +923,7 @@
 </p>
 <p>
   You may download the sources and binaries of the bitmap fonts used in <i>Albite READER</i> at
-  <a href="http://github.com/downloads/dumbledore/AlbiteResources/Droid-Albite.zip">GitHub</a>.
+  <a href="http://github.com/downloads/dumbledore/AlbiteResources/Droid-Albite.20101130.225016.zip">GitHub</a>.
 </p>
 
 <h2>Hyphenation patterns</h2>
@@ -889,7 +949,7 @@
   <li>
     <a href="http://github.com/downloads/dumbledore/AlbiteResources/wb1913-abrd.zip">Merriam-Webster 1913,
       Abridged version</a> (5.5 MB) based on <a href="http://www.mso.anu.edu.au/~ralph/OPTED/index.html">OPTED</a>.
-    Abridged using the <a href="http://wordlist.sourceforge.net/12dicts-readme.html">3esl</a> wordlist.
+    Abridged using the <a href="http://wordlist.sourceforge.net/12dicts-readme.html">3esl</a> word list.
   </li>
   <li>
     <a href="http://github.com/downloads/dumbledore/AlbiteResources/wb1913.zip">Merriam-Webster 1913, Full version</a>
@@ -952,10 +1012,10 @@
   </li>
   <li>
     Font is available in four sizes only. That's because bitmap fonts are being used. Using SVG/TTF fonts is not only
-    slow (one can cache the glyphs after all), but ugly. Or one may need super-sampling which would make it terribly
-    slow. Java Mobile on the other hand, had limited supported for fonts. It supports a maximum of three font sizes,
-    and sometimes some limited amount of glyphs. Not to mention the fact that font rendering in Java Me is dreadfully
-    slow (at least on my GT-5230).
+    slow (one can cache the glyphs after all), but ugly. Or one may need super-sampling which would make it <i>terribly</i>
+    slow. Java Mobile on the other hand, has limited supported for fonts. It supports a maximum of three font sizes,
+    and often limited amount of glyphs. Not to mention the fact that font rendering in Java Mobile is dreadfully
+    on some devices (like my Samsung GT-5230).
   </li>
   <li>No support for subscript and superscript. That's because of the previous limitation.</li>
   <li>No support for tables.</li>

@@ -18,7 +18,7 @@
 
 <div class="download">
   <p>
-    <%= link_to "Download ‘#{h(@translation.filename)}’", "/books/#{@translation.id}/#{@translation.filename}",
+    <%= link_to "Download ‘#{h(@translation.filename)}’", translation_file_url(@translation),
                 :class => 'menu_reader' %>
   </p>
 </div>

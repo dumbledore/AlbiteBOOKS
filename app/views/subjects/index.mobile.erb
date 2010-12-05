@@ -7,7 +7,7 @@
   </p>
 <% else %>
   <% for subject in @subjects %>
-    <%= mobile_link_to(subject_url(h(subject.name)), h(subject.name), nil, true, 'tag') %>
+    <%= mobile_link_to(subject_url(h(subject.name)), h(subject.name), nil, true, 'tag', true, true) %>
   <% end %>
 <% end %>
 
