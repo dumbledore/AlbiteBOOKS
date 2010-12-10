@@ -1,4 +1,4 @@
-﻿# Read free e-books on your mobile?
+# Read free e-books on your mobile?
 
 It seems you've come to the right place!
 
