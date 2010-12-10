@@ -1,4 +1,4 @@
-# Read free e-books on your mobile?
+ï»¿# Read free e-books on your mobile?
 
 It seems you've come to the right place!
 
@@ -39,13 +39,13 @@ All books come from [Project Gutenberg][9], so they are free for the same reason
 
 # Who made Albite?
 
-My name is [Svetlin Ankov][10], I am 23, and I am a student at the [University of Sofia][11]. For most of my time I do programming stuff, but I like math, too, especially if it’s got a more applied nature. 
+My name is [Svetlin Ankov][10], I am 23, and I am a student at the [University of Sofia][11]. For most of my time I do programming stuff, but I like math, too, especially if itâ€™s got a more applied nature. 
 
 I am best at *Java*, but I also have experience with *C++*, *Python*, *Ruby*, *Visual Basic*, *Pascal*, *ActionScript* and *PHP*. 
 
-I have some idea of functional programming, too, as I’ve done some good amount of projects in [Matlab][12] and [Mathematica][13]. I prefer simpler code, but I am not too scared to go deep, if it’s the only option. 
+I have some idea of functional programming, too, as Iâ€™ve done some good amount of projects in [Matlab][12] and [Mathematica][13]. I prefer simpler code, but I am not too scared to go deep, if itâ€™s the only option. 
 
-As far as math is concerned, I don’t like it raw, but prefer it in connection with other sciences, e.g. numerical analysis, discreet math, statistics, biomathematics, etc. I’ve had the chance to [teach biomath][14] as an assistant, i.e. I was responsible for the demonstrative part of the subject. In relation with that, I can say, I wrote some good quantity of *Mathematica* code and some lesser amount of mathematical stuff.
+As far as math is concerned, I donâ€™t like it raw, but prefer it in connection with other sciences, e.g. numerical analysis, discreet math, statistics, biomathematics, etc. Iâ€™ve had the chance to [teach biomath][14] as an assistant, i.e. I was responsible for the demonstrative part of the subject. In relation with that, I can say, I wrote some good quantity of *Mathematica* code and some lesser amount of mathematical stuff.
 
  [1]: http://localhost:3000/reader
  [2]: http://www.fbreader.org/FBReaderJ/
