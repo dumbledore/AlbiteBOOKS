@@ -23,26 +23,7 @@
   </component>
   <component name="FileColors" enabled="true" enabledForTabs="true" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="reader.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/home/reader.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="80" selection-start="3925" selection-end="3925" vertical-scroll-proportion="-17.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reader.mobile.erb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/home/reader.mobile.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="20" selection-start="733" selection-end="733" vertical-scroll-proportion="0.31336406">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -393,7 +374,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -541,16 +522,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/reader.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/home/reader.mobile.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="80" selection-start="3925" selection-end="3925" vertical-scroll-proportion="-17.0">
+        <state line="12" column="20" selection-start="733" selection-end="733" vertical-scroll-proportion="0.31336406">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/home/reader.mobile.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/home/reader.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="20" selection-start="733" selection-end="733" vertical-scroll-proportion="0.31336406">
+        <state line="117" column="80" selection-start="3925" selection-end="3925" vertical-scroll-proportion="0.6267281">
           <folding />
         </state>
       </provider>
