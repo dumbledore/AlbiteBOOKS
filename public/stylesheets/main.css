@@ -159,6 +159,10 @@ select
   margin: 10px;
 }
 
+input[type="file"] {
+  width: 100%;
+}
+
 textarea {
   height: 60px;
 }

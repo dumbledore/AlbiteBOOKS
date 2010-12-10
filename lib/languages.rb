@@ -1,6 +1,6 @@
 module Languages
   # I know this looks ugly, but I can use straight away in a combo box
-  
+
   LANGUAGES = [
     ['-- Unspecified --', 0],
     ['Abkhaz', 1],
@@ -28,7 +28,7 @@ module Languages
     ['Breton', 23],
     ['Bulgarian', 24],
     ['Burmese', 25],
-    ['Catalan; Valencian', 26],
+    ['Catalan;Â Valencian', 26],
     ['Chamorro', 27],
     ['Chechen', 28],
     ['Chichewa; Chewa; Nyanja', 29],
@@ -60,7 +60,7 @@ module Languages
     ['Gujarati', 55],
     ['Haitian; Haitian Creole', 56],
     ['Hausa', 57],
-    ['Hebrew (modern)', 58],
+    ['HebrewÂ (modern)', 58],
     ['Herero', 59],
     ['Hindi', 60],
     ['Hiri Motu', 61],
@@ -135,7 +135,7 @@ module Languages
     ['Quechua', 130],
     ['Romansh', 131],
     ['Kirundi', 132],
-    ['Romanian, Moldavian, Moldovan', 133],
+    ['Romanian,Â Moldavian, Moldovan', 133],
     ['Russian', 134],
     ['Sanskrit (Sa?sk?ta)', 135],
     ['Sardinian', 136],
@@ -165,7 +165,7 @@ module Languages
     ['Turkmen', 160],
     ['Tagalog', 161],
     ['Tswana', 162],
-    ['Tonga (Tonga Islands)', 163],
+    ['TongaÂ (Tonga Islands)', 163],
     ['Turkish', 164],
     ['Tsonga', 165],
     ['Tatar', 166],

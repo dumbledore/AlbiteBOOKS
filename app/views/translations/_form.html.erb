@@ -22,12 +22,9 @@
     <% lang = 41 if (lang == 0 or lang.nil?) %>
     <%= f.select :language, options_for_select(Languages::LANGUAGES, lang)%>
 
-    <%= f.label :original %>
-    <%= f.check_box :original %>
-
     <%= f.label :book_file %>
-    <%= f.file_field :book_file %>
+    <%= f.file_field :book_file, :accesskey => '1', :title => 'ALT + 1' %>
 
   <% end %>
-  <%= f.submit 'Submit', :class => 'small', :disable_with => 'Please wait...' %>
+  <%= f.submit 'Submit', :class => 'small', :disable_with => 'Please wait...', :accesskey => '2', :title => 'ALT + 2' %>
 <% end %>

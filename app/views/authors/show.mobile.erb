@@ -1,21 +1,23 @@
 <% title @author.name %>
 
 <%= h1(h(@author.name)) %>
+<% if params[:page].nil? or params[:page].to_i < 2 %>
+  <% unless @author.thumbnail_url.blank? %>
+    <div class="thumbnail">
+      <%= image_tag(h(@author.thumbnail_url), :class =>  'thumbnail') %>
+    </div>
+  <% end %>
 
-<% unless @author.thumbnail_url.blank? %>
-  <div class="thumbnail">
-    <%= image_tag(h(@author.thumbnail_url), :class =>  'thumbnail') %>
-  </div>
+  <%= simple_section_mobile(@author.description) %>
+  <%= simple_section_mobile(@author.date_and_place_of_birth, 'Born') %>
+  <%= simple_section_mobile(@author.date_and_place_of_death, 'Died') %>
+  <%= simple_section_mobile(@author.country_of_nationality, 'Country of nationality') %>
+  <%= author_aka_mobile(@author) %>
 <% end %>
-
-<%= simple_section_mobile(@author.description) %>
-<%= simple_section_mobile(@author.date_and_place_of_birth, 'Born') %>
-<%= simple_section_mobile(@author.date_and_place_of_death, 'Died') %>
-<%= simple_section_mobile(@author.country_of_nationality, 'Country of nationality') %>
-<%= author_aka_mobile(@author) %>
 
 <%= h2 'Books' %>
 <%= render :partial => 'books/index' %>
+<%= will_paginate(@books, :renderer => 'WillPaginate::MobileRenderer') if @books %>
 
 <% content_for(:back) do %>
   <%= mobile_link_to(authors_url, 'Search', 'Search for another author', true, 'zoom') %>

@@ -59,7 +59,6 @@ class Translation < ActiveRecord::Base
     begin
       # get metadata
       subjects, genres, url, lang = get_metadata(book_file.instance_of?(Tempfile) ? book_file.local_path : book_file)
-      puts "got lang = #{lang}"
 
       # subjects & genres
       begin

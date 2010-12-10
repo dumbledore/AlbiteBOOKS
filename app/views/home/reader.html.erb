@@ -26,7 +26,7 @@
 <ul>
   <li>anti-aliased <a href="#font">bitmap font</a> in four sizes with over 500 glyphs, including latin, cyrillic and greek</li>
   <li><a href="#hyphenation">hyphenation</a> for 29 languages</li>
-  <li>23 <a href="#encodings">encodings</a>, including UTF-8 and most of ISO-8859 and Windows-125x</li>
+  <li>23 <a href="#encodings">character encodings</a>, including UTF-8 and most of ISO-8859 and Windows-125x</li>
   <li>animated touch-guided scrolling</li>
   <li>horizontal and vertical scrolling</li>
   <li>on-touch <a href="#dictionaries">dictionary</a> look up</li>
@@ -82,23 +82,24 @@
   <tr>
     <td>Albite READER HD <%= @version %></td>
     <td>
-      <p>Nokia N97</p>
-      <p>Nokia 5250</p>
-      <p>Nokia 5230 XpressMusic</p>
-      <p>Nokia 5530 XpressMusic</p>
-      <p>Nokia 5800 XpressMusic</p>
       <p>Nokia N8-00</p>
       <p>Nokia E7-00</p>
+      <p>Nokia X6-00</p>
       <p>Nokia C7-00</p>
       <p>Nokia C6-00</p>
       <p>Nokia C5-03</p>
-      <p>Nokia X6-00</p>
+      <p>Nokia 5800 XpressMusic</p>
+      <p>Nokia 5530 XpressMusic</p>
+      <p>Nokia 5250</p>
+      <p>Nokia 5230 Nuron</p>
+      <p>Nokia N97</p>
     </td>
     <td>3000 – 10 000 KB</td>
     <td>
-      bigger icons;<br/>
-      bigger fonts;<br/>
-      chapters are split in 512KB chunks
+      <p>bigger icons</p>
+      <p>bigger fonts</p>
+      <p>chapters are split in 512KB chunks</p>
+      <p>automatic canvas rotation of Nokia phones with an accelerometer</p>
     </td>
     <td class="n">
       <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderHD-<%= @version %>.jar" class="menu">download</a>
@@ -110,9 +111,11 @@
       <p>Samsung GT-S5230 (Star)</p>
     </td>
     <td>1500 – 6000 KB</td>
-    <td>chapters are split in 192KB chunks</td>
+    <td>
+      <p>chapters are split in 192KB chunks</p>
+    </td>
     <td class="n">
-      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader-<%= @version %>.jar" class="menu_reader">download</a>
+      <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReader_<%= @version %>.jar" class="menu_reader">download</a>
     </td>
   </tr>
   <tr>
@@ -129,7 +132,7 @@
       <p>Nokia E72</p>
       <p>Nokia E61</p>
       <p>Nokia E50</p>
-      <p>Nokia 6760 Slide</p>
+      <p>Nokia 6760 slide</p>
       <p>Nokia 6720 Classic</p>
       <p>Nokia 6710 Navigator</p>
       <p>Nokia 6220 Classic</p>
@@ -137,13 +140,16 @@
       <p>Nokia 6120</p>
       <p>Nokia 5730 XpressMusic</p>
       <p>Nokia 5700 XpressMusic</p>
-      <p>Nokia 5630</p>
+      <p>Nokia 5630 XpressMusic</p>
       <p>Nokia 5500 Sport</p>
-      <p>Nokia 5320</p>
+      <p>Nokia 5320 XpressMusic</p>
       <p>Nokia 3250</p>
     </td>
     <td>1500 – 6000 KB</td>
-    <td>chapters are split in 192KB chunks</td>
+    <td>
+      <p>chapters are split in 192KB chunks</p>
+      <p>no support for touchscreen events</p>
+    </td>
     <td class="n">
       <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderNoTouch-<%= @version %>.jar" class="menu">download</a>
     </td>
@@ -156,13 +162,13 @@
     </td>
     <td>500 – 1500 KB</td>
     <td>
-      font is available in 3 instead of 4 sizes;<br/>
-      no hyphenation;<br/>
-      no dictionaries;<br/>
-      only portrait mode;<br/>
-      no on-touch look u;p<br/>
-      no touch on-touch text selection;<br/>
-      chapters are split in 100KB chunks
+      <p>font is available in 3 instead of 4 sizes;</p>
+      <p>no hyphenation</p>
+      <p>no dictionaries</p>
+      <p>only portrait mode</p>
+      <p>no on-touch look u</p>
+      <p>no touch on-touch text selection</p>
+      <p>chapters are split in 100KB chunks</p>
     </td>
     <td class="n">
       <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderLight-<%= @version %>.jar" class="menu">download</a>
@@ -173,14 +179,14 @@
     <td></td>
     <td>500 KB</td>
     <td>
-      font is available only in its smallest size;<br/>
-      no hyphenation;<br/>
-      only 3 encodings;<br/>
-      no dictionaries;<br/>
-      only portrait mode;<br/>
-      no on-touch look up;<br/>
-      no touch on-touch text selection;<br/>
-      chapters are split in 16KB chunks
+      <p>font is available only in its smallest size</p>
+      <p>no hyphenation</p>
+      <p>only 3 encodings</p>
+      <p>no dictionaries</p>
+      <p>only portrait mode</p>
+      <p>no on-touch look up</p>
+      <p>no touch on-touch text selection</p>
+      <p>chapters are split in 16KB chunks</p>
     </td>
     <td class="n">
       <a href="http://github.com/downloads/dumbledore/AlbiteREADER/AlbiteReaderTiny-<%= @version %>.jar" class="menu">download</a>
@@ -702,7 +708,7 @@
   <li>Welsh</li>
 </ol>
 
-<h2 id="encodings">Encodings</h2>
+<h2 id="encodings">Character Encodings</h2>
 <p>
   Support for 23 character encodings:
 </p>

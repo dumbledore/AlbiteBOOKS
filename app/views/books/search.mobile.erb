@@ -1,6 +1,7 @@
 <%= h1 "Books for ‘#{h(@query)}’" %>
-<%= render :partial => 'aliases_index' %>
-<%= will_paginate(@book_aliases, :renderer => 'WillPaginate::MobileRenderer') if @book_aliases %>
+<% @show_author_name = true %>
+<%= render :partial => 'index' %>
+<%= will_paginate(@books, :renderer => 'WillPaginate::MobileRenderer') if @books %>
 
 <% content_for(:back) do %>
   <%= mobile_link_to(books_url, 'Search', 'Search for another book', true, 'book') %>

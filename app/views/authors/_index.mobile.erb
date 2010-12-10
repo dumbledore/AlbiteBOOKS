@@ -1,0 +1,12 @@
+<% if @authors and not @authors.empty? %>
+  <% for author in @authors %>
+    <% if author.ready %>
+      <% subtitle = subtitle(h(author.date_and_place_of_birth)) %>
+      <%= mobile_link_to_thumbnail_or_icon(author_url(author), h(author.name_cached), subtitle, h(author.thumbnail_url), 'author', true)%>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>
+    <i><%= @no_authors_message %></i>
+  </p>
+<% end %>

@@ -1,6 +1,6 @@
 <% if @books and not @books.empty? %>
   <% for book in @books %>
-    <%= book_in_list(book, @book_thumbnails) %>
+    <%= book_in_list(book, @book_thumbnails, @book_authors) %>
   <% end %>
 <% else %>
   <p>

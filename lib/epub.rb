@@ -65,7 +65,6 @@ module EPUB
 
   def get_language(xml_doc)
     begin
-      puts "## LANG " + (XPath.first(xml_doc, '//dc:language').text[0..1].downcase).inspect
       XPath.first(xml_doc, '//dc:language').text[0..1].downcase
     rescue => msg
       puts msg

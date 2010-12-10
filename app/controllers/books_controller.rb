@@ -117,11 +117,16 @@ class BooksController < ApplicationController
     @query = params[:query]
 
     if @query and not @query.empty?
-      @book_aliases   = BookAlias.with_query(@query).paginate   :page => params[:page], :per_page => APP_CONFIG['paginate']['search']['html'], :include => [:book, {:book => :author}]
+      book_ids = BookAlias.with_query(@query).find(:all,:select=>'book_id').map {|x| x.book_id}.uniq
+      @books = Book.find(book_ids).paginate(
+        :page => params[:page], :per_page => APP_CONFIG['paginate']['search']['html'],
+        :include => {:book => :author}
+      ) if book_ids
     end
 
-    @book_alias_thumbnails = true
-    @no_book_aliases_message = 'No books have been found for this query.'
+    @book_thumbnails = true
+    @book_authors = true 
+    @no_books_message = 'No books have been found for this query.'
   end
 
   def search_form

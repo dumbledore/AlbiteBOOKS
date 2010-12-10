@@ -1,8 +1,10 @@
 <% title @book.title %>
 
-<% content_for(:head) do %>
-  <%= render :partial => 'misc/freebase_ajax' %>
-  <%= javascript_include_tag 'http://api.qrtag.net/js' %>
+<% unless @book.freebase_uid.empty? %>
+  <% content_for(:head) do %>
+    <%= render :partial => 'misc/freebase_ajax' %>
+    <%= javascript_include_tag 'http://api.qrtag.net/js' %>
+  <% end %>
 <% end %>
 
 <h1>
@@ -12,20 +14,33 @@
 </h1>
 <p>
   <%= image_tag(h(@book.thumbnail_url), :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
-  <%= ajax_span 'freebase_description' %>
+  <% unless @book.freebase_uid.empty? %>
+    <%= ajax_span 'freebase_description' %>
+  <% else %>
+    <%= @book.description %>
+    <%= "<p><b>Date of first publication:</b> #{@book.date_of_first_publication}</p>" unless @book.date_of_first_publication.empty? %>
+    <%= "<p><b>Original language:</b> #{@book.original_language}</p>" unless @book.original_language.empty? %>
+    <%= "<p><b>Number of pages:</b> #{@book.number_of_pages}</p>" if @book.number_of_pages %>
+  <% end %>
 </p>
-<%= ajax_div 'freebase_details' %>
+<% unless @book.freebase_uid.empty? %>
+  <%= ajax_div 'freebase_details' %>
+<% else %>
+  
+<% end %>
 <%= book_aka(@book) %>
 <%= book_tag_list('Genres', @book.genre_list) {|tag| genre_url(tag)} %>
 <%= book_tag_list('Subjects', @book.subject_list) {|tag| subject_url(tag)} %>
 <div></div>
 
-<h1>Download book &amp; translations</h1>
+<h1>Download editions</h1>
 <%= translations_list(@book.translations) %>
-<%= ajax_div 'freebase_universe' %>
-<%= ajax_div 'freebase_quotes' %>
+<%= new_translation_link(@book) %>
+
+<%= ajax_div 'freebase_universe' unless @book.freebase_uid.empty? %>
+<%= ajax_div 'freebase_quotes' unless @book.freebase_uid.empty? %>
 <%= render :partial => 'misc/qr_code' %>
-<%= ajax_div 'freebase_links' %>
+<%= ajax_div 'freebase_links' unless @book.freebase_uid.empty? %>
 
 <h1>Comments</h1>
 <%= render :partial => 'misc/disqus_thread' %>
@@ -34,7 +49,7 @@
 <% end %>
 
 <%= new_book_link(@book.author_id) %>
-<%= new_translation_link(@book) %>
+<%= new_author_link %>
 
 <p>
   <%= link_to "Back to #{h(@book.author.name)}", @book.author %>

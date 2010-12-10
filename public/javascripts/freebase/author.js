@@ -49,8 +49,12 @@ function freebase(freebase_uid) {
         )
         {
           var born = [];
-          born.push(make_text(res.properties['/people/person/date_of_birth'], '', ', '));
-          born.push(make_text(res.properties['/people/person/place_of_birth'], '', ', '));
+          if (res.properties['/people/person/date_of_birth']) {
+            born.push(make_text(res.properties['/people/person/date_of_birth'], '', ', '));
+          }
+          if (res.properties['/people/person/place_of_birth']) {
+            born.push(make_text(res.properties['/people/person/place_of_birth'], '', ', '));
+          }
           output += '<p><strong>Born:</strong> ' + born.join(', ') + '</p>';
         }
 
@@ -61,8 +65,12 @@ function freebase(freebase_uid) {
         )
         {
           var died = [];
-          died.push(make_text(res.properties['/people/deceased_person/date_of_death'], '', ', '));
-          died.push(make_text(res.properties['/people/deceased_person/place_of_death'], '', ', '));
+          if (res.properties['/people/deceased_person/date_of_death']) {
+            died.push(make_text(res.properties['/people/deceased_person/date_of_death'], '', ', '));
+          }
+          if (res.properties['/people/deceased_person/place_of_death']) {
+            died.push(make_text(res.properties['/people/deceased_person/place_of_death'], '', ', '));
+          }
           output += '<p><strong>Died:</strong> ' + died.join(', ') + '</p>';
         }
 

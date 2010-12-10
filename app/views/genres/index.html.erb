@@ -10,7 +10,7 @@
   <ul>
     <% for genre in @genres %>
       <li>
-        <%= link_to h(genre.name), genre_url(h(genre.name), :class => 'item') %>
+        <%= link_to h(genre.name), genre_url(h(genre.name)), :class => 'item' %>
       </li>
     <% end %>
   </ul>

@@ -18,6 +18,8 @@
 
 <h1>Books</h1>
 <%= render :partial => 'books/index' %>
+<%= new_book_link(@author) %>
+
 <%= ajax_div 'freebase_quotes' %>
 <%= render :partial => 'misc/qr_code' %>
 <%= ajax_div 'freebase_links' %>
@@ -29,7 +31,6 @@
 <% end %>
 
 <%= new_author_link %>
-<%= new_book_link(@author) %>
 
 <p>
   <%= link_to 'Back to Authors', authors_url %>

@@ -40,3 +40,17 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+#if defined? Mongrel::DirHandler
+#  module Mongrel
+#    class DirHandler
+#      def send_file_with_expires(req_path, request, response, header_only=false)
+#        response.header['Cache-Control'] = 'max-age=315360000'
+#        response.header['Expires'] = (Time.now + 10.years).rfc2822
+#        send_file_without_expires(req_path, request, response, header_only)
+#      end
+#      alias_method :send_file_without_expires, :send_file
+#      alias_method :send_file, :send_file_with_expires
+#    end
+#  end
+#end

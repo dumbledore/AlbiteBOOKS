@@ -1,0 +1,9 @@
+<% if @authors and not @authors.empty? %>
+  <% for author in @authors %>
+    <%= author_in_list(author, @author_thumbnails) %>
+  <% end %>
+<% else %>
+  <p>
+    <i><%= @no_authors_message %></i>
+  </p>
+<% end %>

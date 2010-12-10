@@ -1,3 +1,3 @@
 <h1>Books found for ‘<%= h(@query) %>’</h1>
-<%= render :partial => 'aliases_index' %>
-<%= will_paginate @book_aliases if @book_aliases %>
+<%= render :partial => 'index' %>
+<%= will_paginate @books if @books %>

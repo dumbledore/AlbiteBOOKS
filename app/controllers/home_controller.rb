@@ -16,15 +16,25 @@ class HomeController < ApplicationController
       if @query and not @query.empty?
         @query = params[:query]
 
-        @book_aliases   = BookAlias.with_query(@query).paginate   :page => 1, :per_page => APP_CONFIG['paginate']['search']['html'], :include => [:book, {:book => :author}]
-        @author_aliases = AuthorAlias.with_query(@query).paginate :page => 1, :per_page => APP_CONFIG['paginate']['search']['html'], :order => :name_reversed, :include => :author
+        book_ids = BookAlias.with_query(@query).find(:all,:select=>'book_id').map {|x| x.book_id}.uniq
+        @books = Book.find(book_ids).paginate(
+          :page => params[:page], :per_page => APP_CONFIG['paginate']['search']['html'],
+          :include => {:book => :author}
+        ) if book_ids
+
+        author_ids = AuthorAlias.with_query(@query).find(:all,:select=>'author_id').map {|x| x.author_id}.uniq
+        @authors = Author.find(author_ids).paginate(
+          :page => params[:page], :per_page => APP_CONFIG['paginate']['search']['html'],
+          :order => :name_cached
+        ) if author_ids
       end
 
-      @book_alias_thumbnails = true
-      @no_book_aliases_message = 'No books have been found for this query.'
+      @book_thumbnails = true
+      @book_authors = true
+      @no_books_message = 'No books have been found for this query.'
 
-      @author_alias_thumbnails = true
-      @no_author_aliases_message = 'No authors have been found for this query.'
+      @author_thumbnails = true
+      @no_authors_message = 'No authors have been found for this query.'
   end
 
   def search_form

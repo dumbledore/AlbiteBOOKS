@@ -5,7 +5,6 @@ module TranslationsHelper
 
       for translation in translations
         text = []
-        text << 'Original text' if translation.original
         text << Languages::LANGUAGES[translation.language][0]
         text << h(translation.date_of_publication) unless translation.date_of_publication.empty?
         text << h(translation.note) unless translation.note.empty?
@@ -31,7 +30,6 @@ module TranslationsHelper
 
       for translation in translations
         text = []
-        text << 'Original text' if translation.original
         text << h(translation.date_of_publication) unless translation.date_of_publication.empty?
         text << h(translation.note) unless translation.note.empty?
 

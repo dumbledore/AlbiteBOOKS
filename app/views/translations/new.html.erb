@@ -4,5 +4,5 @@
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Back to #{h(@translation.book.title)}", edit_book_url(@translation.book) %>
+  <%= link_to "Back to #{h(@translation.book.title)}", @translation.book %>
 </p>

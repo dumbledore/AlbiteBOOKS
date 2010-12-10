@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  include Lettercode
   before_filter :require_admin, :except => [:index, :show, :search, :search_form]
 
   def new
@@ -91,8 +92,11 @@ class AuthorsController < ApplicationController
 
   def show
     begin
-      @author = Author.find(params[:id], :include => [:author_aliases, :alias_name])
+      @author = Author.find(params[:id], :include => [:author_aliases, :alias_name, :books])
       @books = @author.books
+      if mobile?
+        @books = @books.paginate(:page => params[:page], :per_page => APP_CONFIG['paginate']['search']['html'])
+      end
       @book_thumbnails = true
       @no_books_message = 'No books have been added, so far.'
       @show_publication_date = true
@@ -108,13 +112,15 @@ class AuthorsController < ApplicationController
     @query = params[:query]
 
     if @query and not @query.empty?
-      @author_aliases = AuthorAlias.with_query(@query).paginate(
+      author_ids = AuthorAlias.with_query(@query).find(:all,:select=>'author_id').map {|x| x.author_id}.uniq
+      @authors = Author.find(author_ids).paginate(
         :page => params[:page], :per_page => APP_CONFIG['paginate']['search']['html'],
-        :order => :name_reversed, :include => :author)
+        :order => :name_cached
+      ) if author_ids
     end
 
-    @author_alias_thumbnails = true
-    @no_author_aliases_message = 'No authors have been found for this query.'
+    @author_thumbnails = true
+    @no_authors_message = 'No authors have been found for this query.'
   end
 
   def search_form

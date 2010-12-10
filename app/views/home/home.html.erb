@@ -35,19 +35,21 @@
         <%= link_to 'thanks', thanks_url %> page!
       </p>
     </td>
-    <td width="10%"></td>
-    <td width="30%" align="center">
-      <h1>Have read these?</h1>
-      <% for book in @books %>
-        <div class="home">
-          <% image_url = (book.thumbnail_url.blank? ? 'misc/no-image.gif' : h(book.thumbnail_url)) %>
-          <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br />
-          <%= link_to h(book.title), book, :class => 'thumblist' %>
-          <span class="list">
-            <br />by <i><%= link_to h(book.author.name_cached), book.author %></i><br />
-          </span>
-        </div>
-      <% end %>
-    </td>
+    <% if @books %>
+      <td width="10%"></td>
+      <td width="30%" align="center">
+        <h1>Have read these?</h1>
+        <% for book in @books %>
+          <div class="home">
+            <% image_url = (book.thumbnail_url.blank? ? 'misc/no-book.gif' : h(book.thumbnail_url)) %>
+            <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br />
+            <%= link_to h(book.title), book, :class => 'thumblist' %>
+            <span class="list">
+              <br />by <i><%= link_to h(book.author.name_cached), book.author %></i><br />
+            </span>
+          </div>
+        <% end %>
+      </td>
+    <% end %>
   </tr>
 </table>

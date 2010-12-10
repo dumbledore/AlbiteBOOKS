@@ -1,11 +1,5 @@
 <%= h1 "Downloading ‘#{h(@translation.book.title)}’" %>
 
-<% if @translation.original %>
-  <p>
-    <strong>Original text</strong>
-  </p>
-<% end %>
-
 <%= simple_section(@translation.note, 'Note') %>
 <%= simple_section(@translation.date_of_publication, 'Date of publication') %>
 <%= simple_section(Languages::LANGUAGES[@translation.language][0], 'Language') %>

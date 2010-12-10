@@ -3,14 +3,13 @@ class Book < ActiveRecord::Base
   belongs_to :alias_title, :class_name => 'BookAlias'
 
   has_many :book_aliases, :order => :title,     :dependent => :destroy
-  has_many :translations, :order => :original,  :dependent => :destroy
+  has_many :translations,                       :dependent => :destroy
 
   attr_accessible :alias_title_id, :title, :freebase_uid, :thumbnail_url, :author_id, :tags, :ready,
                   :description, :date_of_first_publication, :original_language, :number_of_pages,
                   :genre_list, :subject_list
 
   acts_as_taggable_on :genres, :subjects
-  acts_as_indexed :fields => [:genre_list, :subject_list]
 
   validates_presence_of :title
   validates_uniqueness_of :freebase_uid, :allow_blank => true
@@ -36,6 +35,7 @@ class Book < ActiveRecord::Base
   include Freebase
 
   def title=(title)
+    title.strip!
     self[:title] = title
     self.alias_title.title = title unless self.alias_title.nil?
   end

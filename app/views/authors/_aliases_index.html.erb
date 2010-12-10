@@ -1,6 +1,6 @@
 <% if @author_aliases and not @author_aliases.empty? %>
   <% for aliaz in @author_aliases %>
-    <%= author_in_list(aliaz, @author_alias_thumbnails) %>
+    <%= author_alias_in_list(aliaz, @author_alias_thumbnails) %>
   <% end %>
 <% else %>
   <p>

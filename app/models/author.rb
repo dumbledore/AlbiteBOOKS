@@ -46,7 +46,8 @@ class Author < ActiveRecord::Base
   end
 
   def name=(name)
-  if self.alias_name.nil?
+    name.strip!
+    if self.alias_name.nil?
       # Creating author
       @name = name
     else
