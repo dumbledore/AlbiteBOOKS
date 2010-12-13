@@ -130,7 +130,11 @@ class BooksController < ApplicationController
   end
 
   def search_form
-    redirect_to search_books_url params[:query]
+    if params[:query]
+      redirect_to search_books_url params[:query]
+    else
+      render :search
+    end
   end
 
   def latest

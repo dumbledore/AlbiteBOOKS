@@ -124,6 +124,10 @@ class AuthorsController < ApplicationController
   end
 
   def search_form
-    redirect_to search_authors_url params[:query]
+    if params[:query]
+      redirect_to search_authors_url params[:query]
+    else
+      render :search
+    end
   end
 end

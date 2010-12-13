@@ -326,6 +326,22 @@ div.flmsg_error {
  height: 20px;
 }
 
+.t40 {
+  width: 39px;
+}
+
+.t10 {
+  width: 10px;
+}
+
+.t742 {
+  width: 742px;
+}
+
+.t722 {
+  width: 722px;
+}
+
 .tpl_row_tl {
   background-image: url(../images/_/tl.gif);
 }
@@ -358,44 +374,33 @@ div.flmsg_error {
   background-image: url(../images/_/r.gif);
 }
 
+form.search {
+  vertical-align: middle;
+}
+
 input.search {
   color: #aaa;
   font-weight: bold;
-  margin: 0;
-  vertical-align: bottom;
-  width: 400px;
+  width: 360px;
   font-size: 14px;
-  /*border: #aaa solid 1px;*/
-  border: none;
-  height: 34px;
-  padding: 0;
+  border: #aaa solid 1px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px 3px 3px 3px;
+  padding: 4px;
+  margin: 6px 0;
   background-color: transparent;
 }
 
-td.s_box {
-  background: url('../images/_/s-box.gif') repeat-x;
-}
-
-td.s_box_l {
-  background: url('../images/_/s-box-left.gif') no-repeat;
-  width: 26px;
-  height: 34px;
-}
-
-td.s_box_r {
-  background: url('../images/_/s-box-right.gif') no-repeat;
-  width: 17px;
-  height: 34px;
-}
-
 input.search:focus {
-  border: none;
   color: #606060;
+  border-color: #606060;
 }
 
 button.search {
   width: 26px;
   height: 34px;
+  margin: 0 4px;
   background: url('/images/_/sb.gif') no-repeat;
   border: none;
   cursor: pointer;

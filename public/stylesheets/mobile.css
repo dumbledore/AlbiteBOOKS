@@ -175,7 +175,9 @@ input.box {
   border: none;
   background: url('/images/mobile/search.png') repeat-x;
   height: 43px;
-  padding: 0 4px;
+  padding: 0 6px;
+  vertical-align: middle;
+  text-align: center;
 }
 
 button.go {
@@ -211,7 +213,7 @@ div.box_left{
 
 div.box_right {
   top: 0px;
-  right: -8px;
+  right: -10px;
   background: url('/images/mobile/search-right.png') no-repeat;
 }
 
