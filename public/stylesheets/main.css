@@ -428,7 +428,8 @@ img.thumbnail {
   padding: 2px;
   margin: 5px;
   border: solid 1px #999;
-  width: 100px;
+  width: 150px;
+  max-height: 220px;
   float: right;
 }
 
