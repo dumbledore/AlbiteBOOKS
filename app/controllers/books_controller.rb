@@ -108,7 +108,6 @@ class BooksController < ApplicationController
       @translations = @book.translations
       @disqus = 'book_' + @book.id.to_s
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = 'Book was not found'
       redirect_to books_url
     end
   end

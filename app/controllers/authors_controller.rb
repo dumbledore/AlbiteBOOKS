@@ -103,7 +103,6 @@ class AuthorsController < ApplicationController
       @freebase_item = @author
       @disqus = 'author_' + @author.id.to_s
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = 'Author not found.'
       redirect_to authors_url
     end
   end

@@ -68,7 +68,6 @@ class TranslationsController < ApplicationController
     begin
       @translation = Translation.find(params[:id], :include => :book)
     rescue ActiveRecord::RecordNotFound
-      flash[:error] = 'Translation was not found'
       redirect_to root_url
     end
   end
