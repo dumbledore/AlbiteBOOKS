@@ -41,8 +41,7 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-#  database: albite_production
-  database: albite_development
+  database: albite_production
   pool: 5
   username: root
   password: root
