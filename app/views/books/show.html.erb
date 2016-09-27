@@ -13,7 +13,7 @@
   <span class="subtitle">by <%= link_to h(@book.author.name), @book.author %></span>
 </h1>
 <p>
-  <%= image_tag(h(@book.thumbnail_url), :class =>  'thumbnail') unless @book.thumbnail_url.blank? %>
+  <%= image_tag(h(freebase_thumb_url(@book.freebase_uid, true)), :class =>  'thumbnail') unless (@book.thumbnail_url.blank? or @book.freebase_uid.blank?) %>
   <% unless @book.freebase_uid.empty? %>
     <%= ajax_span 'freebase_description' %>
   <% else %>

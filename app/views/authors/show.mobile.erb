@@ -2,9 +2,9 @@
 
 <%= h1(h(@author.name)) %>
 <% if params[:page].nil? or params[:page].to_i < 2 %>
-  <% unless @author.thumbnail_url.blank? %>
+  <% unless (@author.thumbnail_url.blank? or @author.freebase_uid.blank?) %>
     <div class="thumbnail">
-      <%= image_tag(h(@author.thumbnail_url), :class =>  'thumbnail') %>
+      <%= image_tag(h(freebase_thumb_url(@author.freebase_uid)), :class =>  'thumbnail') %>
     </div>
   <% end %>
 

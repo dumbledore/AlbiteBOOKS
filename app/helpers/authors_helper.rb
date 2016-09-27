@@ -4,7 +4,7 @@ module AuthorsHelper
       html = '<table class="list"><tr>'
 
       if show_thumbnails
-        image_url = (aliaz.author.thumbnail_url.blank? ? 'misc/no-user.gif' : h(aliaz.author.thumbnail_url))
+        image_url = ((aliaz.author.thumbnail_url.blank? or aliaz.author.freebase_uid.blank?) ? 'misc/no-user.gif' : h(freebase_thumb_url(aliaz.author.freebase_uid)))
         html << '<td>' + image_tag(image_url, :class => 'thumblist') + '</td>'
       end
 
@@ -22,7 +22,7 @@ module AuthorsHelper
       html = '<table class="list"><tr>'
 
       if show_thumbnails
-        image_url = (author.thumbnail_url.blank? ? 'misc/no-user.gif' : h(author.thumbnail_url))
+        image_url = ((author.thumbnail_url.blank? or author.freebase_uid.blank?) ? 'misc/no-user.gif' : h(freebase_thumb_url(author.freebase_uid)))
         html << '<td>' + image_tag(image_url, :class => 'thumblist') + '</td>'
       end
 

@@ -9,7 +9,7 @@
   <%= edit_author_links(@author) %>
 </h1>
 <p>
-  <%= image_tag(h(@author.thumbnail_url), :class =>  'thumbnail') unless @author.thumbnail_url.blank? %>
+  <%= image_tag(h(freebase_thumb_url(@author.freebase_uid, true)), :class =>  'thumbnail') unless (@author.thumbnail_url.blank? or @author.freebase_uid.blank?) %>
   <%= ajax_span('freebase_description') %>
 </p>
 <%= ajax_div('freebase_bio') %>

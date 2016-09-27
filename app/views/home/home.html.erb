@@ -41,7 +41,7 @@
         <h1>Have read these?</h1>
         <% for book in @books %>
           <div class="home">
-            <% image_url = (book.thumbnail_url.blank? ? 'misc/no-book.gif' : h(book.thumbnail_url)) %>
+            <% image_url = ((book.thumbnail_url.blank? or book.freebase_uid.blank?) ? 'misc/no-book.gif' : h(freebase_thumb_url(book.freebase_uid, true))) %>
             <%= link_to image_tag(image_url, :class => 'thumblisthome'), book %><br />
             <%= link_to h(book.title), book, :class => 'thumblist' %>
             <span class="list">

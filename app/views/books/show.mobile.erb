@@ -6,9 +6,9 @@
 </h1>
 <%= shadow %>
 
-<% unless @book.thumbnail_url.blank? %>
+<% unless (@book.thumbnail_url.blank? or @book.freebase_uid.blank?) %>
   <div class="thumbnail">
-    <%= image_tag(h(@book.thumbnail_url), :class =>  'thumbnail') %>
+    <%= image_tag(h(freebase_thumb_url(@book.freebase_uid)), :class =>  'thumbnail') %>
   </div>
 <% end %>
 
@@ -25,6 +25,6 @@
 <%= book_tag_list_mobile('Subjects', @book.subject_list) {|tag| subject_url(tag)} %>
 
 <% content_for(:back) do %>
-  <%= mobile_link_to_thumbnail_or_icon(author_url(@book.author), h(@book.author.name_cached), 'Back to author', h(@book.author.thumbnail_url), 'user') %>
+  <%= mobile_link_to_thumbnail_or_icon(author_url(@book.author), h(@book.author.name_cached), 'Back to author', h(freebase_thumb_url(@book.author.freebase_uid)), 'user') %>
   <%= mobile_link_to(books_url, 'Search', 'Search for another book', nil, 'zoom') %>
 <% end %>

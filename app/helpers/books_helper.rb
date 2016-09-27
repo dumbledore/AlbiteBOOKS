@@ -4,7 +4,7 @@ module BooksHelper
       html = '<table class="list"><tr>'
 
       if show_thumbnails
-        image_url = (aliaz.book.thumbnail_url.blank? ? 'misc/no-book.gif' : h(aliaz.book.thumbnail_url))
+        image_url = ((aliaz.book.thumbnail_url.blank? or aliaz.book.freebase_uid.blank?) ? 'misc/no-book.gif' : h(freebase_thumb_url(aliaz.book.freebase_uid)))
         html << '<td>' + image_tag(image_url, :class => 'thumblist') + '</td>'
       end
 
@@ -23,7 +23,7 @@ module BooksHelper
       html = '<table class="list"><tr>'
 
       if show_thumbnails
-        image_url = (book.thumbnail_url.blank? ? 'misc/no-book.gif' : h(book.thumbnail_url))
+        image_url = ((book.thumbnail_url.blank? or book.freebase_uid.blank?) ? 'misc/no-book.gif' : h(freebase_thumb_url(book.freebase_uid)))
         html << '<td>' + image_tag(image_url, :class => 'thumblist') + '</td>'
       end
 

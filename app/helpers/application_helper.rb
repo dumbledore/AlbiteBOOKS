@@ -31,4 +31,14 @@ module ApplicationHelper
   def production?
       @is_production ||= (ENV['RAILS_ENV'] == 'production')
   end
+
+  def freebase_thumb_url(id, add_sizes = false)
+    if (id.blank?)
+      return nil
+    end
+
+    url = "https://usercontent.googleapis.com/freebase/v1/image/" + id
+    url += "?maxwidth=150&amp;maxheight=220" if add_sizes
+    url
+  end
 end
