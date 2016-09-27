@@ -65,15 +65,44 @@ function make_text(elements_in, caption, separator, build_links, prefix, suffix)
   }
 }
 
-function get_wikipedia_url(webpages) {
-  if (webpages) {
-    for (var i = 0; i < webpages.length; i++) {
-      if (webpages[i].text && webpages[i].text.toLocaleLowerCase() == 'wikipedia' && webpages[i].url) {
-        return webpages[i].url;
-      }
+function fill_description(res) {
+  function get_description_object(res) {
+    var temp = res['/common/topic/description'];
+    if (temp && temp.values && temp.values.length > 0) {
+      return temp.values[0];
     }
+
+    return null;
   }
 
+  function get_wikipedia_url(description) {
+    if (description) {
+      var temp = description.citation;
+      if (temp && temp.uri) {
+        return temp.uri;
+      }
+    }
+
+    return null;
+  }
+
+  var description = get_description_object(res);
+  var wikipedia_url = get_wikipedia_url(description);
+
+  if (description.value) {
+    var output = description.value;
+    if (wikipedia_url) {
+      output += ' <a href="' + wikipedia_url + '" target="new">more at Wikipedia</a>';
+    }
+    content_for("#freebase_description", output);
+  }
+}
+
+function get_detail(res, key) {
+  var temp = res[key];
+  if (temp && temp.values && temp.values[0]) {
+    return temp.values[0].text;
+  }
   return null;
 }
 
@@ -105,4 +134,8 @@ function make_quotes(quotes) {
   if (quotes) {
     content_for("#freebase_quotes", '<h1>Quotes</h1>' + make_text(quotes, '', '', false, '<p class="quote">&ldquo;&nbsp;', '&nbsp;&rdquo;</p>'));
   }
+}
+
+function frebase_topic_url(topic_id) {
+  return "https://www.googleapis.com/freebase/v1/topic/" + topic_id;
 }

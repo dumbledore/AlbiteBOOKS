@@ -6,8 +6,7 @@ function freebase(freebase_uid) {
   }
 
   // Adding callback=? to the URL makes jQuery do JSONP instead of XHR.
-  jQuery.getJSON("http://www.freebase.com/experimental/topic/standard?callback=?&id=" + freebase_uid,
-  displayResults);                     // Callback function
+  jQuery.getJSON(frebase_topic_url(freebase_uid), displayResults); // Callback function
 
   function clearAll() {
     content_for("#freebase_description");
@@ -17,77 +16,63 @@ function freebase(freebase_uid) {
   }
 
   function displayResults(response) {
+    var temp1;
+    var temp2;
 
     clearAll();
 
-    if (response[freebase_uid] && response[freebase_uid].code == "/api/status/ok" && response[freebase_uid].result) {
-      var res = response[freebase_uid].result;
+    if (response['property']) {
+      var res = response['property'];
+
+      // general description
+      fill_description(res);
+
+      //biography
       var output = "";
 
-      //wikipedia url
-      wikipedia_url = get_wikipedia_url(res.webpage);
-
-      //description
-      if (res.description) {
-        output += res.description;
-        if (wikipedia_url) {
-          output += ' <a href="' + wikipedia_url + '" target="new">more at Wikipedia</a>';
+      //born
+      temp1 = get_detail(res, '/people/person/date_of_birth');
+      temp2 = get_detail(res, '/people/person/place_of_birth');
+      if (temp1 || temp2) {
+        var born = [];
+        if (temp1) {
+          born.push(temp1);
         }
-        content_for("#freebase_description", output);
+        if (temp2) {
+          born.push(temp2);
+        }
+        output += '<p><strong>Born:</strong> ' + born.join(', ') + '</p>';
       }
 
-      if (res.properties) {
-        //property-dependent attributes
-
-        //biography
-        output = "";
-
-        //born
-        if (
-            res.properties['/people/person/date_of_birth'] ||
-            res.properties['/people/person/place_of_birth']
-        )
-        {
-          var born = [];
-          if (res.properties['/people/person/date_of_birth']) {
-            born.push(make_text(res.properties['/people/person/date_of_birth'], '', ', '));
-          }
-          if (res.properties['/people/person/place_of_birth']) {
-            born.push(make_text(res.properties['/people/person/place_of_birth'], '', ', '));
-          }
-          output += '<p><strong>Born:</strong> ' + born.join(', ') + '</p>';
+      //died
+      temp1 = get_detail(res, '/people/deceased_person/date_of_death');
+      temp2 = get_detail(res, '/people/deceased_person/place_of_death');
+      if (temp1 || temp2) {
+        var died = [];
+        if (temp1) {
+          died.push(temp1);
         }
-
-        //died
-        if (
-                res.properties['/people/deceased_person/date_of_death'] ||
-                res.properties['/people/deceased_person/place_of_death']
-        )
-        {
-          var died = [];
-          if (res.properties['/people/deceased_person/date_of_death']) {
-            died.push(make_text(res.properties['/people/deceased_person/date_of_death'], '', ', '));
-          }
-          if (res.properties['/people/deceased_person/place_of_death']) {
-            died.push(make_text(res.properties['/people/deceased_person/place_of_death'], '', ', '));
-          }
-          output += '<p><strong>Died:</strong> ' + died.join(', ') + '</p>';
+        if (temp2) {
+          died.push(temp2);
         }
-
-        //nationality
-        output += make_text(res.properties['/people/person/nationality'], 'Country of nationality', ', ');
-
-        //profession
-        output += make_text(res.properties['/people/person/profession'], 'Worked as', ', ');
-
-        content_for("#freebase_bio", output);
-
-        //quotes
-        make_quotes(res.properties['/people/person/quotations']);
+        output += '<p><strong>Died:</strong> ' + died.join(', ') + '</p>';
       }
 
-      //links
-      make_links(res.url, wikipedia_url, res.webpage);
+      //nationality
+      temp1 = get_detail(res, '/people/person/nationality');
+      if (temp1) {
+        output += make_text(temp1, 'Country of nationality', ', ');
+      }
+
+      //profession
+      temp1 = get_detail(res, '/people/person/profession');
+      if (temp1) {
+        output += make_text(temp1, 'Worked as', ', ');
+      }
+      content_for("#freebase_bio", output);
+
+      //quotes
+      make_quotes(res['/people/person/quotations']);
     }
   }
 }
