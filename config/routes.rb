@@ -56,6 +56,7 @@ ActionController::Routing::Routes.draw do |map|
   # statics
   map.home      'home/',      :controller => 'home', :action => 'home'
   map.reader    'reader/',    :controller => 'home', :action => 'reader'
+  map.reader_j2me 'reader_j2me/', :controller => 'home', :action => 'reader_j2me'
   map.about     'about/',     :controller => 'home', :action => 'about'
   map.thanks    'thanks/',    :controller => 'home', :action => 'thanks'
   map.copyright 'copyright/', :controller => 'home', :action => 'copyright'

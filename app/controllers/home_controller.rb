@@ -6,8 +6,11 @@ class HomeController < ApplicationController
     end
   end
 
-  def reader
+  def reader_j2me
     @version = '2.2'
+  end
+
+  def reader
   end
 
   def search

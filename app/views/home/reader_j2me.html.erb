@@ -1,0 +1,1054 @@
+<%= title 'Get the Reader' %>
+
+<h1 id="reader">Albite Reader for Java Mobile</h1>
+<table>
+  <tr valign="top">
+    <td>
+      <p>
+        An e-book reader for <i>Java Mobile</i> developed by
+        <a href="http://ankov.blogspot.com" target="_blank">Svetlin Ankov</a>. It's free, and it's released under the
+        <a href="http://www.apache.org/licenses/LICENSE-2.0.html" target="_blank">Apache 2.0 License</a>. The source
+        code is available at <a href="http://github.com/dumbledore/AlbiteREADER" target="_blank">GitHub</a>. If you are
+        interested in the licensing info of the used resources or would like to download their sources or build your own
+        resources, see <a href="#resources">the paragraph about resources</a> down the text.
+      </p>
+      <p>
+        Works with <i>EPUB</i>, <i>txt</i> and <i>(x)html</i> files.
+      </p>
+    </td>
+    <td>
+      <%= youtube 'http://www.youtube.com/v/yk0naflL6l4?fs=1&amp;hl=en_GB&amp;rel=0', 380, 310 %>
+    </td>
+  </tr>
+</table>
+
+<h2>Implemented features</h2>
+<ul>
+  <li>anti-aliased <a href="#font">bitmap font</a> in four sizes with over 850 glyphs, including latin, cyrillic and greek</li>
+  <li><a href="#hyphenation">hyphenation</a> for 29 languages</li>
+  <li>23 <a href="#encodings">character encodings</a>, including UTF-8 and most of ISO-8859 and Windows-125x</li>
+  <li>animated touch-guided scrolling</li>
+  <li>horizontal and vertical scrolling</li>
+  <li>on-touch <a href="#dictionaries">dictionary</a> look up</li>
+  <li><a href="#units">units conversion</a>: temperature, length, area, ...</li>
+  <li>portrait and landscape view</li>
+  <li><a href="#images_and_styling">images and basic styling</a></li>
+  <li>color profiles</li>
+  <li><a href="#alx">portable book settings</a></li>
+  <li>bookmarks</li>
+  <li>table of contents</li>
+</ul>
+
+<p>
+  For more detailed information, have a look at <a href="#features">the more comprehensive feature list</a>
+  or <a href="#tutorial">the tutorial</a>.
+</p>
+
+<h2 id="system_requirements">System requirements</h2>
+<table class="inline" width="100%">
+  <tr>
+    <td>Profile</td>
+    <td>MIDP 2.0</td>
+  </tr>
+  <tr>
+    <td>Configuration</td>
+    <td>CLDC 1.1</td>
+  </tr>
+  <tr>
+    <td>Optional packages</td>
+    <td>File API (JSR-75)</td>
+  </tr>
+  <tr>
+    <td>Used heap memory</td>
+    <td>depends on the version</td>
+  </tr>
+</table>
+
+<h2>Download</h2>
+<p>
+  As devices abilities can differ so much in the mobile world, it's necessary to make <i>several versions</i>
+  of the same app, each one being targeted at a different device group. You should try to choose the group that
+  matches your device capabilities best.
+</p>
+
+<table id="versions">
+  <tr>
+    <td></td>
+    <td id="supported_devices">Known supported devices</td>
+    <td>Used heap memory</td>
+    <td>Limitations or enhancements</td>
+    <td class="n"></td>
+  </tr>
+  <tr>
+    <td>Albite READER HD <%= @version %></td>
+    <td>
+      <p>Nokia N8-00</p>
+      <p>Nokia E7-00</p>
+      <p>Nokia X6-00</p>
+      <p>Nokia C7-00</p>
+      <p>Nokia C6-00</p>
+      <p>Nokia C5-03</p>
+      <p>Nokia 5800 XpressMusic</p>
+      <p>Nokia 5530 XpressMusic</p>
+      <p>Nokia 5250</p>
+      <p>Nokia 5230 Nuron</p>
+      <p>Nokia N97</p>
+    </td>
+    <td>3000 – 10 000 KB</td>
+    <td>
+      <p>bigger icons</p>
+      <p>bigger fonts</p>
+      <p>chapters are split in 512KB chunks</p>
+      <p>automatic canvas rotation of Nokia phones with an accelerometer</p>
+    </td>
+    <td class="n">
+      <a href="http://dl.dropbox.com/u/20908437/Albite%20READER/AlbiteReaderHD-<%= @version %>.jar" class="menu">download</a>
+    </td>
+  </tr>
+  <tr>
+    <td><i>Albite READER <%= @version %></i></td>
+    <td>
+      <p>Samsung GT-S5230 (Star)</p>
+	  <p>Samsung Impression</p>
+    </td>
+    <td>1500 – 6000 KB</td>
+    <td>
+      <p>chapters are split in 192KB chunks</p>
+    </td>
+    <td class="n">
+      <a href="http://dl.dropbox.com/u/20908437/Albite%20READER/AlbiteReader-<%= @version %>.jar" class="menu_reader">download</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Albite READER<br/>No Touch <%= @version %></td>
+    <td>
+      <p>Nokia X5-01</p>
+      <p>Nokia E5-00</p>
+      <p>Nokia C5-00</p>
+      <p>Nokia N96</p>
+      <p>Nokia N95</p>
+      <p>Nokia N91</p>
+      <p>Nokia N85</p>
+      <p>Nokia N80</p>
+      <p>Nokia E72</p>
+      <p>Nokia E61</p>
+      <p>Nokia E50</p>
+      <p>Nokia 6760 slide</p>
+      <p>Nokia 6720 Classic</p>
+      <p>Nokia 6710 Navigator</p>
+      <p>Nokia 6220 Classic</p>
+      <p>Nokia 6124 Classic</p>
+      <p>Nokia 6120</p>
+      <p>Nokia 5730 XpressMusic</p>
+      <p>Nokia 5700 XpressMusic</p>
+      <p>Nokia 5630 XpressMusic</p>
+      <p>Nokia 5500 Sport</p>
+      <p>Nokia 5320 XpressMusic</p>
+      <p>Nokia 3250</p>
+	  <p>Sony Ericsson J105i</p>
+    </td>
+    <td>1500 – 6000 KB</td>
+    <td>
+      <p>chapters are split in 192KB chunks</p>
+      <p>no support for touchscreen events</p>
+    </td>
+    <td class="n">
+      <a href="http://dl.dropbox.com/u/20908437/Albite%20READER/AlbiteReaderNoTouch-<%= @version %>.jar" class="menu">download</a>
+    </td>
+  </tr>
+  <tr>
+    <td>Albite READER Light <%= @version %></td>
+    <td>
+      <p>Nokia 3720 Classic</p>
+      <p>Nokia 5130 XpressMusic</p>
+    </td>
+    <td>500 – 1500 KB</td>
+    <td>
+      <p>font is available in 3 instead of 4 sizes;</p>
+      <p>no hyphenation</p>
+      <p>no dictionaries</p>
+      <p>only portrait mode</p>
+      <p>no on-touch look u</p>
+      <p>no touch on-touch text selection</p>
+      <p>chapters are split in 100KB chunks</p>
+    </td>
+    <td class="n">
+      <a href="http://dl.dropbox.com/u/20908437/Albite%20READER/AlbiteReaderLight-<%= @version %>.jar" class="menu">download</a>
+    </td>
+  </tr>
+  <tr class="last">
+    <td>Albite READER Tiny <%= @version %></td>
+    <td></td>
+    <td>500 KB</td>
+    <td>
+      <p>font is available only in its smallest size</p>
+      <p>no hyphenation</p>
+      <p>only 3 encodings</p>
+      <p>no dictionaries</p>
+      <p>only portrait mode</p>
+      <p>no on-touch look up</p>
+      <p>no touch on-touch text selection</p>
+      <p>chapters are split in 16KB chunks</p>
+    </td>
+    <td class="n">
+      <a href="http://dl.dropbox.com/u/20908437/Albite%20READER/AlbiteReaderTiny-<%= @version %>.jar" class="menu">download</a>
+    </td>
+  </tr>
+</table>
+
+<p>
+  Your phone can install apps only over the internet? No worries, just visit
+  <a href="http://m.albite.vlexofree.com/reader">the mobile site</a>.
+</p>
+
+<p>
+  Want to download some older release? Then
+  <a href="http://github.com/dumbledore/AlbiteREADER/downloads">see all releases</a>.<br/>
+</p>
+
+<p>
+  As the this app is developed by a single person, it has been tested on some very limited amount of devices. I'd be
+  very grateful, if you share your experience with the app, so that I could fill in the list with more supported phones.
+</p>
+
+<h1 id="installation">Installing the reader</h1>
+<p>
+  It's installed like any other Java Mobile game. Transfer the jar file to your device, and then open it up from
+  your phone's file manager. If that's not possible, you may need to download the app straight from you phone's
+  web browser. You can easily do that, if you visit <a href="http://m.albite.vlexofree.com/reader">the mobile site</a>.
+</p>
+
+<h1 id="permissions">Setting up security permissions</h1>
+<p>
+  On most phones reading and writing files requires security permissions. <i>Albite READER</i> needs both: firstly,
+  it obviously needs to read the book files, and, secondly, it needs to write <a href="#alx">per-book settings files</a>
+  that contain data about your book progress (including bookmarks). Therefore, if you don't grant permissions to
+  <i>Albite READER</i> it will become impossible to use. 
+</p>
+<p>
+  On some phones (e.g. Samsung GT-5230) you need to grant read and write permissions every time you launch the app.
+  It's important that you select the option that will grant permissions and would not ask again during the the
+  session or you might have to accept hundreds of requests. Such option might be titled <i>Allow, ask once</i> or
+  <i>Always allowed</i> or <i>Never ask</i>. If you don't grand read permissions, you <i>wouldn't be able to open
+  books</i> and the app would most probably close. If you don't give write permissions, your <i>reading progress would
+  not be saved</i>.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <a href="/images/content/reader_gui/samsung-read.jpg">
+        <img src="/images/content/reader_gui/samsung-read.jpg" height="160"/>
+      </a>
+    </td>
+    <td>
+      <a href="/images/content/reader_gui/samsung-write.jpg">
+        <img src="/images/content/reader_gui/samsung-write.jpg" height="160"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Granting read permissions on a Samsung GT-5230
+    </td>
+    <td>
+      Granting write permissions on a Samsung GT-5230
+    </td>
+  </tr>
+</table>
+<p>
+  On Nokia and Sony-Ericsson phones, you might be able to set permissions once and for all. Go to <i>Tools</i>, then
+  <i>App. manager</i>, find <i>Albite READER</i> and set <i>Read user data</i> and <i>Edit user data</i> to
+  <i>Always allowed</i>. The following screens are for another app,
+  <a href="http://apps.facebook.com/smister/">Smister</a>, but the steps are the same.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <a href="/images/content/reader_gui/nokia-read.jpg">
+        <img src="/images/content/reader_gui/nokia-read.jpg" height="160"/>
+      </a>
+    </td>
+    <td>
+      <a href="/images/content/reader_gui/nokia-edit.jpg">
+        <img src="/images/content/reader_gui/nokia-edit.jpg" height="160"/>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Granting read permissions on a Nokia N95
+    </td>
+    <td>
+      Granting write permissions on a Nokia N95
+    </td>
+  </tr>
+</table>
+
+<h1 id="tutorial">Tutorial: Using the reader</h1>
+<h2>First run</h2>
+<p id="accept_license">
+  The first time you run the app you'll be presented with the license screen which you are obliged to accept if you are
+  willing to use the app.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/license.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The license screen
+    </td>
+  </tr>
+</table>
+
+<p id="file_browser">
+  After that, the file browser pops up and you need to browse to the folder where you put the books. Bear in mind
+  that depending on your phone you <i>might not be able to see some folders</i> or even if you see them, you might
+  still <i>not be able to open your books</i> because of security restrictions. So, you might need to <i>experiment</i>
+  a little. It's highly probably that you might be asked to
+  <a href="#permissions">grant read and write permissions to the app</a>.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/browser-1.png" />
+    </td>
+    <td>
+      <img src="/images/content/reader_gui/browser-2.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The the initial state of the file browser screen
+    </td>
+    <td>
+      The file browser screen showing your books
+    </td>
+  </tr>
+</table>
+<p>
+  After that the book loads up and you are ready to start reading!
+</p>
+
+<h2 id="main_screen">Main screen</h2>
+<p>
+  The main screen is the place you need to get most accustomed to for there you'll be spending most of your time. For
+  the same reason, this screen is the most interactive part of the app and needs most explanations.
+</p>
+<p>
+  Firstly, you need to know that there are two screen modes: normal and full-screen.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/main-normal.png" />
+    </td>
+    <td>
+      <img src="/images/content/reader_gui/main-full.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The main screen in <i>normal</i> mode
+    </td>
+    <td>
+      The main screen in <i>full-screen</i> mode
+    </td>
+  </tr>
+</table>
+<p>
+  The screen is most interactive when in normal mode. Let's see what separate areas it's made of and how they react
+  to touch.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/main-areas.png" style="border: none;"/>
+    </td>
+    <td>
+      <img src="/images/content/reader_gui/main-touch.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Areas according to what they are for
+    </td>
+    <td>
+      Areas according to how they react to touch
+    </td>
+  </tr>
+</table>
+<p>
+  There are four touch interactions that the main screen responds to: <i>press and release</i>,
+  <i>press, hold and release</i>, <i>drag</i>, <i>hold and drag</i>.
+</p>
+<p>
+  <span style="background-color: #c6acd9;">The area in violet</span> is the <i>toolbar</i>. It responds to <i>press</i>
+  and <i>press and hold</i>.
+</p>
+<table class="inline">
+  <tr>
+    <td><img src="/images/content/reader_gui/t-menu.png" /></td>
+    <td>
+      <i>Press and release</i> brings up the main menu.<br />
+      <i>Press, hold and release</i> is a shortcut for quitting the app. Before quitting however, it will ask you to
+      confirm your intention so that you wouldn't quit the app incidentally.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-book.png" /></td>
+    <td>
+      <i>Press and release</i> brings the open book screen.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-glass.png" /></td>
+    <td>
+      <i>Press and release</i> brings the word look up screen.<br />
+      <i>Press, hold and release</i> brings the number conversion screen.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-size.png" /></td>
+    <td>
+      <i>Press and release</i> switches the font size<br />
+      <i>Press, hold and release</i> brings up the font size selection screen.
+    </td>
+  </tr>
+  <tr>
+    <td><img src="/images/content/reader_gui/t-profile.png" /></td>
+    <td>
+      <i>Press and release</i> switches the day and night profiles.<br/>
+      <i>Press, hold and release</i> brings up the color profile configuration screen.
+    </td>
+  </tr>
+</table>
+
+<p>
+  <span style="background-color: #d3ecb9;">The area in green</span> is the way to switch pages.<br/>
+  <i>Press and release</i> on the left side scrolls to the previous page and respectively <i>press and release</i>
+  on the right side scrolls to the next page. 
+</p>
+
+<p>
+  <i>Press and release</i> on <span style="background-color: #99dff9;">the area in blue</span> switches between
+  normal and full-screen mode (in the <i>normal</i> and <i>HD</i> versions) or opens the menu (in the <i>Tiny</i> and
+  <i>Light</i> versions).
+</p>
+
+<p>
+  <span style="background-color: #ff9;">The area in yellow</span> shows the progress in the current chapter.<br/>
+  <i>Press and release</i> brings up the table of contents.<br/>
+  <i>Press, hold and release</i> moves to the place in current chapter that corresponds to the point you pressed
+  the progress bar.
+</p>
+
+<p>
+  <span style="background-color: #D5C190;">The area in beige</span> shows the number of the current chapter and the
+  time.<br/>
+  <i>Press and release</i> brings up the book details screen, which shows book's title, its author
+  and the language it's in.<br/>
+</p>
+
+<p>
+  The <i>book content</i> also reacts to touch.<br/>
+  <i>Press, hold and release</i> on a word (<span style="background-color: #f99;">e.g. the area in red</span>) brings
+  up the word look-up screen.<br/>
+  <i>Press, hold and release</i> on a number brings up the number conversion screen.<br/>
+  <i>Press and drag</i> on the book content moves the pages according to your finger guidance.<br/>
+  <i>Press, hold and drag</i> enters into <i>text selection mode</i>. After <i>release</i> the add-bookmark screen
+  would be shown.
+</p>
+
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/main-selected.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Main screen in text selection mode
+    </td>
+  </tr>
+</table>
+
+<h2>Key functions in the main screen</h2>
+<table class="inline">
+  <tr>
+    <td>Arrows</td>
+    <td>
+      Scroll to the previous / next page. These keys change function depending on the current screen mode, e.g. normal,
+      clockwise, etc.
+    </td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Open another book</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>
+      Look up a word in the dictionary (normal and HD version)<br/>
+      Convert a number (tiny and light version)
+    </td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Cycle font size (doesn't work in the Tiny version as there is only one available font size.</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Switch day / night profile</td>
+  </tr>
+</table>
+<br/>
+
+<h2 id="dictionary_installation">Downloading &amp; installing dictionaries</h2>
+<p>
+  Firstly <a href="#dictionaries">download a few dictionaries</a>.
+  Then, you need to copy the dictionaries to their own folder on your mobile. Then select
+  <i>Set dictionary folder</i> from the main menu and browse to the folder where you put your dictionaries.
+</p>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/menu-dictionary.png" />
+    </td>
+    <td>
+      <img src="/images/content/reader_gui/dict-browser.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The main menu with <i>Set dictionary folder</i> selected.
+    </td>
+    <td>
+      The dictionary browser showing the user is about to select the <i>dicts</i> folder.
+    </td>
+  </tr>
+</table>
+
+<h2 id="interaction">Configuring your interaction with the reader</h2>
+<p>
+  There a few options that setup the way you interact with the reader:
+</p>
+<ul>
+  <li>
+    <i>Scrolling speed</i> is the speed with which pages are being scrolled.
+  </li>
+  <li>
+    <i>Smooth scrolling</i> makes scrolling looks more natural. It adjusts the speed so that it's not entirely constant.
+  </li>
+  <li>
+    By default pages are scrolled horizontally. You can also scroll them vertically.
+  </li>
+  <li>
+    The time needed to hold over an area to activate <i>hold mode</i> may be decreased/increased through the
+    <i>Long press after</i> slider.
+  </li>
+</ul>
+<table class="diagram">
+  <tr>
+    <td>
+      <img src="/images/content/reader_gui/interaction.png" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      The <i>page interaction</i> screen.
+    </td>
+  </tr>
+</table>
+
+<h1 id="faq">Troubleshooting</h1>
+<h2>I can't install the app on my phone</h2>
+<p>
+  If you can't copy the .jar file to your phone, you'll need to download the app directly from you phone's web browser.
+  Visit <a href="http://m.albite.vlexofree.com/reader">the mobile site</a> from your phone and download the app. 
+</p>
+<p>
+  After that you need to open the phone's file browser, navigate to the folder where you put the .jar file and open it.
+  If the phone throws an error message, then you might not be able to install the full version, try with
+  <a href="#versions">Albite READER Light</a> or <a href="#versions">Albite READER Tiny</a> instead.
+</p>
+
+<h2>I can't start the app</h2>
+<p>
+  Well, there may be many reasons for that. Firstly, you need to <a href="#accept_license">accept the license</a>
+  that will show up the first time you run the app. After that you need to
+  <a href="#file_browser">navigate to your books folder</a> and select a book to open. Meanwhile you may be asked
+  various questions regarding <a href="#permissions">app permissions</a> which you <b><i>must</i></b> accept or the app
+  wouldn't work at all. What questions? Well, your phone may ask whether you'd allow <i>Albite READER</i> to read and
+  write user data. And your books <i>are</i> user data. Finally, if the app closes unexpectedly or
+  behaves in a funny way, you probably haven't got enough resources to run the full version. You should try
+  <a href="#versions">Albite READER Light</a> or <a href="#versions">Albite READER Tiny </a> instead. You may also have
+  a look at <a href="#system_requirements">the system requirements</a>.
+</p>
+
+<h2>Do I need to upgrade the app and how do I do that?</h2>
+<p>
+  From time to time there may be new versions of <i>Albite READER</i> that fix some existing issues or add new
+  functionality. Upgrading the app is easy. Simply uninstall it from your phone and install the new version exactly
+  the way you did before. However, you'll may you app settings, i.e. you may need to set the dictionary folder again,
+  setup page interaction and color profiles. The good news is that your book settings will be preserved as they are
+  saved on the file system along with your books.
+</p>
+
+<h2>What are these .alx and .alb files along with my books?</h2>
+<p>
+  See the section about <a href="#alx">portable book settings</a>.
+</p>
+
+<h2>How do I report a bug?</h2>
+<p>
+  Two ways:
+</p>
+<ul>
+  <li><a href="https://github.com/dumbledore/AlbiteREADER/issues">Create an issue at GitHub</a></li>
+  <li><%= link_to 'Contact me', contacts_url %> through the feedback button on the left.</li>
+</ul>
+
+<h2>Is my phone supported?</h2>
+<p>
+  See <a href="#supported_devices">the list of supported devices</a>. Of course, it's quite likely the app would work
+  on devices that are not included in this list as I am very short of testing equipment. 
+</p>
+
+<h2>I can't see the book folder or the book file or I can't open the book</h2>
+<p>
+  Most probably you're having trouble with <a href="#permissions">security permissions</a>. 
+</p>
+
+<h2>I am seeing placeholders instead of images.</h2>
+<p>
+  That may mean several things:
+</p>
+<ul>
+  <li>the image wasn't found</li>
+  <li>the image is in a format your phone can't read</li>
+  <li>there hasn't been enough memory to load it or resize it</li>
+</ul>
+
+<h2>The app doesn't show the menu but instead asks me if I want quit.</h2>
+<p>
+  You must have set the <i>holding time</i> too low. See the section about <a href="#interaction">interaction</a>.
+</p>
+
+<h2>How do I use dictionaries?</h2>
+<p>
+  First you need to <a href="#dictionaries">download some</a>, then you have to
+  <a href="#dictionary_installation">install them</a> and finally you need to know look up the word. You may do that by
+  <i>press, hold and release</i> on a word, by <i>press and release</i> on the magnifying glass button or by
+  selecting <i>look up word</i> from the main menu.
+</p>
+
+<h1 id="features">Features in detail</h1>
+<p>
+  Here goes a detailed review of all currently implemented features.
+</p>
+
+<h2 id="font">Bitmap Font</h2>
+<p>
+  Bitmap font rendering is achieved through my own implementation. The font used, <i>Droid Serif</i>, has been
+  pre-rendered in several different sizes: 12px, 14px, 16px, 18px, 24px and 28px. All have been anti-aliased except for
+  the 12px version, which looks much better without it. Supported (or sometimes partially) character ranges are:
+</p>
+<ol>
+  <li><a href="/images/content/char_ranges/r01.png">Latin + Latin Supplement</a> (191 chars)</li>
+  <li><a href="/images/content/char_ranges/r02.png">Latin Extended A</a> (128 chars)</li>
+  <li><a href="/images/content/char_ranges/r03.png">Latin Extended B</a> (14 chars)</li>
+  <li><a href="/images/content/char_ranges/r04.png">Spacing Modifier Letters</a> (11 chars)</li>
+  <li><a href="/images/content/char_ranges/r05.png">Combining Diacritical Marks</a> (6 chars)</li>
+  <li><a href="/images/content/char_ranges/r06.png">Greek and Coptic</a> (75 chars)</li>
+  <li><a href="/images/content/char_ranges/r07.png">Cyrillic</a> (255 chars)</li>
+  <li><a href="/images/content/char_ranges/r08.png">Cyrillic Supplement</a> (20 chars)</li>
+  <li><a href="/images/content/char_ranges/r09.png">Latin Extended Additional</a> (100 chars)</li>
+  <li><a href="/images/content/char_ranges/r10.png">Greek Extended</a> (1 char)</li>
+  <li><a href="/images/content/char_ranges/r11.png">General Punctuation</a> (34 chars)</li>
+  <li><a href="/images/content/char_ranges/r12.png">Subscripts and Superscripts</a> (1 char)</li>
+  <li><a href="/images/content/char_ranges/r13.png">Currency Symbols</a> (5 chars)</li>
+  <li><a href="/images/content/char_ranges/r14.png">Letter-like Symbols</a> (6 chars)</li>
+  <li><a href="/images/content/char_ranges/r15.png">Number Forms</a> (4 chars)</li>
+  <li><a href="/images/content/char_ranges/r16.png">Mathematical Operators</a> (12 chars)</li>
+  <li><a href="/images/content/char_ranges/r17.png">Geometric Shapes</a> (1 chars)</li>
+</ol>
+
+<h2 id="hyphenation">Hyphenation</h2>
+<p>
+  Hyphenation for 29 languages:
+</p>
+<ol>
+  <li>Basque</li>
+  <li>Bulgarian</li>
+  <li>Catalan</li>
+  <li>Croatian</li>
+  <li>Czech</li>
+  <li>Danish</li>
+  <li>Dutch</li>
+  <li>German</li>
+  <li>Greek</li>
+  <li>English</li>
+  <li>Esperanto</li>
+  <li>Estonian</li>
+  <li>Finnish</li>
+  <li>French</li>
+  <li>Icelandic</li>
+  <li>Indonesian</li>
+  <li>Italian</li>
+  <li>Latin</li>
+  <li>Latvian</li>
+  <li>Polish</li>
+  <li>Portuguese</li>
+  <li>Romanian</li>
+  <li>Russian</li>
+  <li>Slovene</li>
+  <li>Spanish</li>
+  <li>Swedish</li>
+  <li>Turkish</li>
+  <li>Ukrainian</li>
+  <li>Welsh</li>
+</ol>
+
+<h2 id="encodings">Character Encodings</h2>
+<p>
+  Support for 23 character encodings:
+</p>
+<ol>
+  <li>UTF-8</li>
+  <li>ASCII</li>
+  <li>ISO-8859-1</li>
+  <li>ISO-8859-2</li>
+  <li>ISO-8859-3</li>
+  <li>ISO-8859-4</li>
+  <li>ISO-8859-5</li>
+  <li>ISO-8859-7</li>
+  <li>ISO-8859-9</li>
+  <li>ISO-8859-10</li>
+  <li>ISO-8859-13</li>
+  <li>ISO-8859-14</li>
+  <li>ISO-8859-15</li>
+  <li>ISO-8859-16</li>
+  <li>WINDOWS-1250</li>
+  <li>WINDOWS-1251</li>
+  <li>WINDOWS-1252</li>
+  <li>WINDOWS-1253</li>
+  <li>WINDOWS-1254</li>
+  <li>WINDOWS-1257</li>
+  <li>KOI8-R</li>
+  <li>KOI8-RU</li>
+  <li>KOI8-U</li>
+</ol>
+
+<h2 id="units">Unit conversion</h2>
+<p>Conversion between 80 units in 11 unit groups.</p>
+<ol>
+  <li>
+    Temperature
+    <ol>
+      <li>C, K</li>
+      <li>F, Degree of Frost</li>
+    </ol>
+  </li>
+  <li>
+    Length
+    <ol>
+      <li>mm, cm, dm, m, km</li>
+      <li>mil, in, ft, yd, fm, ch, fur, mi, land</li>
+      <li>cable, nautical mile</li>
+    </ol>
+  </li>
+  <li>
+    Area
+    <ol>
+      <li>mm2, cm2, dc2, m2, a, daa, ha, km2</li>
+      <li>sq ft, sq yd, ac, sq mi</li>
+    </ol>
+  </li>
+  <li>
+    Volume
+    <ol>
+      <li>mL, L, mm3, cm3, dm3, m3</li>
+      <li>fl oz, gi, pt, qt, gal</li>
+    </ol>
+  </li>
+  <li>
+    Mass
+    <ol>
+      <li>mg, g, kg, t</li>
+      <li>gr, oz, lb, st, cwt, ton</li>
+    </ol>
+  </li>
+  <li>
+    Velocity
+    <ol>
+      <li>m/s, km/h</li>
+      <li>fps, mph</li>
+      <li>kn</li>
+    </ol>
+  </li>
+  <li>
+    Pressure
+    <ol>
+      <li>Pa, hPa, kPa, mbar, bar</li>
+      <li>mmHg, inHg</li>
+      <li>Atm</li>
+      <li>psi</li>
+    </ol>
+  </li>
+  <li>
+    Power
+    <ol>
+      <li>mW, W, kW, MW</li>
+      <li>HPS</li>
+    </ol>
+  </li>
+  <li>
+    Energy
+    <ol>
+      <li>Wh, kWh</li>
+      <li>J</li>
+      <li>cal</li>
+    </ol>
+  </li>
+  <li>
+    Linear density
+    <ol>
+      <li>DPI</li>
+      <li>DPCM</li>
+    </ol>
+  </li>
+  <li>
+    Angle
+    <ol>
+      <li>rad</li>
+      <li>deg</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="images_and_styling">Images and styling</h2>
+<ul>
+  <li>Supports italic, bold and headings</li>
+  <li>Supports text centering</li>
+  <li>Supports images and alt text</li>
+  <li>Supports horizontal rulers</li>
+  <li>Partially supports <code>pre</code> text</li>
+  <li>Doesn't support CSS</li>
+  <li>Doesn't support tables</li>
+  <li>Doesn't support links and anchors</li>
+</ul>
+
+<h2 id="alx">Portable book settings: the <i>.alx</i> and <i>.alb</i> files</h2>
+<p>
+  After opening a book for the first time, <i>Albite READER</i> will create a file with the same name, but
+  with an <i>.alx</i> extension. This is a binary file containing your book reading progress. This includes:
+</p>
+<ul>
+  <li>Current chapter and position</li>
+  <li>Current hyphenation language</li>
+  <li>Last visited position in every chapter</li>
+  <li>Current encoding of every chapter</li>
+</ul>
+<p>
+  If you make any bookmarks in a book, <i>Albite READER</i> will also create a <i>.alb</i> file.  This is a <i>XML</i>
+  file which contains your bookmarked text and positions.
+</p>
+<p>
+  There are several advantages of this technique compared to the usual approach of using the RMS:
+</p>
+<ul>
+  <li>You can backup your reading progress</li>
+  <li>All your book settings are preserved upon application update</li>
+  <li>You can continue reading on another phone</li>
+  <li>
+    Your bookmarks are completely accessible so you can open them in a text processor.
+  </li>
+</ul>
+
+<h1 id="resources">Used resources</h1>
+<p>
+  All used sources and binaries are available at <a href="http://github.com/dumbledore/AlbiteResources">GitHub</a>.
+</p>
+<h2>APIs</h2>
+<h3>kXML2</h3>
+<p>
+  It's a <i>BSD</i>-licensed <i>XML</i> pull parser, especially adequate for <i>Java Mobile</i>.
+  It's small and unobtrusive. You can read more at <a href="http://kxml.sourceforge.net/kxml2/">their homepage</a>.
+</p>
+<h3>AlbiteZIP</h3>
+<p>
+  It's a <i>Java Mobile</i> port of <a href="http://www.gnu.org/software/classpath/">GNU Classpath</a>'s
+  <code>java.util.zip</code> package using the
+  <a href="http://github.com/dumbledore/AlbiteRandomReadingFile">AlbiteRandomReadingFile</a> API, which implements a
+  <code>RandomAccessFile</code> with writing capabilities stripped away. Reading <i>EPUB</i> files relies on
+  <i>AlbiteZIP</i> to work with their archives. AlbiteZIP's sources and some sample code are available at
+  <a href="http://github.com/dumbledore/AlbiteZIP">GitHub</a>.
+</p>
+<h3>AlbiteCharacterDecoder</h3>
+<p>
+  Provides the ability read characters not natively supported by <i>Java</i>'s <code>InputStreamReader</code>.
+  The API is based on some code from <a href="http://www.gnu.org/software/libiconv/">libiconv</a>. Sources, examples,
+  tests and binaries are available at <a href="http://github.com/dumbledore/AlbiteCharacterDecoder">GitHub</a>.
+</p>
+<h3>AlbiteUnits</h3>
+<p>
+  A simple java API for converting various physical units. Sources and binaries at
+  <a href="http://github.com/dumbledore/AlbiteUnits">GitHub</a>.
+</p>
+<h3>ZLTextTeXHyphenator</h3>
+<p>
+  <i>Zlibrary</i>'s hyphenator used in <a href="http://www.fbreader.org/FBReaderJ/">FBReaderJ</a>. Licensed under GPL 2. 
+</p>
+
+<h2>Fonts</h2>
+<h3>Droid Serif</h3>
+<p>
+  That's the font used on <i>Android</i> devices. It's quite nice and is built with the idea of rendering well on small
+  screens and at small sizes. It supports some good amount of glyphs (around 850) and character ranges. It's
+  licensed under the Apache 2.0 license. You can download the Droid fonts in TTF from
+  <a href="https://github.com/downloads/dumbledore/AlbiteResources/Droid-TTF.20101216.160814.zip">here</a>.
+</p>
+<h3>Building fonts</h3>
+<p>
+  In order to use the font in <i>Albite READER</i> you need to build it in the right format.
+</p>
+<p>
+  Firstly, install <a href="http://www.angelcode.com/products/bmfont/">AngelCode Bitmap Font Generator</a>. Now, you
+  need to create a bitmap font using the app. We need a bitmap font with xml descriptor, so BFG will produce a png with
+  a xml file. Take care to hold all the glyphs on a single page and make the page's area as small as possible.
+</p>
+<p>
+  Then, you need to manually edit the newly created xml file in a suitable form. This time you need to use
+  <a href="http://github.com/dumbledore/AlbiteFontBuilder">AlbiteFontBuilder</a>, which will produce the final files.
+  See its page for more info.
+</p>
+<p>
+  Note that in order to implement italic text you need to have two fonts, i.e. two versions of the same font.
+</p>
+<p>
+  If the process is still unclear, you'd better explore the files of the font resources used in <i>Albite READER</i>.
+</p>
+<p>
+  You may download the sources and binaries of the bitmap fonts used in <i>Albite READER</i> at
+  <a href="https://github.com/downloads/dumbledore/AlbiteResources/Droid-Albite.20101216.160626.zip">GitHub</a>.
+</p>
+
+<h2>Hyphenation patterns</h2>
+<p>
+  The used hyphenation patterns are the ones from <a href="http://www.tug.org/tex-hyphen/">TeX</a>'s site or some
+  modified versions from <a href="http://www.fbreader.org/FBReaderJ/">FBReaderJ</a>.
+</p>
+<h3>Building the patterns</h3>
+<p>
+  For every language you need to have the patterns in a separate txt file. Each patterns should be on a separate line.
+  Then run <a href="http://github.com/dumbledore/AlbiteTeXBuilder">AlbiteTeXBuilder</a> to build the file that will be
+  used in <i>Albite READER</i>.
+</p>
+<p>
+  You may download the sources and binaries of the TeX patterns used in <i>Albite READER</i> at
+  <a href="http://github.com/downloads/dumbledore/AlbiteResources/tex-patterns.zip">GitHub</a>.
+</p>
+<h2 id="dictionaries">Dictionaries</h2>
+<p>
+  There are some dictionaries ready for download!
+</p>
+<ul>
+  <li>
+    <a href="http://github.com/downloads/dumbledore/AlbiteResources/wb1913-abrd.zip">Merriam-Webster 1913,
+      Abridged version</a> (5.5 MB) based on <a href="http://www.mso.anu.edu.au/~ralph/OPTED/index.html">OPTED</a>.
+    Abridged using the <a href="http://wordlist.sourceforge.net/12dicts-readme.html">3esl</a> word list.
+  </li>
+  <li>
+    <a href="http://github.com/downloads/dumbledore/AlbiteResources/wb1913.zip">Merriam-Webster 1913, Full version</a>
+    (13.6 MB) based on <a href="http://www.mso.anu.edu.au/~ralph/OPTED/index.html">OPTED</a>. Note that the index alone
+    is 1.5MB large, so you need a device with loads of free memory and fast implementation of the File API.
+  </li>
+  <li>
+    <a href="http://github.com/downloads/dumbledore/AlbiteResources/glossaries.zip">Some glossaries from Wiktionary</a>.
+    Include: Architecture Terminology, British Firefighters Jargon, Chess Terms, Irish Slang and Jargon, Library and
+    Information Science, Military Slang, Nautical terms, Scottish Slang, South-African Slang, Truckspeak, US Navy Slang.
+  </li>
+</ul>
+<p>
+  Note that the in order to be used in <i>AlbiteREADER</i> the dictionaries must be unzipped first. See
+  <a href="#dictionary_installation">here</a> for
+  installation instructions.
+</p>
+<p>
+  All sources and binaries may be found at
+  <a href="http://github.com/dumbledore/AlbiteResources/tree/master/Dictionaries/">GitHub</a>.
+</p>
+<h3>Building your own dictionaries</h3>
+<p>
+  Dictionaries are prepared as <i>XML</i> files that are then converted into binary files using
+  <a href="http://github.com/dumbledore/AlbiteDictionaryBuilder">AlbiteDictionaryBuilder</a>. Dictionary entries can
+  also be filtered against a wordlist so that one can automatically create abridged editions. See the page of the tool
+  for some more exhausting information.
+</p>
+<h2>Graphics</h2>
+<p>
+  Most graphics are made by me, except for the book icon that is made by
+  <a href="http://simiographics.deviantart.com/">SimioGraphics</a> and the tiny icons of the folders, files, the
+  check icon and the broken image icon that I downloaded from the internet.
+</p>
+<h3>Building the graphics</h3>
+<p>
+  You need to use <a href="http://github.com/dumbledore/AlbiteImageConverter">AlbiteImageBuilder</a> to build the
+  images into the binary format.
+</p>
+
+<h1 id="limitations">Current limitations</h1>
+<p>
+  There are too many limited factors: your phone is limited, Java Mobile is limited and my personal time is limited. So,
+  it points to the conclusion that <i>Albite READER</i> is limited, too. I'd like you to know of the current
+  limitations, so that you can decide for yourself if they may stand in your way.
+</p>
+<ul>
+  <li>No support for links and anchors (i.e. objects findable by their id)</li>
+  <li>
+    No support for <i>toc.ncx</i>. Chapters are made according to the files from the <i>spine</i> element in the
+    <i>opf</i> file and are titled using a successive number.
+  </li>
+  <li>
+    No support for accelerometers. I know it's cool, but there are some technical limitations to consider, including
+    battery life when reading for a long time. No to mention that I often tilt the phone to a variety of angles if
+    I am reading in my bed.
+  </li>
+  <li>No book library. Books are opened through a file browser.</li>
+  <li>Images are shown in separate pages.
+  </li>
+  <li>
+    Font is available in four sizes only. That's because bitmap fonts are being used. Using SVG/TTF fonts is not only
+    slow (one can cache the glyphs after all), but ugly. Or one may need super-sampling which would make it <i>terribly</i>
+    slow. Java Mobile on the other hand, has limited supported for fonts. It supports a maximum of three font sizes,
+    and often limited amount of glyphs. Not to mention the fact that font rendering in Java Mobile is dreadfully
+    on some devices (like my Samsung GT-5230).
+  </li>
+  <li>No support for subscript and superscript. That's because of the previous limitation.</li>
+  <li>No support for tables.</li>
+  <li>No support for CSS.</li>
+  <li>
+    Books with too many chapters might make the current TOC unusable. For instance, the complete <i>War and Peace</i>
+    has more than 300 chapters, so the list of chapters becomes incredibly long and painful to browse. 
+  </li>
+  <li>
+    Languages with right-to-left text direction or hieroglyphic ones are not supported, including Chinese, Japanese,
+    Hebrew, Arabic, etc.
+  </li>
+  <li>
+    No language localization. In other words, the app is available only in English.  
+  </li>
+  <li>
+    No bold fonts. Instead of using bold fonts, the text is rendered in another color. Using bitmap fonts would
+    significantly (i.e. at least twice) increase the size of both JAR and needed heap memory.   
+  </li>
+  <li>
+    There is a theoretical possibility of corruption of the <i>.alx</i> files. More precisely, it can happen if the
+    battery dies exactly when saving the data to the phone or if the app is closed using the red key and it is
+    unable to close fast enough. Thankfully enough, this possibility must be <i>very</i> slight in most
+    situations.
+  </li>
+</ul>
